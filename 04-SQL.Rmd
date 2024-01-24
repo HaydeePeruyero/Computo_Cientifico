@@ -1,0 +1,20 @@
+# SQL
+
+```{r setup4, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+```{r, include=FALSE}
+workingDir <-  "."
+setwd(workingDir)
+```
+
+## Bases de datos y manipulación
+
+## Explorar datos categóricos y texto no estructurado
+
+## Comparación con los otros programas
+
+## Valores faltantes
+
+## Combinar bases de datos

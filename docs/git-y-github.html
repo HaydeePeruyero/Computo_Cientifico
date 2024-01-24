@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Sección 3 Git y Github | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</title>
+  <meta name="description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Sección 3 Git y Github | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  <meta name="github-repo" content="HaydeePeruyero/Computo_Cientifico" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sección 3 Git y Github | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos" />
+  
+  <meta name="twitter:description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  
+
+<meta name="author" content="Haydeé Peruyero" />
+
+
+<meta name="date" content="2024-01-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="shell.html"/>
+<link rel="next" href="python.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Computo Científico</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#temario"><i class="fa fa-check"></i><b>1.1</b> Temario</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#referencias"><i class="fa fa-check"></i><b>1.2</b> Referencias</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#material-interesante"><i class="fa fa-check"></i><b>1.3</b> Material interesante</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#datacamp"><i class="fa fa-check"></i><b>1.4</b> DataCamp</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="shell.html"><a href="shell.html"><i class="fa fa-check"></i><b>2</b> Shell</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="shell.html"><a href="shell.html#manipulación-de-archivos-y-directorios"><i class="fa fa-check"></i><b>2.1</b> Manipulación de archivos y directorios</a></li>
+<li class="chapter" data-level="2.2" data-path="shell.html"><a href="shell.html#manipulación-de-datos"><i class="fa fa-check"></i><b>2.2</b> Manipulación de datos</a></li>
+<li class="chapter" data-level="2.3" data-path="shell.html"><a href="shell.html#tuberías-y-filtros"><i class="fa fa-check"></i><b>2.3</b> Tuberías y filtros</a></li>
+<li class="chapter" data-level="2.4" data-path="shell.html"><a href="shell.html#ciclos"><i class="fa fa-check"></i><b>2.4</b> Ciclos</a></li>
+<li class="chapter" data-level="2.5" data-path="shell.html"><a href="shell.html#scripts"><i class="fa fa-check"></i><b>2.5</b> Scripts</a></li>
+<li class="chapter" data-level="2.6" data-path="shell.html"><a href="shell.html#descarga-y-limpieza-de-bases-de-datos"><i class="fa fa-check"></i><b>2.6</b> Descarga y limpieza de bases de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="git-y-github.html"><a href="git-y-github.html"><i class="fa fa-check"></i><b>3</b> Git y Github</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="git-y-github.html"><a href="git-y-github.html#repositorios"><i class="fa fa-check"></i><b>3.1</b> Repositorios</a></li>
+<li class="chapter" data-level="3.2" data-path="git-y-github.html"><a href="git-y-github.html#flujo-de-trabajo-en-git"><i class="fa fa-check"></i><b>3.2</b> Flujo de trabajo en Git</a></li>
+<li class="chapter" data-level="3.3" data-path="git-y-github.html"><a href="git-y-github.html#comparando-cambios"><i class="fa fa-check"></i><b>3.3</b> Comparando cambios</a></li>
+<li class="chapter" data-level="3.4" data-path="git-y-github.html"><a href="git-y-github.html#crear-ramas"><i class="fa fa-check"></i><b>3.4</b> Crear Ramas</a></li>
+<li class="chapter" data-level="3.5" data-path="git-y-github.html"><a href="git-y-github.html#actualizando-ramas"><i class="fa fa-check"></i><b>3.5</b> Actualizando ramas</a></li>
+<li class="chapter" data-level="3.6" data-path="git-y-github.html"><a href="git-y-github.html#revertir-cambios"><i class="fa fa-check"></i><b>3.6</b> Revertir cambios</a></li>
+<li class="chapter" data-level="3.7" data-path="git-y-github.html"><a href="git-y-github.html#resolver-conflictos"><i class="fa fa-check"></i><b>3.7</b> Resolver conflictos</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>4</b> Python</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="python.html"><a href="python.html#tipos-de-datos"><i class="fa fa-check"></i><b>4.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="4.2" data-path="python.html"><a href="python.html#flujo-de-control"><i class="fa fa-check"></i><b>4.2</b> Flujo de control</a></li>
+<li class="chapter" data-level="4.3" data-path="python.html"><a href="python.html#visualización-de-datos"><i class="fa fa-check"></i><b>4.3</b> Visualización de datos</a></li>
+<li class="chapter" data-level="4.4" data-path="python.html"><a href="python.html#manipulación-de-bases-de-datos"><i class="fa fa-check"></i><b>4.4</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="4.5" data-path="python.html"><a href="python.html#análisis-exploratorio-de-bases-de-datos"><i class="fa fa-check"></i><b>4.5</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="4.6" data-path="python.html"><a href="python.html#funciones-y-scripts"><i class="fa fa-check"></i><b>4.6</b> Funciones y scripts</a></li>
+<li class="chapter" data-level="4.7" data-path="python.html"><a href="python.html#buenas-practicas"><i class="fa fa-check"></i><b>4.7</b> Buenas practicas</a></li>
+<li class="chapter" data-level="4.8" data-path="python.html"><a href="python.html#procesamiento-de-alto-rendimiento"><i class="fa fa-check"></i><b>4.8</b> Procesamiento de alto rendimiento</a></li>
+<li class="chapter" data-level="4.9" data-path="python.html"><a href="python.html#programación-en-paralelo"><i class="fa fa-check"></i><b>4.9</b> Programación en paralelo</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>5</b> SQL</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="sql.html"><a href="sql.html#bases-de-datos-y-manipulación"><i class="fa fa-check"></i><b>5.1</b> Bases de datos y manipulación</a></li>
+<li class="chapter" data-level="5.2" data-path="sql.html"><a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado"><i class="fa fa-check"></i><b>5.2</b> Explorar datos categóricos y texto no estructurado</a></li>
+<li class="chapter" data-level="5.3" data-path="sql.html"><a href="sql.html#comparación-con-los-otros-programas"><i class="fa fa-check"></i><b>5.3</b> Comparación con los otros programas</a></li>
+<li class="chapter" data-level="5.4" data-path="sql.html"><a href="sql.html#valores-faltantes"><i class="fa fa-check"></i><b>5.4</b> Valores faltantes</a></li>
+<li class="chapter" data-level="5.5" data-path="sql.html"><a href="sql.html#combinar-bases-de-datos"><i class="fa fa-check"></i><b>5.5</b> Combinar bases de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="power-bi.html"><a href="power-bi.html"><i class="fa fa-check"></i><b>6</b> Power BI</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="power-bi.html"><a href="power-bi.html#introducción-a-power-bi"><i class="fa fa-check"></i><b>6.1</b> Introducción a Power BI</a></li>
+<li class="chapter" data-level="6.2" data-path="power-bi.html"><a href="power-bi.html#transformando-y-visualizando-datos"><i class="fa fa-check"></i><b>6.2</b> Transformando y visualizando datos</a></li>
+<li class="chapter" data-level="6.3" data-path="power-bi.html"><a href="power-bi.html#manipulación-de-bases-de-datos-1"><i class="fa fa-check"></i><b>6.3</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="6.4" data-path="power-bi.html"><a href="power-bi.html#análisis-exploratorio-de-bases-de-datos-1"><i class="fa fa-check"></i><b>6.4</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="6.5" data-path="power-bi.html"><a href="power-bi.html#variables-categóricas-y-continuas"><i class="fa fa-check"></i><b>6.5</b> Variables categóricas y continuas</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>7</b> R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="r.html"><a href="r.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>7.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="7.2" data-path="r.html"><a href="r.html#manipulación-de-bases-de-datos-2"><i class="fa fa-check"></i><b>7.2</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="7.3" data-path="r.html"><a href="r.html#análisis-exploratorio-de-bases-de-datos-2"><i class="fa fa-check"></i><b>7.3</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="7.4" data-path="r.html"><a href="r.html#reportes-con-rmarkdown"><i class="fa fa-check"></i><b>7.4</b> Reportes con RMarkdown</a></li>
+<li class="chapter" data-level="7.5" data-path="r.html"><a href="r.html#páginas-web"><i class="fa fa-check"></i><b>7.5</b> Páginas web</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="git-y-github" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Sección 3</span> Git y Github<a href="git-y-github.html#git-y-github" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="repositorios" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Repositorios<a href="git-y-github.html#repositorios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="flujo-de-trabajo-en-git" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Flujo de trabajo en Git<a href="git-y-github.html#flujo-de-trabajo-en-git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="comparando-cambios" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Comparando cambios<a href="git-y-github.html#comparando-cambios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="crear-ramas" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Crear Ramas<a href="git-y-github.html#crear-ramas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="actualizando-ramas" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Actualizando ramas<a href="git-y-github.html#actualizando-ramas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="revertir-cambios" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Revertir cambios<a href="git-y-github.html#revertir-cambios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="resolver-conflictos" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Resolver conflictos<a href="git-y-github.html#resolver-conflictos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="shell.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="python.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-Git_Github.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Computo Científico.pdf", "Computo Científico.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

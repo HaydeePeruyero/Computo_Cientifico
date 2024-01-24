@@ -1,0 +1,25 @@
+# Git y Github
+
+```{r setup2, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+```{r, include=FALSE}
+workingDir <-  "."
+setwd(workingDir)
+```
+
+
+## Repositorios
+
+## Flujo de trabajo en Git
+
+## Comparando cambios
+
+## Crear Ramas
+
+## Actualizando ramas
+
+## Revertir cambios
+
+## Resolver conflictos

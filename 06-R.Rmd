@@ -1,0 +1,20 @@
+# R
+
+```{r setup6, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+```{r, include=FALSE}
+workingDir <-  "."
+setwd(workingDir)
+```
+
+## Tipos de datos
+
+## Manipulación de bases de datos
+
+## Análisis exploratorio de bases de datos
+
+## Reportes con RMarkdown
+
+## Páginas web

@@ -1,0 +1,22 @@
+# Shell
+
+```{r setup1, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+```{r, include=FALSE}
+workingDir <-  "."
+setwd(workingDir)
+```
+
+## Manipulación de archivos y directorios
+
+## Manipulación de datos
+
+## Tuberías y filtros
+
+## Ciclos
+
+## Scripts
+
+## Descarga y limpieza de bases de datos

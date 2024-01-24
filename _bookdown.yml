@@ -1,5 +1,7 @@
-book_filename: "bookdown-demo"
+book_filename: "Computo Científico"
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: "Sección "
 delete_merged_file: true
+output_dir: "docs"
+always_allow_html: true
