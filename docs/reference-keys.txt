@@ -46,3 +46,5 @@ manipulación-de-bases-de-datos-2
 análisis-exploratorio-de-bases-de-datos-2
 reportes-con-rmarkdown
 páginas-web
+temas-selectos-de-análisis-numérico-y-computación-científica
+computo-científico-para-el-análisis-de-datos
