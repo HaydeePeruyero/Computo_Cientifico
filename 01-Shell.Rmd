@@ -9,6 +9,11 @@ workingDir <-  "."
 setwd(workingDir)
 ```
 
+
+```{bash}
+echo "Hello Bash!"
+```
+
 ## Manipulación de archivos y directorios
 
 ## Manipulación de datos

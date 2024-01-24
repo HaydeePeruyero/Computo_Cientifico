@@ -48,3 +48,8 @@ reportes-con-rmarkdown
 páginas-web
 temas-selectos-de-análisis-numérico-y-computación-científica
 computo-científico-para-el-análisis-de-datos
+a-normal-r-code-chunk
+modify-an-r-variable
+a-python-chunk
+modify-a-python-variable
+python-graphics

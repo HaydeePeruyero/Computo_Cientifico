@@ -9,6 +9,8 @@ workingDir <-  "."
 setwd(workingDir)
 ```
 
+
+
 ## Bases de datos y manipulación
 
 ## Explorar datos categóricos y texto no estructurado
