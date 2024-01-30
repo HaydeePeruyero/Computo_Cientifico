@@ -9,12 +9,289 @@ workingDir <-  "."
 setwd(workingDir)
 ```
 
+Descargar [git bash](https://gitforwindows.org/) para Windows o seguir las instrucciones de [Software carpentries](https://carpentries.github.io/workshop-template/install_instructions/#shell) para otros sistemas operativos.
 
-```{bash}
-echo "Hello Bash!"
+
+## Navegar en archivos y directorios
+
+Cuando abrimos una terminal por primera vez, vamos a ver un **prompt** (usualmente es `$ `) que nos indica que esta esperando los comandos. Después de teclear los comandos, debemos siempre presionar <kbd>Enter</kbd>.
+
+```bash
+$ 
 ```
 
+Para listar lo que hay en un directorio usamos el comando `ls`.
+
+```bash
+$ ls
+```
+
+```output
+Documents  Downloads  Music  Pictures  Videos
+```
+
+Al comando `ls` le podemos agregar unos `adjetivos` para hacer más comprensible su lectura. Por ejemplo, la opción `-F` nos indica si es una carpeta, un archivo, un link, etc.
+
+```bash
+$ ls -F
+```
+
+```output
+ej.txt  Git/  PBI/  Python/  R/  Shell/  SQL/
+```
+
+Con la opción `--help` podemos acceder a la ayuda del comando.
+
+```bash
+$ ls --help
+```
+
+Otras opciones que nos ayudan a entender la información que tenemos en el archivo son `-lh`, nos muestra los permisos del archivo o carpeta, tamaño, propietario, fecha, nombre. La opción `ls -a` nos muestra los archivos ocultos.
+
+**Ejercicio:** ¿Qué hace la opción `-l`? ¿Cómo podemos listar en orden de creación e inverso? 
+ 
+Con el comando `ls` también podemos listar los archivos de cualquier otro directorio, solo debemos indicarle el directorio después del comando:
+
+```bash
+$ ls - F Shell 
+```
+
+El comando `ls` solo nos esta listando lo que hay en los directorios. Si nos queremos mover a otro directorio, lo podemos hacer con el comando `cd` y especificando el directorio.
+
+```bash
+$ cd Shell
+$ ls
+```
+
+```output
+data/  ej1.txt  ejercicios/
+```
+
+El comando `pwd` nos da la ruta en la que estamos.
+
+```bash
+$ pwd
+```
+
+```output
+/d/Users/hayde/Documents/Curso_Comp_Cien/Shell
+```
+
+Para movernos a un directorio arriba, colocamos después de `cd` dos puntos.
+
+```bash
+$ cd ..
+```
+
+Si no colocamos los dos puntos, el comando `cd` nos lleva al `/home/`.
+
+```bash
+$ cd 
+```
+
+Otra forma de movernos de un directorio a otro es especificando la *ruta absoluta*, es decir la ruta completa de a donde queremos movernos.
+
+```bash
+$ cd /d/Users/hayde/Documents/Curso_comp_Cien
+```
+
+**Ejercicio:** ¿Qué es una ruta relativa?
+
+
+Otro opción útil que podemos usar con el comando `cd` es `-`. 
+
+**Ejercicio:** ¿A donde nos lleva `cd -`? y si volvemos a colocar `cd -` ¿a donde nos lleva? ¿Cuál es la diferencia entre `cd ..` y `cd -`?
+
+La tilde `~`, shell la interpreta como el home del usuario, entonces si colocamos `cd ~/directorio` sería lo mismo que `/home/directorio`. Por ejemplo:
+
+```bash
+$ cd ~/Desktop
+```
+
+es lo mismo que
+
+```bash
+$ cd /c/Users/hayde/Desktop
+```
+
+**Ejercicio:** Supongamos que tenemos el siguiente árbol de datos en nuestra computadora y que estamos en `/Users/thing/`. ¿Si colocamos en la terminal `ls -F ../backup` que nos mostrará?
+
+![Ejercicio [SC](https://swcarpentry.github.io/shell-novice/02-filedir.html)](img/ej_shell.png)
+
+**Ejercicio:** Explora las opciones `-s` y `-S`. ¿Hay diferencia entre mayúsculas y minúsculas? 
+
+La tecla <kbd>Tab</kbd> nos ayuda a completar los comando/rutas. Si la presionamos dos veces nos mostrará todas las posibles opciones.
+
+
 ## Manipulación de archivos y directorios
+
+Para crear directorios/carpetas desde la línea de comandos usamos el comando `mkdir nombre`. Vamos a crear la carpeta del curso. Es recomendable **no usar espacios en nombres de carpetas ni archivos**. 
+
+```bash
+$ mkdir Curso_Comp_Cien
+```
+
+El comando `mkdir` nos permite crear más de un directorio y directorios anidados usando la opción  `-p`.
+
+```bash
+$ mkdir -p Curso_Comp_Cien/Shell/data Curso_Comp_Cien/Shell/ejercicios
+```
+
+Para listar toda la estructura de nuestras carpetas podemos usar la opción `-FR` en el comando `ls`.
+
+```bash
+$ ls -FR
+```
+
+Otra opción útil para listar toda la estructura de nuestro directorio es la opción `tree`, no viene instalado por default en los sistemas operativos. En Windows, si se instalo git/bash se puede usar con `tree.com`.
+
+```bash
+$ tree.com
+```
+
+Para crear un archivo usando el editor nano (si fue el que configuraron), se usa el comando `nano nombre.extension`.
+Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en el archivo.
+
+```bash
+$ cd Curso_Comp_Cien/Shell/ejercicios
+$ nano prueba.txt
+```
+
+Para guardar y salir del editor, usamos los comandos <kbd>Ctrl</kbd>\+<kbd>O</kbd> o <kbd>Ctrl</kbd>\+<kbd>X</kbd> seguido de `Yes` y enter.
+
+Si en el archivo no guardaron nada, entonces no se creara. Una forma de crear archivos sin abrirlos es con el comando `touch`.
+
+```bash
+$ touch ../ej1.txt ej2.txt ../data/ej3.csv ../data/ej4.csv
+```
+
+Si checamos con `ls -l` los archivos o rutas que creamos, veremos que no tienen ningún tamaño.
+
+Para mover archivos o renombrarlos, usamos el comando `mv` seguido del archivo que queremos mover/renombrar y la ruta a donde lo moveremos o el nuevo nombre del archivo.
+
+```bash
+$ pwd
+$ mv ej2.txt ejercicio2.txt
+```
+
+Lo anterior esta cambiandole el nombre al archivo `ej1.txt` por `ejercicio1.txt`. 
+
+
+Si estamos en un directorio y queremos mover un archivo de otro directorio al directorio actual, podemos hacerlo especificando como primer argumento la ruta y nombre del archivo a mover y como segundo argumento un punto `.`.
+
+```bash
+$ mv ../ej1.txt .
+```
+
+O especificando la ruta completa.
+
+```bash
+$ cd ..
+$ mv data/ej3.csv ejercicios/.
+```
+
+Para copiar archivos, usamos el comando `cp` seguido por la ruta del archivo a copiar y la ruta del archivo a donde se copiará. Movamonos a la carpeta `Shell/ejercicios`.
+
+```bash
+$ pwd
+$ cp ejercicio2.txt ../ej2.txt
+$ ls -FR
+```
+
+Si usamos la opción `-r` (*recursivo*) en el comando `cp` podemos copiar un directorio completo y todos sus elementos.
+
+```bash
+$ cp -r data .
+```
+
+**Ejercicio:** ¿Cual es el output de la siguiente colección de comandos?
+
+```bash
+$ pwd
+```
+
+```output
+/Users/haydee/Curso
+```
+
+```bash
+$ ls -F
+```
+
+```output
+archivo.txt carpeta/
+```
+
+```bash
+$ mkdir carpeta2
+$ mv archivo.txt carpeta2/
+$ cd carpeta2
+$ cp archivo.txt ../carpeta/archivo_respaldo.txt
+$ cd ..
+$ ls -FR
+```
+
+Para borrar archivos usamos el comando `rm`, hay que tener cuidado cuando lo usemos ya que **borra definitivamente** los archivos o carpetas.
+
+```bash
+$ cd Shell
+$ rm ejercicios/ejercicio2.txt
+$ ls ejercicios/
+```
+
+Una forma segura de borrar archivos es usando la opción `-i`, con esto nos saldrá un mensaje preguntando si en verdad deseamos borrar el archivo. Para confirmar debemos colocar `y`.
+
+```bash
+$ rm -i /data/ej3.csv
+```
+
+```output
+rm: remove regular empty file 'ej3.txt'?
+```
+
+Si queremos borrar una carpeta, debemos hacerlo con la opción `-r`, de lo contrario obtendremos un error.
+
+```bash
+$ rm data
+```
+
+```bash
+$ rm -r data
+```
+
+Para mover/copiar/eliminar multiples archivos a la vez, podemos enumerarlos todos o usar comodines/patrones que sigan estos elementos. Supongamos que tenemos una lista de archivos todos con terminación `.txt`, entonces para borrarlos podemos usar `rm *.txt`. El `*` nos indica todo lo que este antes de `.txt`.
+
+```bash
+$ cd Shell/
+$ touch prueba1.txt prueba2.txt prueba3.txt prueba4.txt prueba5.txt
+$ rm *.txt
+```
+
+Otro comodín que podemos usar es `?`, pero este denota solo 1 espacio. Por ejemplo:
+
+```bash
+$ cd Shell/
+$ touch prueba1.txt prueba2.txt prueba3.txt prueba4.txt prueba5.txt
+$ rm prueba?.txt
+```
+
+
+```bash
+$ cd Shell/
+$ touch prueba1.txt prueba2.txt prueba3.txt prueba4.txt prueba5.txt
+$ rm prue???.txt
+```
+
+**Ejercicio:** Supon que en el directorio `data` tienes dos archivos. ¿Cuál de los siguientes comandos te daría como resultado: `ethane.pdb` `methane.pdb`.
+
+1) `ls *t*ane.pdb`
+
+2) `ls *t?ne.*`
+
+3) `ls *t??ne.pdb`
+
+4) ls ethane.*
+
 
 ## Manipulación de datos
 

@@ -53,3 +53,5 @@ modify-an-r-variable
 a-python-chunk
 modify-a-python-variable
 python-graphics
+manipulación-de-archivos-y-directorios-1
+navegar-en-archivos-y-directorios
