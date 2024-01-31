@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-01-30" />
+<meta name="date" content="2024-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -151,11 +151,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="shell.html"><a href="shell.html#navegar-en-archivos-y-directorios"><i class="fa fa-check"></i><b>2.1</b> Navegar en archivos y directorios</a></li>
 <li class="chapter" data-level="2.2" data-path="shell.html"><a href="shell.html#manipulación-de-archivos-y-directorios"><i class="fa fa-check"></i><b>2.2</b> Manipulación de archivos y directorios</a></li>
-<li class="chapter" data-level="2.3" data-path="shell.html"><a href="shell.html#manipulación-de-datos"><i class="fa fa-check"></i><b>2.3</b> Manipulación de datos</a></li>
-<li class="chapter" data-level="2.4" data-path="shell.html"><a href="shell.html#tuberías-y-filtros"><i class="fa fa-check"></i><b>2.4</b> Tuberías y filtros</a></li>
-<li class="chapter" data-level="2.5" data-path="shell.html"><a href="shell.html#ciclos"><i class="fa fa-check"></i><b>2.5</b> Ciclos</a></li>
-<li class="chapter" data-level="2.6" data-path="shell.html"><a href="shell.html#scripts"><i class="fa fa-check"></i><b>2.6</b> Scripts</a></li>
-<li class="chapter" data-level="2.7" data-path="shell.html"><a href="shell.html#descarga-y-limpieza-de-bases-de-datos"><i class="fa fa-check"></i><b>2.7</b> Descarga y limpieza de bases de datos</a></li>
+<li class="chapter" data-level="2.3" data-path="shell.html"><a href="shell.html#tuberías-y-filtros"><i class="fa fa-check"></i><b>2.3</b> Tuberías y filtros</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="shell.html"><a href="shell.html#tuberías"><i class="fa fa-check"></i><b>2.3.1</b> Tuberías</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="shell.html"><a href="shell.html#ciclos"><i class="fa fa-check"></i><b>2.4</b> Ciclos</a></li>
+<li class="chapter" data-level="2.5" data-path="shell.html"><a href="shell.html#scripts"><i class="fa fa-check"></i><b>2.5</b> Scripts</a></li>
+<li class="chapter" data-level="2.6" data-path="shell.html"><a href="shell.html#descarga-y-limpieza-de-bases-de-datos"><i class="fa fa-check"></i><b>2.6</b> Descarga y limpieza de bases de datos</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="git-y-github.html"><a href="git-y-github.html"><i class="fa fa-check"></i><b>3</b> Git y Github</a>
 <ul>
@@ -282,27 +284,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="shell.html#cb20-1" tabindex="-1"></a><span class="ex">$</span> tree.com</span></code></pre></div>
 <p>Para crear un archivo usando el editor nano (si fue el que configuraron), se usa el comando <code>nano nombre.extension</code>.
 Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en el archivo.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="shell.html#cb21-1" tabindex="-1"></a><span class="ex">$</span> cd Curso_Comp_Cien/Shell/ejercicios</span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="shell.html#cb21-1" tabindex="-1"></a><span class="ex">$</span> cd Curso_Comp_Cien/</span>
 <span id="cb21-2"><a href="shell.html#cb21-2" tabindex="-1"></a><span class="ex">$</span> nano prueba.txt</span></code></pre></div>
 <p>Para guardar y salir del editor, usamos los comandos <kbd>Ctrl</kbd>+<kbd>O</kbd> o <kbd>Ctrl</kbd>+<kbd>X</kbd> seguido de <code>Yes</code> y enter.</p>
 <p>Si en el archivo no guardaron nada, entonces no se creara. Una forma de crear archivos sin abrirlos es con el comando <code>touch</code>.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="shell.html#cb22-1" tabindex="-1"></a><span class="ex">$</span> touch ../ej1.txt ej2.txt ../data/ej3.csv ../data/ej4.csv</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="shell.html#cb22-1" tabindex="-1"></a><span class="ex">$</span> cd Shell/ejercicios</span>
+<span id="cb22-2"><a href="shell.html#cb22-2" tabindex="-1"></a><span class="ex">$</span> touch ../ej1.txt ej2.txt ../data/ej3.csv ../data/ej4.csv</span></code></pre></div>
 <p>Si checamos con <code>ls -l</code> los archivos o rutas que creamos, veremos que no tienen ningún tamaño.</p>
 <p>Para mover archivos o renombrarlos, usamos el comando <code>mv</code> seguido del archivo que queremos mover/renombrar y la ruta a donde lo moveremos o el nuevo nombre del archivo.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="shell.html#cb23-1" tabindex="-1"></a><span class="ex">$</span> pwd</span>
 <span id="cb23-2"><a href="shell.html#cb23-2" tabindex="-1"></a><span class="ex">$</span> mv ej2.txt ejercicio2.txt</span></code></pre></div>
-<p>Lo anterior esta cambiandole el nombre al archivo <code>ej1.txt</code> por <code>ejercicio1.txt</code>.</p>
+<p>Lo anterior esta cambiándole el nombre al archivo <code>ej2.txt</code> por <code>ejercicio2.txt</code>.</p>
 <p>Si estamos en un directorio y queremos mover un archivo de otro directorio al directorio actual, podemos hacerlo especificando como primer argumento la ruta y nombre del archivo a mover y como segundo argumento un punto <code>.</code>.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="shell.html#cb24-1" tabindex="-1"></a><span class="ex">$</span> mv ../ej1.txt .</span></code></pre></div>
 <p>O especificando la ruta completa.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="shell.html#cb25-1" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
 <span id="cb25-2"><a href="shell.html#cb25-2" tabindex="-1"></a><span class="ex">$</span> mv data/ej3.csv ejercicios/.</span></code></pre></div>
-<p>Para copiar archivos, usamos el comando <code>cp</code> seguido por la ruta del archivo a copiar y la ruta del archivo a donde se copiará. Movamonos a la carpeta <code>Shell/ejercicios</code>.</p>
+<p>Para copiar archivos, usamos el comando <code>cp</code> seguido por la ruta del archivo a copiar y la ruta del archivo a donde se copiará. Movámonos a la carpeta <code>Shell/ejercicios</code>.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="shell.html#cb26-1" tabindex="-1"></a><span class="ex">$</span> pwd</span>
 <span id="cb26-2"><a href="shell.html#cb26-2" tabindex="-1"></a><span class="ex">$</span> cp ejercicio2.txt ../ej2.txt</span>
 <span id="cb26-3"><a href="shell.html#cb26-3" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-FR</span></span></code></pre></div>
 <p>Si usamos la opción <code>-r</code> (<em>recursivo</em>) en el comando <code>cp</code> podemos copiar un directorio completo y todos sus elementos.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="shell.html#cb27-1" tabindex="-1"></a><span class="ex">$</span> cp <span class="at">-r</span> data .</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="shell.html#cb27-1" tabindex="-1"></a><span class="ex">$</span> cd ejercicios</span>
+<span id="cb27-2"><a href="shell.html#cb27-2" tabindex="-1"></a><span class="ex">$</span> cp <span class="at">-r</span> ../data .</span></code></pre></div>
 <p><strong>Ejercicio:</strong> ¿Cual es el output de la siguiente colección de comandos?</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="shell.html#cb28-1" tabindex="-1"></a><span class="ex">$</span> pwd</span></code></pre></div>
 <pre class="output"><code>/Users/haydee/Curso</code></pre>
@@ -343,20 +347,73 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <li><p>ls ethane.*</p></li>
 </ol>
 </div>
-<div id="manipulación-de-datos" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Manipulación de datos<a href="shell.html#manipulación-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tuberías-y-filtros" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Tuberías y filtros<a href="shell.html#tuberías-y-filtros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vamos a usar los archivos de prueba de la lección de Shell de Software Carpentry. Descargarlos en el directorio que creamos que se llama <a href="https://swcarpentry.github.io/shell-novice/data/shell-lesson-data.zip">Shell</a>.</p>
+<p>Vamos a explorar los archivos que están en la carpeta <code>excercise-data/alkanes</code>. Para contar cuantos palabras, líneas o caracteres tiene un archivo, usamos el comando <code>wc</code> que viene de <code>word count</code>.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="shell.html#cb41-1" tabindex="-1"></a><span class="ex">$</span> ls</span></code></pre></div>
+<pre class="output"><code>cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="shell.html#cb43-1" tabindex="-1"></a><span class="ex">$</span> wc cubane.pdb</span></code></pre></div>
+<pre class="output"><code>20  156 1158 cubane.pdb</code></pre>
+<p>El primer número es el número de líneas del archivo, el segundo la cantidad de palabras y el tercero la cantidad de caracteres.</p>
+<p>Si usamos alguna de los comodines, por ejemplo <code>*.pdb</code> con el comando <code>wc</code>, nos va a regresar la información de todos los archivos.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="shell.html#cb45-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="pp">*</span>.pdb</span></code></pre></div>
+<p>Notemos que en la última fila tenemos los totales de todos los archivos. Accedamos a la ayuda del comando con <code>help</code>.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="shell.html#cb46-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">--help</span></span></code></pre></div>
+<p><strong>Ejercicio:</strong> ¿Cuál opción nos permite extraer solo la cantidad de líneas del archivo?</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="shell.html#cb47-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb</span></code></pre></div>
+<p>Si por error olvidamos colocar el nombre del archivo o cualquier otra cosa después del comando, la consola se quedará esperando una instrucción, para salir de esto basta presionar <kbd>Ctrl</kbd>+<kbd>C</kbd>.</p>
+<p>Ya sabemos como extraer cierta información de nuestros archivos, pero supongamos que queremos guardarlo ahora en algún otro archivo para después analizarlo. El símbolo <code>&gt;</code> redirige el resultado de los comandos usados a algún archivo.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="shell.html#cb48-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="op">&gt;</span> lineas.txt</span></code></pre></div>
+<p>Para solo visualizar el contenido de un archivo sin entrar al editor de texto, podemos usar el comando <code>cat</code> seguido del nombre del archivo.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="shell.html#cb49-1" tabindex="-1"></a><span class="ex">$</span> cat lineas.txt</span></code></pre></div>
+<p>Otro comando que puede resultar más útil para mostrar el contenido de un archivo es <code>less</code>, la diferencia con <code>cat</code> es que este último muestra todo el contenido en la pantalla, lo cual puede dificultar su lectura e inspección, mientras que <code>less</code> muestra una parte del contenido y de forma ordenada, si queremos seguir viendo el contenido podemos usar la tecla de espacio, b y para salir usamos la letra <code>q</code>.</p>
+<p>Ya guardamos la información de la cantidad de líneas, pero supongamos que queremos saber cual archivo tiene la mayor cantidad de líneas o menor. Para hacer esto nos sirve el comando <code>sort</code>.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb50-1"><a href="shell.html#cb50-1" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
+<span id="cb50-2"><a href="shell.html#cb50-2" tabindex="-1"></a><span class="ex">$</span> sort numbers.txt</span></code></pre></div>
+<p>Si a <code>sort</code> le agregamos la opción <code>-n</code>, nos los ordena en numericamente en lugar de alfabeticamente.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="shell.html#cb51-1" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> numbers.txt</span></code></pre></div>
+<p><strong>Ejercicio:</strong> De los archivos que están en la carpeta <code>alkane</code>, ¿cuál tiene la menor cantidad de líneas?</p>
+<p>También podemos redirigir esta información a otro archivo y de ahí extraer la información.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="shell.html#cb52-1" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> lineas.txt <span class="op">&gt;</span> lineas_ordenadas.txt</span></code></pre></div>
+<p>El comando <code>head</code> nos ayuda a extraer las primeras <code>n</code> líneas de nuestro archivo. Por ejemplo, para extraer la primera línea del archivo <code>lineas_ordenadas.txt</code> y así saber cual archivo tenía la menor cantidad de líneas usaríamos <code>head -n 1</code>.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="shell.html#cb53-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 1 lineas_ordenadas.txt</span></code></pre></div>
+<p>El comando <code>echo</code> nos ayuda a imprimir en la consola caracteres.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="shell.html#cb54-1" tabindex="-1"></a><span class="ex">$</span> echo Hola</span></code></pre></div>
+<p><strong>Ejercicio:</strong> Realiza las siguientes instrucciones dos veces cada una. Explora las diferencias. ¿Qué hace el operador <code>&gt;&gt;</code>?</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="shell.html#cb55-1" tabindex="-1"></a><span class="ex">$</span> echo hola <span class="op">&gt;</span> test1.txt</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="shell.html#cb56-1" tabindex="-1"></a><span class="ex">$</span> echo hola <span class="op">&gt;&gt;</span> test2.txt</span></code></pre></div>
+<p>El comando <code>tail</code> es similar al comando <code>head</code>, nos muestra las últimas <code>n</code> filas del archivo.</p>
+<p><strong>Ejercicio:</strong> Considera el archivo <code>/exercise-data/animal-counts/animals.csv</code>. Después de aplicar los siguientes dos comandos, ¿qué hay en el archivo <code>animals-subset.csv</code>?</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="shell.html#cb57-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 3 animals.csv <span class="op">&gt;</span> animals-subset.csv</span>
+<span id="cb57-2"><a href="shell.html#cb57-2" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> 2 animals.csv <span class="op">&gt;&gt;</span> animals-subset.csv</span></code></pre></div>
+<div id="tuberías" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Tuberías<a href="shell.html#tuberías" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Además de redirigir los output de los comandos que hemos ocupado, también podríamos anidarlos y al final mandarlo a un archivo. Para hacer esto se usan <strong>tuberías</strong> y su símbolo es <code>|</code>. Por ejemplo:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="shell.html#cb58-1" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> lineas.txt <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 1</span></code></pre></div>
+<p>En esta instrucción le estamos diciendo a la consola que primero nos ordene lo que hay en el archivo líneas en orden númerico y después que nos muestre la primera línea. De esta forma nos evitamos por ejemplo el haber creado el archivo <code>lineas_ordenadas.txt</code>.</p>
+<p>Podemos anidar varias instrucciones a la vez. Por ejemplo, podríamos pedirle a la consola la cantidad de líneas de los archivos <code>*.pdb</code>, pedirle que las ordene numericamente y después que extraiga la primera línea.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="shell.html#cb59-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 1</span></code></pre></div>
+<p><strong>Ejercicio:</strong> De los archivos que están en la carpeta <code>alkanes</code>, obten los 3 archivos con la menor cantidad de líneas.</p>
+<p><strong>Ejercicio:</strong> Explora el archivo <code>exercise-data/animals-counts/animals.csv</code>. ¿Cuál será el resultado de la siguiente instrucción?</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="shell.html#cb60-1" tabindex="-1"></a><span class="ex">$</span> cat animals.csv <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 5 <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 3 <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-r</span> <span class="op">&gt;</span> final.txt</span></code></pre></div>
+<p>El comando <code>cut</code> nos ayuda a extrar/cortar ciertas columnas de nuestros archivos. Por ejemplo, <code>cut -d , -f 2 archivo</code> nos está indicando que del archivo queremos cortar por caracteres <code>,</code> (eso hace <code>-d ,</code>) y que queremos extraer la segunda columna (<code>-f 2</code>).</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="shell.html#cb61-1" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span> , <span class="at">-f</span> 2 animals.csv</span></code></pre></div>
+<p>Si quisieramos extraer los animales únicos de ese archivo, podemos usar el comando <code>uniq</code>.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="shell.html#cb62-1" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span> , <span class="at">-f</span> 2 animals.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div>
+<p><strong>Ejercicio:</strong> ¿Porqué se necesita colocar el <code>sort</code> antes del <code>uniq</code>?</p>
+<p><strong>Ejercicio:</strong> Si quisiéramos ver cuantos animales hay de cada tipo, ¿que instrucción tendríamos que usar?</p>
+<p><strong>Ejercicio:</strong> Exploremos la carpeta <code>north-pacific-gyre</code>.</p>
 </div>
-<div id="tuberías-y-filtros" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Tuberías y filtros<a href="shell.html#tuberías-y-filtros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="ciclos" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Ciclos<a href="shell.html#ciclos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ciclos" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Ciclos<a href="shell.html#ciclos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="scripts" class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> Scripts<a href="shell.html#scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="scripts" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Scripts<a href="shell.html#scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="descarga-y-limpieza-de-bases-de-datos" class="section level2 hasAnchor" number="2.7">
-<h2><span class="header-section-number">2.7</span> Descarga y limpieza de bases de datos<a href="shell.html#descarga-y-limpieza-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="descarga-y-limpieza-de-bases-de-datos" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Descarga y limpieza de bases de datos<a href="shell.html#descarga-y-limpieza-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>

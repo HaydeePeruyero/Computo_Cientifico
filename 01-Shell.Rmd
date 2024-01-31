@@ -153,7 +153,7 @@ Para crear un archivo usando el editor nano (si fue el que configuraron), se usa
 Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en el archivo.
 
 ```bash
-$ cd Curso_Comp_Cien/Shell/ejercicios
+$ cd Curso_Comp_Cien/
 $ nano prueba.txt
 ```
 
@@ -162,6 +162,7 @@ Para guardar y salir del editor, usamos los comandos <kbd>Ctrl</kbd>\+<kbd>O</kb
 Si en el archivo no guardaron nada, entonces no se creara. Una forma de crear archivos sin abrirlos es con el comando `touch`.
 
 ```bash
+$ cd Shell/ejercicios
 $ touch ../ej1.txt ej2.txt ../data/ej3.csv ../data/ej4.csv
 ```
 
@@ -174,7 +175,7 @@ $ pwd
 $ mv ej2.txt ejercicio2.txt
 ```
 
-Lo anterior esta cambiandole el nombre al archivo `ej1.txt` por `ejercicio1.txt`. 
+Lo anterior esta cambiándole el nombre al archivo `ej2.txt` por `ejercicio2.txt`. 
 
 
 Si estamos en un directorio y queremos mover un archivo de otro directorio al directorio actual, podemos hacerlo especificando como primer argumento la ruta y nombre del archivo a mover y como segundo argumento un punto `.`.
@@ -190,7 +191,7 @@ $ cd ..
 $ mv data/ej3.csv ejercicios/.
 ```
 
-Para copiar archivos, usamos el comando `cp` seguido por la ruta del archivo a copiar y la ruta del archivo a donde se copiará. Movamonos a la carpeta `Shell/ejercicios`.
+Para copiar archivos, usamos el comando `cp` seguido por la ruta del archivo a copiar y la ruta del archivo a donde se copiará. Movámonos a la carpeta `Shell/ejercicios`.
 
 ```bash
 $ pwd
@@ -201,7 +202,8 @@ $ ls -FR
 Si usamos la opción `-r` (*recursivo*) en el comando `cp` podemos copiar un directorio completo y todos sus elementos.
 
 ```bash
-$ cp -r data .
+$ cd ejercicios
+$ cp -r ../data .
 ```
 
 **Ejercicio:** ¿Cual es el output de la siguiente colección de comandos?
@@ -293,11 +295,162 @@ $ rm prue???.txt
 4) ls ethane.*
 
 
-## Manipulación de datos
-
 ## Tuberías y filtros
 
+Vamos a usar los archivos de prueba de la lección de Shell de Software Carpentry. Descargarlos en el directorio que creamos que se llama [Shell](https://swcarpentry.github.io/shell-novice/data/shell-lesson-data.zip).
+
+Vamos a explorar los archivos que están en la carpeta `excercise-data/alkanes`. Para contar cuantos palabras, líneas o caracteres tiene un archivo, usamos el comando `wc` que viene de `word count`.
+
+```bash
+$ ls
+```
+
+```output
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+```
+
+
+```bash
+$ wc cubane.pdb
+```
+
+```output
+20  156 1158 cubane.pdb
+```
+
+El primer número es el número de líneas del archivo, el segundo la cantidad de palabras y el tercero la cantidad de caracteres.
+
+Si usamos alguna de los comodines, por ejemplo `*.pdb` con el comando `wc`, nos va a regresar la información de todos los archivos.
+
+```bash
+$ wc *.pdb
+```
+
+Notemos que en la última fila tenemos los totales de todos los archivos. Accedamos a la ayuda del comando con `help`.
+
+```bash
+$ wc --help
+```
+
+**Ejercicio:** ¿Cuál opción nos permite extraer solo la cantidad de líneas del archivo?
+
+```bash
+$ wc -l *.pdb
+```
+
+Si por error olvidamos colocar el nombre del archivo o cualquier otra cosa después del comando, la consola se quedará esperando una instrucción, para salir de esto basta presionar <kbd>Ctrl</kbd>\+<kbd>C</kbd>.
+
+Ya sabemos como extraer cierta información de nuestros archivos, pero supongamos que queremos guardarlo ahora en algún otro archivo para después analizarlo. El símbolo `>` redirige el resultado de los comandos usados a algún archivo.
+
+```bash
+$ wc -l *.pdb > lineas.txt
+```
+
+Para solo visualizar el contenido de un archivo sin entrar al editor de texto, podemos usar el comando `cat` seguido del nombre del archivo.
+
+```bash
+$ cat lineas.txt
+```
+
+Otro comando que puede resultar más útil para mostrar el contenido de un archivo es `less`, la diferencia con `cat` es que este último muestra todo el contenido en la pantalla, lo cual puede dificultar su lectura e inspección, mientras que `less` muestra una parte del contenido y de forma ordenada, si queremos seguir viendo el contenido podemos usar la tecla de espacio, b y para salir usamos la letra `q`.
+
+
+Ya guardamos la información de la cantidad de líneas, pero supongamos que queremos saber cual archivo tiene la mayor cantidad de líneas o menor. Para hacer esto nos sirve el comando `sort`. 
+
+```bash
+$ cd ..
+$ sort numbers.txt
+```
+
+Si a `sort` le agregamos la opción `-n`, nos los ordena en numericamente en lugar de alfabeticamente.
+
+```bash
+$ sort -n numbers.txt
+```
+
+**Ejercicio:** De los archivos que están en la carpeta `alkane`, ¿cuál tiene la menor cantidad de líneas?
+
+También podemos redirigir esta información a otro archivo y de ahí extraer la información.
+
+```bash
+$ sort -n lineas.txt > lineas_ordenadas.txt
+```
+
+El comando `head` nos ayuda a extraer las primeras `n` líneas de nuestro archivo. Por ejemplo, para extraer la primera línea del archivo `lineas_ordenadas.txt` y así saber cual archivo tenía la menor cantidad de líneas usaríamos `head -n 1`.
+
+```bash
+$ head -n 1 lineas_ordenadas.txt
+```
+
+El comando `echo` nos ayuda a imprimir en la consola caracteres. 
+
+```bash
+$ echo Hola
+```
+
+**Ejercicio:** Realiza las siguientes instrucciones dos veces cada una. Explora las diferencias. ¿Qué hace el operador `>>`?
+
+```bash
+$ echo hola > test1.txt
+```
+
+```bash
+$ echo hola >> test2.txt
+```
+
+El comando `tail` es similar al comando `head`, nos muestra las últimas `n` filas del archivo.
+
+**Ejercicio:** Considera el archivo `/exercise-data/animal-counts/animals.csv`. Después de aplicar los siguientes dos comandos, ¿qué hay en el archivo `animals-subset.csv`?
+
+```bash
+$ head -n 3 animals.csv > animals-subset.csv
+$ tail -n 2 animals.csv >> animals-subset.csv
+```
+
+### Tuberías
+
+Además de redirigir los output de los comandos que hemos ocupado, también podríamos anidarlos y al final mandarlo a un archivo. Para hacer esto se usan **tuberías** y su símbolo es `|`. Por ejemplo:
+
+```bash
+$ sort -n lineas.txt | head -n 1
+```
+
+En esta instrucción le estamos diciendo a la consola que primero nos ordene lo que hay en el archivo líneas en orden númerico y después que nos muestre la primera línea. De esta forma nos evitamos por ejemplo el haber creado el archivo `lineas_ordenadas.txt`.
+
+Podemos anidar varias instrucciones a la vez. Por ejemplo, podríamos pedirle a la consola la cantidad de líneas de los archivos `*.pdb`, pedirle que las ordene numericamente y después que extraiga la primera línea.
+
+```bash
+$ wc -l *.pdb | sort -n | head -n 1
+```
+
+**Ejercicio:** De los archivos que están en la carpeta `alkanes`, obten los 3 archivos con la menor cantidad de líneas.
+
+**Ejercicio:** Explora el archivo `exercise-data/animals-counts/animals.csv`. ¿Cuál será el resultado de la siguiente instrucción?
+
+```bash
+$ cat animals.csv | head -n 5 | tail -n 3 | sort -r > final.txt
+```
+
+El comando `cut` nos ayuda a extrar/cortar ciertas columnas de nuestros archivos. Por ejemplo, `cut -d , -f 2 archivo` nos está indicando que del archivo queremos cortar por caracteres `,` (eso hace `-d ,`) y que queremos extraer la segunda columna (`-f 2`). 
+
+```bash
+$ cut -d , -f 2 animals.csv
+```
+
+Si quisieramos extraer los animales únicos de ese archivo, podemos usar el comando `uniq`.
+
+```bash
+$ cut -d , -f 2 animals.csv | sort | uniq
+```
+
+**Ejercicio:** ¿Porqué se necesita colocar el `sort` antes del `uniq`?
+
+**Ejercicio:** Si quisiéramos ver cuantos animales hay de cada tipo, ¿que instrucción tendríamos que usar?
+
+**Ejercicio:** Exploremos la carpeta `north-pacific-gyre`.
+
 ## Ciclos
+
 
 ## Scripts
 
