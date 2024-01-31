@@ -449,7 +449,10 @@ $ cut -d , -f 2 animals.csv | sort | uniq
 
 **Ejercicio:** Exploremos la carpeta `north-pacific-gyre`.
 
+
 ## Ciclos
+
+
 
 
 ## Scripts
