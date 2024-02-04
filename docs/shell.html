@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-01-31" />
+<meta name="date" content="2024-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -227,7 +227,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="shell" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Sección 2</span> Shell<a href="shell.html#shell" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Descargar <a href="https://gitforwindows.org/">git bash</a> para Windows o seguir las instrucciones de <a href="https://carpentries.github.io/workshop-template/install_instructions/#shell">Software carpentries</a> para otros sistemas operativos.</p>
+<p>Descargar <a href="https://gitforwindows.org/">git bash</a> para Windows o seguir las instrucciones de <a href="https://carpentries.github.io/workshop-template/install_instructions/#shell">Software carpentries</a> para otros sistemas operativos.
+Basado en la lección de <a href="https://swcarpentry.github.io/shell-novice/">The carpentries</a></p>
 <div id="navegar-en-archivos-y-directorios" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Navegar en archivos y directorios<a href="shell.html#navegar-en-archivos-y-directorios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Cuando abrimos una terminal por primera vez, vamos a ver un <strong>prompt</strong> (usualmente es <code>$</code>) que nos indica que esta esperando los comandos. Después de teclear los comandos, debemos siempre presionar <kbd>Enter</kbd>.</p>
@@ -282,6 +283,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="shell.html#cb19-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-FR</span></span></code></pre></div>
 <p>Otra opción útil para listar toda la estructura de nuestro directorio es la opción <code>tree</code>, no viene instalado por default en los sistemas operativos. En Windows, si se instalo git/bash se puede usar con <code>tree.com</code>.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="shell.html#cb20-1" tabindex="-1"></a><span class="ex">$</span> tree.com</span></code></pre></div>
+<p><strong>Nota:</strong> Para descargar <code>tree</code> y que podamos ver la estructura de árbol con archivos y carpetas hacer lo siguiente:</p>
+<ol style="list-style-type: decimal">
+<li><p>Ir a la <a href="https://gnuwin32.sourceforge.net/packages/tree.htm">página</a> y descargar la versión que dice <em>binaries</em>.</p></li>
+<li><p>Extraer lo que hay en la carpeta <strong>bin</strong>.</p></li>
+<li><p>Copiar el archivo <strong>tree.exe</strong> a la carpeta <code>/c/Program_files/Git/usr/bin/</code>.</p></li>
+<li><p>Para probarlo, solo colocar en la terminal <code>tree ruta</code>.</p></li>
+</ol>
 <p>Para crear un archivo usando el editor nano (si fue el que configuraron), se usa el comando <code>nano nombre.extension</code>.
 Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en el archivo.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="shell.html#cb21-1" tabindex="-1"></a><span class="ex">$</span> cd Curso_Comp_Cien/</span>

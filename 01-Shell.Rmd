@@ -10,7 +10,7 @@ setwd(workingDir)
 ```
 
 Descargar [git bash](https://gitforwindows.org/) para Windows o seguir las instrucciones de [Software carpentries](https://carpentries.github.io/workshop-template/install_instructions/#shell) para otros sistemas operativos.
-
+Basado en la lección de [The carpentries](https://swcarpentry.github.io/shell-novice/)
 
 ## Navegar en archivos y directorios
 
@@ -148,6 +148,17 @@ Otra opción útil para listar toda la estructura de nuestro directorio es la op
 ```bash
 $ tree.com
 ```
+
+**Nota:** Para descargar `tree` y que podamos ver la estructura de árbol con archivos y carpetas hacer lo siguiente:
+
+1) Ir a la [página](https://gnuwin32.sourceforge.net/packages/tree.htm) y descargar la versión que dice *binaries*.
+
+2) Extraer lo que hay en la carpeta **bin**.
+
+3) Copiar el archivo **tree.exe** a la carpeta `/c/Program_files/Git/usr/bin/`.
+
+4) Para probarlo, solo colocar en la terminal `tree ruta`.
+
 
 Para crear un archivo usando el editor nano (si fue el que configuraron), se usa el comando `nano nombre.extension`.
 Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en el archivo.
