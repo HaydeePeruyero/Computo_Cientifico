@@ -458,11 +458,59 @@ $ cut -d , -f 2 animals.csv | sort | uniq
 
 **Ejercicio:** Si quisiéramos ver cuantos animales hay de cada tipo, ¿que instrucción tendríamos que usar?
 
-**Ejercicio:** Exploremos la carpeta `north-pacific-gyre`.
-
 
 ## Ciclos
 
+Los ciclos nos ayudan a repetir comandos o un conjunto de comandos para cada elemento de una lista. La estructura del ciclo `for` es como sigue:
+
+```bash
+for elemento in lista
+do 
+  operacion/comando $elemento
+done
+```
+
+La palabra `for` indica el comienzo del ciclo, la palabra `do` nos indica que es lo que se va a ejecutar y su comienzo y la palabra `done` indica el fin del ciclo.
+
+Exploremos lo que hay en la carpeta `~/Shell/shell-lesson-data/exercise-data/creatures`. Listemos las primeras 5 filas de cada archivo.
+
+```bash
+$ head -n 5 basilisk.dat minotaur.dat unicorn.dat
+```
+
+Supongamos que queremos ver la clasificación de cada especie que se encuentra en la segunda línea de cada archivo. Una forma de hacerlo es con `head -n 2`, pero de esta forma también estamos viendo su nombre común, entonces vamos a hacerlo con un ciclo. Lo primero que tendríamos que hacer es usar justo `head -n 2 ` y al resultado de esto, si le pedimos la última línea ya solo veríamos la clasificación, entonces usamos un `tail -n 1`.
+
+```bash
+$ for filename in *.dat
+> do
+>   echo $filename
+>   head -n 2 $filename | tail -n 1
+> done
+```
+
+Notemos que cuando empezamos a teclear nuestro ciclo, el prompt cambia de `$` a `>`, esto indica que está esperando que continuemos el ciclo. También podemos usar `;` para continuar las instrucciones en una misma fila.
+
+Dentro de los ciclos, las variables las mandamos a llamar con `$`, en el ejemplo, cuando ocupamos `$filename` estamos mandando a llamar la variable `filename` que definimos al inicio del ciclo. Es muy usual también encerrar entre llaves los nombres de las variables para delimitar el nombre, en el ejemplo, `$filename` sería equivalente a `${filename}`. 
+
+**Ejercicio:**  Crea un ciclo que muestre en pantalla (echo) todos los números del 0 al 9.
+
+**Ejercicio:** Ve a la carpeta `shell-lesson-data/exercise-data/alkanes` y lista lo que hay.
+1) ¿Cuál es el output del siguiente código?
+```bash
+$ for datafile in *.pdb
+> do
+>     ls *.pdb
+> done
+```
+
+2) Y de este código?
+
+```bash
+$ for datafile in *.odb
+> do 
+>     ls $datafile
+> done
+```
 
 
 

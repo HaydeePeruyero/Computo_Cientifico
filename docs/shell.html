@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-02-03" />
+<meta name="date" content="2024-02-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -411,11 +411,40 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="shell.html#cb62-1" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span> , <span class="at">-f</span> 2 animals.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div>
 <p><strong>Ejercicio:</strong> ¿Porqué se necesita colocar el <code>sort</code> antes del <code>uniq</code>?</p>
 <p><strong>Ejercicio:</strong> Si quisiéramos ver cuantos animales hay de cada tipo, ¿que instrucción tendríamos que usar?</p>
-<p><strong>Ejercicio:</strong> Exploremos la carpeta <code>north-pacific-gyre</code>.</p>
 </div>
 </div>
 <div id="ciclos" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Ciclos<a href="shell.html#ciclos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los ciclos nos ayudan a repetir comandos o un conjunto de comandos para cada elemento de una lista. La estructura del ciclo <code>for</code> es como sigue:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="shell.html#cb63-1" tabindex="-1"></a><span class="cf">for</span> elemento <span class="kw">in</span> lista</span>
+<span id="cb63-2"><a href="shell.html#cb63-2" tabindex="-1"></a><span class="cf">do</span> </span>
+<span id="cb63-3"><a href="shell.html#cb63-3" tabindex="-1"></a>  <span class="ex">operacion/comando</span> <span class="va">$elemento</span></span>
+<span id="cb63-4"><a href="shell.html#cb63-4" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>La palabra <code>for</code> indica el comienzo del ciclo, la palabra <code>do</code> nos indica que es lo que se va a ejecutar y su comienzo y la palabra <code>done</code> indica el fin del ciclo.</p>
+<p>Exploremos lo que hay en la carpeta <code>~/Shell/shell-lesson-data/exercise-data/creatures</code>. Listemos las primeras 5 filas de cada archivo.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="shell.html#cb64-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 5 basilisk.dat minotaur.dat unicorn.dat</span></code></pre></div>
+<p>Supongamos que queremos ver la clasificación de cada especie que se encuentra en la segunda línea de cada archivo. Una forma de hacerlo es con <code>head -n 2</code>, pero de esta forma también estamos viendo su nombre común, entonces vamos a hacerlo con un ciclo. Lo primero que tendríamos que hacer es usar justo <code>head -n 2</code> y al resultado de esto, si le pedimos la última línea ya solo veríamos la clasificación, entonces usamos un <code>tail -n 1</code>.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="shell.html#cb65-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.dat</span>
+<span id="cb65-2"><a href="shell.html#cb65-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb65-3"><a href="shell.html#cb65-3" tabindex="-1"></a><span class="op">&gt;</span>   echo <span class="va">$filename</span></span>
+<span id="cb65-4"><a href="shell.html#cb65-4" tabindex="-1"></a><span class="op">&gt;</span>   head <span class="ex">-n</span> 2 <span class="va">$filename</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 1</span>
+<span id="cb65-5"><a href="shell.html#cb65-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<p>Notemos que cuando empezamos a teclear nuestro ciclo, el prompt cambia de <code>$</code> a <code>&gt;</code>, esto indica que está esperando que continuemos el ciclo. También podemos usar <code>;</code> para continuar las instrucciones en una misma fila.</p>
+<p>Dentro de los ciclos, las variables las mandamos a llamar con <code>$</code>, en el ejemplo, cuando ocupamos <code>$filename</code> estamos mandando a llamar la variable <code>filename</code> que definimos al inicio del ciclo. Es muy usual también encerrar entre llaves los nombres de las variables para delimitar el nombre, en el ejemplo, <code>$filename</code> sería equivalente a <code>${filename}</code>.</p>
+<p><strong>Ejercicio:</strong> Crea un ciclo que muestre en pantalla (echo) todos los números del 0 al 9.</p>
+<p><strong>Ejercicio:</strong> Ve a la carpeta <code>shell-lesson-data/exercise-data/alkanes</code> y lista lo que hay.
+1) ¿Cuál es el output del siguiente código?</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="shell.html#cb66-1" tabindex="-1"></a><span class="ex">$</span> for datafile in <span class="pp">*</span>.pdb</span>
+<span id="cb66-2"><a href="shell.html#cb66-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb66-3"><a href="shell.html#cb66-3" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="ex">*.pdb</span></span>
+<span id="cb66-4"><a href="shell.html#cb66-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Y de este código?</li>
+</ol>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="shell.html#cb67-1" tabindex="-1"></a><span class="ex">$</span> for datafile in <span class="pp">*</span>.odb</span>
+<span id="cb67-2"><a href="shell.html#cb67-2" tabindex="-1"></a><span class="op">&gt;</span> do </span>
+<span id="cb67-3"><a href="shell.html#cb67-3" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="va">$datafile</span></span>
+<span id="cb67-4"><a href="shell.html#cb67-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 </div>
 <div id="scripts" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Scripts<a href="shell.html#scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
