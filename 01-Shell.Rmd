@@ -648,6 +648,78 @@ Supongamos que queremos ejecutar el script llamado `goostats.sh`, este script ne
 
 ## Scripts
 
+Los  scripts nos ayudan a repetir los comandos sobre listas de archivos. Supongamos que existen ciertos comando que siempre repetimos, vamos a guardarlos en un archivo para con un solo comando ejecutar esa lista de comandos.
+
+Vamos al directorio `alkanes`. Supongamos que siempre queremos extraer las líneas de la 11 a la 15 de cada archivo. Por ejemplo, una forma en la que lo hacemos es:
+
+```bash
+$ head -n 15 octane.pdb | tail -n 5
+```
+
+Vamos a escribir eso en un archivo:
+
+```bash
+$ cd alkanes
+$ nano middle.sh
+```
+
+Guardemos eso. Para ejecutarlo bastaría correr lo siguiente:
+
+```bash
+$ bash middle.sh
+```
+
+Supongamos que queremos las líneas de la 11 a la 15 pero de cualquier otro archivo. Vamos a modificar el archivo que creamos.
+
+```bash
+$ nano middle.sh
+```
+
+```bash
+head -n 15 "$1" | tail -n 5
+```
+
+En el script, cuando colocamos `"$1"` se refiere al primer argumento/archivo en la línea de comandos, por ejemplo cuando colocamos en la línea de comandos:
+
+```bash
+$ bash middle.sh octane.pdb
+```
+
+Lo que estamos diciéndole a la consola es que reemplace dentro del script "$1" por el archivo `octane.pdb`. De esta forma nuestro script ahora lo podemos correr sobre cualquier archivo.
+
+Nuestro script por el momento funciona solo con las líneas de la 11 a la 15. Supongamos que queremos modificar esto de tal forma que cuando vayamos a ejecutar el script le indiquemos las líneas que queremos extraer. Así como usamos `$1` para indicarle que era la primera variable en la línea de comandos, podemos usar las variables `$2` y `$3` para indicarle la segunda y tercera variable.
+
+```bash
+$ nano middle.sh
+```
+
+```bash
+head -n "$2" "$1" | tail -n "$3"
+```
+
+Entonces podemos ejecutar el script como sigue:
+
+```bash
+$ bash middle.sh octane.pdb 15 5
+```
+
+Y podemos cambiar las líneas a mostrar, por ejemplo:
+
+```bash
+$ bash middle.sh octane.pdb 20 5
+```
+
+Lo único que falta en el script, es describir que hace, de esta forma cualquier otra persona (o nosotros más adelante), cuando queramos abrir el script podamos recordar y entender que argumentos pide y cual es su uso.
+
+```bash
+$ nano middle.sh
+```
+
+```bash
+# Selecciona líneas intermedias de un archivo.
+# Uso: bash middle.sh nombre_archivo linea_final linea_inicial
+head -n "$2" "$1" | tail -n "$3"
+```
 
 
 ## Descarga y limpieza de bases de datos
