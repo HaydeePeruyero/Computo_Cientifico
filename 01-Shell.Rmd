@@ -496,6 +496,7 @@ Dentro de los ciclos, las variables las mandamos a llamar con `$`, en el ejemplo
 
 **Ejercicio:** Ve a la carpeta `shell-lesson-data/exercise-data/alkanes` y lista lo que hay.
 1) ¿Cuál es el output del siguiente código?
+
 ```bash
 $ for datafile in *.pdb
 > do
@@ -503,7 +504,7 @@ $ for datafile in *.pdb
 > done
 ```
 
-2) Y de este código?
+2) ¿Y de este código?
 
 ```bash
 $ for datafile in *.odb
@@ -512,8 +513,141 @@ $ for datafile in *.odb
 > done
 ```
 
+Explica las diferencias.
+
+
+**Ejercicio:** En el directorio `shell-lesson-data/exercise-data/alkanes`, ¿cuál sería el output del siguiente código?
+
+```bash
+$ for filename in c*
+> do
+>     ls $filename
+> done
+```
+
+Y si en lugar de `c*` usamos *c*?
+
+Dentro de un ciclo también podemos pedir guardar archivos. 
+
+**Ejercicio:** Explora el siguiente código. ¿Cuál es el efecto de guardar en este ciclo?
+
+```bash
+$ for alkanes in *.pbd
+> do
+>     echo $alkanes
+>     car $alkanes > alkanes.pdb
+> done
+```
+
+¿Cuál sería la diferencia si usamos ahora `>>`?
+
+**Ejercicio:** Crea un ciclo for que muestre las últimas 20 líneas de cada archivo en la carpeta `creatures`.
+
+Como ya mencionamos, no es recomendable usar espacios ni caracteres especiales en nombres de archivos o carpetas. Si fuera el caso de que nuestros archivos tienen espacios, entonces deberíamos pasarlos al ciclo for encerrados entre comillas los nombres. Por ejemplo, supongamos que tenemos los archivos `archivo 1.txt` y `archivo 2.txt`. Para leerlos en el ciclo for tendríamos que usar la siguiente sintaxis.
+
+```bash
+$ for filename in "archivo 1.txt" "archivo 2.txt"
+> do
+>     head -n20 "$filename" | tail -n5 
+> done
+```
+
+Supongamos que queremos modificar nuestros archivos que se encuentran en la carpeta `creatures` pero que antes queremos respaldarlos en otros archivos llamados `original-basilisk.dat`, `original-unicorn.dat` y `original-minotaur.dat`. Una forma de hacerlo sería copiarlos a nuevos archivos con esos nombres, pero si no lo queremos hacer manualmente, ¿qué pasa si usamos el siguiente código?
+
+```bash
+$ cp *.dat original-*.dat
+```
+
+Esto nos va a dar un error porque el comando `cp` estaría esperando que `original-` sea una carpeta y no lo es, no existe esa carpeta. Entonces lo que podemos hacer es usar un ciclo. 
+
+**Ejercicio:** Crea un ciclo `for` que copie los dos archivos a dos nuevos archivos llamados `original-basilisk.dat`,  `original-unicorn.dat` y `original-minotaur.dat`.
+
+El comando `cp` no nos muestra en pantalla ningún output. Si quisieramos ver que en efecto se esta realizando la copia de estos archivos podemos usar el comando `echo` y pedir que nos diga como "se copio el archivo $filename". Usar `echo` de esta forma es una buena práctica de realizar lo que se llama **debugging**.
+
+```bash
+$ for filename in *.dat
+> do
+>     echo cp $filename original-$filename
+> done
+```
+
+![Debugging](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/shell_script_for_loop_flow_chart.svg)
+
+
+**Ejercicio:** Supongamos que queremos previsualizar los comandos que el siguiente ciclo va a realizar en lugar de correrlo primero para asegurarnos de que está haciendo lo que queremos.
+
+```bash
+$ for filename in *.pdb
+> do
+>     cat $filename >> all.pdb
+> done
+```
+
+¿Cuál de los siguientes dos códigos sería el correcto para revisar los comando a ejecutarse con el ciclo?
+
+```bash
+# Versión 1
+$ for filename in *.pdb
+> do
+>     echo cat $filename >> all.pdb
+> done
+```
+
+```bash
+# Versión 2
+$ for filename in *.pdb
+> do
+>    echo "cat $filename >> all.pdb"
+> done
+```
+
+Corre los dos códigos y explora el contenido del archivo `all.pdb`.
+
+Supongamos que queremos crear una estructura de directorios como sigue, para cada compuesto y cada temperatura queremos una carpeta para ir guardando ahí sus resultados, y que cada carpeta se llame `compuesto-temperatura`, ¿cómo podemos hacer esto? Una opción son los ciclos anidados.
+
+![estructura-experimentos](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/estructura-alkanes.png)
+
+
+```bash
+$ for species in cubane ethane methane 
+> do
+>     for temperature in 25 30 37 40
+>     do
+>         mkdir $species-$temperature
+>     done
+> done
+```
+
+Algunos comandos útiles para ver el historial de comadnos.
+
+- `history` nos muestra el historial de comandos.
+
+- <kbd>Ctrl</kbd>\+<kbd>R</kbd> nos muestra la leyenda `reverse-i-search`, esto indica que está esperando que nosotros coloquemos una palabra y buscará por el último comando con esa palabra.
+
+- `history` + `!123` nos repetirá el comando `!123` del historial.
+
+- `!!` nos muestra el último comando usado.
+
+- `!$` nos regresa la última palabra del último comando.
+
+
+**Ejercicio:** En la carpeta `norht-pacific-gyre` se encuentran dos scripts (`.sh`) y una lista de archivos. Esta lista de archivos tiene terminaciones A, B y en el caso de que la terminación sea Z significa que el archivo está corrupto.
+
+1) ¿Cómo podrías darte cuenta que los archivos con terminación  Z están corruptos?
+
+Supongamos que queremos ejecutar el script llamado `goostats.sh`, este script necesita recibir dos cosas, el archivo de entrada y el nombre del archivo de salida. Supongamos que queremos correr este script para todos los archivos con terminación A y B y que queremos que los archivos de salida se llamen `stats-$datafile`. 
+
+2) Crea un ciclo que te muestre en pantalla el nombre del archivo a usar como input.
+
+3) Crea un ciclo que te muestre en pantalla el nombre del archivo de salida con el formato indicado. Pero quieres asegurarte que para el archivo input sea el nombre correcto el del archivo de salida.
+
+4) Crea un ciclo que muestre los comandos a usarse para correr el script con los archivos de entrada y de salida del paso 2 y 3. Para correr un script como se indica, se usa el comando `bash nombre_archivo.sh input output`.
+
+5) Agrega un `echo $datafile` para saber en que archivo va tu ciclo.
 
 
 ## Scripts
+
+
 
 ## Descarga y limpieza de bases de datos
