@@ -137,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Computo Científico</a></li>
+<li><a href="./">Computo_Cientifico</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
@@ -157,7 +157,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="shell.html"><a href="shell.html#ciclos"><i class="fa fa-check"></i><b>2.4</b> Ciclos</a></li>
 <li class="chapter" data-level="2.5" data-path="shell.html"><a href="shell.html#scripts"><i class="fa fa-check"></i><b>2.5</b> Scripts</a></li>
-<li class="chapter" data-level="2.6" data-path="shell.html"><a href="shell.html#descarga-y-limpieza-de-bases-de-datos"><i class="fa fa-check"></i><b>2.6</b> Descarga y limpieza de bases de datos</a></li>
+<li class="chapter" data-level="2.6" data-path="shell.html"><a href="shell.html#buscando-y-encontrando-cosas"><i class="fa fa-check"></i><b>2.6</b> Buscando y encontrando cosas</a></li>
+<li class="chapter" data-level="2.7" data-path="shell.html"><a href="shell.html#descarga-y-limpieza-de-bases-de-datos"><i class="fa fa-check"></i><b>2.7</b> Descarga y limpieza de bases de datos</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="git-y-github.html"><a href="git-y-github.html"><i class="fa fa-check"></i><b>3</b> Git y Github</a>
 <ul>
@@ -206,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="r.html"><a href="r.html#páginas-web"><i class="fa fa-check"></i><b>7.5</b> Páginas web</a></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/HaydeePeruyero/Computo_Cientifico/" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -454,13 +455,13 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <p>Y si en lugar de <code>c*</code> usamos <em>c</em>?</p>
 <p>Dentro de un ciclo también podemos pedir guardar archivos.</p>
 <p><strong>Ejercicio:</strong> Explora el siguiente código. ¿Cuál es el efecto de guardar en este ciclo?</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="shell.html#cb69-1" tabindex="-1"></a><span class="ex">$</span> for alkanes in <span class="pp">*</span>.pbd</span>
+<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="shell.html#cb69-1" tabindex="-1"></a><span class="ex">$</span> for alkanes in <span class="pp">*</span>.pdb</span>
 <span id="cb69-2"><a href="shell.html#cb69-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
 <span id="cb69-3"><a href="shell.html#cb69-3" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="va">$alkanes</span></span>
-<span id="cb69-4"><a href="shell.html#cb69-4" tabindex="-1"></a><span class="op">&gt;</span>     car <span class="va">$alkanes</span> <span class="op">&gt;</span> alkanes.pdb</span>
+<span id="cb69-4"><a href="shell.html#cb69-4" tabindex="-1"></a><span class="op">&gt;</span>     cat <span class="va">$alkanes</span> <span class="op">&gt;</span> alkanes.pdb</span>
 <span id="cb69-5"><a href="shell.html#cb69-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>¿Cuál sería la diferencia si usamos ahora <code>&gt;&gt;</code>?</p>
-<p><strong>Ejercicio:</strong> Crea un ciclo for que muestre las últimas 20 líneas de cada archivo en la carpeta <code>creatures</code>.</p>
+<p><strong>Ejercicio:</strong> Crea un ciclo que muestre las últimas 20 líneas de cada archivo en la carpeta <code>creatures</code>.</p>
 <p>Como ya mencionamos, no es recomendable usar espacios ni caracteres especiales en nombres de archivos o carpetas. Si fuera el caso de que nuestros archivos tienen espacios, entonces deberíamos pasarlos al ciclo for encerrados entre comillas los nombres. Por ejemplo, supongamos que tenemos los archivos <code>archivo 1.txt</code> y <code>archivo 2.txt</code>. Para leerlos en el ciclo for tendríamos que usar la siguiente sintaxis.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="shell.html#cb70-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="st">&quot;archivo 1.txt&quot;</span> <span class="st">&quot;archivo 2.txt&quot;</span></span>
 <span id="cb70-2"><a href="shell.html#cb70-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
@@ -476,7 +477,7 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <span id="cb72-3"><a href="shell.html#cb72-3" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="fu">cp</span> <span class="va">$filename</span> original-<span class="va">$filename</span></span>
 <span id="cb72-4"><a href="shell.html#cb72-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <div class="float">
-<img src="img/shell_script_for_loop_flow_chart.svg" alt="Debugging" />
+<img src="img/shell_script_for_loop_flow_chart.png" alt="Debugging" />
 <div class="figcaption">Debugging</div>
 </div>
 <p><strong>Ejercicio:</strong> Supongamos que queremos previsualizar los comandos que el siguiente ciclo va a realizar en lugar de correrlo primero para asegurarnos de que está haciendo lo que queremos.</p>
@@ -556,9 +557,54 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <div class="sourceCode" id="cb88"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb88-1"><a href="shell.html#cb88-1" tabindex="-1"></a><span class="co"># Selecciona líneas intermedias de un archivo.</span></span>
 <span id="cb88-2"><a href="shell.html#cb88-2" tabindex="-1"></a><span class="co"># Uso: bash middle.sh nombre_archivo linea_final linea_inicial</span></span>
 <span id="cb88-3"><a href="shell.html#cb88-3" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$2</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$3</span><span class="st">&quot;</span></span></code></pre></div>
+<p>Ahora, supongamos que queremos ordenar los archivos <code>.pdb</code> por cantidad de líneas. Sin un script eso lo hacemos así:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb89-1"><a href="shell.html#cb89-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span> </span></code></pre></div>
+<p>Si queremos poner esto en un script pero queremos correrlo sobre varios tipos de archivos, digamos los <code>.pdb</code> y los <code>.dat</code>, no podemos colocar en nuestro script <code>*.pdb</code>, y si usamos como en los ejemplos anteriores <code>"$1"</code> o <code>"$2</code>, eso limitaría la cantidad de archivos que podemos pasarle después en la consola. Una forma de no depender de eso es con la variable <code>$@</code>, esto indica que pueden ser cualquier cantidad de argumentos en la línea de comandos.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb90-1"><a href="shell.html#cb90-1" tabindex="-1"></a><span class="ex">$</span> nano sorted.sh</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb91-1"><a href="shell.html#cb91-1" tabindex="-1"></a><span class="co"># Ordena archivos por su longitud</span></span>
+<span id="cb91-2"><a href="shell.html#cb91-2" tabindex="-1"></a><span class="co"># Uso: bash sorted.sh uno_o_mas_archivos</span></span>
+<span id="cb91-3"><a href="shell.html#cb91-3" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="shell.html#cb92-1" tabindex="-1"></a><span class="ex">$</span> bash sorted.sh <span class="pp">*</span>.pdb ../creatures/<span class="pp">*</span>.dat</span></code></pre></div>
+<p><strong>Ejercicio:</strong> El archivo <code>animals.csv</code> ya vimos que es un archivo separado por comas que indica las especies y la cantidad de cada uno. Crea un script que se pueda aplicar a cualquier cantidad de archivos con ese formato y que te diga las especies únicas de cada archivo.
+Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueba tu script.</p>
+<p><strong>Ejercicio:</strong> Corre el siguiente comando:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb93-1"><a href="shell.html#cb93-1" tabindex="-1"></a><span class="ex">$</span> history <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5 <span class="op">&gt;</span> recientes.sh</span></code></pre></div>
+<p>¿Qué contiene ese archivo? ¿Observa la última línea del archivo? ¿Porqué guarda esa línea?</p>
+<p><strong>Ejercicio:</strong> En la carpeta <code>alkanes</code> supongamos que tenemos un <code>script.sh</code> que contiene lo siguiente:</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb94-1"><a href="shell.html#cb94-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> <span class="va">$2</span> <span class="va">$1</span></span>
+<span id="cb94-2"><a href="shell.html#cb94-2" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> <span class="va">$3</span> <span class="va">$1</span></span></code></pre></div>
+<p>Dentro del directorio <code>alkanes</code>, corre lo siguiente:</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb95-1"><a href="shell.html#cb95-1" tabindex="-1"></a><span class="ex">$</span> bash script.sh <span class="st">&#39;*.pdb&#39;</span> 1 1</span></code></pre></div>
+<p>¿Qué esperas obtener?</p>
+<p><strong>Ejercicio:</strong> Crea un script llamado <code>longest.sh</code> que reciba como argumentos un directorio y una extensión de archivos y que te devuelva el archivo en el directorio, que tenga esa extensión, con el mayor número de líneas.</p>
+<p><strong>Ejercicio:</strong> Considera los archivos que están en la carpeta <code>alkanes</code>. Explica que hace cada uno de los siguientes scripts al correrlos como <code>bash script1.sh *.pdb</code>, <code>bash script2.sh *.pdb</code> y <code>bash script3.sh *.pdb</code>.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb96-1"><a href="shell.html#cb96-1" tabindex="-1"></a><span class="co"># Script 1</span></span>
+<span id="cb96-2"><a href="shell.html#cb96-2" tabindex="-1"></a><span class="bu">echo</span> <span class="pp">*</span>.<span class="pp">*</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="shell.html#cb97-1" tabindex="-1"></a><span class="co"># Script 2</span></span>
+<span id="cb97-2"><a href="shell.html#cb97-2" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="va">$1</span> <span class="va">$2</span> <span class="va">$3</span></span>
+<span id="cb97-3"><a href="shell.html#cb97-3" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb97-4"><a href="shell.html#cb97-4" tabindex="-1"></a>  <span class="fu">cat</span> <span class="va">$filename</span></span>
+<span id="cb97-5"><a href="shell.html#cb97-5" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb98-1"><a href="shell.html#cb98-1" tabindex="-1"></a><span class="co"># Script 3</span></span>
+<span id="cb98-2"><a href="shell.html#cb98-2" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$@</span>.pdb</span></code></pre></div>
+<p><strong>Ejercicio:</strong> (Debugging) Supongamos que tienen el siguiente script <code>do-errors.sh</code> en la carpeta <code>north-pacific-gyre</code>:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb99-1"><a href="shell.html#cb99-1" tabindex="-1"></a><span class="co"># Calcular estadisticas para los archivos</span></span>
+<span id="cb99-2"><a href="shell.html#cb99-2" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span></span>
+<span id="cb99-3"><a href="shell.html#cb99-3" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb99-4"><a href="shell.html#cb99-4" tabindex="-1"></a>  <span class="bu">echo</span> <span class="va">$datafile</span></span>
+<span id="cb99-5"><a href="shell.html#cb99-5" tabindex="-1"></a>  <span class="fu">bash</span> goostats.sh <span class="va">$datfile</span> stats-<span class="va">$datafile</span></span>
+<span id="cb99-6"><a href="shell.html#cb99-6" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>Corre en la línea de comandos:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb100-1"><a href="shell.html#cb100-1" tabindex="-1"></a><span class="ex">$</span> bash do-errors.sh NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt</span></code></pre></div>
+<p>No muestra ninguna salida. Para ver porque, vamos a correrlo de nuevo con la opción -x:</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb101-1"><a href="shell.html#cb101-1" tabindex="-1"></a><span class="ex">$</span> bash <span class="at">-x</span> do-errors.sh NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt</span></code></pre></div>
+<p>¿Cuál es el output? ¿Cuál es la línea responsable del error?</p>
 </div>
-<div id="descarga-y-limpieza-de-bases-de-datos" class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> Descarga y limpieza de bases de datos<a href="shell.html#descarga-y-limpieza-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="buscando-y-encontrando-cosas" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Buscando y encontrando cosas<a href="shell.html#buscando-y-encontrando-cosas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="descarga-y-limpieza-de-bases-de-datos" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Descarga y limpieza de bases de datos<a href="shell.html#descarga-y-limpieza-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
@@ -599,7 +645,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-Shell.Rmd",
+"link": "https://github.com/HaydeePeruyero/Computo_Cientifico/edit/main/01-Shell.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -610,7 +656,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Computo Científico.pdf", "Computo Científico.epub"],
+"download": ["Computo_Cientifico.pdf", "Computo_Cientifico.epub"],
 "search": {
 "engine": "fuse",
 "options": null

@@ -532,16 +532,16 @@ Dentro de un ciclo también podemos pedir guardar archivos.
 **Ejercicio:** Explora el siguiente código. ¿Cuál es el efecto de guardar en este ciclo?
 
 ```bash
-$ for alkanes in *.pbd
+$ for alkanes in *.pdb
 > do
 >     echo $alkanes
->     car $alkanes > alkanes.pdb
+>     cat $alkanes > alkanes.pdb
 > done
 ```
 
 ¿Cuál sería la diferencia si usamos ahora `>>`?
 
-**Ejercicio:** Crea un ciclo for que muestre las últimas 20 líneas de cada archivo en la carpeta `creatures`.
+**Ejercicio:** Crea un ciclo que muestre las últimas 20 líneas de cada archivo en la carpeta `creatures`.
 
 Como ya mencionamos, no es recomendable usar espacios ni caracteres especiales en nombres de archivos o carpetas. Si fuera el caso de que nuestros archivos tienen espacios, entonces deberíamos pasarlos al ciclo for encerrados entre comillas los nombres. Por ejemplo, supongamos que tenemos los archivos `archivo 1.txt` y `archivo 2.txt`. Para leerlos en el ciclo for tendríamos que usar la siguiente sintaxis.
 
@@ -571,7 +571,7 @@ $ for filename in *.dat
 > done
 ```
 
-![Debugging](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/shell_script_for_loop_flow_chart.svg)
+![Debugging](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/shell_script_for_loop_flow_chart.png)
 
 
 **Ejercicio:** Supongamos que queremos previsualizar los comandos que el siguiente ciclo va a realizar en lugar de correrlo primero para asegurarnos de que está haciendo lo que queremos.
@@ -720,6 +720,106 @@ $ nano middle.sh
 # Uso: bash middle.sh nombre_archivo linea_final linea_inicial
 head -n "$2" "$1" | tail -n "$3"
 ```
+
+Ahora, supongamos que queremos ordenar los archivos `.pdb` por cantidad de líneas. Sin un script eso lo hacemos así:
+
+```bash
+$ wc -l *.pdb | sort -n 
+```
+
+Si queremos poner esto en un script pero queremos correrlo sobre varios tipos de archivos, digamos los `.pdb` y los `.dat`, no podemos colocar en nuestro script `*.pdb`, y si usamos como en los ejemplos anteriores `"$1"` o `"$2`, eso limitaría la cantidad de archivos que podemos pasarle después en la consola. Una forma de no depender de eso es con la variable `$@`, esto indica que pueden ser cualquier cantidad de argumentos en la línea de comandos.
+
+```bash
+$ nano sorted.sh
+```
+
+```bash
+# Ordena archivos por su longitud
+# Uso: bash sorted.sh uno_o_mas_archivos
+wc -l "$@" | sort -n
+```
+
+```bash
+$ bash sorted.sh *.pdb ../creatures/*.dat
+```
+
+**Ejercicio:** El archivo `animals.csv` ya vimos que es un archivo separado por comas que indica las especies y la cantidad de cada uno. Crea un script que se pueda aplicar a cualquier cantidad de archivos con ese formato y que te diga las especies únicas de cada archivo.
+Crea 3 archivos similares al `animals.csv` (copia y modifica) y prueba tu script.
+
+
+**Ejercicio:** Corre el siguiente comando:
+```bash
+$ history | tail -n 5 > recientes.sh
+```
+
+¿Qué contiene ese archivo? ¿Observa la última línea del archivo? ¿Porqué guarda esa línea?
+
+
+**Ejercicio:** En la carpeta `alkanes` supongamos que tenemos un `script.sh` que contiene lo siguiente:
+
+```bash
+$ head -n $2 $1
+$ tail -n $3 $1
+```
+
+Dentro del directorio `alkanes`, corre lo siguiente:
+
+```bash
+$ bash script.sh '*.pdb' 1 1
+```
+
+¿Qué esperas obtener?
+
+
+**Ejercicio:** Crea un script llamado `longest.sh` que reciba como argumentos un directorio y una extensión de archivos y que te devuelva el archivo en el directorio, que tenga esa extensión, con el mayor número de líneas.
+
+**Ejercicio:**  Considera los archivos que están en la carpeta `alkanes`. Explica que hace cada uno de los siguientes scripts al correrlos como `bash script1.sh *.pdb`, `bash script2.sh *.pdb` y `bash script3.sh *.pdb`.
+
+```bash
+# Script 1
+echo *.*
+```
+
+```bash
+# Script 2
+for filename in $1 $2 $3
+do
+  cat $filename
+done
+```
+
+```bash
+# Script 3
+echo $@.pdb
+```
+
+**Ejercicio:** (Debugging) Supongamos que tienen el siguiente script `do-errors.sh` en la carpeta  `north-pacific-gyre`:
+
+```bash
+# Calcular estadisticas para los archivos
+for datafile in "$@"
+do
+  echo $datafile
+  bash goostats.sh $datfile stats-$datafile
+done
+```
+
+Corre en la línea de comandos:
+
+```bash
+$ bash do-errors.sh NENE*A.txt NENE*B.txt
+```
+
+No muestra ninguna salida. Para ver porque, vamos a correrlo de nuevo con la opción -x:
+
+```bash
+$ bash -x do-errors.sh NENE*A.txt NENE*B.txt
+```
+
+¿Cuál es el output? ¿Cuál es la línea responsable del error?
+
+## Buscando y encontrando cosas
+
 
 
 ## Descarga y limpieza de bases de datos

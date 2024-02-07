@@ -3,10 +3,10 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Computo Científico</a></li>
+        <li><a href="./">Computo_Cientifico</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
+        <li><a href="https://github.com/HaydeePeruyero/Computo_Cientifico/" target="blank">Published with bookdown</a></li>
+    edit: https://github.com/HaydeePeruyero/Computo_Cientifico/edit/main/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:
