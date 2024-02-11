@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-02-06" />
+<meta name="date" content="2024-02-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -316,38 +316,43 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <p>Si usamos la opción <code>-r</code> (<em>recursivo</em>) en el comando <code>cp</code> podemos copiar un directorio completo y todos sus elementos.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="shell.html#cb27-1" tabindex="-1"></a><span class="ex">$</span> cd ejercicios</span>
 <span id="cb27-2"><a href="shell.html#cb27-2" tabindex="-1"></a><span class="ex">$</span> cp <span class="at">-r</span> ../data .</span></code></pre></div>
+<p>Si el último parámetro de <code>cp</code> es un directorio que ya existe, entonces copiará todos los archivos que se indiquen a ese directorio. Por ejemplo:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="shell.html#cb28-1" tabindex="-1"></a><span class="ex">$</span> cp archivo1.txt archivo2.txt data</span></code></pre></div>
+<p>De igual forma para <code>mv</code>, si el último parámetro es un directorio movera todos los archivos a ese directorio.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="shell.html#cb29-1" tabindex="-1"></a><span class="ex">$</span> mv archivo1.txt archivo2.txt data</span></code></pre></div>
 <p><strong>Ejercicio:</strong> ¿Cual es el output de la siguiente colección de comandos?</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="shell.html#cb28-1" tabindex="-1"></a><span class="ex">$</span> pwd</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="shell.html#cb30-1" tabindex="-1"></a><span class="ex">$</span> pwd</span></code></pre></div>
 <pre class="output"><code>/Users/haydee/Curso</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="shell.html#cb30-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="shell.html#cb32-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-F</span></span></code></pre></div>
 <pre class="output"><code>archivo.txt carpeta/</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="shell.html#cb32-1" tabindex="-1"></a><span class="ex">$</span> mkdir carpeta2</span>
-<span id="cb32-2"><a href="shell.html#cb32-2" tabindex="-1"></a><span class="ex">$</span> mv archivo.txt carpeta2/</span>
-<span id="cb32-3"><a href="shell.html#cb32-3" tabindex="-1"></a><span class="ex">$</span> cd carpeta2</span>
-<span id="cb32-4"><a href="shell.html#cb32-4" tabindex="-1"></a><span class="ex">$</span> cp archivo.txt ../carpeta/archivo_respaldo.txt</span>
-<span id="cb32-5"><a href="shell.html#cb32-5" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
-<span id="cb32-6"><a href="shell.html#cb32-6" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-FR</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="shell.html#cb34-1" tabindex="-1"></a><span class="ex">$</span> mkdir carpeta2</span>
+<span id="cb34-2"><a href="shell.html#cb34-2" tabindex="-1"></a><span class="ex">$</span> mv archivo.txt carpeta2/</span>
+<span id="cb34-3"><a href="shell.html#cb34-3" tabindex="-1"></a><span class="ex">$</span> cd carpeta2</span>
+<span id="cb34-4"><a href="shell.html#cb34-4" tabindex="-1"></a><span class="ex">$</span> cp archivo.txt ../carpeta/archivo_respaldo.txt</span>
+<span id="cb34-5"><a href="shell.html#cb34-5" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
+<span id="cb34-6"><a href="shell.html#cb34-6" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-FR</span></span></code></pre></div>
 <p>Para borrar archivos usamos el comando <code>rm</code>, hay que tener cuidado cuando lo usemos ya que <strong>borra definitivamente</strong> los archivos o carpetas.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="shell.html#cb33-1" tabindex="-1"></a><span class="ex">$</span> cd Shell</span>
-<span id="cb33-2"><a href="shell.html#cb33-2" tabindex="-1"></a><span class="ex">$</span> rm ejercicios/ejercicio2.txt</span>
-<span id="cb33-3"><a href="shell.html#cb33-3" tabindex="-1"></a><span class="ex">$</span> ls ejercicios/</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="shell.html#cb35-1" tabindex="-1"></a><span class="ex">$</span> cd Shell</span>
+<span id="cb35-2"><a href="shell.html#cb35-2" tabindex="-1"></a><span class="ex">$</span> rm ejercicios/ejercicio2.txt</span>
+<span id="cb35-3"><a href="shell.html#cb35-3" tabindex="-1"></a><span class="ex">$</span> ls ejercicios/</span></code></pre></div>
 <p>Una forma segura de borrar archivos es usando la opción <code>-i</code>, con esto nos saldrá un mensaje preguntando si en verdad deseamos borrar el archivo. Para confirmar debemos colocar <code>y</code>.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="shell.html#cb34-1" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-i</span> /data/ej3.csv</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="shell.html#cb36-1" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-i</span> /data/ej3.csv</span></code></pre></div>
 <pre class="output"><code>rm: remove regular empty file &#39;ej3.txt&#39;?</code></pre>
 <p>Si queremos borrar una carpeta, debemos hacerlo con la opción <code>-r</code>, de lo contrario obtendremos un error.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="shell.html#cb36-1" tabindex="-1"></a><span class="ex">$</span> rm data</span></code></pre></div>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="shell.html#cb37-1" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-r</span> data</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="shell.html#cb38-1" tabindex="-1"></a><span class="ex">$</span> rm data</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="shell.html#cb39-1" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-r</span> data</span></code></pre></div>
+<p>Otra opción para borrar directorios es <code>rmdir</code>.</p>
 <p>Para mover/copiar/eliminar multiples archivos a la vez, podemos enumerarlos todos o usar comodines/patrones que sigan estos elementos. Supongamos que tenemos una lista de archivos todos con terminación <code>.txt</code>, entonces para borrarlos podemos usar <code>rm *.txt</code>. El <code>*</code> nos indica todo lo que este antes de <code>.txt</code>.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="shell.html#cb38-1" tabindex="-1"></a><span class="ex">$</span> cd Shell/</span>
-<span id="cb38-2"><a href="shell.html#cb38-2" tabindex="-1"></a><span class="ex">$</span> touch prueba1.txt prueba2.txt prueba3.txt prueba4.txt prueba5.txt</span>
-<span id="cb38-3"><a href="shell.html#cb38-3" tabindex="-1"></a><span class="ex">$</span> rm <span class="pp">*</span>.txt</span></code></pre></div>
-<p>Otro comodín que podemos usar es <code>?</code>, pero este denota solo 1 espacio. Por ejemplo:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="shell.html#cb39-1" tabindex="-1"></a><span class="ex">$</span> cd Shell/</span>
-<span id="cb39-2"><a href="shell.html#cb39-2" tabindex="-1"></a><span class="ex">$</span> touch prueba1.txt prueba2.txt prueba3.txt prueba4.txt prueba5.txt</span>
-<span id="cb39-3"><a href="shell.html#cb39-3" tabindex="-1"></a><span class="ex">$</span> rm prueba<span class="pp">?</span>.txt</span></code></pre></div>
 <div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="shell.html#cb40-1" tabindex="-1"></a><span class="ex">$</span> cd Shell/</span>
 <span id="cb40-2"><a href="shell.html#cb40-2" tabindex="-1"></a><span class="ex">$</span> touch prueba1.txt prueba2.txt prueba3.txt prueba4.txt prueba5.txt</span>
-<span id="cb40-3"><a href="shell.html#cb40-3" tabindex="-1"></a><span class="ex">$</span> rm prue<span class="pp">???</span>.txt</span></code></pre></div>
+<span id="cb40-3"><a href="shell.html#cb40-3" tabindex="-1"></a><span class="ex">$</span> rm <span class="pp">*</span>.txt</span></code></pre></div>
+<p>Otro comodín que podemos usar es <code>?</code>, pero este denota solo 1 espacio. Por ejemplo:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="shell.html#cb41-1" tabindex="-1"></a><span class="ex">$</span> cd Shell/</span>
+<span id="cb41-2"><a href="shell.html#cb41-2" tabindex="-1"></a><span class="ex">$</span> touch prueba1.txt prueba2.txt prueba3.txt prueba4.txt prueba5.txt</span>
+<span id="cb41-3"><a href="shell.html#cb41-3" tabindex="-1"></a><span class="ex">$</span> rm prueba<span class="pp">?</span>.txt</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="shell.html#cb42-1" tabindex="-1"></a><span class="ex">$</span> cd Shell/</span>
+<span id="cb42-2"><a href="shell.html#cb42-2" tabindex="-1"></a><span class="ex">$</span> touch prueba1.txt prueba2.txt prueba3.txt prueba4.txt prueba5.txt</span>
+<span id="cb42-3"><a href="shell.html#cb42-3" tabindex="-1"></a><span class="ex">$</span> rm prue<span class="pp">???</span>.txt</span></code></pre></div>
 <p><strong>Ejercicio:</strong> Supon que en el directorio <code>data</code> tienes dos archivos. ¿Cuál de los siguientes comandos te daría como resultado: <code>ethane.pdb</code> <code>methane.pdb</code>.</p>
 <ol style="list-style-type: decimal">
 <li><p><code>ls *t*ane.pdb</code></p></li>
@@ -355,61 +360,67 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <li><p><code>ls *t??ne.pdb</code></p></li>
 <li><p>ls ethane.*</p></li>
 </ol>
+<p>Dos comodines más que existen son los siguientes:</p>
+<ul>
+<li><p><code>[...]</code>: busca coincidencias con exactamente cada caracter dentro de los corchetes, por ejemplo <code>[12]</code> coincidiria con <code>texto1.txt</code>, <code>texto2.tx</code> pero no con <code>texto3.txt</code>.</p></li>
+<li><p><code>{...}</code>: busca coincidencias con cada uno de los elementos separados por comas dentro de las llaves, por ejemplo <code>{*.txt, *.csv}</code> buscaría todos los archivos con terminaciones <code>.txt</code> y <code>.csv</code> pero no con los que sean <code>.pdf</code>.</p></li>
+</ul>
 </div>
 <div id="tuberías-y-filtros" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Tuberías y filtros<a href="shell.html#tuberías-y-filtros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Vamos a usar los archivos de prueba de la lección de Shell de Software Carpentry. Descargarlos en el directorio que creamos que se llama <a href="https://swcarpentry.github.io/shell-novice/data/shell-lesson-data.zip">Shell</a>.</p>
 <p>Vamos a explorar los archivos que están en la carpeta <code>excercise-data/alkanes</code>. Para contar cuantos palabras, líneas o caracteres tiene un archivo, usamos el comando <code>wc</code> que viene de <code>word count</code>.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="shell.html#cb41-1" tabindex="-1"></a><span class="ex">$</span> ls</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="shell.html#cb43-1" tabindex="-1"></a><span class="ex">$</span> ls</span></code></pre></div>
 <pre class="output"><code>cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="shell.html#cb43-1" tabindex="-1"></a><span class="ex">$</span> wc cubane.pdb</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="shell.html#cb45-1" tabindex="-1"></a><span class="ex">$</span> wc cubane.pdb</span></code></pre></div>
 <pre class="output"><code>20  156 1158 cubane.pdb</code></pre>
 <p>El primer número es el número de líneas del archivo, el segundo la cantidad de palabras y el tercero la cantidad de caracteres.</p>
 <p>Si usamos alguna de los comodines, por ejemplo <code>*.pdb</code> con el comando <code>wc</code>, nos va a regresar la información de todos los archivos.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="shell.html#cb45-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="pp">*</span>.pdb</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="shell.html#cb47-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="pp">*</span>.pdb</span></code></pre></div>
 <p>Notemos que en la última fila tenemos los totales de todos los archivos. Accedamos a la ayuda del comando con <code>help</code>.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="shell.html#cb46-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">--help</span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="shell.html#cb48-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">--help</span></span></code></pre></div>
 <p><strong>Ejercicio:</strong> ¿Cuál opción nos permite extraer solo la cantidad de líneas del archivo?</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="shell.html#cb47-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="shell.html#cb49-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb</span></code></pre></div>
 <p>Si por error olvidamos colocar el nombre del archivo o cualquier otra cosa después del comando, la consola se quedará esperando una instrucción, para salir de esto basta presionar <kbd>Ctrl</kbd>+<kbd>C</kbd>.</p>
 <p>Ya sabemos como extraer cierta información de nuestros archivos, pero supongamos que queremos guardarlo ahora en algún otro archivo para después analizarlo. El símbolo <code>&gt;</code> redirige el resultado de los comandos usados a algún archivo.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="shell.html#cb48-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="op">&gt;</span> lineas.txt</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb50-1"><a href="shell.html#cb50-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="op">&gt;</span> lineas.txt</span></code></pre></div>
 <p>Para solo visualizar el contenido de un archivo sin entrar al editor de texto, podemos usar el comando <code>cat</code> seguido del nombre del archivo.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="shell.html#cb49-1" tabindex="-1"></a><span class="ex">$</span> cat lineas.txt</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="shell.html#cb51-1" tabindex="-1"></a><span class="ex">$</span> cat lineas.txt</span></code></pre></div>
 <p>Otro comando que puede resultar más útil para mostrar el contenido de un archivo es <code>less</code>, la diferencia con <code>cat</code> es que este último muestra todo el contenido en la pantalla, lo cual puede dificultar su lectura e inspección, mientras que <code>less</code> muestra una parte del contenido y de forma ordenada, si queremos seguir viendo el contenido podemos usar la tecla de espacio, b y para salir usamos la letra <code>q</code>.</p>
 <p>Ya guardamos la información de la cantidad de líneas, pero supongamos que queremos saber cual archivo tiene la mayor cantidad de líneas o menor. Para hacer esto nos sirve el comando <code>sort</code>.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb50-1"><a href="shell.html#cb50-1" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
-<span id="cb50-2"><a href="shell.html#cb50-2" tabindex="-1"></a><span class="ex">$</span> sort numbers.txt</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="shell.html#cb52-1" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
+<span id="cb52-2"><a href="shell.html#cb52-2" tabindex="-1"></a><span class="ex">$</span> sort numbers.txt</span></code></pre></div>
 <p>Si a <code>sort</code> le agregamos la opción <code>-n</code>, nos los ordena en numericamente en lugar de alfabeticamente.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="shell.html#cb51-1" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> numbers.txt</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="shell.html#cb53-1" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> numbers.txt</span></code></pre></div>
 <p><strong>Ejercicio:</strong> De los archivos que están en la carpeta <code>alkane</code>, ¿cuál tiene la menor cantidad de líneas?</p>
 <p>También podemos redirigir esta información a otro archivo y de ahí extraer la información.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="shell.html#cb52-1" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> lineas.txt <span class="op">&gt;</span> lineas_ordenadas.txt</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="shell.html#cb54-1" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> lineas.txt <span class="op">&gt;</span> lineas_ordenadas.txt</span></code></pre></div>
 <p>El comando <code>head</code> nos ayuda a extraer las primeras <code>n</code> líneas de nuestro archivo. Por ejemplo, para extraer la primera línea del archivo <code>lineas_ordenadas.txt</code> y así saber cual archivo tenía la menor cantidad de líneas usaríamos <code>head -n 1</code>.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="shell.html#cb53-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 1 lineas_ordenadas.txt</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="shell.html#cb55-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 1 lineas_ordenadas.txt</span></code></pre></div>
 <p>El comando <code>echo</code> nos ayuda a imprimir en la consola caracteres.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="shell.html#cb54-1" tabindex="-1"></a><span class="ex">$</span> echo Hola</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="shell.html#cb56-1" tabindex="-1"></a><span class="ex">$</span> echo Hola</span></code></pre></div>
 <p><strong>Ejercicio:</strong> Realiza las siguientes instrucciones dos veces cada una. Explora las diferencias. ¿Qué hace el operador <code>&gt;&gt;</code>?</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="shell.html#cb55-1" tabindex="-1"></a><span class="ex">$</span> echo hola <span class="op">&gt;</span> test1.txt</span></code></pre></div>
-<div class="sourceCode" id="cb56"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="shell.html#cb56-1" tabindex="-1"></a><span class="ex">$</span> echo hola <span class="op">&gt;&gt;</span> test2.txt</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="shell.html#cb57-1" tabindex="-1"></a><span class="ex">$</span> echo hola <span class="op">&gt;</span> test1.txt</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="shell.html#cb58-1" tabindex="-1"></a><span class="ex">$</span> echo hola <span class="op">&gt;&gt;</span> test2.txt</span></code></pre></div>
 <p>El comando <code>tail</code> es similar al comando <code>head</code>, nos muestra las últimas <code>n</code> filas del archivo.</p>
 <p><strong>Ejercicio:</strong> Considera el archivo <code>/exercise-data/animal-counts/animals.csv</code>. Después de aplicar los siguientes dos comandos, ¿qué hay en el archivo <code>animals-subset.csv</code>?</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="shell.html#cb57-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 3 animals.csv <span class="op">&gt;</span> animals-subset.csv</span>
-<span id="cb57-2"><a href="shell.html#cb57-2" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> 2 animals.csv <span class="op">&gt;&gt;</span> animals-subset.csv</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="shell.html#cb59-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 3 animals.csv <span class="op">&gt;</span> animals-subset.csv</span>
+<span id="cb59-2"><a href="shell.html#cb59-2" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> 2 animals.csv <span class="op">&gt;&gt;</span> animals-subset.csv</span></code></pre></div>
 <div id="tuberías" class="section level3 hasAnchor" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> Tuberías<a href="shell.html#tuberías" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Además de redirigir los output de los comandos que hemos ocupado, también podríamos anidarlos y al final mandarlo a un archivo. Para hacer esto se usan <strong>tuberías</strong> y su símbolo es <code>|</code>. Por ejemplo:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="shell.html#cb58-1" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> lineas.txt <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 1</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="shell.html#cb60-1" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> lineas.txt <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 1</span></code></pre></div>
 <p>En esta instrucción le estamos diciendo a la consola que primero nos ordene lo que hay en el archivo líneas en orden númerico y después que nos muestre la primera línea. De esta forma nos evitamos por ejemplo el haber creado el archivo <code>lineas_ordenadas.txt</code>.</p>
 <p>Podemos anidar varias instrucciones a la vez. Por ejemplo, podríamos pedirle a la consola la cantidad de líneas de los archivos <code>*.pdb</code>, pedirle que las ordene numericamente y después que extraiga la primera línea.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="shell.html#cb59-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 1</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="shell.html#cb61-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 1</span></code></pre></div>
 <p><strong>Ejercicio:</strong> De los archivos que están en la carpeta <code>alkanes</code>, obten los 3 archivos con la menor cantidad de líneas.</p>
 <p><strong>Ejercicio:</strong> Explora el archivo <code>exercise-data/animals-counts/animals.csv</code>. ¿Cuál será el resultado de la siguiente instrucción?</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="shell.html#cb60-1" tabindex="-1"></a><span class="ex">$</span> cat animals.csv <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 5 <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 3 <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-r</span> <span class="op">&gt;</span> final.txt</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="shell.html#cb62-1" tabindex="-1"></a><span class="ex">$</span> cat animals.csv <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 5 <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 3 <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-r</span> <span class="op">&gt;</span> final.txt</span></code></pre></div>
 <p>El comando <code>cut</code> nos ayuda a extrar/cortar ciertas columnas de nuestros archivos. Por ejemplo, <code>cut -d , -f 2 archivo</code> nos está indicando que del archivo queremos cortar por caracteres <code>,</code> (eso hace <code>-d ,</code>) y que queremos extraer la segunda columna (<code>-f 2</code>).</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="shell.html#cb61-1" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span> , <span class="at">-f</span> 2 animals.csv</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="shell.html#cb63-1" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span> , <span class="at">-f</span> 2 animals.csv</span></code></pre></div>
 <p>Si quisieramos extraer los animales únicos de ese archivo, podemos usar el comando <code>uniq</code>.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="shell.html#cb62-1" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span> , <span class="at">-f</span> 2 animals.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="shell.html#cb64-1" tabindex="-1"></a><span class="ex">$</span> cut <span class="at">-d</span> , <span class="at">-f</span> 2 animals.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div>
+<p>También se puede colocar por ejemplo <code>-f 2-5,8</code> para indicar que se deben seleccionar las columnas 2 a la 5 y la 8.</p>
 <p><strong>Ejercicio:</strong> ¿Porqué se necesita colocar el <code>sort</code> antes del <code>uniq</code>?</p>
 <p><strong>Ejercicio:</strong> Si quisiéramos ver cuantos animales hay de cada tipo, ¿que instrucción tendríamos que usar?</p>
 </div>
@@ -417,98 +428,98 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <div id="ciclos" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Ciclos<a href="shell.html#ciclos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Los ciclos nos ayudan a repetir comandos o un conjunto de comandos para cada elemento de una lista. La estructura del ciclo <code>for</code> es como sigue:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="shell.html#cb63-1" tabindex="-1"></a><span class="cf">for</span> elemento <span class="kw">in</span> lista</span>
-<span id="cb63-2"><a href="shell.html#cb63-2" tabindex="-1"></a><span class="cf">do</span> </span>
-<span id="cb63-3"><a href="shell.html#cb63-3" tabindex="-1"></a>  <span class="ex">operacion/comando</span> <span class="va">$elemento</span></span>
-<span id="cb63-4"><a href="shell.html#cb63-4" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="shell.html#cb65-1" tabindex="-1"></a><span class="cf">for</span> elemento <span class="kw">in</span> lista</span>
+<span id="cb65-2"><a href="shell.html#cb65-2" tabindex="-1"></a><span class="cf">do</span> </span>
+<span id="cb65-3"><a href="shell.html#cb65-3" tabindex="-1"></a>  <span class="ex">operacion/comando</span> <span class="va">$elemento</span></span>
+<span id="cb65-4"><a href="shell.html#cb65-4" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
 <p>La palabra <code>for</code> indica el comienzo del ciclo, la palabra <code>do</code> nos indica que es lo que se va a ejecutar y su comienzo y la palabra <code>done</code> indica el fin del ciclo.</p>
 <p>Exploremos lo que hay en la carpeta <code>~/Shell/shell-lesson-data/exercise-data/creatures</code>. Listemos las primeras 5 filas de cada archivo.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="shell.html#cb64-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 5 basilisk.dat minotaur.dat unicorn.dat</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="shell.html#cb66-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 5 basilisk.dat minotaur.dat unicorn.dat</span></code></pre></div>
 <p>Supongamos que queremos ver la clasificación de cada especie que se encuentra en la segunda línea de cada archivo. Una forma de hacerlo es con <code>head -n 2</code>, pero de esta forma también estamos viendo su nombre común, entonces vamos a hacerlo con un ciclo. Lo primero que tendríamos que hacer es usar justo <code>head -n 2</code> y al resultado de esto, si le pedimos la última línea ya solo veríamos la clasificación, entonces usamos un <code>tail -n 1</code>.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="shell.html#cb65-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.dat</span>
-<span id="cb65-2"><a href="shell.html#cb65-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb65-3"><a href="shell.html#cb65-3" tabindex="-1"></a><span class="op">&gt;</span>   echo <span class="va">$filename</span></span>
-<span id="cb65-4"><a href="shell.html#cb65-4" tabindex="-1"></a><span class="op">&gt;</span>   head <span class="ex">-n</span> 2 <span class="va">$filename</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 1</span>
-<span id="cb65-5"><a href="shell.html#cb65-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="shell.html#cb67-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.dat</span>
+<span id="cb67-2"><a href="shell.html#cb67-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb67-3"><a href="shell.html#cb67-3" tabindex="-1"></a><span class="op">&gt;</span>   echo <span class="va">$filename</span></span>
+<span id="cb67-4"><a href="shell.html#cb67-4" tabindex="-1"></a><span class="op">&gt;</span>   head <span class="ex">-n</span> 2 <span class="va">$filename</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 1</span>
+<span id="cb67-5"><a href="shell.html#cb67-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>Notemos que cuando empezamos a teclear nuestro ciclo, el prompt cambia de <code>$</code> a <code>&gt;</code>, esto indica que está esperando que continuemos el ciclo. También podemos usar <code>;</code> para continuar las instrucciones en una misma fila.</p>
 <p>Dentro de los ciclos, las variables las mandamos a llamar con <code>$</code>, en el ejemplo, cuando ocupamos <code>$filename</code> estamos mandando a llamar la variable <code>filename</code> que definimos al inicio del ciclo. Es muy usual también encerrar entre llaves los nombres de las variables para delimitar el nombre, en el ejemplo, <code>$filename</code> sería equivalente a <code>${filename}</code>.</p>
 <p><strong>Ejercicio:</strong> Crea un ciclo que muestre en pantalla (echo) todos los números del 0 al 9.</p>
 <p><strong>Ejercicio:</strong> Ve a la carpeta <code>shell-lesson-data/exercise-data/alkanes</code> y lista lo que hay.
 1) ¿Cuál es el output del siguiente código?</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="shell.html#cb66-1" tabindex="-1"></a><span class="ex">$</span> for datafile in <span class="pp">*</span>.pdb</span>
-<span id="cb66-2"><a href="shell.html#cb66-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb66-3"><a href="shell.html#cb66-3" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="ex">*.pdb</span></span>
-<span id="cb66-4"><a href="shell.html#cb66-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="shell.html#cb68-1" tabindex="-1"></a><span class="ex">$</span> for datafile in <span class="pp">*</span>.pdb</span>
+<span id="cb68-2"><a href="shell.html#cb68-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb68-3"><a href="shell.html#cb68-3" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="ex">*.pdb</span></span>
+<span id="cb68-4"><a href="shell.html#cb68-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>¿Y de este código?</li>
 </ol>
-<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="shell.html#cb67-1" tabindex="-1"></a><span class="ex">$</span> for datafile in <span class="pp">*</span>.odb</span>
-<span id="cb67-2"><a href="shell.html#cb67-2" tabindex="-1"></a><span class="op">&gt;</span> do </span>
-<span id="cb67-3"><a href="shell.html#cb67-3" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="va">$datafile</span></span>
-<span id="cb67-4"><a href="shell.html#cb67-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="shell.html#cb69-1" tabindex="-1"></a><span class="ex">$</span> for datafile in <span class="pp">*</span>.odb</span>
+<span id="cb69-2"><a href="shell.html#cb69-2" tabindex="-1"></a><span class="op">&gt;</span> do </span>
+<span id="cb69-3"><a href="shell.html#cb69-3" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="va">$datafile</span></span>
+<span id="cb69-4"><a href="shell.html#cb69-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>Explica las diferencias.</p>
 <p><strong>Ejercicio:</strong> En el directorio <code>shell-lesson-data/exercise-data/alkanes</code>, ¿cuál sería el output del siguiente código?</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="shell.html#cb68-1" tabindex="-1"></a><span class="ex">$</span> for filename in c<span class="pp">*</span></span>
-<span id="cb68-2"><a href="shell.html#cb68-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb68-3"><a href="shell.html#cb68-3" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="va">$filename</span></span>
-<span id="cb68-4"><a href="shell.html#cb68-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="shell.html#cb70-1" tabindex="-1"></a><span class="ex">$</span> for filename in c<span class="pp">*</span></span>
+<span id="cb70-2"><a href="shell.html#cb70-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb70-3"><a href="shell.html#cb70-3" tabindex="-1"></a><span class="op">&gt;</span>     ls <span class="va">$filename</span></span>
+<span id="cb70-4"><a href="shell.html#cb70-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>Y si en lugar de <code>c*</code> usamos <em>c</em>?</p>
 <p>Dentro de un ciclo también podemos pedir guardar archivos.</p>
 <p><strong>Ejercicio:</strong> Explora el siguiente código. ¿Cuál es el efecto de guardar en este ciclo?</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="shell.html#cb69-1" tabindex="-1"></a><span class="ex">$</span> for alkanes in <span class="pp">*</span>.pdb</span>
-<span id="cb69-2"><a href="shell.html#cb69-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb69-3"><a href="shell.html#cb69-3" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="va">$alkanes</span></span>
-<span id="cb69-4"><a href="shell.html#cb69-4" tabindex="-1"></a><span class="op">&gt;</span>     cat <span class="va">$alkanes</span> <span class="op">&gt;</span> alkanes.pdb</span>
-<span id="cb69-5"><a href="shell.html#cb69-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="shell.html#cb71-1" tabindex="-1"></a><span class="ex">$</span> for alkanes in <span class="pp">*</span>.pdb</span>
+<span id="cb71-2"><a href="shell.html#cb71-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb71-3"><a href="shell.html#cb71-3" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="va">$alkanes</span></span>
+<span id="cb71-4"><a href="shell.html#cb71-4" tabindex="-1"></a><span class="op">&gt;</span>     cat <span class="va">$alkanes</span> <span class="op">&gt;</span> alkanes.pdb</span>
+<span id="cb71-5"><a href="shell.html#cb71-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>¿Cuál sería la diferencia si usamos ahora <code>&gt;&gt;</code>?</p>
 <p><strong>Ejercicio:</strong> Crea un ciclo que muestre las últimas 20 líneas de cada archivo en la carpeta <code>creatures</code>.</p>
 <p>Como ya mencionamos, no es recomendable usar espacios ni caracteres especiales en nombres de archivos o carpetas. Si fuera el caso de que nuestros archivos tienen espacios, entonces deberíamos pasarlos al ciclo for encerrados entre comillas los nombres. Por ejemplo, supongamos que tenemos los archivos <code>archivo 1.txt</code> y <code>archivo 2.txt</code>. Para leerlos en el ciclo for tendríamos que usar la siguiente sintaxis.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="shell.html#cb70-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="st">&quot;archivo 1.txt&quot;</span> <span class="st">&quot;archivo 2.txt&quot;</span></span>
-<span id="cb70-2"><a href="shell.html#cb70-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb70-3"><a href="shell.html#cb70-3" tabindex="-1"></a><span class="op">&gt;</span>     head <span class="ex">-n20</span> <span class="st">&quot;</span><span class="va">$filename</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n5</span> </span>
-<span id="cb70-4"><a href="shell.html#cb70-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="shell.html#cb72-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="st">&quot;archivo 1.txt&quot;</span> <span class="st">&quot;archivo 2.txt&quot;</span></span>
+<span id="cb72-2"><a href="shell.html#cb72-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb72-3"><a href="shell.html#cb72-3" tabindex="-1"></a><span class="op">&gt;</span>     head <span class="ex">-n20</span> <span class="st">&quot;</span><span class="va">$filename</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n5</span> </span>
+<span id="cb72-4"><a href="shell.html#cb72-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>Supongamos que queremos modificar nuestros archivos que se encuentran en la carpeta <code>creatures</code> pero que antes queremos respaldarlos en otros archivos llamados <code>original-basilisk.dat</code>, <code>original-unicorn.dat</code> y <code>original-minotaur.dat</code>. Una forma de hacerlo sería copiarlos a nuevos archivos con esos nombres, pero si no lo queremos hacer manualmente, ¿qué pasa si usamos el siguiente código?</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="shell.html#cb71-1" tabindex="-1"></a><span class="ex">$</span> cp <span class="pp">*</span>.dat original-<span class="pp">*</span>.dat</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="shell.html#cb73-1" tabindex="-1"></a><span class="ex">$</span> cp <span class="pp">*</span>.dat original-<span class="pp">*</span>.dat</span></code></pre></div>
 <p>Esto nos va a dar un error porque el comando <code>cp</code> estaría esperando que <code>original-</code> sea una carpeta y no lo es, no existe esa carpeta. Entonces lo que podemos hacer es usar un ciclo.</p>
 <p><strong>Ejercicio:</strong> Crea un ciclo <code>for</code> que copie los dos archivos a dos nuevos archivos llamados <code>original-basilisk.dat</code>, <code>original-unicorn.dat</code> y <code>original-minotaur.dat</code>.</p>
 <p>El comando <code>cp</code> no nos muestra en pantalla ningún output. Si quisieramos ver que en efecto se esta realizando la copia de estos archivos podemos usar el comando <code>echo</code> y pedir que nos diga como “se copio el archivo $filename”. Usar <code>echo</code> de esta forma es una buena práctica de realizar lo que se llama <strong>debugging</strong>.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="shell.html#cb72-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.dat</span>
-<span id="cb72-2"><a href="shell.html#cb72-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb72-3"><a href="shell.html#cb72-3" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="fu">cp</span> <span class="va">$filename</span> original-<span class="va">$filename</span></span>
-<span id="cb72-4"><a href="shell.html#cb72-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="shell.html#cb74-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.dat</span>
+<span id="cb74-2"><a href="shell.html#cb74-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb74-3"><a href="shell.html#cb74-3" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="fu">cp</span> <span class="va">$filename</span> original-<span class="va">$filename</span></span>
+<span id="cb74-4"><a href="shell.html#cb74-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <div class="float">
 <img src="img/shell_script_for_loop_flow_chart.png" alt="Debugging" />
 <div class="figcaption">Debugging</div>
 </div>
 <p><strong>Ejercicio:</strong> Supongamos que queremos previsualizar los comandos que el siguiente ciclo va a realizar en lugar de correrlo primero para asegurarnos de que está haciendo lo que queremos.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="shell.html#cb73-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.pdb</span>
-<span id="cb73-2"><a href="shell.html#cb73-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb73-3"><a href="shell.html#cb73-3" tabindex="-1"></a><span class="op">&gt;</span>     cat <span class="va">$filename</span> <span class="op">&gt;&gt;</span> all.pdb</span>
-<span id="cb73-4"><a href="shell.html#cb73-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb75-1"><a href="shell.html#cb75-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.pdb</span>
+<span id="cb75-2"><a href="shell.html#cb75-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb75-3"><a href="shell.html#cb75-3" tabindex="-1"></a><span class="op">&gt;</span>     cat <span class="va">$filename</span> <span class="op">&gt;&gt;</span> all.pdb</span>
+<span id="cb75-4"><a href="shell.html#cb75-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>¿Cuál de los siguientes dos códigos sería el correcto para revisar los comando a ejecutarse con el ciclo?</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="shell.html#cb74-1" tabindex="-1"></a><span class="co"># Versión 1</span></span>
-<span id="cb74-2"><a href="shell.html#cb74-2" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.pdb</span>
-<span id="cb74-3"><a href="shell.html#cb74-3" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb74-4"><a href="shell.html#cb74-4" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="fu">cat</span> <span class="va">$filename</span> <span class="op">&gt;&gt;</span> all.pdb</span>
-<span id="cb74-5"><a href="shell.html#cb74-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
-<div class="sourceCode" id="cb75"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb75-1"><a href="shell.html#cb75-1" tabindex="-1"></a><span class="co"># Versión 2</span></span>
-<span id="cb75-2"><a href="shell.html#cb75-2" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.pdb</span>
-<span id="cb75-3"><a href="shell.html#cb75-3" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb75-4"><a href="shell.html#cb75-4" tabindex="-1"></a><span class="op">&gt;</span>    echo <span class="st">&quot;cat </span><span class="va">$filename</span><span class="st"> &gt;&gt; all.pdb&quot;</span></span>
-<span id="cb75-5"><a href="shell.html#cb75-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="shell.html#cb76-1" tabindex="-1"></a><span class="co"># Versión 1</span></span>
+<span id="cb76-2"><a href="shell.html#cb76-2" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.pdb</span>
+<span id="cb76-3"><a href="shell.html#cb76-3" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb76-4"><a href="shell.html#cb76-4" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="fu">cat</span> <span class="va">$filename</span> <span class="op">&gt;&gt;</span> all.pdb</span>
+<span id="cb76-5"><a href="shell.html#cb76-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb77-1"><a href="shell.html#cb77-1" tabindex="-1"></a><span class="co"># Versión 2</span></span>
+<span id="cb77-2"><a href="shell.html#cb77-2" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.pdb</span>
+<span id="cb77-3"><a href="shell.html#cb77-3" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb77-4"><a href="shell.html#cb77-4" tabindex="-1"></a><span class="op">&gt;</span>    echo <span class="st">&quot;cat </span><span class="va">$filename</span><span class="st"> &gt;&gt; all.pdb&quot;</span></span>
+<span id="cb77-5"><a href="shell.html#cb77-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>Corre los dos códigos y explora el contenido del archivo <code>all.pdb</code>.</p>
 <p>Supongamos que queremos crear una estructura de directorios como sigue, para cada compuesto y cada temperatura queremos una carpeta para ir guardando ahí sus resultados, y que cada carpeta se llame <code>compuesto-temperatura</code>, ¿cómo podemos hacer esto? Una opción son los ciclos anidados.</p>
 <div class="float">
 <img src="img/estructura-alkanes.png" alt="estructura-experimentos" />
 <div class="figcaption">estructura-experimentos</div>
 </div>
-<div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="shell.html#cb76-1" tabindex="-1"></a><span class="ex">$</span> for species in cubane ethane methane </span>
-<span id="cb76-2"><a href="shell.html#cb76-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb76-3"><a href="shell.html#cb76-3" tabindex="-1"></a><span class="op">&gt;</span>     for <span class="ex">temperature</span> in 25 30 37 40</span>
-<span id="cb76-4"><a href="shell.html#cb76-4" tabindex="-1"></a><span class="op">&gt;</span>     do</span>
-<span id="cb76-5"><a href="shell.html#cb76-5" tabindex="-1"></a><span class="op">&gt;</span>         mkdir <span class="va">$species</span><span class="ex">-</span><span class="va">$temperature</span></span>
-<span id="cb76-6"><a href="shell.html#cb76-6" tabindex="-1"></a><span class="op">&gt;</span>     done</span>
-<span id="cb76-7"><a href="shell.html#cb76-7" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb78-1"><a href="shell.html#cb78-1" tabindex="-1"></a><span class="ex">$</span> for species in cubane ethane methane </span>
+<span id="cb78-2"><a href="shell.html#cb78-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
+<span id="cb78-3"><a href="shell.html#cb78-3" tabindex="-1"></a><span class="op">&gt;</span>     for <span class="ex">temperature</span> in 25 30 37 40</span>
+<span id="cb78-4"><a href="shell.html#cb78-4" tabindex="-1"></a><span class="op">&gt;</span>     do</span>
+<span id="cb78-5"><a href="shell.html#cb78-5" tabindex="-1"></a><span class="op">&gt;</span>         mkdir <span class="va">$species</span><span class="ex">-</span><span class="va">$temperature</span></span>
+<span id="cb78-6"><a href="shell.html#cb78-6" tabindex="-1"></a><span class="op">&gt;</span>     done</span>
+<span id="cb78-7"><a href="shell.html#cb78-7" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>Algunos comandos útiles para ver el historial de comadnos.</p>
 <ul>
 <li><p><code>history</code> nos muestra el historial de comandos.</p></li>
@@ -533,78 +544,80 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <h2><span class="header-section-number">2.5</span> Scripts<a href="shell.html#scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Los scripts nos ayudan a repetir los comandos sobre listas de archivos. Supongamos que existen ciertos comando que siempre repetimos, vamos a guardarlos en un archivo para con un solo comando ejecutar esa lista de comandos.</p>
 <p>Vamos al directorio <code>alkanes</code>. Supongamos que siempre queremos extraer las líneas de la 11 a la 15 de cada archivo. Por ejemplo, una forma en la que lo hacemos es:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb77-1"><a href="shell.html#cb77-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 15 octane.pdb <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb79-1"><a href="shell.html#cb79-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 15 octane.pdb <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5</span></code></pre></div>
 <p>Vamos a escribir eso en un archivo:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb78-1"><a href="shell.html#cb78-1" tabindex="-1"></a><span class="ex">$</span> cd alkanes</span>
-<span id="cb78-2"><a href="shell.html#cb78-2" tabindex="-1"></a><span class="ex">$</span> nano middle.sh</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb80-1"><a href="shell.html#cb80-1" tabindex="-1"></a><span class="ex">$</span> cd alkanes</span>
+<span id="cb80-2"><a href="shell.html#cb80-2" tabindex="-1"></a><span class="ex">$</span> nano middle.sh</span></code></pre></div>
 <p>Guardemos eso. Para ejecutarlo bastaría correr lo siguiente:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb79-1"><a href="shell.html#cb79-1" tabindex="-1"></a><span class="ex">$</span> bash middle.sh</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb81-1"><a href="shell.html#cb81-1" tabindex="-1"></a><span class="ex">$</span> bash middle.sh</span></code></pre></div>
 <p>Supongamos que queremos las líneas de la 11 a la 15 pero de cualquier otro archivo. Vamos a modificar el archivo que creamos.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb80-1"><a href="shell.html#cb80-1" tabindex="-1"></a><span class="ex">$</span> nano middle.sh</span></code></pre></div>
-<div class="sourceCode" id="cb81"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb81-1"><a href="shell.html#cb81-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 15 <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb82-1"><a href="shell.html#cb82-1" tabindex="-1"></a><span class="ex">$</span> nano middle.sh</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb83-1"><a href="shell.html#cb83-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 15 <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5</span></code></pre></div>
 <p>En el script, cuando colocamos <code>"$1"</code> se refiere al primer argumento/archivo en la línea de comandos, por ejemplo cuando colocamos en la línea de comandos:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb82-1"><a href="shell.html#cb82-1" tabindex="-1"></a><span class="ex">$</span> bash middle.sh octane.pdb</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb84-1"><a href="shell.html#cb84-1" tabindex="-1"></a><span class="ex">$</span> bash middle.sh octane.pdb</span></code></pre></div>
 <p>Lo que estamos diciéndole a la consola es que reemplace dentro del script “$1” por el archivo <code>octane.pdb</code>. De esta forma nuestro script ahora lo podemos correr sobre cualquier archivo.</p>
 <p>Nuestro script por el momento funciona solo con las líneas de la 11 a la 15. Supongamos que queremos modificar esto de tal forma que cuando vayamos a ejecutar el script le indiquemos las líneas que queremos extraer. Así como usamos <code>$1</code> para indicarle que era la primera variable en la línea de comandos, podemos usar las variables <code>$2</code> y <code>$3</code> para indicarle la segunda y tercera variable.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb83-1"><a href="shell.html#cb83-1" tabindex="-1"></a><span class="ex">$</span> nano middle.sh</span></code></pre></div>
-<div class="sourceCode" id="cb84"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb84-1"><a href="shell.html#cb84-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$2</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$3</span><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb85-1"><a href="shell.html#cb85-1" tabindex="-1"></a><span class="ex">$</span> nano middle.sh</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb86-1"><a href="shell.html#cb86-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$2</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$3</span><span class="st">&quot;</span></span></code></pre></div>
 <p>Entonces podemos ejecutar el script como sigue:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb85-1"><a href="shell.html#cb85-1" tabindex="-1"></a><span class="ex">$</span> bash middle.sh octane.pdb 15 5</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb87-1"><a href="shell.html#cb87-1" tabindex="-1"></a><span class="ex">$</span> bash middle.sh octane.pdb 15 5</span></code></pre></div>
 <p>Y podemos cambiar las líneas a mostrar, por ejemplo:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb86-1"><a href="shell.html#cb86-1" tabindex="-1"></a><span class="ex">$</span> bash middle.sh octane.pdb 20 5</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb88-1"><a href="shell.html#cb88-1" tabindex="-1"></a><span class="ex">$</span> bash middle.sh octane.pdb 20 5</span></code></pre></div>
 <p>Lo único que falta en el script, es describir que hace, de esta forma cualquier otra persona (o nosotros más adelante), cuando queramos abrir el script podamos recordar y entender que argumentos pide y cual es su uso.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb87-1"><a href="shell.html#cb87-1" tabindex="-1"></a><span class="ex">$</span> nano middle.sh</span></code></pre></div>
-<div class="sourceCode" id="cb88"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb88-1"><a href="shell.html#cb88-1" tabindex="-1"></a><span class="co"># Selecciona líneas intermedias de un archivo.</span></span>
-<span id="cb88-2"><a href="shell.html#cb88-2" tabindex="-1"></a><span class="co"># Uso: bash middle.sh nombre_archivo linea_final linea_inicial</span></span>
-<span id="cb88-3"><a href="shell.html#cb88-3" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$2</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$3</span><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb89-1"><a href="shell.html#cb89-1" tabindex="-1"></a><span class="ex">$</span> nano middle.sh</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb90-1"><a href="shell.html#cb90-1" tabindex="-1"></a><span class="co"># Selecciona líneas intermedias de un archivo.</span></span>
+<span id="cb90-2"><a href="shell.html#cb90-2" tabindex="-1"></a><span class="co"># Uso: bash middle.sh nombre_archivo linea_final linea_inicial</span></span>
+<span id="cb90-3"><a href="shell.html#cb90-3" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$2</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$3</span><span class="st">&quot;</span></span></code></pre></div>
 <p>Ahora, supongamos que queremos ordenar los archivos <code>.pdb</code> por cantidad de líneas. Sin un script eso lo hacemos así:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb89-1"><a href="shell.html#cb89-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span> </span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb91-1"><a href="shell.html#cb91-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span> </span></code></pre></div>
 <p>Si queremos poner esto en un script pero queremos correrlo sobre varios tipos de archivos, digamos los <code>.pdb</code> y los <code>.dat</code>, no podemos colocar en nuestro script <code>*.pdb</code>, y si usamos como en los ejemplos anteriores <code>"$1"</code> o <code>"$2</code>, eso limitaría la cantidad de archivos que podemos pasarle después en la consola. Una forma de no depender de eso es con la variable <code>$@</code>, esto indica que pueden ser cualquier cantidad de argumentos en la línea de comandos.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb90-1"><a href="shell.html#cb90-1" tabindex="-1"></a><span class="ex">$</span> nano sorted.sh</span></code></pre></div>
-<div class="sourceCode" id="cb91"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb91-1"><a href="shell.html#cb91-1" tabindex="-1"></a><span class="co"># Ordena archivos por su longitud</span></span>
-<span id="cb91-2"><a href="shell.html#cb91-2" tabindex="-1"></a><span class="co"># Uso: bash sorted.sh uno_o_mas_archivos</span></span>
-<span id="cb91-3"><a href="shell.html#cb91-3" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span></span></code></pre></div>
-<div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="shell.html#cb92-1" tabindex="-1"></a><span class="ex">$</span> bash sorted.sh <span class="pp">*</span>.pdb ../creatures/<span class="pp">*</span>.dat</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="shell.html#cb92-1" tabindex="-1"></a><span class="ex">$</span> nano sorted.sh</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb93-1"><a href="shell.html#cb93-1" tabindex="-1"></a><span class="co"># Ordena archivos por su longitud</span></span>
+<span id="cb93-2"><a href="shell.html#cb93-2" tabindex="-1"></a><span class="co"># Uso: bash sorted.sh uno_o_mas_archivos</span></span>
+<span id="cb93-3"><a href="shell.html#cb93-3" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb94-1"><a href="shell.html#cb94-1" tabindex="-1"></a><span class="ex">$</span> bash sorted.sh <span class="pp">*</span>.pdb ../creatures/<span class="pp">*</span>.dat</span></code></pre></div>
 <p><strong>Ejercicio:</strong> El archivo <code>animals.csv</code> ya vimos que es un archivo separado por comas que indica las especies y la cantidad de cada uno. Crea un script que se pueda aplicar a cualquier cantidad de archivos con ese formato y que te diga las especies únicas de cada archivo.
 Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueba tu script.</p>
 <p><strong>Ejercicio:</strong> Corre el siguiente comando:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb93-1"><a href="shell.html#cb93-1" tabindex="-1"></a><span class="ex">$</span> history <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5 <span class="op">&gt;</span> recientes.sh</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb95-1"><a href="shell.html#cb95-1" tabindex="-1"></a><span class="ex">$</span> history <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5 <span class="op">&gt;</span> recientes.sh</span></code></pre></div>
 <p>¿Qué contiene ese archivo? ¿Observa la última línea del archivo? ¿Porqué guarda esa línea?</p>
 <p><strong>Ejercicio:</strong> En la carpeta <code>alkanes</code> supongamos que tenemos un <code>script.sh</code> que contiene lo siguiente:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb94-1"><a href="shell.html#cb94-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> <span class="va">$2</span> <span class="va">$1</span></span>
-<span id="cb94-2"><a href="shell.html#cb94-2" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> <span class="va">$3</span> <span class="va">$1</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb96-1"><a href="shell.html#cb96-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> <span class="va">$2</span> <span class="va">$1</span></span>
+<span id="cb96-2"><a href="shell.html#cb96-2" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> <span class="va">$3</span> <span class="va">$1</span></span></code></pre></div>
 <p>Dentro del directorio <code>alkanes</code>, corre lo siguiente:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb95-1"><a href="shell.html#cb95-1" tabindex="-1"></a><span class="ex">$</span> bash script.sh <span class="st">&#39;*.pdb&#39;</span> 1 1</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="shell.html#cb97-1" tabindex="-1"></a><span class="ex">$</span> bash script.sh <span class="st">&#39;*.pdb&#39;</span> 1 1</span></code></pre></div>
 <p>¿Qué esperas obtener?</p>
 <p><strong>Ejercicio:</strong> Crea un script llamado <code>longest.sh</code> que reciba como argumentos un directorio y una extensión de archivos y que te devuelva el archivo en el directorio, que tenga esa extensión, con el mayor número de líneas.</p>
 <p><strong>Ejercicio:</strong> Considera los archivos que están en la carpeta <code>alkanes</code>. Explica que hace cada uno de los siguientes scripts al correrlos como <code>bash script1.sh *.pdb</code>, <code>bash script2.sh *.pdb</code> y <code>bash script3.sh *.pdb</code>.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb96-1"><a href="shell.html#cb96-1" tabindex="-1"></a><span class="co"># Script 1</span></span>
-<span id="cb96-2"><a href="shell.html#cb96-2" tabindex="-1"></a><span class="bu">echo</span> <span class="pp">*</span>.<span class="pp">*</span></span></code></pre></div>
-<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="shell.html#cb97-1" tabindex="-1"></a><span class="co"># Script 2</span></span>
-<span id="cb97-2"><a href="shell.html#cb97-2" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="va">$1</span> <span class="va">$2</span> <span class="va">$3</span></span>
-<span id="cb97-3"><a href="shell.html#cb97-3" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb97-4"><a href="shell.html#cb97-4" tabindex="-1"></a>  <span class="fu">cat</span> <span class="va">$filename</span></span>
-<span id="cb97-5"><a href="shell.html#cb97-5" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
-<div class="sourceCode" id="cb98"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb98-1"><a href="shell.html#cb98-1" tabindex="-1"></a><span class="co"># Script 3</span></span>
-<span id="cb98-2"><a href="shell.html#cb98-2" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$@</span>.pdb</span></code></pre></div>
-<p><strong>Ejercicio:</strong> (Debugging) Supongamos que tienen el siguiente script <code>do-errors.sh</code> en la carpeta <code>north-pacific-gyre</code>:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb99-1"><a href="shell.html#cb99-1" tabindex="-1"></a><span class="co"># Calcular estadisticas para los archivos</span></span>
-<span id="cb99-2"><a href="shell.html#cb99-2" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span></span>
+<div class="sourceCode" id="cb98"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb98-1"><a href="shell.html#cb98-1" tabindex="-1"></a><span class="co"># Script 1</span></span>
+<span id="cb98-2"><a href="shell.html#cb98-2" tabindex="-1"></a><span class="bu">echo</span> <span class="pp">*</span>.<span class="pp">*</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb99-1"><a href="shell.html#cb99-1" tabindex="-1"></a><span class="co"># Script 2</span></span>
+<span id="cb99-2"><a href="shell.html#cb99-2" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="va">$1</span> <span class="va">$2</span> <span class="va">$3</span></span>
 <span id="cb99-3"><a href="shell.html#cb99-3" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb99-4"><a href="shell.html#cb99-4" tabindex="-1"></a>  <span class="bu">echo</span> <span class="va">$datafile</span></span>
-<span id="cb99-5"><a href="shell.html#cb99-5" tabindex="-1"></a>  <span class="fu">bash</span> goostats.sh <span class="va">$datfile</span> stats-<span class="va">$datafile</span></span>
-<span id="cb99-6"><a href="shell.html#cb99-6" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<span id="cb99-4"><a href="shell.html#cb99-4" tabindex="-1"></a>  <span class="fu">cat</span> <span class="va">$filename</span></span>
+<span id="cb99-5"><a href="shell.html#cb99-5" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb100-1"><a href="shell.html#cb100-1" tabindex="-1"></a><span class="co"># Script 3</span></span>
+<span id="cb100-2"><a href="shell.html#cb100-2" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$@</span>.pdb</span></code></pre></div>
+<p><strong>Ejercicio:</strong> (Debugging) Supongamos que tienen el siguiente script <code>do-errors.sh</code> en la carpeta <code>north-pacific-gyre</code>:</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb101-1"><a href="shell.html#cb101-1" tabindex="-1"></a><span class="co"># Calcular estadisticas para los archivos</span></span>
+<span id="cb101-2"><a href="shell.html#cb101-2" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span></span>
+<span id="cb101-3"><a href="shell.html#cb101-3" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb101-4"><a href="shell.html#cb101-4" tabindex="-1"></a>  <span class="bu">echo</span> <span class="va">$datafile</span></span>
+<span id="cb101-5"><a href="shell.html#cb101-5" tabindex="-1"></a>  <span class="fu">bash</span> goostats.sh <span class="va">$datfile</span> stats-<span class="va">$datafile</span></span>
+<span id="cb101-6"><a href="shell.html#cb101-6" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
 <p>Corre en la línea de comandos:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb100-1"><a href="shell.html#cb100-1" tabindex="-1"></a><span class="ex">$</span> bash do-errors.sh NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb102-1"><a href="shell.html#cb102-1" tabindex="-1"></a><span class="ex">$</span> bash do-errors.sh NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt</span></code></pre></div>
 <p>No muestra ninguna salida. Para ver porque, vamos a correrlo de nuevo con la opción -x:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb101-1"><a href="shell.html#cb101-1" tabindex="-1"></a><span class="ex">$</span> bash <span class="at">-x</span> do-errors.sh NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb103-1"><a href="shell.html#cb103-1" tabindex="-1"></a><span class="ex">$</span> bash <span class="at">-x</span> do-errors.sh NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt</span></code></pre></div>
 <p>¿Cuál es el output? ¿Cuál es la línea responsable del error?</p>
 </div>
 <div id="buscando-y-encontrando-cosas" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> Buscando y encontrando cosas<a href="shell.html#buscando-y-encontrando-cosas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>grep</code></p>
 </div>
 <div id="descarga-y-limpieza-de-bases-de-datos" class="section level2 hasAnchor" number="2.7">
 <h2><span class="header-section-number">2.7</span> Descarga y limpieza de bases de datos<a href="shell.html#descarga-y-limpieza-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Pendiente</strong>: Se verá después de SQL.</p>
 
 </div>
 </div>

@@ -217,6 +217,18 @@ $ cd ejercicios
 $ cp -r ../data .
 ```
 
+Si el último parámetro de `cp` es un directorio que ya existe, entonces copiará todos los archivos que se indiquen a ese directorio. Por ejemplo:
+
+```bash
+$ cp archivo1.txt archivo2.txt data
+```
+
+De igual forma para `mv`, si el último parámetro es un directorio movera todos los archivos a ese directorio.
+
+```bash
+$ mv archivo1.txt archivo2.txt data
+```
+
 **Ejercicio:** ¿Cual es el output de la siguiente colección de comandos?
 
 ```bash
@@ -272,6 +284,8 @@ $ rm data
 $ rm -r data
 ```
 
+Otra opción para borrar directorios es `rmdir`.
+
 Para mover/copiar/eliminar multiples archivos a la vez, podemos enumerarlos todos o usar comodines/patrones que sigan estos elementos. Supongamos que tenemos una lista de archivos todos con terminación `.txt`, entonces para borrarlos podemos usar `rm *.txt`. El `*` nos indica todo lo que este antes de `.txt`.
 
 ```bash
@@ -304,6 +318,12 @@ $ rm prue???.txt
 3) `ls *t??ne.pdb`
 
 4) ls ethane.*
+
+Dos comodines más que existen son los siguientes:
+
+- `[...]`: busca coincidencias con exactamente cada caracter dentro de los corchetes, por ejemplo `[12]` coincidiria con `texto1.txt`, `texto2.tx` pero no con `texto3.txt`.
+
+- `{...}`: busca coincidencias con cada uno de los elementos separados por comas dentro de las llaves, por ejemplo `{*.txt, *.csv}` buscaría todos los archivos con terminaciones `.txt` y `.csv` pero no con los que sean `.pdf`.
 
 
 ## Tuberías y filtros
@@ -453,6 +473,8 @@ Si quisieramos extraer los animales únicos de ese archivo, podemos usar el coma
 ```bash
 $ cut -d , -f 2 animals.csv | sort | uniq
 ```
+
+También se puede colocar por ejemplo `-f 2-5,8` para indicar que se deben seleccionar las columnas 2 a la 5 y la 8.
 
 **Ejercicio:** ¿Porqué se necesita colocar el `sort` antes del `uniq`?
 
@@ -820,6 +842,9 @@ $ bash -x do-errors.sh NENE*A.txt NENE*B.txt
 
 ## Buscando y encontrando cosas
 
-
+`grep`
 
 ## Descarga y limpieza de bases de datos
+
+
+**Pendiente**: Se verá después de SQL.
