@@ -840,9 +840,107 @@ $ bash -x do-errors.sh NENE*A.txt NENE*B.txt
 
 ¿Cuál es el output? ¿Cuál es la línea responsable del error?
 
+Otra asignación de variables es `#@`, esto nos indica cuantos objetos hay de la variable.
+
+Tres conceptos usados en bash son los siguientes:
+
+- STDIN: estándar input
+
+- STDOUT: estándar output
+
+- STDERR: estándar error
+
+Para redirigir el error y el output automáticamente a archivos, usamos las opciones:
+
+```bash
+$ 2> error.txt & 1> output.txt
+```
+
+O dentro de un script:
+
+```bash
+exec 1>> output.txt 2>> error.txt
+```
+
 ## Buscando y encontrando cosas
 
-`grep`
+La función `grep` (*global/regular expression/print*) nos ayuda a encontrar e imprimir líneas de archivos que contengan un patrón especificado. 
+
+Vamos a la ruta `excercise-data/writing`.
+
+```bash
+$ cat haiku.txt
+```
+
+Para buscar las líneas que contienen la palabra `not`, la instrucción sería la siguiente:
+
+```bash
+$ grep not haiku.txt
+```
+
+El comando `grep` es sensible a mayúsculas y minúsculas. Si buscáramos por ejemplo `Not` no nos encontraría ninguna coincidencia. 
+
+```bash
+$ grep The haiku.txt
+```
+
+Observemos que ahora nos está regresando una palabra que contiene `The` en su estructura: `Thesis`. Para restringir a que solo sean coincidencias exactas, usamos la bandera `-w`.
+
+```bash
+$ grep -w The haiuku.txt
+```
+
+En el caso de querer buscar frases, debemos encerrarlas entre comillas.
+
+```bash
+$ grep -w "is not" haiku.txt
+```
+
+Si agregamos la opción `-n`, esto nos mostrará también la línea en la que se encuentra la coincidencia.
+
+```bash
+$ grep -n "it" haiku.txt
+```
+
+Las banderas se pueden combinar, por ejemplo `-nw` (`-wn` o `-n -w`) nos buscaría coincidencias exactas y los números de líneas.
+
+```bash
+$ grep -nw "it" haiku.txt
+```
+
+Para que no nos importe mayúsculas o minúsculas, usamos la opción `-i`.
+
+```bash
+$ grep -n -w -i "the" haiku.txt
+```
+
+La opción `-v` es para invertir nuestra búsqueda, es decir para mostrarnos las líneas que no contienen esa palabra/frase.
+
+```bash
+$ grep -n -w -v "the" haiku.txt
+```
+
+La opción `-r` busca recursivamente por la coincidencia en un conjunto de archivos indicados.
+
+```bash
+$ grep -r Yesterday .
+```
+
+**Ejercicio:** ¿Cómo obtendrían solo lo siguiente del archivo `haiku.txt`?
+
+```bash
+and the presence of absence.
+```
+
+Dentro del comando `grep` también podemos usar comodines (expresiones regulares), por ejemplo: 
+
+```bash
+$ grep -E "^.o" haiku.txt
+```
+
+El `^` se refiere al inicio de la línea, el `.` se refiere a un carácter (análogo a `?`), entonces nos estaría buscando todas las líneas 
+
+
 
 ## Descarga y limpieza de bases de datos
 

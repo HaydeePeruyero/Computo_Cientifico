@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-02-10" />
+<meta name="date" content="2024-02-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -610,10 +610,46 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
 <p>No muestra ninguna salida. Para ver porque, vamos a correrlo de nuevo con la opción -x:</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb103-1"><a href="shell.html#cb103-1" tabindex="-1"></a><span class="ex">$</span> bash <span class="at">-x</span> do-errors.sh NENE<span class="pp">*</span>A.txt NENE<span class="pp">*</span>B.txt</span></code></pre></div>
 <p>¿Cuál es el output? ¿Cuál es la línea responsable del error?</p>
+<p>Otra asignación de variables es <code>#@</code>, esto nos indica cuantos objetos hay de la variable.</p>
+<p>Tres conceptos usados en bash son los siguientes:</p>
+<ul>
+<li><p>STDIN: estándar input</p></li>
+<li><p>STDOUT: estándar output</p></li>
+<li><p>STDERR: estándar error</p></li>
+</ul>
+<p>Para redirigir el error y el output automáticamente a archivos, usamos las opciones:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb104-1"><a href="shell.html#cb104-1" tabindex="-1"></a><span class="ex">$</span> <span class="dv">2</span><span class="op">&gt;</span> error.txt <span class="kw">&amp;</span> <span class="dv">1</span><span class="op">&gt;</span> output.txt</span></code></pre></div>
+<p>O dentro de un script:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb105-1"><a href="shell.html#cb105-1" tabindex="-1"></a><span class="bu">exec</span> <span class="dv">1</span><span class="op">&gt;&gt;</span> output.txt <span class="dv">2</span><span class="op">&gt;&gt;</span> error.txt</span></code></pre></div>
 </div>
 <div id="buscando-y-encontrando-cosas" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> Buscando y encontrando cosas<a href="shell.html#buscando-y-encontrando-cosas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><code>grep</code></p>
+<p>La función <code>grep</code> (<em>global/regular expression/print</em>) nos ayuda a encontrar e imprimir líneas de archivos que contengan un patrón especificado.</p>
+<p>Vamos a la ruta <code>excercise-data/writing</code>.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb106-1"><a href="shell.html#cb106-1" tabindex="-1"></a><span class="ex">$</span> cat haiku.txt</span></code></pre></div>
+<p>Para buscar las líneas que contienen la palabra <code>not</code>, la instrucción sería la siguiente:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb107-1"><a href="shell.html#cb107-1" tabindex="-1"></a><span class="ex">$</span> grep not haiku.txt</span></code></pre></div>
+<p>El comando <code>grep</code> es sensible a mayúsculas y minúsculas. Si buscáramos por ejemplo <code>Not</code> no nos encontraría ninguna coincidencia.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb108-1"><a href="shell.html#cb108-1" tabindex="-1"></a><span class="ex">$</span> grep The haiku.txt</span></code></pre></div>
+<p>Observemos que ahora nos está regresando una palabra que contiene <code>The</code> en su estructura: <code>Thesis</code>. Para restringir a que solo sean coincidencias exactas, usamos la bandera <code>-w</code>.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb109-1"><a href="shell.html#cb109-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-w</span> The haiuku.txt</span></code></pre></div>
+<p>En el caso de querer buscar frases, debemos encerrarlas entre comillas.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb110-1"><a href="shell.html#cb110-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-w</span> <span class="st">&quot;is not&quot;</span> haiku.txt</span></code></pre></div>
+<p>Si agregamos la opción <code>-n</code>, esto nos mostrará también la línea en la que se encuentra la coincidencia.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb111-1"><a href="shell.html#cb111-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="st">&quot;it&quot;</span> haiku.txt</span></code></pre></div>
+<p>Las banderas se pueden combinar, por ejemplo <code>-nw</code> (<code>-wn</code> o <code>-n -w</code>) nos buscaría coincidencias exactas y los números de líneas.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb112-1"><a href="shell.html#cb112-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-nw</span> <span class="st">&quot;it&quot;</span> haiku.txt</span></code></pre></div>
+<p>Para que no nos importe mayúsculas o minúsculas, usamos la opción <code>-i</code>.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb113-1"><a href="shell.html#cb113-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="at">-w</span> <span class="at">-i</span> <span class="st">&quot;the&quot;</span> haiku.txt</span></code></pre></div>
+<p>La opción <code>-v</code> es para invertir nuestra búsqueda, es decir para mostrarnos las líneas que no contienen esa palabra/frase.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb114-1"><a href="shell.html#cb114-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="at">-w</span> <span class="at">-v</span> <span class="st">&quot;the&quot;</span> haiku.txt</span></code></pre></div>
+<p>La opción <code>-r</code> busca recursivamente por la coincidencia en un conjunto de archivos indicados.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb115-1"><a href="shell.html#cb115-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-r</span> Yesterday .</span></code></pre></div>
+<p><strong>Ejercicio:</strong> ¿Cómo obtendrían solo lo siguiente del archivo <code>haiku.txt</code>?</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb116-1"><a href="shell.html#cb116-1" tabindex="-1"></a><span class="ex">and</span> the presence of absence.</span></code></pre></div>
+<p>Dentro del comando <code>grep</code> también podemos usar comodines (expresiones regulares), por ejemplo:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb117-1"><a href="shell.html#cb117-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">&quot;^.o&quot;</span> haiku.txt</span></code></pre></div>
+<p>El <code>^</code> se refiere al inicio de la línea, el <code>.</code> se refiere a un carácter (análogo a <code>?</code>), entonces nos estaría buscando todas las líneas</p>
 </div>
 <div id="descarga-y-limpieza-de-bases-de-datos" class="section level2 hasAnchor" number="2.7">
 <h2><span class="header-section-number">2.7</span> Descarga y limpieza de bases de datos<a href="shell.html#descarga-y-limpieza-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
