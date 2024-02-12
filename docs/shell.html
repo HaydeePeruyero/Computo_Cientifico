@@ -649,7 +649,26 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
 <div class="sourceCode" id="cb116"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb116-1"><a href="shell.html#cb116-1" tabindex="-1"></a><span class="ex">and</span> the presence of absence.</span></code></pre></div>
 <p>Dentro del comando <code>grep</code> también podemos usar comodines (expresiones regulares), por ejemplo:</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb117-1"><a href="shell.html#cb117-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">&quot;^.o&quot;</span> haiku.txt</span></code></pre></div>
-<p>El <code>^</code> se refiere al inicio de la línea, el <code>.</code> se refiere a un carácter (análogo a <code>?</code>), entonces nos estaría buscando todas las líneas</p>
+<p>El <code>^</code> se refiere al inicio de la línea, el <code>.</code> se refiere a un carácter (análogo a <code>?</code>), entonces estaría buscando todas las líneas una palabra donde su segunda letra sea la letra <code>o</code>.</p>
+<p><strong>Ejercicio:</strong> El archivo que se encuentra en la carpeta <code>animal-counts/animals.csv</code> contiene una lista de animales, con su fecha de observación y cuantos animales se observaron.</p>
+<pre class="output"><code>2012-11-05,deer,5
+2012-11-05,rabbit,22
+2012-11-05,raccoon,7
+2012-11-06,rabbit,19
+2012-11-06,deer,2
+2012-11-06,fox,4
+2012-11-07,rabbit,16
+2012-11-07,bear,1</code></pre>
+<p>Supongamos que queremos crear un script que tome como primer argumento la especie del animal y como segundo argumento el directorio. El script nos debe regresar un archivo llamado <code>&lt;especie&gt;.txt</code> que contenga una lista de fechas y el número de veces que se observo esa especie. Por ejemplo, <code>rabbit.txt</code> tendría que contener la siguiente información:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb119-1"><a href="shell.html#cb119-1" tabindex="-1"></a><span class="ex">2012-11-05,22</span></span>
+<span id="cb119-2"><a href="shell.html#cb119-2" tabindex="-1"></a><span class="ex">2012-11-06,19</span></span>
+<span id="cb119-3"><a href="shell.html#cb119-3" tabindex="-1"></a><span class="ex">2012-11-07,16</span></span></code></pre></div>
+<p>Usa las opciones de ayuda de los comandos <code>cut</code> y <code>grep</code> (puedes usar <code>man grep</code> o <code>man cut</code> también para pedir ayuda de esos comandos, la palabra <code>man</code> se refiere a manual.)</p>
+<p><strong>Ejercicio:</strong> En la carpeta <code>exercise-data/writing</code> se encuentra el texto completo de Mujercitas <code>LittleWomen.txt</code>. Usando un <code>for</code> encuentra que hermana aparece más veces: <em>Jo</em>, <em>Meg</em>, <em>Beth</em>, <em>Amy</em>.</p>
+<p>No solo podemos buscar una sola palabra, podríamos buscar dos palabras o buscar entre dos palabras:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb120-1"><a href="shell.html#cb120-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">&quot;cadena1|cadena2&quot;</span> archivo</span></code></pre></div>
+<p><strong>Ejercicio:</strong> ¿Cómo podrías mostrar en color lo que estás buscando? Explora la ayuda de <code>grep</code>.</p>
+<p>Para buscar entre directorios, usamos el comando <code>find</code>.</p>
 </div>
 <div id="descarga-y-limpieza-de-bases-de-datos" class="section level2 hasAnchor" number="2.7">
 <h2><span class="header-section-number">2.7</span> Descarga y limpieza de bases de datos<a href="shell.html#descarga-y-limpieza-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>

@@ -938,8 +938,42 @@ Dentro del comando `grep` también podemos usar comodines (expresiones regulares
 $ grep -E "^.o" haiku.txt
 ```
 
-El `^` se refiere al inicio de la línea, el `.` se refiere a un carácter (análogo a `?`), entonces nos estaría buscando todas las líneas 
+El `^` se refiere al inicio de la línea, el `.` se refiere a un carácter (análogo a `?`), entonces estaría buscando todas las líneas una palabra donde su segunda letra sea la letra `o`.
 
+**Ejercicio:** El archivo que se encuentra en la carpeta `animal-counts/animals.csv` contiene una lista de animales, con su fecha de observación y cuantos animales se observaron.
+
+```output
+2012-11-05,deer,5
+2012-11-05,rabbit,22
+2012-11-05,raccoon,7
+2012-11-06,rabbit,19
+2012-11-06,deer,2
+2012-11-06,fox,4
+2012-11-07,rabbit,16
+2012-11-07,bear,1
+```
+
+Supongamos que queremos crear un script que tome como primer argumento la especie del animal y como segundo argumento el directorio. El script nos debe regresar un archivo llamado `<especie>.txt` que contenga una lista de fechas y el número de veces que se observo esa especie. Por ejemplo, `rabbit.txt` tendría que contener la siguiente información:
+
+```bash
+2012-11-05,22
+2012-11-06,19
+2012-11-07,16
+```
+Usa las opciones de ayuda de los comandos `cut` y `grep` (puedes usar `man grep` o `man cut` también para pedir ayuda de esos comandos, la palabra `man` se refiere a manual.)
+
+
+**Ejercicio:** En la carpeta `exercise-data/writing` se encuentra el texto completo de Mujercitas `LittleWomen.txt`. Usando un `for` encuentra que hermana aparece más veces: *Jo*, *Meg*, *Beth*, *Amy*.
+
+No solo podemos buscar una sola palabra, podríamos buscar dos palabras o buscar entre dos palabras:
+
+```bash
+$ grep -E "cadena1|cadena2" archivo
+```
+
+**Ejercicio:** ¿Cómo podrías mostrar en color lo que estás buscando? Explora la ayuda de `grep`.
+
+Para buscar entre directorios, usamos el comando `find`.
 
 
 ## Descarga y limpieza de bases de datos
