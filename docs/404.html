@@ -158,7 +158,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="shell.html"><a href="shell.html#ciclos"><i class="fa fa-check"></i><b>2.4</b> Ciclos</a></li>
 <li class="chapter" data-level="2.5" data-path="shell.html"><a href="shell.html#scripts"><i class="fa fa-check"></i><b>2.5</b> Scripts</a></li>
 <li class="chapter" data-level="2.6" data-path="shell.html"><a href="shell.html#buscando-y-encontrando-cosas"><i class="fa fa-check"></i><b>2.6</b> Buscando y encontrando cosas</a></li>
-<li class="chapter" data-level="2.7" data-path="shell.html"><a href="shell.html#descarga-y-limpieza-de-bases-de-datos"><i class="fa fa-check"></i><b>2.7</b> Descarga y limpieza de bases de datos</a></li>
+<li class="chapter" data-level="2.7" data-path="shell.html"><a href="shell.html#if-while-y-for"><i class="fa fa-check"></i><b>2.7</b> if, while y for</a></li>
+<li class="chapter" data-level="2.8" data-path="shell.html"><a href="shell.html#descarga-y-limpieza-de-bases-de-datos"><i class="fa fa-check"></i><b>2.8</b> Descarga y limpieza de bases de datos</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="git-y-github.html"><a href="git-y-github.html"><i class="fa fa-check"></i><b>3</b> Git y Github</a>
 <ul>
@@ -292,6 +293,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -862,6 +862,9 @@ O dentro de un script:
 exec 1>> output.txt 2>> error.txt
 ```
 
+Al inicio de un script se suele colocar `#!/usr/bash` para que el interprete sepa que es un script de bash y use el bash que se encuentra en `usr/bash`. Si no está ahí se coloca la ruta correspondiente, para saber donde está usamos `which bash`.
+
+
 ## Buscando y encontrando cosas
 
 La función `grep` (*global/regular expression/print*) nos ayuda a encontrar e imprimir líneas de archivos que contengan un patrón especificado. 
@@ -973,7 +976,185 @@ $ grep -E "cadena1|cadena2" archivo
 
 **Ejercicio:** ¿Cómo podrías mostrar en color lo que estás buscando? Explora la ayuda de `grep`.
 
-Para buscar entre directorios, usamos el comando `find`.
+Para buscar entre directorios, usamos el comando `find`. Por ejemplo, el siguiente comando nos encontrará todo lo que este en directorio actual
+
+```bash
+$ find .
+```
+
+La opción `-type d` nos mostrará solo carpetas.
+
+```bash
+$ find -type -d
+```
+
+Y con la opción `-type f` nos mostrará todos los archivos.
+
+Si queremos encontrar algo que concuerde con algún nombre:
+
+```bash
+$ find . -name *.csv
+```
+
+Hay que tener cuidado con esta instrucción, `find` expande los comodines antes de correr los comandos, en el caso de tener más de un archivo veremos un mensaje de error. Para prevenir esto y que si busque todos los archivos, debemos encerrar el patrón entre comillas.
+
+```bash
+$ find . -name "*.txt"
+```
+
+Podemos hacer tuberías también con este comando, por ejemplo si quisieramos contar cuantas líneas tienen todos los archivos con terminación `txt`, podríamos hacer lo siguiente:
+
+```bash
+$ wc -l $(find . -name "*.txt")
+```
+
+Otro ejemplo:
+
+```bash
+$ grep "searching" $(find . -name "*.txt")
+```
+
+**Ejercicio:** La opción `-v` en `grep` busca todo lo que no concuerde con el patrón indicado. En la carpeta `creatures`, ¿cómo listarías todos los archivos que terminen en `.dat` menos el que se llama `unicorn`?
+
+
+## if, while y for
+
+Ya vimos que la sintaxis del ciclo for es como sigue:
+
+```bash
+$ for file in list
+> do
+>     comands
+> done
+```
+
+Una forma de crear una lista es como sigue:
+
+```bash
+$ {start..stop..increment}
+```
+
+Usando esta sintaxis, el código para listar todos los números del uno al 9 quedaría:
+
+```bash
+$ for numero in {1..9..1}
+> do
+>     echo $numero
+> done
+```
+
+Otra forma de escribir la lista sería con la sintaxis `((x=1;x<=9;x+=1))`.
+
+La estructura del ciclo `if` es como sigue:
+
+```bash
+$ if [ condicion ]; then
+>     code
+> else
+>     other code
+> fi
+```
+
+También se puede usar la estructura `((condicion))`.
+
+Los operadores aritméticos en el condicional `if` que se pueden usar son los siguientes:
+
+- $>$, $<$, $==$, $!=$
+
+- `-eq`, `-ne`: igual y no igual a (equal to, not equal to).
+
+- `-lt`, `-le`: para menor que o menor o igual que (less than,less than or equal to).
+
+- `-gt`, `-ge`: para mayor que o mayor o igual que (greater than, greater than or equal to).
+
+
+```bash
+$ x=10
+$ if [ $x -gt 5 ]; then
+>     echo "$x es mayor que 5"
+> fi
+```
+
+Otros banderas para los condicionales las pueden encontrar en el siguiente [link](https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html).
+
+
+La notación `&&` es para un **Y** y la notación `||` para un **O**, las cuales nos sirven para verificar más de una condición:
+
+```bash
+$ x=8
+$ if [ $x -gt 5 ] && [ $x -lt 10]; then
+>     echo "$x es mayor que 5 y menor que 10"
+> fi
+```
+
+También podemos usar la siguiente estructura: `[[ $x -gt 5 && $x -lt 10]]`.
+
+Dentro de un `if` podemos pedir que nos busque en algún archivo combinandolo con `grep`, dentro de la carpeta animal-count:
+
+```bash
+$ if grep -q "rabbit" animals.csv; then
+>     echo "Rabbit esta en el archivo"
+> fi
+```
+
+El mismo resultado lo podemos obtener como sigue:
+
+```bash
+$ if $(grep -q "rabbit" animals.csv); then
+>     echo "rabbit esta en el archivo"
+> fi
+```
+
+El ciclo `while` tiene la misma estructura del ciclo `for` y los operadores aritméticos son los mismos que en el `if`. Siempre recuerden poner un fin al ciclo para que no sea infinito.
+
+```bash
+$ x=1
+$ while [ $x -le 5 ];
+> do
+>     echo $x
+>     ((x+=1))
+> done
+```
+
+Aparte de estos ciclos, existen los **CASE Statements**, los cuales pueden llegar a ser más útiles que los `if` cuando se tienen condiciones muy complicadas. Su estructura es la siguiente:
+
+```bash
+$ case 'String' in
+>     patron1)
+>     comando1;;
+>     patron2)
+>     comando2;;
+>     *)
+>     comando por default;;
+> esac
+```
+
+Por ejemplo: 
+
+```bash
+#!/bin/bash
+#Control de flujo: case
+echo "Escribe una frase"
+read frase
+case $frase in
+  a*)
+    echo "La frase empieza con a"
+  ;;
+  c*t)
+    echo "La frase empieza con c y termina con t"
+  ;;
+  *com)
+    echo "La frase termina con la cadena com"
+  ;;
+  *)
+    echo "La frase no cumple con ninguna de las condiciones"
+  ;;
+esac
+```
+
+Si corremos este script en la terminal con `bash case_ejemplo.sh` veremos que dependiendo de la frase que coloquemos en la terminal, nos arrojará una de las opciones.
+
+**Ejercicio:** Crea un case statement para adivinar tu edad. Debes pedirle al usuario que introduzca el número correspondiente a tu edad y que los casos o patrones obtengan por resultado una frase referente a si adivinaron o no su edad. Realiza lo mismo con un `if`.
 
 
 ## Descarga y limpieza de bases de datos
