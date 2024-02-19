@@ -9,12 +9,231 @@ workingDir <-  "."
 setwd(workingDir)
 ```
 
+Usar control de versiones es una forma de manejar proyectos, todo a lo que se hace `commit` se pierde, se queda un registro de todos los cambios y siempre es posible regresar a una versión anterior. Nos evitamos estar enviando y enviando correos con versiones finales para después comparar versiones. Se guarda el usuario que hizo el cambio y automáticamente obtenemos una notificación de si intentamos modificar lo mismo que un colaborador para revisar cual cambio guardar.
+
+Pueden pensar en versión de control como una forma de `undo` ilimitado y de trabajar paralelamente con sus colaboradores.
+
+Lo primero que vamos a hacer es configurar `Git` en nuestra computadora.
+
+Vamos a abrir `Git bash` y configurar nuestro usuario y correo con la que vamos a enlazar más adelante Github.
+
+```bash
+$ git config --global user.name "Usuario"
+$ git config --global user.email "email@domain.com"
+```
+
+Ahora, vamos a configurar los saltos de línea para no tener conflicto según el sistema operativo.
+
+```bash
+# Mac o Linux
+$ git config --global core.autocrlf input
+# Windows
+$ git config --global core.autocrlf true
+```
+
+Para configurar el editor de texto por default:
+
+```bash
+$ git config --global core.editor "nano -w"
+```
+
+Por default, Git inicializa un repositorio con una rama llamada `master`, a partir del 2020, la mayoría de los servidores de Git cambiaron esto a que la rama principal fuera `main`, para configurar esto usaremos lo siguiente:
+
+```bash
+$ git config --global init.defaultBranch main
+```
+
+Los comandos anteriores solo se necesitan configurar una sola vez. Para ver la configuración que acabamos de realizar y probar cual es nuestro editor de texto usamos lo siguiente:
+
+```bash
+$ git config --global --edit
+```
+
+Y para revisar esta configuración sin entrar al editor:
+
+```bash
+$ git config --list
+```
+
+Si debieran hacer cambios en su usuario o correo o cualquier otra configuración lo pueden hacer ilimitadas veces con los comandos anteriores.
+
+Para pedir ayuda nos sirve aún `git comando -h` o `git comando --help`, por ejemplo:
+
+```bash
+$ git config -h
+# La siguiente nos abre en un navegador el manual completo
+$ git config --help
+```
+
+O para ayuda general de Git: `git help`.
+
 
 ## Repositorios
 
-## Flujo de trabajo en Git
+Un repositorio es donde se va a almacenar toda la información de nuestro proyecto, es donde vamos a tener toda la historia y registro de cambios y usuarios. Es recomendable tener un repositorio por proyecto y no multiples proyectos en un solo repositorio. 
 
-## Comparando cambios
+Vamos a movernos a la carpeta del curso y vamos a hacer una carpeta para trabajar con git.
+
+```bash
+$ cd Curso_Comp_cient
+$ mkdir Mi_primer_repo
+$ cd Mi_primer_repo
+```
+
+Para inicializar un repositorio usamos lo siguiente (dentro de la carperta).
+
+```bash
+$ git init
+```
+
+Al inicializar el repositorio, cualquier carpeta y archivo que se cree dentro de la carpeta quedará su registro, no es necesario inicializar las carpetas anidadas.
+
+Si revisamos que tiene la carpeta solo con `ls` no vamos a notar ningún cambio pero si listamos con la opción `-a` veremos que contiene archivos ocultos. En el archivo `.git` se almacena **TODA** la información de nuestro repositorio, así que si lo borramos perderemos todo el historial del repositorio.
+
+```bash
+$ ls -a
+```
+
+Para cambiar manualmente la rama de nuestro repositorio si no es la main, lo podemos hacer como sigue.
+
+```bash
+$ git checkout -b main
+```
+
+Para preguntarle a git el status de nuestro proyecto:
+
+```bash
+$ git status
+```
+
+Si dentro de una carpeta preguntamos `git status` y obtenemos el siguiente mensaje:
+
+```output
+fatal: not a git repository (or any of the parent directories): .git
+```
+
+significa que si podemos inicializarlo como un repositorio.
+
+**Ejercicio:** Dentro de la carpeta `Mi_primer_repo` crea una carpeta llamada `subproyecto1`. Si quieres llevar un registro de lo que hagas en ese subproyecto, ¿debes inicializarla? Inicializala. Ahora, ¿cómo borras el archivo `.git`?
+
+
+## Rastrear cambios
+
+Vamos a crear un archivo de texto dentro de la carpeta `Mi_primer_repo`.
+
+```bash
+$ nano prueba.txt
+```
+
+Y escribamos algo en el archivo y guardemoslo.
+
+```bash
+Primer archivo en el que rastrearemos cambios.
+```
+
+Ahora, si preguntamos por el status de nuestro proyecto vamos a obtener un mensaje de que hay algo nuevo:
+
+```bash
+$ git status
+```
+
+El mensaje que dice `untracked files` nos indica que hay cambios y que a Git no se le ha idicado que debe registrarlos. Para añadir estos cambios hacemos lo siguiente:
+
+```bash
+$ git add prueba.txt
+```
+
+Si revisamos el status del proyecto vemos que ahora un mensaje diferente, ahora solo nos indica que no se ha realizado ningún commit pero que si se tiene registro de algo que cambio.
+
+```bash
+$ git status
+```
+
+Para hacer un commit:
+
+```bash
+$ git commit -m "Comenzando archivo de prueba y registro de cambios"
+```
+
+Este comando le dice a Git que tome todo lo que se añadió y que guarde una copia permanente dentro del directorio `.git`. Cada commit tiene un identificador único. Si no especificamos el mensaje, Git abrirá un editor de texto para colocar el mensaje. Los mensajes deben de reflejar lo que se está guardando para que sean útiles en el futuro.
+
+Si ahora verificamos el status del proyecto veremos que nos dice que no hay nada a lo que hacer commit ya que en el paso anterior añadimos todo y no hemos realizado ningún cambio.
+
+```bash
+$ git status
+```
+
+Para mostrar el historial del proyecto:
+
+```bash
+$ git log
+```
+
+Ahora, añadamos una línea nueva al archivo `prueba.txt`
+
+```bash
+$ nano prueba.txt
+```
+
+```output
+Primer archivo en el que rastrearemos cambios.
+Segunda línea de cambios para continuar con el ejemplo.
+```
+
+Si revisamos el status veremos de nuevo que nos devuelve el mensaje de que hay archivos sin rastrear. Para comparar las diferencias del archivo usamos:
+
+```bash
+$ git diff
+```
+
+El signo `+` nos está indicando cuales son los cambios en el archivo nuevo.
+
+Vamos a hacer un commit de este cambio.
+
+```bash
+$ git commit -m "Añadimos la segunda linea al archivo"
+```
+
+¿Qué paso? Nos esta diciendo que no hemos añadido nada al `staged area` a lo que le podamos hacer un commit, recuerden añadir todo antes de hacer commit.
+
+```bash
+$ git add prueba.txt
+$ git commit -m "Añadimos la segunda linea al archivo"
+```
+
+Añadir todo primero al staging area nos permite tener un mejor control de a que le estamos haciendo commit, por ejemplo podemos añadir y hacerle commit solo al archivo donde tenemos la bibliografía y no a todo el proyecto donde hay partes no completas.
+
+![Software Carpentry - Version Control with Git](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/git-staging-area.svg)
+
+
+**Ejercicio:** Añadamos una tercera línea al archivo y verifiquemos las diferencias en los archivos, después añadamoslo al staging area y revicemos las diferencias. ¿Qué sucede?
+
+```bash
+$ nano prueba.txt
+$ git diff
+$ git add prueba.txt
+$ git diff
+```
+
+Al añadirlo al staging area lo estamos añadiendo permanentemente, entonces no hay ninguna diferencia. Si queremos las diferencias con lo último a lo que se le hizo commit podemos hacer lo siguiente:
+
+```bash
+$ git diff --staged
+```
+
+Ahora hagamos el commit.
+
+```bash
+$ git commit -m "Tercera línea para probar que pasa cuando se añade al staging area"
+```
+
+## Explorando el historial
+
+## Ignorar archivos/carpetas
+
+## Github
+
+## Colaboradores
 
 ## Crear Ramas
 
