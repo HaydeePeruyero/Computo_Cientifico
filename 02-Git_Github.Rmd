@@ -100,7 +100,7 @@ Para cambiar manualmente la rama de nuestro repositorio si no es la main, lo pod
 $ git checkout -b main
 ```
 
-Para preguntarle a git el status de nuestro proyecto:
+Para preguntarle a git el estado de nuestro proyecto:
 
 ```bash
 $ git status
@@ -131,19 +131,19 @@ Y escribamos algo en el archivo y guardemoslo.
 Primer archivo en el que rastrearemos cambios.
 ```
 
-Ahora, si preguntamos por el status de nuestro proyecto vamos a obtener un mensaje de que hay algo nuevo:
+Ahora, si preguntamos por el estado de nuestro proyecto vamos a obtener un mensaje de que hay algo nuevo:
 
 ```bash
 $ git status
 ```
 
-El mensaje que dice `untracked files` nos indica que hay cambios y que a Git no se le ha idicado que debe registrarlos. Para añadir estos cambios hacemos lo siguiente:
+El mensaje que dice `untracked files` nos indica que hay cambios y que a Git no se le ha indicado que debe registrarlos. Para añadir estos cambios hacemos lo siguiente:
 
 ```bash
 $ git add prueba.txt
 ```
 
-Si revisamos el status del proyecto vemos que ahora un mensaje diferente, ahora solo nos indica que no se ha realizado ningún commit pero que si se tiene registro de algo que cambio.
+Si revisamos el estado del proyecto vemos que ahora un mensaje diferente, ahora solo nos indica que no se ha realizado ningún commit pero que si se tiene registro de algo que cambio.
 
 ```bash
 $ git status
@@ -157,7 +157,7 @@ $ git commit -m "Comenzando archivo de prueba y registro de cambios"
 
 Este comando le dice a Git que tome todo lo que se añadió y que guarde una copia permanente dentro del directorio `.git`. Cada commit tiene un identificador único. Si no especificamos el mensaje, Git abrirá un editor de texto para colocar el mensaje. Los mensajes deben de reflejar lo que se está guardando para que sean útiles en el futuro.
 
-Si ahora verificamos el status del proyecto veremos que nos dice que no hay nada a lo que hacer commit ya que en el paso anterior añadimos todo y no hemos realizado ningún cambio.
+Si ahora verificamos el estado del proyecto veremos que nos dice que no hay nada a lo que hacer commit ya que en el paso anterior añadimos todo y no hemos realizado ningún cambio.
 
 ```bash
 $ git status
@@ -180,7 +180,7 @@ Primer archivo en el que rastrearemos cambios.
 Segunda línea de cambios para continuar con el ejemplo.
 ```
 
-Si revisamos el status veremos de nuevo que nos devuelve el mensaje de que hay archivos sin rastrear. Para comparar las diferencias del archivo usamos:
+Si revisamos el estado veremos de nuevo que nos devuelve el mensaje de que hay archivos sin rastrear. Para comparar las diferencias del archivo usamos:
 
 ```bash
 $ git diff
@@ -201,12 +201,12 @@ $ git add prueba.txt
 $ git commit -m "Añadimos la segunda linea al archivo"
 ```
 
-Añadir todo primero al staging area nos permite tener un mejor control de a que le estamos haciendo commit, por ejemplo podemos añadir y hacerle commit solo al archivo donde tenemos la bibliografía y no a todo el proyecto donde hay partes no completas.
+Añadir todo primero al área de preparación nos permite tener un mejor control de a que le estamos haciendo commit, por ejemplo podemos añadir y hacerle commit solo al archivo donde tenemos la bibliografía y no a todo el proyecto donde hay partes no completas.
 
 ![Software Carpentry - Version Control with Git](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/git-staging-area.svg)
 
 
-**Ejercicio:** Añadamos una tercera línea al archivo y verifiquemos las diferencias en los archivos, después añadamoslo al staging area y revicemos las diferencias. ¿Qué sucede?
+**Ejercicio:** Añadamos una tercera línea al archivo y verifiquemos las diferencias en los archivos, después añadamoslo al área de preparación y revicemos las diferencias. ¿Qué sucede?
 
 ```bash
 $ nano prueba.txt
@@ -215,7 +215,7 @@ $ git add prueba.txt
 $ git diff
 ```
 
-Al añadirlo al staging area lo estamos añadiendo permanentemente, entonces no hay ninguna diferencia. Si queremos las diferencias con lo último a lo que se le hizo commit podemos hacer lo siguiente:
+Al añadirlo al área de preparación lo estamos añadiendo permanentemente, entonces no hay ninguna diferencia. Si queremos las diferencias con lo último a lo que se le hizo commit podemos hacer lo siguiente:
 
 ```bash
 $ git diff --staged
@@ -224,7 +224,7 @@ $ git diff --staged
 Ahora hagamos el commit.
 
 ```bash
-$ git commit -m "Tercera línea para probar que pasa cuando se añade al staging area"
+$ git commit -m "Tercera línea para probar que pasa cuando se añade al área de preparación"
 ```
 
 Si revisamos el historial, veremos ahora 3 commit diferentes:
@@ -308,7 +308,7 @@ $ git diff 451b2ad469b96e13547e13dc0e718613acdc987c prueba.txt
 $ git diff 451b2ad prueba.txt
 ```
 
-Revisemos el status:
+Revisemos el estado:
 
 ```bash
 $ git status
@@ -347,7 +347,7 @@ El comando `git checkout` revierte los archivos a alguna versión anterior siemp
 
 5) Guardar y cerrar
 
-Si ya añadimos los cambios al staging área, ya no podemos usar git checkout simplemente. Agregemos una línea al archivo `prueba.txt` y añadamos el cambio al staging área. Usen `git checkout` para ver si podemos revertir el cambio. Veamos que nos dice el status `git status`. Si usamos `git checkout -- prueba.txt` ya no veremos errores pero tampoco se restaurará el archivo. Para hacerlo debemos usar `reset`:
+Si ya añadimos los cambios al staging área, ya no podemos usar git checkout simplemente. Agregemos una línea al archivo `prueba.txt` y añadamos el cambio al staging área. Usen `git checkout` para ver si podemos revertir el cambio. Veamos que nos dice el estado `git status`. Si usamos `git checkout -- prueba.txt` ya no veremos errores pero tampoco se restaurará el archivo. Para hacerlo debemos usar `reset`:
 
 ```bash
 $ git reset HEAD prueba.txt
@@ -373,6 +373,129 @@ $ git log --patch prueba.txt
 ```
 
 ## Ignorar archivos/carpetas
+
+Es muy usual tener un archivo llamado `.gitignore` donde se pueden colocar los nombres de archivos o carpetas que no queremos llevar registro. 
+
+Creemos unos archivos de prueba.
+
+```bash
+$ cd Mi_primer_repo
+$ mkdir resultados
+$ touch a.csv b.csv c.csv resultados/a.out resultados/b.out
+```
+
+Si preguntamos el estado veremos los cambios no registrados en el historial.
+
+```bash
+$ git status
+```
+
+Estos archivos por el momento no nos sirven de nada y guardarlos o registrarlos sería una perdida de tiempo/espacio. Para ignorarlos, creamos el archivo `.gitigno` y añadimos los nombres a ese archivo:
+
+```bash
+$ nano .gitignore
+```
+
+```bash
+*.csv
+resultados/
+```
+
+```bash
+$ cat .gitignore
+```
+
+Estos patrones le están diciendo a Git que ignore todos los archivos `.csv` y todo lo que hay en la carpeta `resultados`, si después añadimos algo a la carpeta lo seguirá ignorando. Y si alguno de esos archivos ya se le dijo a Git que llevará su registro lo seguirá registrando.
+
+```bash
+$ git status
+```
+
+Si nos fijamos, el único documento que ahora nos menciona `Git` es el archivo `.gitignore`. Lo que nos falta es añadirlo y hacer el commit.
+
+```bash
+$ git add .gitignore
+$ git commit -m "Creamos el archivo gitignore e ignoramos todo lo que hay en resultados y archivos csv"
+$ git status
+```
+
+El archivo `.gitignore` nos ayuda a no cometer el error de accidentalmente tratar de registrar y rastrear algo que se le dijo que no lo hiciera.
+
+```bash
+$ git add a.csv
+```
+
+Si realmente queremos agregarlo, tendríamos que usar la opción `-f`:
+
+```bash
+$ git add -f a.csv
+```
+
+Para ver el estado de los archivos ignorados usamos la siguiente instrucción:
+
+```bash
+$ git status --ignored
+```
+
+**Ejercicio:** Supongamos que tenemos las siguientes subcarpetas: 
+
+```bash
+resultados/plots
+resultados/datos
+```
+
+¿Qué tenemos que hacer si queremos ignorar solamente lo que hay en `datos` y no lo que hay en `plots`?
+
+
+Para ignorar por ejemplo todos los archivos que terminan en `.csv` excepto uno en específico (`b.csv`) podemos indicarlo en el archivo `.gitignore` como:
+
+```bash
+*.csv  # ignoramos todos los csv
+!b.csv # exepto el que se llama b.csv
+```
+
+**Ejercicio:** Supongamos ahora que tenemos la siguiente estructura de carpetas:
+
+
+```bash
+resultados/plots
+resultados/datos
+resultados/img
+resultados/analisis
+```
+
+Y que queremos ignorar todo excepto lo que hay en datos. ¿Cómo lo harían?
+
+**Ejemplo:** Supongamos que tenemos la siguiente estructura de archivos:
+
+
+```bash
+resultados/rdatos/a.csv
+resultados/rdatos/b.csv
+resultados/rdatos/c.csv
+resultados/rdatos/info.txt
+```
+
+¿Cómo le indicas a Git que ignore todos los `csv` de la carpeta `rdatos` menos el que se llama `info.txt`?
+
+**Ejercicio:** Supongamos que tenemos la siguiente estructura de datos:
+
+
+```bash
+resultados/a.csv
+resultados/analisis1/b.csv
+resultados/analisis2/c.csv
+resultados/analisis2/sub_1/d.csv
+```
+
+¿Cómo le indicamos a Git que ignore todos los archivos `.csv` sin indicar manualmente todos los directorios?
+
+**Ejercicio:** Si en el archivo `.gitignore` escribimos lo siguiente, ¿qué está ignorando?
+
+```bash
+*.csv
+!*.csv
+```
 
 ## Github
 
