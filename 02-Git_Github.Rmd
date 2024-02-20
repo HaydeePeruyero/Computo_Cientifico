@@ -227,7 +227,150 @@ Ahora hagamos el commit.
 $ git commit -m "Tercera línea para probar que pasa cuando se añade al staging area"
 ```
 
+Si revisamos el historial, veremos ahora 3 commit diferentes:
+
+```bash
+$ git log
+```
+
+Cuando el historial es muy grande no nos va a mostrar todo el historial nuestra terminal, para ir avanzando debemos presionar <kbd>Spacebar</kbd> y para salir la letra <kbd>Q</kbd>.  Al presionar <kbd>/</kbd> se puede buscar alguna palabra en los mensajes de los commits. Para limitar la cantidad de información que nos regresa `log` podemos especificar con la opción `-n` la cantidad de commits desde el más reciente. Para ver por ejemplo el último utilizariamos lo siguiente:
+
+```bash
+$ git log -1
+```
+
+Si queremos ver los mensajes en una sola línea usamos:
+
+```bash
+$ git log --oneline
+```
+
+Git no guarda información de directorios vacíos. Por ejemplo:
+
+```bash
+$ mkdir dic_prueba
+$ git status
+$ git add dic_prueba
+$ git status
+```
+
+Si creamos un directorio con archivos, entonces si podemos añadir todos los archivos a la vez y si quedará el registro del directorio también.
+
+```bash
+$ git touch dic_prueba/prueba1.txt dic_prueba/prueba2.txt dic_prueba/prueba3.txt
+$ git status
+$ git add dic_prueba
+$ git status
+$ git commit -m "Ejemplo de como realizar un registro de directorios con archivos"
+```
+
+En algunas ocasiones verán directorios vacíos con un archivo `.gitkeep`, este archivo es solo para que podamos añadir el repo a Git.
+
+
+**Ejercicio:** Crea un archivo `mi_archivo.txt`, escribe algo en el y guárdalo en la ruta `Mi_primer_repo`. Añádelo a la historia de tu repo. ¿Cuáles son los pasos que debes realizar?
+
+**Ejercicio:** Modifica el archivo `prueba.txt` añadiéndole una línea, ahora en el archivo `mi_archivo.txt` agrega algo y guárdalo. ¿Cómo añadirías los dos archivos al staging área? Añádelos y realiza el commit correspondiente.
+
+**Ejercicio:** Crea un repositorio llamado `bio`. Escribe en un archivo llamado `me.txt` tres líneas de tu biografía, has un commit con tus cambios. Modifica una línea y agrega una cuarta línea. Muestra las diferencias entre el archivo en el staging área y el actual.
+
+
 ## Explorando el historial
+
+A los commits nos podemos referir a ellos con sus identificadores. Al último commit también nos podemos referir como `HEAD`. Añadamos una línea más al archivo `prueba.txt`.
+
+```bash
+$ nano prueba.txt
+$ cat prueba.txt
+```
+
+Ahora, para ver el último cambio con el último commit:
+
+```bash
+$ git diff HEAD prueba.txt
+```
+
+Si quitamos el HEAD de esa última instrucción veremos lo mismo. Pero si colocamos un `~numero` vamos a ver que nos estamos refiriendo al commit anterior número n. 
+
+```bash
+$ git diff HEAD~1 prueba.txt
+```
+
+Con `git show` vamos a ver los cambios con respecto a un commit anterior.
+
+```bash
+$ git show HEAD~1 prueba.txt
+```
+
+También podemos referirnos a los commit por su identificador de números y letras enorme o por los primeros 7 números o letras:
+
+```bash
+$ git diff 451b2ad469b96e13547e13dc0e718613acdc987c prueba.txt
+$ git diff 451b2ad prueba.txt
+```
+
+Revisemos el status:
+
+```bash
+$ git status
+```
+
+Con la siguiente instrucción podemos regresar las cosas a como estaban antes de hacer el último cambio.
+
+```bash
+$ git checkout HEAD prueba.txt
+$ cat prueba.txt
+```
+
+O podríamos usar uno de los identificadores de commits:
+
+```bash
+$ git checkout 451b2ad prueba.txt
+$ cat prueba.txt
+$ git status
+```
+
+Y para regresarlo al último commit de nuevo:
+
+```bash
+$ git checkout HEAD prueba.txt
+```
+
+El comando `git checkout` revierte los archivos a alguna versión anterior siempre que no lo hayamos añadido al staging área. Para revertir un commit usamos la instrucción `git revert [ID commit]`. Supongamos que tenemos un error en el archivo `prueba.txt` y que ya hicimos commit y queremos revertir al último cambio. Los pasos que haríamos serían los siguientes:
+
+1) `git log` para identificar el ID del commit.
+
+2) Copiar el ID del commit
+
+3) `git revert [ID del commit]` para revertir a ese cambio.
+
+4) Teclear el nuevo mensaje de commit.
+
+5) Guardar y cerrar
+
+Si ya añadimos los cambios al staging área, ya no podemos usar git checkout simplemente. Agregemos una línea al archivo `prueba.txt` y añadamos el cambio al staging área. Usen `git checkout` para ver si podemos revertir el cambio. Veamos que nos dice el status `git status`. Si usamos `git checkout -- prueba.txt` ya no veremos errores pero tampoco se restaurará el archivo. Para hacerlo debemos usar `reset`:
+
+```bash
+$ git reset HEAD prueba.txt
+```
+
+Y si usamos ahora:
+
+```bash
+$ git status
+```
+
+Nos indica que ya podemos realizar la modificación con checkout:
+
+```bash
+$ git checkout -- prueba.txt
+$ git status
+```
+
+Para ver tanto las diferencias entre los archivos y los ID de los commits podemos usar lo siguiente:
+
+```bash
+$ git log --patch prueba.txt
+```
 
 ## Ignorar archivos/carpetas
 

@@ -323,9 +323,70 @@ Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="git-y-github.html#cb28-1" tabindex="-1"></a><span class="ex">$</span> git diff <span class="at">--staged</span></span></code></pre></div>
 <p>Ahora hagamos el commit.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="git-y-github.html#cb29-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Tercera línea para probar que pasa cuando se añade al staging area&quot;</span></span></code></pre></div>
+<p>Si revisamos el historial, veremos ahora 3 commit diferentes:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="git-y-github.html#cb30-1" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre></div>
+<p>Cuando el historial es muy grande no nos va a mostrar todo el historial nuestra terminal, para ir avanzando debemos presionar <kbd>Spacebar</kbd> y para salir la letra <kbd>Q</kbd>. Al presionar <kbd>/</kbd> se puede buscar alguna palabra en los mensajes de los commits. Para limitar la cantidad de información que nos regresa <code>log</code> podemos especificar con la opción <code>-n</code> la cantidad de commits desde el más reciente. Para ver por ejemplo el último utilizariamos lo siguiente:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="git-y-github.html#cb31-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">-1</span></span></code></pre></div>
+<p>Si queremos ver los mensajes en una sola línea usamos:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="git-y-github.html#cb32-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--oneline</span></span></code></pre></div>
+<p>Git no guarda información de directorios vacíos. Por ejemplo:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="git-y-github.html#cb33-1" tabindex="-1"></a><span class="ex">$</span> mkdir dic_prueba</span>
+<span id="cb33-2"><a href="git-y-github.html#cb33-2" tabindex="-1"></a><span class="ex">$</span> git status</span>
+<span id="cb33-3"><a href="git-y-github.html#cb33-3" tabindex="-1"></a><span class="ex">$</span> git add dic_prueba</span>
+<span id="cb33-4"><a href="git-y-github.html#cb33-4" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<p>Si creamos un directorio con archivos, entonces si podemos añadir todos los archivos a la vez y si quedará el registro del directorio también.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="git-y-github.html#cb34-1" tabindex="-1"></a><span class="ex">$</span> git touch dic_prueba/prueba1.txt dic_prueba/prueba2.txt dic_prueba/prueba3.txt</span>
+<span id="cb34-2"><a href="git-y-github.html#cb34-2" tabindex="-1"></a><span class="ex">$</span> git status</span>
+<span id="cb34-3"><a href="git-y-github.html#cb34-3" tabindex="-1"></a><span class="ex">$</span> git add dic_prueba</span>
+<span id="cb34-4"><a href="git-y-github.html#cb34-4" tabindex="-1"></a><span class="ex">$</span> git status</span>
+<span id="cb34-5"><a href="git-y-github.html#cb34-5" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Ejemplo de como realizar un registro de directorios con archivos&quot;</span></span></code></pre></div>
+<p>En algunas ocasiones verán directorios vacíos con un archivo <code>.gitkeep</code>, este archivo es solo para que podamos añadir el repo a Git.</p>
+<p><strong>Ejercicio:</strong> Crea un archivo <code>mi_archivo.txt</code>, escribe algo en el y guárdalo en la ruta <code>Mi_primer_repo</code>. Añádelo a la historia de tu repo. ¿Cuáles son los pasos que debes realizar?</p>
+<p><strong>Ejercicio:</strong> Modifica el archivo <code>prueba.txt</code> añadiéndole una línea, ahora en el archivo <code>mi_archivo.txt</code> agrega algo y guárdalo. ¿Cómo añadirías los dos archivos al staging área? Añádelos y realiza el commit correspondiente.</p>
+<p><strong>Ejercicio:</strong> Crea un repositorio llamado <code>bio</code>. Escribe en un archivo llamado <code>me.txt</code> tres líneas de tu biografía, has un commit con tus cambios. Modifica una línea y agrega una cuarta línea. Muestra las diferencias entre el archivo en el staging área y el actual.</p>
 </div>
 <div id="explorando-el-historial" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Explorando el historial<a href="git-y-github.html#explorando-el-historial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A los commits nos podemos referir a ellos con sus identificadores. Al último commit también nos podemos referir como <code>HEAD</code>. Añadamos una línea más al archivo <code>prueba.txt</code>.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="git-y-github.html#cb35-1" tabindex="-1"></a><span class="ex">$</span> nano prueba.txt</span>
+<span id="cb35-2"><a href="git-y-github.html#cb35-2" tabindex="-1"></a><span class="ex">$</span> cat prueba.txt</span></code></pre></div>
+<p>Ahora, para ver el último cambio con el último commit:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="git-y-github.html#cb36-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD prueba.txt</span></code></pre></div>
+<p>Si quitamos el HEAD de esa última instrucción veremos lo mismo. Pero si colocamos un <code>~numero</code> vamos a ver que nos estamos refiriendo al commit anterior número n. </p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="git-y-github.html#cb37-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~1 prueba.txt</span></code></pre></div>
+<p>Con <code>git show</code> vamos a ver los cambios con respecto a un commit anterior.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="git-y-github.html#cb38-1" tabindex="-1"></a><span class="ex">$</span> git show HEAD~1 prueba.txt</span></code></pre></div>
+<p>También podemos referirnos a los commit por su identificador de números y letras enorme o por los primeros 7 números o letras:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="git-y-github.html#cb39-1" tabindex="-1"></a><span class="ex">$</span> git diff 451b2ad469b96e13547e13dc0e718613acdc987c prueba.txt</span>
+<span id="cb39-2"><a href="git-y-github.html#cb39-2" tabindex="-1"></a><span class="ex">$</span> git diff 451b2ad prueba.txt</span></code></pre></div>
+<p>Revisemos el status:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="git-y-github.html#cb40-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<p>Con la siguiente instrucción podemos regresar las cosas a como estaban antes de hacer el último cambio.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="git-y-github.html#cb41-1" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD prueba.txt</span>
+<span id="cb41-2"><a href="git-y-github.html#cb41-2" tabindex="-1"></a><span class="ex">$</span> cat prueba.txt</span></code></pre></div>
+<p>O podríamos usar uno de los identificadores de commits:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="git-y-github.html#cb42-1" tabindex="-1"></a><span class="ex">$</span> git checkout 451b2ad prueba.txt</span>
+<span id="cb42-2"><a href="git-y-github.html#cb42-2" tabindex="-1"></a><span class="ex">$</span> cat prueba.txt</span>
+<span id="cb42-3"><a href="git-y-github.html#cb42-3" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<p>Y para regresarlo al último commit de nuevo:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="git-y-github.html#cb43-1" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD prueba.txt</span></code></pre></div>
+<p>El comando <code>git checkout</code> revierte los archivos a alguna versión anterior siempre que no lo hayamos añadido al staging área. Para revertir un commit usamos la instrucción <code>git revert [ID commit]</code>. Supongamos que tenemos un error en el archivo <code>prueba.txt</code> y que ya hicimos commit y queremos revertir al último cambio. Los pasos que haríamos serían los siguientes:</p>
+<ol style="list-style-type: decimal">
+<li><p><code>git log</code> para identificar el ID del commit.</p></li>
+<li><p>Copiar el ID del commit</p></li>
+<li><p><code>git revert [ID del commit]</code> para revertir a ese cambio.</p></li>
+<li><p>Teclear el nuevo mensaje de commit.</p></li>
+<li><p>Guardar y cerrar</p></li>
+</ol>
+<p>Si ya añadimos los cambios al staging área, ya no podemos usar git checkout simplemente. Agregemos una línea al archivo <code>prueba.txt</code> y añadamos el cambio al staging área. Usen <code>git checkout</code> para ver si podemos revertir el cambio. Veamos que nos dice el status <code>git status</code>. Si usamos <code>git checkout -- prueba.txt</code> ya no veremos errores pero tampoco se restaurará el archivo. Para hacerlo debemos usar <code>reset</code>:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="git-y-github.html#cb44-1" tabindex="-1"></a><span class="ex">$</span> git reset HEAD prueba.txt</span></code></pre></div>
+<p>Y si usamos ahora:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="git-y-github.html#cb45-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<p>Nos indica que ya podemos realizar la modificación con checkout:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="git-y-github.html#cb46-1" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">--</span> prueba.txt</span>
+<span id="cb46-2"><a href="git-y-github.html#cb46-2" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<p>Para ver tanto las diferencias entre los archivos y los ID de los commits podemos usar lo siguiente:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="git-y-github.html#cb47-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--patch</span> prueba.txt</span></code></pre></div>
 </div>
 <div id="ignorar-archivoscarpetas" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Ignorar archivos/carpetas<a href="git-y-github.html#ignorar-archivoscarpetas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
