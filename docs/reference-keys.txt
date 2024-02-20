@@ -54,3 +54,4 @@ explorando-el-historial
 ignorar-archivoscarpetas
 github
 colaboradores
+restore-revert-reset

@@ -372,6 +372,10 @@ Para ver tanto las diferencias entre los archivos y los ID de los commits podemo
 $ git log --patch prueba.txt
 ```
 
+### Restore, revert, reset
+
+**Pendiente**
+
 ## Ignorar archivos/carpetas
 
 Es muy usual tener un archivo llamado `.gitignore` donde se pueden colocar los nombres de archivos o carpetas que no queremos llevar registro. 
