@@ -347,7 +347,11 @@ El comando `git checkout` revierte los archivos a alguna versión anterior siemp
 
 5) Guardar y cerrar
 
-Si ya añadimos los cambios al staging área, ya no podemos usar git checkout simplemente. Agregemos una línea al archivo `prueba.txt` y añadamos el cambio al staging área. Usen `git checkout` para ver si podemos revertir el cambio. Veamos que nos dice el estado `git status`. Si usamos `git checkout -- prueba.txt` ya no veremos errores pero tampoco se restaurará el archivo. Para hacerlo debemos usar `reset`:
+
+![`git revert <ID commit>`, basado en APP](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/revert-commit.png)
+
+
+Si ya añadimos los cambios al área de preparación, ya no podemos usar git checkout simplemente. Agreguemos una línea al archivo `prueba.txt` y añadamos el cambio al área de preparación. Usen `git checkout` para ver si podemos revertir el cambio. Veamos que nos dice el estado `git status`. Si usamos `git checkout -- prueba.txt` ya no veremos errores pero tampoco se restaurará el archivo. Para hacerlo debemos usar `reset`:
 
 ```bash
 $ git reset HEAD prueba.txt
@@ -372,9 +376,65 @@ Para ver tanto las diferencias entre los archivos y los ID de los commits podemo
 $ git log --patch prueba.txt
 ```
 
-### Restore, revert, reset
+## Restore y reset
 
-**Pendiente**
+Otra forma de deshacer cambios es con `restore` y `reset`. Usualmente deshacer cambios se requiere para deshacer:
+
+- Cambios antes de mandarlos al área de preparación. 
+
+- Cambios que ya se mandaron al área de preparación.
+
+- Commits
+
+Supongamos que hicimos un cambio en el archivo de prueba y lo guardamos y después decidimos que ya no queremos ese cambio, entonces usamos la opción:
+
+```bash
+$ git restore prueba.txt
+```
+Esto nos regresará a la versión del archivo del último commit. Esto no se puede deshacer, una vez echo esto no hay forma de recuperar los cambios que se habían realizado.
+
+![`git restore <archivo>`, basado en ASSP](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/restore-archivo.png)
+
+
+
+Ahora, supongamos que hicimos un cambio y lo mandamos al área de preparación, entonces para sacarlo de esa área usamos:
+
+```bash
+$ git restore --staged prueba.txt
+```
+
+![`git restore --staged <archivo>`, basado en ASSP](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/restore-staged.png)
+
+
+También se pueden restaurar todos los archivos de un proyecto con:
+
+```bash
+$ git restore .
+```
+
+Para restaurar a un commit anterior usamos el identificador del commit, por ejemplo:
+
+```bash
+$ git restore --source d3a9d6d prueba.txt
+```
+
+Si ahora revisamos el estado del proyecto veremos que si hay cambios.
+
+Con `reset` tenemos tres posibles situaciones.
+
+- Situación 1: `reset --soft HEAD~1`: si realizamos un cambio en nuestro archivo y lo añadimos al área de preparación, al realizar el `reset soft` al commit `HEAD~1` lo que estamos haciendo es como regresar a un commit anterior pero sin perder los cambios que ya tenemos en el área de preparación, entonces lo que va a resultar es que nuestro historial va a cambiar de un commit anterior hasta el cambio que tenemos ahora. Con `git status` vemos que no cambio nuestra área de preparación y después con `git log` podemos ver el cambio en el historial de commits.
+
+![`git reset --soft HEAD~1`, basado en ASSP](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/reset-soft.png)
+
+
+- Situación 2: `reset --mixed HEAD~1`: si realizamos un cambio en nuestro archivo y lo añadimos al área de preparación, al realizar el `reset mixed` al commit `HEAD~1` lo que estamos haciendo es como regresar nuestra área de preparación a como estaba antes de ese commit, no perdemos el cambio realizado en el archivo pero nuestro historial cambiará, pasará del commit anterior hasta el próximo commit que realicemos. Con `git status` vemos que nuestra área de preparación si cambio y con `git log` vemos que nuestro último commit desapareció.
+
+![`git reset --mixed HEAD~1`, basado en ASSP](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/reset-mixed.png)
+- Situación 3: `reset --hard HEAD~1`: si realizamos un cambio en nuestro archivo y lo añadimos al área de preparación, al realizar el `reset hard` al commit `HEAD~1` lo que estamos haciendo es como regresar a un commit anterior pero perdiendo los cambios que ya tenemos en el área de preparación y en nuestro archivo actual, entonces lo que va a resultar es que estaríamos regresando hasta el commit anterior todo nuestro historial y a partir de ahí comenzarían nuestros cambios.
+
+![`git reset --hard HEAD~1`, basado en ASSP](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/reset-hard.png)
+
+
 
 ## Ignorar archivos/carpetas
 
@@ -512,3 +572,5 @@ resultados/analisis2/sub_1/d.csv
 ## Revertir cambios
 
 ## Resolver conflictos
+
+## Conectar con overleaf

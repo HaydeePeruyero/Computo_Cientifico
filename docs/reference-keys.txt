@@ -55,3 +55,5 @@ ignorar-archivoscarpetas
 github
 colaboradores
 restore-revert-reset
+restore-y-reset
+conectar-con-overleaf
