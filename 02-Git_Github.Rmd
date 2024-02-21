@@ -335,6 +335,8 @@ Y para regresarlo al último commit de nuevo:
 $ git checkout HEAD prueba.txt
 ```
 
+![`git checkout <ID commit> <archivo>`, basdo en ASSP](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/git-checkout.png)
+
 El comando `git checkout` revierte los archivos a alguna versión anterior siempre que no lo hayamos añadido al staging área. Para revertir un commit usamos la instrucción `git revert [ID commit]`. Supongamos que tenemos un error en el archivo `prueba.txt` y que ya hicimos commit y queremos revertir al último cambio. Los pasos que haríamos serían los siguientes:
 
 1) `git log` para identificar el ID del commit.
@@ -562,6 +564,14 @@ resultados/analisis2/sub_1/d.csv
 ```
 
 ## Github
+
+El valor del control de versiones se hace evidente al comenzar a colaborar con otros. Contamos con la mayor parte de las herramientas necesarias para ello; lo único que resta es transferir cambios de un repositorio a otro.
+
+Sistemas como Git posibilitan el traslado de trabajo entre cualquier par de repositorios. No obstante, en la práctica, resulta más conveniente utilizar una copia como punto central y mantenerla en la web en lugar de en la computadora portátil de alguien.
+
+Vamos a comenzar por crear un repositorio remoto, pero para eso necesitamos configurar nuestra cuenta de Github también.
+
+
 
 ## Colaboradores
 

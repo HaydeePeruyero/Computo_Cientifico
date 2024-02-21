@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-02-20" />
+<meta name="date" content="2024-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -372,6 +372,10 @@ Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 <span id="cb42-3"><a href="git-y-github.html#cb42-3" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Y para regresarlo al último commit de nuevo:</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="git-y-github.html#cb43-1" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD prueba.txt</span></code></pre></div>
+<div class="float">
+<img src="img/git-checkout.png" alt="git checkout &lt;ID commit&gt; &lt;archivo&gt;, basdo en ASSP" />
+<div class="figcaption"><code>git checkout &lt;ID commit&gt; &lt;archivo&gt;</code>, basdo en ASSP</div>
+</div>
 <p>El comando <code>git checkout</code> revierte los archivos a alguna versión anterior siempre que no lo hayamos añadido al staging área. Para revertir un commit usamos la instrucción <code>git revert [ID commit]</code>. Supongamos que tenemos un error en el archivo <code>prueba.txt</code> y que ya hicimos commit y queremos revertir al último cambio. Los pasos que haríamos serían los siguientes:</p>
 <ol style="list-style-type: decimal">
 <li><p><code>git log</code> para identificar el ID del commit.</p></li>
@@ -495,6 +499,9 @@ Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 </div>
 <div id="github" class="section level2 hasAnchor" number="3.6">
 <h2><span class="header-section-number">3.6</span> Github<a href="git-y-github.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El valor del control de versiones se hace evidente al comenzar a colaborar con otros. Contamos con la mayor parte de las herramientas necesarias para ello; lo único que resta es transferir cambios de un repositorio a otro.</p>
+<p>Sistemas como Git posibilitan el traslado de trabajo entre cualquier par de repositorios. No obstante, en la práctica, resulta más conveniente utilizar una copia como punto central y mantenerla en la web en lugar de en la computadora portátil de alguien.</p>
+<p>Vamos a comenzar por crear un repositorio remoto, pero para eso necesitamos configurar nuestra cuenta de Github también.</p>
 </div>
 <div id="colaboradores" class="section level2 hasAnchor" number="3.7">
 <h2><span class="header-section-number">3.7</span> Colaboradores<a href="git-y-github.html#colaboradores" class="anchor-section" aria-label="Anchor link to header"></a></h2>

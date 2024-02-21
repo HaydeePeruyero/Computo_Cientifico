@@ -79,6 +79,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
   - [Use R! Colección Springer](https://www.springer.com/series/6991/books)
   - [Lattice: Multivariate Data Visualization with R](https://link.springer.com/book/10.1007/978-0-387-75969-2)
   - [R Graphics cookbook](http://www.cookbook-r.com/)
+  - [Cuenta pro de Github](https://education.github.com/benefits)
   
 ## DataCamp
 
