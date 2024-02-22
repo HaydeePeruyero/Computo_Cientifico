@@ -353,30 +353,62 @@ El comando `git checkout` revierte los archivos a alguna versión anterior siemp
 ![`git revert <ID commit>`, basado en APP](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/revert-commit.png)
 
 
-Si ya añadimos los cambios al área de preparación, ya no podemos usar git checkout simplemente. Agreguemos una línea al archivo `prueba.txt` y añadamos el cambio al área de preparación. Usen `git checkout` para ver si podemos revertir el cambio. Veamos que nos dice el estado `git status`. Si usamos `git checkout -- prueba.txt` ya no veremos errores pero tampoco se restaurará el archivo. Para hacerlo debemos usar `reset`:
+Si ya añadimos los cambios al área de preparación, ya no podemos usar git checkout simplemente. 
 
-```bash
-$ git reset HEAD prueba.txt
-```
 
-Y si usamos ahora:
+**Ejercicio:** Realiza las siguientes instrucciones:
 
-```bash
-$ git status
-```
+1) Crea una carpeta llamada `learn_revert`.
 
-Nos indica que ya podemos realizar la modificación con checkout:
+2) Muévete a la carpeta `learn_revert`
 
-```bash
-$ git checkout -- prueba.txt
-$ git status
-```
+3) Inicializa el repositorio.
 
-Para ver tanto las diferencias entre los archivos y los ID de los commits podemos usar lo siguiente:
+4) Crea un archivo llamado `first.txt` y añade una línea de texto.
+
+5) Agrégalo al área de preparación y realiza el primer commit.
+
+6) Crea el archivo `wrong.txt` y agrega una línea de texto.
+
+7) Agrégalo al área de preparación y realiza un commit.
+
+8) Agrega una segunda línea de texto al archivo `first.txt`, guárdalo, agrégalo al área de preparación y realiza un commit.
+
+9) Agrega una tercera línea de texto al archivo `first.txt`, guárdalo, agrégalo al área de preparación y realiza un commit.
+
+10) Queremos deshacer el commit realizado cuando se añadió el archivo `wrong.txt`. Como este commit fue el segundo de donde no estamos, podemos usar `git revert HEAD~2` (o podemos usar `git log` y encontrar el ID de ese commit).
+
+
+ ¿Está el archivo `wrong.txt`? ¿Qué sucede con el historial de commits?
+ 
+
+Otras opciones del historial del commit:
+
+1) Para ver tanto las diferencias entre los archivos y los ID de los commits. Se puede colocar solo el nombre de un archivo y solo mostrara los commit que afectaban ese archivo o si no se coloca el nombre del archivo aplica sobre todo el historial de commits.
 
 ```bash
 $ git log --patch prueba.txt
 ```
+
+2) Para mostrar las descripciones detalladas de las modificaciones y archivos.
+
+```bash
+$ git log -p
+```
+
+3) Para mostrar los nombres de los archivos afectados en cada commit.
+
+```bash
+$ git log --name-only
+```
+
+4) Para mostrar los archivos afectados en cada commit con la leyenda de si fueron modificados (M) o añadidos (A) o eliminados. 
+
+```bash
+$ git log --name-status
+```
+
+Consultar el siguiente [link](https://git-scm.com/book/es/v2/Fundamentos-de-Git-Ver-el-Historial-de-Confirmaciones) para ver más opciones y ejemplos.
 
 ## Restore y reset
 
@@ -421,6 +453,27 @@ $ git restore --source d3a9d6d prueba.txt
 ```
 
 Si ahora revisamos el estado del proyecto veremos que si hay cambios.
+
+Agreguemos una línea al archivo `prueba.txt` y añadamos el cambio al área de preparación. Usen `git checkout` para ver si podemos revertir el cambio. Veamos que nos dice el estado `git status`. Si usamos `git checkout -- prueba.txt` ya no veremos errores pero tampoco se restaurará el archivo. 
+
+Para hacerlo debemos usar `reset`:
+
+```bash
+$ git reset HEAD prueba.txt
+```
+
+Y si usamos ahora:
+
+```bash
+$ git status
+```
+
+Nos indica que ya podemos realizar la modificación con checkout:
+
+```bash
+$ git checkout -- prueba.txt
+$ git status
+```
 
 Con `reset` tenemos tres posibles situaciones.
 

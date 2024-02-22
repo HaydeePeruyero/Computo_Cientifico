@@ -388,15 +388,39 @@ Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 <img src="img/revert-commit.png" alt="git revert &lt;ID commit&gt;, basado en APP" />
 <div class="figcaption"><code>git revert &lt;ID commit&gt;</code>, basado en APP</div>
 </div>
-<p>Si ya añadimos los cambios al área de preparación, ya no podemos usar git checkout simplemente. Agreguemos una línea al archivo <code>prueba.txt</code> y añadamos el cambio al área de preparación. Usen <code>git checkout</code> para ver si podemos revertir el cambio. Veamos que nos dice el estado <code>git status</code>. Si usamos <code>git checkout -- prueba.txt</code> ya no veremos errores pero tampoco se restaurará el archivo. Para hacerlo debemos usar <code>reset</code>:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="git-y-github.html#cb44-1" tabindex="-1"></a><span class="ex">$</span> git reset HEAD prueba.txt</span></code></pre></div>
-<p>Y si usamos ahora:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="git-y-github.html#cb45-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
-<p>Nos indica que ya podemos realizar la modificación con checkout:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="git-y-github.html#cb46-1" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">--</span> prueba.txt</span>
-<span id="cb46-2"><a href="git-y-github.html#cb46-2" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
-<p>Para ver tanto las diferencias entre los archivos y los ID de los commits podemos usar lo siguiente:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="git-y-github.html#cb47-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--patch</span> prueba.txt</span></code></pre></div>
+<p>Si ya añadimos los cambios al área de preparación, ya no podemos usar git checkout simplemente.</p>
+<p><strong>Ejercicio:</strong> Realiza las siguientes instrucciones:</p>
+<ol style="list-style-type: decimal">
+<li><p>Crea una carpeta llamada <code>learn_revert</code>.</p></li>
+<li><p>Muévete a la carpeta <code>learn_revert</code></p></li>
+<li><p>Inicializa el repositorio.</p></li>
+<li><p>Crea un archivo llamado <code>first.txt</code> y añade una línea de texto.</p></li>
+<li><p>Agrégalo al área de preparación y realiza el primer commit.</p></li>
+<li><p>Crea el archivo <code>wrong.txt</code> y agrega una línea de texto.</p></li>
+<li><p>Agrégalo al área de preparación y realiza un commit.</p></li>
+<li><p>Agrega una segunda línea de texto al archivo <code>first.txt</code>, guárdalo, agrégalo al área de preparación y realiza un commit.</p></li>
+<li><p>Agrega una tercera línea de texto al archivo <code>first.txt</code>, guárdalo, agrégalo al área de preparación y realiza un commit.</p></li>
+<li><p>Queremos deshacer el commit realizado cuando se añadió el archivo <code>wrong.txt</code>. Como este commit fue el segundo de donde no estamos, podemos usar <code>git revert HEAD~2</code> (o podemos usar <code>git log</code> y encontrar el ID de ese commit).</p></li>
+</ol>
+<p>¿Está el archivo <code>wrong.txt</code>? ¿Qué sucede con el historial de commits?</p>
+<p>Otras opciones del historial del commit:</p>
+<ol style="list-style-type: decimal">
+<li>Para ver tanto las diferencias entre los archivos y los ID de los commits. Se puede colocar solo el nombre de un archivo y solo mostrara los commit que afectaban ese archivo o si no se coloca el nombre del archivo aplica sobre todo el historial de commits.</li>
+</ol>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="git-y-github.html#cb44-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--patch</span> prueba.txt</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Para mostrar las descripciones detalladas de las modificaciones y archivos.</li>
+</ol>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="git-y-github.html#cb45-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">-p</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Para mostrar los nombres de los archivos afectados en cada commit.</li>
+</ol>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="git-y-github.html#cb46-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--name-only</span></span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Para mostrar los archivos afectados en cada commit con la leyenda de si fueron modificados (M) o añadidos (A) o eliminados.</li>
+</ol>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="git-y-github.html#cb47-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--name-status</span></span></code></pre></div>
+<p>Consultar el siguiente <a href="https://git-scm.com/book/es/v2/Fundamentos-de-Git-Ver-el-Historial-de-Confirmaciones">link</a> para ver más opciones y ejemplos.</p>
 </div>
 <div id="restore-y-reset" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Restore y reset<a href="git-y-github.html#restore-y-reset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -424,6 +448,14 @@ Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 <p>Para restaurar a un commit anterior usamos el identificador del commit, por ejemplo:</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="git-y-github.html#cb51-1" tabindex="-1"></a><span class="ex">$</span> git restore <span class="at">--source</span> d3a9d6d prueba.txt</span></code></pre></div>
 <p>Si ahora revisamos el estado del proyecto veremos que si hay cambios.</p>
+<p>Agreguemos una línea al archivo <code>prueba.txt</code> y añadamos el cambio al área de preparación. Usen <code>git checkout</code> para ver si podemos revertir el cambio. Veamos que nos dice el estado <code>git status</code>. Si usamos <code>git checkout -- prueba.txt</code> ya no veremos errores pero tampoco se restaurará el archivo.</p>
+<p>Para hacerlo debemos usar <code>reset</code>:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="git-y-github.html#cb52-1" tabindex="-1"></a><span class="ex">$</span> git reset HEAD prueba.txt</span></code></pre></div>
+<p>Y si usamos ahora:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="git-y-github.html#cb53-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<p>Nos indica que ya podemos realizar la modificación con checkout:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="git-y-github.html#cb54-1" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">--</span> prueba.txt</span>
+<span id="cb54-2"><a href="git-y-github.html#cb54-2" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Con <code>reset</code> tenemos tres posibles situaciones.</p>
 <ul>
 <li>Situación 1: <code>reset --soft HEAD~1</code>: si realizamos un cambio en nuestro archivo y lo añadimos al área de preparación, al realizar el <code>reset soft</code> al commit <code>HEAD~1</code> lo que estamos haciendo es como regresar a un commit anterior pero sin perder los cambios que ya tenemos en el área de preparación, entonces lo que va a resultar es que nuestro historial va a cambiar de un commit anterior hasta el cambio que tenemos ahora. Con <code>git status</code> vemos que no cambio nuestra área de preparación y después con <code>git log</code> podemos ver el cambio en el historial de commits.</li>
@@ -446,56 +478,56 @@ Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 <h2><span class="header-section-number">3.5</span> Ignorar archivos/carpetas<a href="git-y-github.html#ignorar-archivoscarpetas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Es muy usual tener un archivo llamado <code>.gitignore</code> donde se pueden colocar los nombres de archivos o carpetas que no queremos llevar registro.</p>
 <p>Creemos unos archivos de prueba.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="git-y-github.html#cb52-1" tabindex="-1"></a><span class="ex">$</span> cd Mi_primer_repo</span>
-<span id="cb52-2"><a href="git-y-github.html#cb52-2" tabindex="-1"></a><span class="ex">$</span> mkdir resultados</span>
-<span id="cb52-3"><a href="git-y-github.html#cb52-3" tabindex="-1"></a><span class="ex">$</span> touch a.csv b.csv c.csv resultados/a.out resultados/b.out</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="git-y-github.html#cb55-1" tabindex="-1"></a><span class="ex">$</span> cd Mi_primer_repo</span>
+<span id="cb55-2"><a href="git-y-github.html#cb55-2" tabindex="-1"></a><span class="ex">$</span> mkdir resultados</span>
+<span id="cb55-3"><a href="git-y-github.html#cb55-3" tabindex="-1"></a><span class="ex">$</span> touch a.csv b.csv c.csv resultados/a.out resultados/b.out</span></code></pre></div>
 <p>Si preguntamos el estado veremos los cambios no registrados en el historial.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="git-y-github.html#cb53-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="git-y-github.html#cb56-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Estos archivos por el momento no nos sirven de nada y guardarlos o registrarlos sería una perdida de tiempo/espacio. Para ignorarlos, creamos el archivo <code>.gitigno</code> y añadimos los nombres a ese archivo:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="git-y-github.html#cb54-1" tabindex="-1"></a><span class="ex">$</span> nano .gitignore</span></code></pre></div>
-<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="git-y-github.html#cb55-1" tabindex="-1"></a><span class="ex">*.csv</span></span>
-<span id="cb55-2"><a href="git-y-github.html#cb55-2" tabindex="-1"></a><span class="ex">resultados/</span></span></code></pre></div>
-<div class="sourceCode" id="cb56"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="git-y-github.html#cb56-1" tabindex="-1"></a><span class="ex">$</span> cat .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="git-y-github.html#cb57-1" tabindex="-1"></a><span class="ex">$</span> nano .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="git-y-github.html#cb58-1" tabindex="-1"></a><span class="ex">*.csv</span></span>
+<span id="cb58-2"><a href="git-y-github.html#cb58-2" tabindex="-1"></a><span class="ex">resultados/</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="git-y-github.html#cb59-1" tabindex="-1"></a><span class="ex">$</span> cat .gitignore</span></code></pre></div>
 <p>Estos patrones le están diciendo a Git que ignore todos los archivos <code>.csv</code> y todo lo que hay en la carpeta <code>resultados</code>, si después añadimos algo a la carpeta lo seguirá ignorando. Y si alguno de esos archivos ya se le dijo a Git que llevará su registro lo seguirá registrando.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="git-y-github.html#cb57-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="git-y-github.html#cb60-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Si nos fijamos, el único documento que ahora nos menciona <code>Git</code> es el archivo <code>.gitignore</code>. Lo que nos falta es añadirlo y hacer el commit.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="git-y-github.html#cb58-1" tabindex="-1"></a><span class="ex">$</span> git add .gitignore</span>
-<span id="cb58-2"><a href="git-y-github.html#cb58-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Creamos el archivo gitignore e ignoramos todo lo que hay en resultados y archivos csv&quot;</span></span>
-<span id="cb58-3"><a href="git-y-github.html#cb58-3" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="git-y-github.html#cb61-1" tabindex="-1"></a><span class="ex">$</span> git add .gitignore</span>
+<span id="cb61-2"><a href="git-y-github.html#cb61-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Creamos el archivo gitignore e ignoramos todo lo que hay en resultados y archivos csv&quot;</span></span>
+<span id="cb61-3"><a href="git-y-github.html#cb61-3" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>El archivo <code>.gitignore</code> nos ayuda a no cometer el error de accidentalmente tratar de registrar y rastrear algo que se le dijo que no lo hiciera.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="git-y-github.html#cb59-1" tabindex="-1"></a><span class="ex">$</span> git add a.csv</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="git-y-github.html#cb62-1" tabindex="-1"></a><span class="ex">$</span> git add a.csv</span></code></pre></div>
 <p>Si realmente queremos agregarlo, tendríamos que usar la opción <code>-f</code>:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="git-y-github.html#cb60-1" tabindex="-1"></a><span class="ex">$</span> git add <span class="at">-f</span> a.csv</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="git-y-github.html#cb63-1" tabindex="-1"></a><span class="ex">$</span> git add <span class="at">-f</span> a.csv</span></code></pre></div>
 <p>Para ver el estado de los archivos ignorados usamos la siguiente instrucción:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="git-y-github.html#cb61-1" tabindex="-1"></a><span class="ex">$</span> git status <span class="at">--ignored</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="git-y-github.html#cb64-1" tabindex="-1"></a><span class="ex">$</span> git status <span class="at">--ignored</span></span></code></pre></div>
 <p><strong>Ejercicio:</strong> Supongamos que tenemos las siguientes subcarpetas:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="git-y-github.html#cb62-1" tabindex="-1"></a><span class="ex">resultados/plots</span></span>
-<span id="cb62-2"><a href="git-y-github.html#cb62-2" tabindex="-1"></a><span class="ex">resultados/datos</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="git-y-github.html#cb65-1" tabindex="-1"></a><span class="ex">resultados/plots</span></span>
+<span id="cb65-2"><a href="git-y-github.html#cb65-2" tabindex="-1"></a><span class="ex">resultados/datos</span></span></code></pre></div>
 <p>¿Qué tenemos que hacer si queremos ignorar solamente lo que hay en <code>datos</code> y no lo que hay en <code>plots</code>?</p>
 <p>Para ignorar por ejemplo todos los archivos que terminan en <code>.csv</code> excepto uno en específico (<code>b.csv</code>) podemos indicarlo en el archivo <code>.gitignore</code> como:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="git-y-github.html#cb63-1" tabindex="-1"></a><span class="ex">*.csv</span>  <span class="co"># ignoramos todos los csv</span></span>
-<span id="cb63-2"><a href="git-y-github.html#cb63-2" tabindex="-1"></a><span class="ex">!b.csv</span> <span class="co"># exepto el que se llama b.csv</span></span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="git-y-github.html#cb66-1" tabindex="-1"></a><span class="ex">*.csv</span>  <span class="co"># ignoramos todos los csv</span></span>
+<span id="cb66-2"><a href="git-y-github.html#cb66-2" tabindex="-1"></a><span class="ex">!b.csv</span> <span class="co"># exepto el que se llama b.csv</span></span></code></pre></div>
 <p><strong>Ejercicio:</strong> Supongamos ahora que tenemos la siguiente estructura de carpetas:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="git-y-github.html#cb64-1" tabindex="-1"></a><span class="ex">resultados/plots</span></span>
-<span id="cb64-2"><a href="git-y-github.html#cb64-2" tabindex="-1"></a><span class="ex">resultados/datos</span></span>
-<span id="cb64-3"><a href="git-y-github.html#cb64-3" tabindex="-1"></a><span class="ex">resultados/img</span></span>
-<span id="cb64-4"><a href="git-y-github.html#cb64-4" tabindex="-1"></a><span class="ex">resultados/analisis</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="git-y-github.html#cb67-1" tabindex="-1"></a><span class="ex">resultados/plots</span></span>
+<span id="cb67-2"><a href="git-y-github.html#cb67-2" tabindex="-1"></a><span class="ex">resultados/datos</span></span>
+<span id="cb67-3"><a href="git-y-github.html#cb67-3" tabindex="-1"></a><span class="ex">resultados/img</span></span>
+<span id="cb67-4"><a href="git-y-github.html#cb67-4" tabindex="-1"></a><span class="ex">resultados/analisis</span></span></code></pre></div>
 <p>Y que queremos ignorar todo excepto lo que hay en datos. ¿Cómo lo harían?</p>
 <p><strong>Ejemplo:</strong> Supongamos que tenemos la siguiente estructura de archivos:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="git-y-github.html#cb65-1" tabindex="-1"></a><span class="ex">resultados/rdatos/a.csv</span></span>
-<span id="cb65-2"><a href="git-y-github.html#cb65-2" tabindex="-1"></a><span class="ex">resultados/rdatos/b.csv</span></span>
-<span id="cb65-3"><a href="git-y-github.html#cb65-3" tabindex="-1"></a><span class="ex">resultados/rdatos/c.csv</span></span>
-<span id="cb65-4"><a href="git-y-github.html#cb65-4" tabindex="-1"></a><span class="ex">resultados/rdatos/info.txt</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="git-y-github.html#cb68-1" tabindex="-1"></a><span class="ex">resultados/rdatos/a.csv</span></span>
+<span id="cb68-2"><a href="git-y-github.html#cb68-2" tabindex="-1"></a><span class="ex">resultados/rdatos/b.csv</span></span>
+<span id="cb68-3"><a href="git-y-github.html#cb68-3" tabindex="-1"></a><span class="ex">resultados/rdatos/c.csv</span></span>
+<span id="cb68-4"><a href="git-y-github.html#cb68-4" tabindex="-1"></a><span class="ex">resultados/rdatos/info.txt</span></span></code></pre></div>
 <p>¿Cómo le indicas a Git que ignore todos los <code>csv</code> de la carpeta <code>rdatos</code> menos el que se llama <code>info.txt</code>?</p>
 <p><strong>Ejercicio:</strong> Supongamos que tenemos la siguiente estructura de datos:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="git-y-github.html#cb66-1" tabindex="-1"></a><span class="ex">resultados/a.csv</span></span>
-<span id="cb66-2"><a href="git-y-github.html#cb66-2" tabindex="-1"></a><span class="ex">resultados/analisis1/b.csv</span></span>
-<span id="cb66-3"><a href="git-y-github.html#cb66-3" tabindex="-1"></a><span class="ex">resultados/analisis2/c.csv</span></span>
-<span id="cb66-4"><a href="git-y-github.html#cb66-4" tabindex="-1"></a><span class="ex">resultados/analisis2/sub_1/d.csv</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="git-y-github.html#cb69-1" tabindex="-1"></a><span class="ex">resultados/a.csv</span></span>
+<span id="cb69-2"><a href="git-y-github.html#cb69-2" tabindex="-1"></a><span class="ex">resultados/analisis1/b.csv</span></span>
+<span id="cb69-3"><a href="git-y-github.html#cb69-3" tabindex="-1"></a><span class="ex">resultados/analisis2/c.csv</span></span>
+<span id="cb69-4"><a href="git-y-github.html#cb69-4" tabindex="-1"></a><span class="ex">resultados/analisis2/sub_1/d.csv</span></span></code></pre></div>
 <p>¿Cómo le indicamos a Git que ignore todos los archivos <code>.csv</code> sin indicar manualmente todos los directorios?</p>
 <p><strong>Ejercicio:</strong> Si en el archivo <code>.gitignore</code> escribimos lo siguiente, ¿qué está ignorando?</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="git-y-github.html#cb67-1" tabindex="-1"></a><span class="ex">*.csv</span></span>
-<span id="cb67-2"><a href="git-y-github.html#cb67-2" tabindex="-1"></a><span class="ex">!*.csv</span></span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="git-y-github.html#cb70-1" tabindex="-1"></a><span class="ex">*.csv</span></span>
+<span id="cb70-2"><a href="git-y-github.html#cb70-2" tabindex="-1"></a><span class="ex">!*.csv</span></span></code></pre></div>
 </div>
 <div id="github" class="section level2 hasAnchor" number="3.6">
 <h2><span class="header-section-number">3.6</span> Github<a href="git-y-github.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
