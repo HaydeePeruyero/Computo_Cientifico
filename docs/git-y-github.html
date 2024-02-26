@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-02-21" />
+<meta name="date" content="2024-02-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -168,7 +168,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="git-y-github.html"><a href="git-y-github.html#explorando-el-historial"><i class="fa fa-check"></i><b>3.3</b> Explorando el historial</a></li>
 <li class="chapter" data-level="3.4" data-path="git-y-github.html"><a href="git-y-github.html#restore-y-reset"><i class="fa fa-check"></i><b>3.4</b> Restore y reset</a></li>
 <li class="chapter" data-level="3.5" data-path="git-y-github.html"><a href="git-y-github.html#ignorar-archivoscarpetas"><i class="fa fa-check"></i><b>3.5</b> Ignorar archivos/carpetas</a></li>
-<li class="chapter" data-level="3.6" data-path="git-y-github.html"><a href="git-y-github.html#github"><i class="fa fa-check"></i><b>3.6</b> Github</a></li>
+<li class="chapter" data-level="3.6" data-path="git-y-github.html"><a href="git-y-github.html#github"><i class="fa fa-check"></i><b>3.6</b> Github</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="git-y-github.html"><a href="git-y-github.html#paso-1-crear-un-repositorio-remoto"><i class="fa fa-check"></i><b>3.6.1</b> Paso 1: Crear un repositorio remoto</a></li>
+</ul></li>
 <li class="chapter" data-level="3.7" data-path="git-y-github.html"><a href="git-y-github.html#colaboradores"><i class="fa fa-check"></i><b>3.7</b> Colaboradores</a></li>
 <li class="chapter" data-level="3.8" data-path="git-y-github.html"><a href="git-y-github.html#crear-ramas"><i class="fa fa-check"></i><b>3.8</b> Crear Ramas</a></li>
 <li class="chapter" data-level="3.9" data-path="git-y-github.html"><a href="git-y-github.html#actualizando-ramas"><i class="fa fa-check"></i><b>3.9</b> Actualizando ramas</a></li>
@@ -534,6 +537,24 @@ Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 <p>El valor del control de versiones se hace evidente al comenzar a colaborar con otros. Contamos con la mayor parte de las herramientas necesarias para ello; lo único que resta es transferir cambios de un repositorio a otro.</p>
 <p>Sistemas como Git posibilitan el traslado de trabajo entre cualquier par de repositorios. No obstante, en la práctica, resulta más conveniente utilizar una copia como punto central y mantenerla en la web en lugar de en la computadora portátil de alguien.</p>
 <p>Vamos a comenzar por crear un repositorio remoto, pero para eso necesitamos configurar nuestra cuenta de Github también.</p>
+<div id="paso-1-crear-un-repositorio-remoto" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Paso 1: Crear un repositorio remoto<a href="git-y-github.html#paso-1-crear-un-repositorio-remoto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Lo primero que vamos a hacer es crear un repositorio remoto. Entra a tu cuenta de Github y dale click en Nuevo.</p>
+<div class="float">
+<img src="img/github_1.png" alt="Crear repositorio nuevo" />
+<div class="figcaption">Crear repositorio nuevo</div>
+</div>
+<p>Ponle de nombre <code>Mi_primer_repo</code> (o el nombre que hayas usado en las secciones anteriores). Deja marcada la opción de público y no añadas un README ni una licencia.</p>
+<div class="float">
+<img src="img/github_2.png" alt="Crear repositorio vacío" />
+<div class="figcaption">Crear repositorio vacío</div>
+</div>
+<p>Al darle click en crear repositorio, la página nos mostrará la siguiente información que es la que usaremos para configurar nuestro local con el remoto.</p>
+<div class="float">
+<img src="img/github_3.png" alt="Información del repositorio remoto para configurar con nuestro local" />
+<div class="figcaption">Información del repositorio remoto para configurar con nuestro local</div>
+</div>
+</div>
 </div>
 <div id="colaboradores" class="section level2 hasAnchor" number="3.7">
 <h2><span class="header-section-number">3.7</span> Colaboradores<a href="git-y-github.html#colaboradores" class="anchor-section" aria-label="Anchor link to header"></a></h2>

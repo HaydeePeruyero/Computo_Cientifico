@@ -624,6 +624,20 @@ Sistemas como Git posibilitan el traslado de trabajo entre cualquier par de repo
 
 Vamos a comenzar por crear un repositorio remoto, pero para eso necesitamos configurar nuestra cuenta de Github también.
 
+### Paso 1: Crear un repositorio remoto
+
+Lo primero que vamos a hacer es crear un repositorio remoto. Entra a tu cuenta de Github y dale click en Nuevo.
+
+![Crear repositorio nuevo](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github_1.png)
+
+Ponle de nombre `Mi_primer_repo` (o el nombre que hayas usado en las secciones anteriores). Deja marcada la opción de público y no añadas un README ni una licencia. 
+
+![Crear repositorio vacío](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github_2.png)
+
+Al darle click en crear repositorio, la página nos mostrará la siguiente información que es la que usaremos para configurar nuestro local con el remoto.
+
+![Información del repositorio remoto para configurar con nuestro local](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github_3.png)
+
 
 
 ## Colaboradores
