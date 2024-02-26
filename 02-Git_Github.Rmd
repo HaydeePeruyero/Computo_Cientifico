@@ -637,6 +637,57 @@ Ponle de nombre `Mi_primer_repo` (o el nombre que hayas usado en las secciones a
 Al darle click en crear repositorio, la página nos mostrará la siguiente información que es la que usaremos para configurar nuestro local con el remoto.
 
 ![Información del repositorio remoto para configurar con nuestro local](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github_3.png)
+Lo que acabamos de hacer es como si en nuestra terminal hubiéramos realizado lo siguiente:
+
+```bash
+$ mkdir Mi_primer_repo
+$ cd Mi_primer_repo
+$ git init
+```
+
+### Paso 2: Conectar local a remoto
+
+La página principal del repositorio remoto muestra una serie de información que necesitamos usar para conectar el repositorio remoto en Github con el repositorio local de nuestra computadora. Vamos a usar el protocolo de conexión SSH, da click en donde dice SSH y a continuación en el icono de copiar.
+
+![SSH link para clonar el repositorio](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github_4.png)
+
+Ahora, dentro de nuestra carpeta del repositorio local, abrir una terminal y correr lo siguiente:
+
+```bash
+$ git remote add origin git@github.com:User/Mi_primer_repo.git
+```
+
+Para revisar que si se haya realizado correctamente procedemos a usar lo siguiente:
+
+```bash
+$ git remote -v
+```
+
+### Paso 3: Conexión mediante SSH 
+
+Primero verificamos si ya tenemos algún par de llaves:
+
+```bash
+$ ls -al ~/.ssh
+```
+
+Si ya tienen algún par de llaves configuradas las van a ver listadas, si no tiene ninguna les saldrá una leyenda como la siguiente:
+
+```output
+ls: cannot access '/c/Users/User/.ssh': No such file or directory
+```
+
+#### Paso 3.1: Crear un par de llaves SSH
+
+Para crear el par de llaves usamos el siguiente comando, la opción `-t` se refiere al tipo de algoritmo usado y la opción `-C` indica un comentario para la llave, en este caso el comentario es nuestro correo.
+
+```bash
+$ ssh-keygen -t ed25519 -C "email@dominio.com"
+```
+Si tu sistema operativo no lo permite, usa `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`.
+
+Como queremos usar el archivo default, solo damos <kbd>Enter</kbd>. Ahora nos pedira una contraseña, tecleala, no vas a ver nada en la pantalla. 
+
 
 
 

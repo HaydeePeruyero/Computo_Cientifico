@@ -58,3 +58,6 @@ restore-revert-reset
 restore-y-reset
 conectar-con-overleaf
 paso-1-crear-un-repositorio-remoto
+paso-2-conectar-local-a-remoto
+paso-3-conexión-mediante-ssh
+paso-3.1-crear-un-par-de-llaves-ssh

@@ -171,6 +171,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="git-y-github.html"><a href="git-y-github.html#github"><i class="fa fa-check"></i><b>3.6</b> Github</a>
 <ul>
 <li class="chapter" data-level="3.6.1" data-path="git-y-github.html"><a href="git-y-github.html#paso-1-crear-un-repositorio-remoto"><i class="fa fa-check"></i><b>3.6.1</b> Paso 1: Crear un repositorio remoto</a></li>
+<li class="chapter" data-level="3.6.2" data-path="git-y-github.html"><a href="git-y-github.html#paso-2-conectar-local-a-remoto"><i class="fa fa-check"></i><b>3.6.2</b> Paso 2: Conectar local a remoto</a></li>
+<li class="chapter" data-level="3.6.3" data-path="git-y-github.html"><a href="git-y-github.html#paso-3-conexión-mediante-ssh"><i class="fa fa-check"></i><b>3.6.3</b> Paso 3: Conexión mediante SSH</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="git-y-github.html"><a href="git-y-github.html#colaboradores"><i class="fa fa-check"></i><b>3.7</b> Colaboradores</a></li>
 <li class="chapter" data-level="3.8" data-path="git-y-github.html"><a href="git-y-github.html#crear-ramas"><i class="fa fa-check"></i><b>3.8</b> Crear Ramas</a></li>
@@ -550,9 +552,36 @@ Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 <div class="figcaption">Crear repositorio vacío</div>
 </div>
 <p>Al darle click en crear repositorio, la página nos mostrará la siguiente información que es la que usaremos para configurar nuestro local con el remoto.</p>
+<p><img src="img/github_3.png" alt="Información del repositorio remoto para configurar con nuestro local" />
+Lo que acabamos de hacer es como si en nuestra terminal hubiéramos realizado lo siguiente:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="git-y-github.html#cb71-1" tabindex="-1"></a><span class="ex">$</span> mkdir Mi_primer_repo</span>
+<span id="cb71-2"><a href="git-y-github.html#cb71-2" tabindex="-1"></a><span class="ex">$</span> cd Mi_primer_repo</span>
+<span id="cb71-3"><a href="git-y-github.html#cb71-3" tabindex="-1"></a><span class="ex">$</span> git init</span></code></pre></div>
+</div>
+<div id="paso-2-conectar-local-a-remoto" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> Paso 2: Conectar local a remoto<a href="git-y-github.html#paso-2-conectar-local-a-remoto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La página principal del repositorio remoto muestra una serie de información que necesitamos usar para conectar el repositorio remoto en Github con el repositorio local de nuestra computadora. Vamos a usar el protocolo de conexión SSH, da click en donde dice SSH y a continuación en el icono de copiar.</p>
 <div class="float">
-<img src="img/github_3.png" alt="Información del repositorio remoto para configurar con nuestro local" />
-<div class="figcaption">Información del repositorio remoto para configurar con nuestro local</div>
+<img src="img/github_4.png" alt="SSH link para clonar el repositorio" />
+<div class="figcaption">SSH link para clonar el repositorio</div>
+</div>
+<p>Ahora, dentro de nuestra carpeta del repositorio local, abrir una terminal y correr lo siguiente:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="git-y-github.html#cb72-1" tabindex="-1"></a><span class="ex">$</span> git remote add origin git@github.com:User/Mi_primer_repo.git</span></code></pre></div>
+<p>Para revisar que si se haya realizado correctamente procedemos a usar lo siguiente:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="git-y-github.html#cb73-1" tabindex="-1"></a><span class="ex">$</span> git remote <span class="at">-v</span></span></code></pre></div>
+</div>
+<div id="paso-3-conexión-mediante-ssh" class="section level3 hasAnchor" number="3.6.3">
+<h3><span class="header-section-number">3.6.3</span> Paso 3: Conexión mediante SSH<a href="git-y-github.html#paso-3-conexión-mediante-ssh" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Primero verificamos si ya tenemos algún par de llaves:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="git-y-github.html#cb74-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-al</span> ~/.ssh</span></code></pre></div>
+<p>Si ya tienen algún par de llaves configuradas las van a ver listadas, si no tiene ninguna les saldrá una leyenda como la siguiente:</p>
+<pre class="output"><code>ls: cannot access &#39;/c/Users/User/.ssh&#39;: No such file or directory</code></pre>
+<div id="paso-3.1-crear-un-par-de-llaves-ssh" class="section level4 hasAnchor" number="3.6.3.1">
+<h4><span class="header-section-number">3.6.3.1</span> Paso 3.1: Crear un par de llaves SSH<a href="git-y-github.html#paso-3.1-crear-un-par-de-llaves-ssh" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para crear el par de llaves usamos el siguiente comando, la opción <code>-t</code> se refiere al tipo de algoritmo usado y la opción <code>-C</code> indica un comentario para la llave, en este caso el comentario es nuestro correo.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="git-y-github.html#cb76-1" tabindex="-1"></a><span class="ex">$</span> ssh-keygen <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">&quot;email@dominio.com&quot;</span></span></code></pre></div>
+<p>Si tu sistema operativo no lo permite, usa <code>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code>.</p>
+<p>Como queremos usar el archivo default, solo damos <kbd>Enter</kbd>. Ahora nos pedira una contraseña, tecleala, no vas a ver nada en la pantalla.</p>
 </div>
 </div>
 </div>
