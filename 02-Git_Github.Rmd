@@ -686,9 +686,89 @@ $ ssh-keygen -t ed25519 -C "email@dominio.com"
 ```
 Si tu sistema operativo no lo permite, usa `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`.
 
-Como queremos usar el archivo default, solo damos <kbd>Enter</kbd>. Ahora nos pedira una contraseña, tecleala, no vas a ver nada en la pantalla. 
+Como queremos usar el archivo default, solo damos <kbd>Enter</kbd>. Ahora nos pedirá una contraseña, tecleala, no vas a ver nada en la pantalla. Una vez creada verás en pantalla algo como lo siguiente:
 
+```bash
+Your identification has been saved in /c/Users/user/.ssh/id_ed25519
+Your public key has been saved in /c/Users/user/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:SMSPIStNyA10KPxuYu94KpZg9AYjgt9g46A4kFy3g1o user@domain
+The keys randomart image is:
++--[ED25519 256]--+
+|^B== o.          |
+|%*= *.+          |
+|+=.E =.+         |
+| .=.+.o..        |
+|...   . S        |
+|.+ o             |
+|+ =              |
+|.o.o             |
+|oo+.             |
++----[SHA256]-----+
 
+```
+
+Lo que dice `identification` ser refiere a la llave privada la cual no debes compartir nunca y la cadena de caracteres que dice `fingerprint` se refiere a parte de tu llave pública.
+
+Si repetimos el comando siguiente, verán ahora ya sus dos claves pública y privada.
+
+```bash
+$ ls -al ~/.ssh
+```
+
+Ahora que ya tenemos las claves, debemos decirle a GitHub cuales son.
+
+```bash
+$ cat ~/.ssh/id_ed25519.pub
+```
+
+Copia la cadena de caracteres, ve a la configuración de tu perfil de GitHub y da clic en "SSH and GPG Keys".
+
+![SSH and GPG Keys](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github_5.png)
+
+Una vez ahí da clic en "Nueva llave SSH".
+
+![Nueva llave SSH](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github_6.png)
+
+Después coloca un título que te permita identificar que será la clave con la que usarás la computadora y pega tu llave pública. 
+
+![Llave pública](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github_7.png)
+
+Ahora solo falta revisar la conexión desde la terminal.
+
+```bash
+$ ssh -T git@github.com
+```
+
+Si vez un mensaje similar al siguiente, significa que quedo completa la autenticación.
+
+```bash
+$ Hi Name! Youve successfully authenticated, but GitHub does not provide shell access.
+```
+
+### Paso 4: Push and pull
+
+Una vez que ya tenemos configurado todo, solo falta enviar todo lo que tenemos en el repo local al remoto. Si se establecio la contraseña nos la va a pedir en la terminal o una ventana aparte.
+
+```bash
+$ git push origin main
+```
+
+En esa instrucción, `origin` se refiere al repositorio remoto y `main` al local (las ramas que estamos intentando poner en el mismo contenido).
+
+La situación en la que estamos es la siguiente:
+
+![`git push origin main`](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github-repo-after-first-push.svg)
+
+Para actualizar nuestro repositorio local, lo que debemos hacer es lo siguiente:
+
+```bash
+$ git pull origin main
+```
+
+Como no hemos realizado ningún cambio en el remoto, no veremos nada nuevo en el local. En el remoto también podemos añadir archivos directamente. 
+
+**Ejercicio:** Añade un archivo nuevo desde el repositorio remoto y actualiza tus cambios en el local.
 
 
 ## Colaboradores

@@ -173,6 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6.1" data-path="git-y-github.html"><a href="git-y-github.html#paso-1-crear-un-repositorio-remoto"><i class="fa fa-check"></i><b>3.6.1</b> Paso 1: Crear un repositorio remoto</a></li>
 <li class="chapter" data-level="3.6.2" data-path="git-y-github.html"><a href="git-y-github.html#paso-2-conectar-local-a-remoto"><i class="fa fa-check"></i><b>3.6.2</b> Paso 2: Conectar local a remoto</a></li>
 <li class="chapter" data-level="3.6.3" data-path="git-y-github.html"><a href="git-y-github.html#paso-3-conexión-mediante-ssh"><i class="fa fa-check"></i><b>3.6.3</b> Paso 3: Conexión mediante SSH</a></li>
+<li class="chapter" data-level="3.6.4" data-path="git-y-github.html"><a href="git-y-github.html#paso-4-push-and-pull"><i class="fa fa-check"></i><b>3.6.4</b> Paso 4: Push and pull</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="git-y-github.html"><a href="git-y-github.html#colaboradores"><i class="fa fa-check"></i><b>3.7</b> Colaboradores</a></li>
 <li class="chapter" data-level="3.8" data-path="git-y-github.html"><a href="git-y-github.html#crear-ramas"><i class="fa fa-check"></i><b>3.8</b> Crear Ramas</a></li>
@@ -581,8 +582,63 @@ Lo que acabamos de hacer es como si en nuestra terminal hubiéramos realizado lo
 <p>Para crear el par de llaves usamos el siguiente comando, la opción <code>-t</code> se refiere al tipo de algoritmo usado y la opción <code>-C</code> indica un comentario para la llave, en este caso el comentario es nuestro correo.</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="git-y-github.html#cb76-1" tabindex="-1"></a><span class="ex">$</span> ssh-keygen <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">&quot;email@dominio.com&quot;</span></span></code></pre></div>
 <p>Si tu sistema operativo no lo permite, usa <code>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code>.</p>
-<p>Como queremos usar el archivo default, solo damos <kbd>Enter</kbd>. Ahora nos pedira una contraseña, tecleala, no vas a ver nada en la pantalla.</p>
+<p>Como queremos usar el archivo default, solo damos <kbd>Enter</kbd>. Ahora nos pedirá una contraseña, tecleala, no vas a ver nada en la pantalla. Una vez creada verás en pantalla algo como lo siguiente:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb77-1"><a href="git-y-github.html#cb77-1" tabindex="-1"></a><span class="ex">Your</span> identification has been saved in /c/Users/user/.ssh/id_ed25519</span>
+<span id="cb77-2"><a href="git-y-github.html#cb77-2" tabindex="-1"></a><span class="ex">Your</span> public key has been saved in /c/Users/user/.ssh/id_ed25519.pub</span>
+<span id="cb77-3"><a href="git-y-github.html#cb77-3" tabindex="-1"></a><span class="ex">The</span> key fingerprint is:</span>
+<span id="cb77-4"><a href="git-y-github.html#cb77-4" tabindex="-1"></a><span class="ex">SHA256:SMSPIStNyA10KPxuYu94KpZg9AYjgt9g46A4kFy3g1o</span> user@domain</span>
+<span id="cb77-5"><a href="git-y-github.html#cb77-5" tabindex="-1"></a><span class="ex">The</span> keys randomart image is:</span>
+<span id="cb77-6"><a href="git-y-github.html#cb77-6" tabindex="-1"></a><span class="ex">+--[ED25519</span> 256]--+</span>
+<span id="cb77-7"><a href="git-y-github.html#cb77-7" tabindex="-1"></a><span class="kw">|</span><span class="ex">^B==</span> o.          <span class="kw">|</span></span>
+<span id="cb77-8"><a href="git-y-github.html#cb77-8" tabindex="-1"></a><span class="kw">|</span><span class="ex">%*=</span> <span class="pp">*</span>.+          <span class="kw">|</span></span>
+<span id="cb77-9"><a href="git-y-github.html#cb77-9" tabindex="-1"></a><span class="kw">|</span><span class="ex">+=.E</span> =.+         <span class="kw">|</span></span>
+<span id="cb77-10"><a href="git-y-github.html#cb77-10" tabindex="-1"></a><span class="kw">|</span> <span class="bu">.</span>=.+.o..        <span class="kw">|</span></span>
+<span id="cb77-11"><a href="git-y-github.html#cb77-11" tabindex="-1"></a><span class="kw">|</span><span class="ex">...</span>   . S        <span class="kw">|</span></span>
+<span id="cb77-12"><a href="git-y-github.html#cb77-12" tabindex="-1"></a><span class="kw">|</span><span class="bu">.</span>+ o             <span class="kw">|</span></span>
+<span id="cb77-13"><a href="git-y-github.html#cb77-13" tabindex="-1"></a><span class="kw">|</span><span class="ex">+</span> =              <span class="kw">|</span></span>
+<span id="cb77-14"><a href="git-y-github.html#cb77-14" tabindex="-1"></a><span class="kw">|</span><span class="ex">.o.o</span>             <span class="kw">|</span></span>
+<span id="cb77-15"><a href="git-y-github.html#cb77-15" tabindex="-1"></a><span class="kw">|</span><span class="ex">oo+.</span>             <span class="kw">|</span></span>
+<span id="cb77-16"><a href="git-y-github.html#cb77-16" tabindex="-1"></a><span class="ex">+----[SHA256]-----+</span></span></code></pre></div>
+<p>Lo que dice <code>identification</code> ser refiere a la llave privada la cual no debes compartir nunca y la cadena de caracteres que dice <code>fingerprint</code> se refiere a parte de tu llave pública.</p>
+<p>Si repetimos el comando siguiente, verán ahora ya sus dos claves pública y privada.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb78-1"><a href="git-y-github.html#cb78-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-al</span> ~/.ssh</span></code></pre></div>
+<p>Ahora que ya tenemos las claves, debemos decirle a GitHub cuales son.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb79-1"><a href="git-y-github.html#cb79-1" tabindex="-1"></a><span class="ex">$</span> cat ~/.ssh/id_ed25519.pub</span></code></pre></div>
+<p>Copia la cadena de caracteres, ve a la configuración de tu perfil de GitHub y da clic en “SSH and GPG Keys”.</p>
+<div class="float">
+<img src="img/github_5.png" alt="SSH and GPG Keys" />
+<div class="figcaption">SSH and GPG Keys</div>
 </div>
+<p>Una vez ahí da clic en “Nueva llave SSH”.</p>
+<div class="float">
+<img src="img/github_6.png" alt="Nueva llave SSH" />
+<div class="figcaption">Nueva llave SSH</div>
+</div>
+<p>Después coloca un título que te permita identificar que será la clave con la que usarás la computadora y pega tu llave pública.</p>
+<div class="float">
+<img src="img/github_7.png" alt="Llave pública" />
+<div class="figcaption">Llave pública</div>
+</div>
+<p>Ahora solo falta revisar la conexión desde la terminal.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb80-1"><a href="git-y-github.html#cb80-1" tabindex="-1"></a><span class="ex">$</span> ssh <span class="at">-T</span> git@github.com</span></code></pre></div>
+<p>Si vez un mensaje similar al siguiente, significa que quedo completa la autenticación.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb81-1"><a href="git-y-github.html#cb81-1" tabindex="-1"></a><span class="ex">$</span> Hi Name! Youve successfully authenticated, but GitHub does not provide shell access.</span></code></pre></div>
+</div>
+</div>
+<div id="paso-4-push-and-pull" class="section level3 hasAnchor" number="3.6.4">
+<h3><span class="header-section-number">3.6.4</span> Paso 4: Push and pull<a href="git-y-github.html#paso-4-push-and-pull" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una vez que ya tenemos configurado todo, solo falta enviar todo lo que tenemos en el repo local al remoto. Si se establecio la contraseña nos la va a pedir en la terminal o una ventana aparte.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb82-1"><a href="git-y-github.html#cb82-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<p>En esa instrucción, <code>origin</code> se refiere al repositorio remoto y <code>main</code> al local (las ramas que estamos intentando poner en el mismo contenido).</p>
+<p>La situación en la que estamos es la siguiente:</p>
+<div class="float">
+<img src="img/github-repo-after-first-push.svg" alt="git push origin main" />
+<div class="figcaption"><code>git push origin main</code></div>
+</div>
+<p>Para actualizar nuestro repositorio local, lo que debemos hacer es lo siguiente:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb83-1"><a href="git-y-github.html#cb83-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
+<p>Como no hemos realizado ningún cambio en el remoto, no veremos nada nuevo en el local. En el remoto también podemos añadir archivos directamente.</p>
+<p><strong>Ejercicio:</strong> Añade un archivo nuevo desde el repositorio remoto y actualiza tus cambios en el local.</p>
 </div>
 </div>
 <div id="colaboradores" class="section level2 hasAnchor" number="3.7">
