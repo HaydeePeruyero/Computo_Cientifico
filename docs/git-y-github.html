@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-02-26" />
+<meta name="date" content="2024-02-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -643,6 +643,41 @@ Lo que acabamos de hacer es como si en nuestra terminal hubiéramos realizado lo
 </div>
 <div id="colaboradores" class="section level2 hasAnchor" number="3.7">
 <h2><span class="header-section-number">3.7</span> Colaboradores<a href="git-y-github.html#colaboradores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para esta parte, vamos a trabajar en parejas (si no es posible pueden abrir una segunda terminal para la realizar la parte de su equipo).</p>
+<p>Vamos a ir a nuestro repositorio que creamos en GitHub y vamos a ir a la configuración y después en donde dice colaboradores.</p>
+<div class="float">
+<img src="img/github_8.png" alt="Configurar colaboradores" />
+<div class="figcaption">Configurar colaboradores</div>
+</div>
+<p>Una vez en esa ventana, den clic en añadir colaboradores. Van a buscar con el nombre de usuario de su compañero y dan enter.</p>
+<div class="float">
+<img src="img/github_9.png" alt="Añadir colaboradores" />
+<div class="figcaption">Añadir colaboradores</div>
+</div>
+<p>En su correo o cuenta de github, deben ir a notificaciones y aceptar la invitación. También pueden usar el <a href="https://github.com/notifications">link</a>.</p>
+<p>Ahora, su colaborador debe descargar el repositorio a su computadora, a este paso se le llama clonar un repositorio. Para esto, abran una terminal y realicen lo siguiente:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb84-1"><a href="git-y-github.html#cb84-1" tabindex="-1"></a><span class="ex">$</span> git clone git@github.com:User/Mi_primer_repo.git ~/colaborador-Mi_primer_repo</span></code></pre></div>
+<p>La última parte de esa instrucción es la dirección de su computadora donde se clonara el repositorio de su colaborador.</p>
+<div class="float">
+<img src="img/github-collaboration.svg" alt="Estructura de los repositorios al clonarlos. Imagen de SC" />
+<div class="figcaption">Estructura de los repositorios al clonarlos. Imagen de <a href="https://swcarpentry.github.io/git-novice/08-collab.html">SC</a></div>
+</div>
+<p>Ahora, el colaborador realizará un cambio en el repositorio. Para esto, creará un archivo, lo añadira al área de preparación, hará el commit correspondiente y enviará los cambios al remoto.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb85-1"><a href="git-y-github.html#cb85-1" tabindex="-1"></a><span class="ex">$</span> nano colaborador.txt</span>
+<span id="cb85-2"><a href="git-y-github.html#cb85-2" tabindex="-1"></a><span class="ex">$</span> git add colaborador.txt</span>
+<span id="cb85-3"><a href="git-y-github.html#cb85-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Añadimos archivo de colaborador&quot;</span></span>
+<span id="cb85-4"><a href="git-y-github.html#cb85-4" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<p>Si revisamos en la página de Github, veremos ahora un cambio en el repositorio, junto con el commit y quien lo realizo. Finalmente, actualizaremos el repositorio original local con los cambios del colaborador.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb86-1"><a href="git-y-github.html#cb86-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
+<p>Una buena practica cuando se trabaja con colaboradores es realizar la siguiente serie de pasos:</p>
+<ol style="list-style-type: decimal">
+<li><p>Antes de comenzar a trabajar, siempre actualizar nuestro repositorio local con <code>git pull origin main</code></p></li>
+<li><p>Realizar cambios y añadirlos al área de preparación con <code>git add</code></p></li>
+<li><p>Realizar el commit con un mensaje apropiado que nos permita detectar que cambio se realizó.</p></li>
+<li><p>Actualizar el repositorio remoto con los cambios usando <code>git push origin main</code>.</p></li>
+</ol>
+<p>Otra buena practica es trabajar con ramas, este sería un paso antes del 2.</p>
+<p><strong>Ejercicio:</strong> Replicar lo que se hizo en esta sección cambiando roles de quien es el colaborador y quien el dueño del repositorio local.</p>
 </div>
 <div id="crear-ramas" class="section level2 hasAnchor" number="3.8">
 <h2><span class="header-section-number">3.8</span> Crear Ramas<a href="git-y-github.html#crear-ramas" class="anchor-section" aria-label="Anchor link to header"></a></h2>

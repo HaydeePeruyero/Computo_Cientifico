@@ -770,8 +770,59 @@ Como no hemos realizado ningún cambio en el remoto, no veremos nada nuevo en el
 
 **Ejercicio:** Añade un archivo nuevo desde el repositorio remoto y actualiza tus cambios en el local.
 
-
 ## Colaboradores
+
+Para esta parte, vamos a trabajar en parejas (si no es posible pueden abrir una segunda terminal para la realizar la parte de su equipo).
+
+Vamos a ir a nuestro repositorio que creamos en GitHub y vamos a ir a la configuración y después en donde dice colaboradores.
+
+![Configurar colaboradores](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github_8.png)
+
+Una vez en esa ventana, den clic en añadir colaboradores. Van a buscar con el nombre de usuario de su compañero y dan enter.
+
+![Añadir colaboradores](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github_9.png)
+
+En su correo o cuenta de github, deben ir a notificaciones y aceptar la invitación. También pueden usar el [link](https://github.com/notifications).
+
+Ahora, su colaborador debe descargar el repositorio a su computadora, a este paso se le llama clonar un repositorio. Para esto, abran una terminal y realicen lo siguiente:
+
+```bash
+$ git clone git@github.com:User/Mi_primer_repo.git ~/colaborador-Mi_primer_repo
+```
+
+La última parte de esa instrucción es la dirección de su computadora donde se clonara el repositorio de su colaborador.
+
+![Estructura de los repositorios al clonarlos. Imagen de [SC](https://swcarpentry.github.io/git-novice/08-collab.html)](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github-collaboration.svg)
+
+Ahora, el colaborador realizará un cambio en el repositorio. Para esto, creará un archivo, lo añadira al área de preparación, hará el commit correspondiente y enviará los cambios al remoto.
+
+```bash
+$ nano colaborador.txt
+$ git add colaborador.txt
+$ git commit -m "Añadimos archivo de colaborador"
+$ git push origin main
+```
+
+Si revisamos en la página de Github, veremos ahora un cambio en el repositorio, junto con el commit y quien lo realizo. Finalmente, actualizaremos el repositorio original local con los cambios del colaborador.
+
+```bash
+$ git pull origin main
+```
+
+Una buena practica cuando se trabaja con colaboradores es realizar la siguiente serie de pasos:
+
+1) Antes de comenzar a trabajar, siempre actualizar nuestro repositorio local con `git pull origin main`
+
+2) Realizar cambios y añadirlos al área de preparación con `git add`
+
+3) Realizar el commit con un mensaje apropiado que nos permita detectar que cambio se realizó.
+
+4) Actualizar el repositorio remoto con los cambios usando `git push origin main`.
+
+Otra buena practica es trabajar con ramas, este sería un paso antes del 2. 
+
+**Ejercicio:** Replicar lo que se hizo en esta sección cambiando roles de quien es el colaborador y quien el dueño del repositorio local.
+
 
 ## Crear Ramas
 
