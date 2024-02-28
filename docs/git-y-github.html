@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-02-27" />
+<meta name="date" content="2024-02-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -716,6 +716,48 @@ cambios del colaborador aqui
 <div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="git-y-github.html#cb92-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
 <p>Una forma de evitar algunos conflictos es trabajando en ramas, o distribuyendo el trabajo y que cada quien trabaje sobre archivos diferentes.</p>
 <p>También se puede dar el caso de que los conflictos sean por archivos con el mismo nombre pero con contenidos totalmente diferentes, por ejemplo con imágenes.</p>
+<p>Vamos a crear de nuevo un conflicto con una imagen y vamos a tratar de resolverlo. Tanto el colaborador como el dueño del proyecto va a crear una imagen con el nombre imagen_prueba.jpg, guardará los cambios y realizará todo hasta mandarlo al repositorio remoto.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb93-1"><a href="git-y-github.html#cb93-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-c</span> 1024 /dev/urandom <span class="op">&gt;</span> imagen_prueba.jpg</span>
+<span id="cb93-2"><a href="git-y-github.html#cb93-2" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span> imagen_prueba.jpg</span></code></pre></div>
+<p>Lo añadimos al área de preparación, realizamos commit y lo enviamos al repositorio remoto.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb94-1"><a href="git-y-github.html#cb94-1" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba.jpg</span>
+<span id="cb94-2"><a href="git-y-github.html#cb94-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Se creo imagen random para generar conflicto.&quot;</span></span></code></pre></div>
+<p>El colaborador realizará un push de su imagen al repositorio remoto.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb95-1"><a href="git-y-github.html#cb95-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<p>Ahora el dueño del repositorio tratará de hacer un push también al repositorio.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb96-1"><a href="git-y-github.html#cb96-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<p>Lo primero que nos va a pasar y decir git, es que no actualizamos nuestro repositorio con los cambios como en el ejercicio anterior. Vamos a hacer un pull.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="git-y-github.html#cb97-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
+<p>Nos va a marcar que hay conflictos y que no puede hacer auto merge y nos dirá adicionalmente un mensaje similar al siguiente:</p>
+<pre class="output"><code>warning: Cannot merge binary files: imagen_prueba.jpg (HEAD vs. 439dc8c08869c343538f6dc4a2b615b05b93c76e)</code></pre>
+<p>Esto se debe a que como es un archivo que no es de texto no puede empalmar los cambios. Entonces las opciones que tenemos es decidir quedarnos con solo una de las dos imágenes o renombrarlas para quedarnos con ambos.</p>
+<ol style="list-style-type: decimal">
+<li>Quedarnos con la imagen del dueño del repo:</li>
+</ol>
+<p>La imagen del dueño del repo es el HEAD y la del colaborador tiene un id de commit. Entonces procedemos a lo siguiente.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb99-1"><a href="git-y-github.html#cb99-1" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD imagen_prueba.jpg</span>
+<span id="cb99-2"><a href="git-y-github.html#cb99-2" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba.jpg</span>
+<span id="cb99-3"><a href="git-y-github.html#cb99-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Usar la imagen del dueño del repo en lugar de la del colaborador&quot;</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Quedarnos con la imagen del colaborador del repo:</li>
+</ol>
+<p>La imagen del colaborador tiene un id de commit, buscarlo. Entonces procedemos a lo siguiente.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb100-1"><a href="git-y-github.html#cb100-1" tabindex="-1"></a><span class="ex">$</span> git checkout 439dc8c0 imagen_prueba.jpg</span>
+<span id="cb100-2"><a href="git-y-github.html#cb100-2" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba.jpg</span>
+<span id="cb100-3"><a href="git-y-github.html#cb100-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Usar la imagen del colaborador del repo en lugar de la del dueño&quot;</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Quedarnos con ambas imágenes:</li>
+</ol>
+<div class="sourceCode" id="cb101"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb101-1"><a href="git-y-github.html#cb101-1" tabindex="-1"></a><span class="fu">git</span> checkout HEAD imagen_prueba.jpg</span>
+<span id="cb101-2"><a href="git-y-github.html#cb101-2" tabindex="-1"></a><span class="ex">$</span> git mv imagen_prueba.jpg imagen_prueba-dueño.jpg</span>
+<span id="cb101-3"><a href="git-y-github.html#cb101-3" tabindex="-1"></a><span class="ex">$</span> git checkout 439dc8c0 imagen_prueba.jpg</span>
+<span id="cb101-4"><a href="git-y-github.html#cb101-4" tabindex="-1"></a><span class="ex">$</span> mv imagen_prueba.jpg imagen_prueba-colaborador.jpg</span></code></pre></div>
+<p>Y finalmente para remover la imagen de prueba y añadir las dos nuevas versiones:</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb102-1"><a href="git-y-github.html#cb102-1" tabindex="-1"></a><span class="ex">$</span> git rm imagen_prueba.jpg</span>
+<span id="cb102-2"><a href="git-y-github.html#cb102-2" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba-dueño.jpg</span>
+<span id="cb102-3"><a href="git-y-github.html#cb102-3" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba-colaborador.jpg</span>
+<span id="cb102-4"><a href="git-y-github.html#cb102-4" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Use two images: dueño y colaborador&quot;</span></span>
+<span id="cb102-5"><a href="git-y-github.html#cb102-5" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
 </div>
 <div id="crear-ramas" class="section level2 hasAnchor" number="3.9">
 <h2><span class="header-section-number">3.9</span> Crear Ramas<a href="git-y-github.html#crear-ramas" class="anchor-section" aria-label="Anchor link to header"></a></h2>

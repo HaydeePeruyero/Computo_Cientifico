@@ -886,6 +886,87 @@ Una forma de evitar algunos conflictos es trabajando en ramas, o distribuyendo e
 
 También se puede dar el caso de que los conflictos sean por archivos con el mismo nombre pero con contenidos totalmente diferentes, por ejemplo con imágenes.
 
+Vamos a crear de nuevo un conflicto con una imagen y vamos a tratar de resolverlo. Tanto el colaborador como el dueño del proyecto va a crear una imagen con el nombre imagen_prueba.jpg, guardará los cambios y realizará todo hasta mandarlo al repositorio remoto.
+
+
+```bash
+$ head -c 1024 /dev/urandom > imagen_prueba.jpg
+$ ls -lh imagen_prueba.jpg
+```
+
+Lo añadimos al área de preparación, realizamos commit y lo enviamos al repositorio remoto.
+
+```bash
+$ git add imagen_prueba.jpg
+$ git commit -m "Se creo imagen random para generar conflicto."
+```
+
+El colaborador realizará un push de su imagen al repositorio remoto.
+
+```bash
+$ git push origin main
+```
+
+Ahora el dueño del repositorio tratará de hacer un push también al repositorio. 
+
+```bash
+$ git push origin main
+```
+
+Lo primero que nos va a pasar y decir git, es que no actualizamos nuestro repositorio con los cambios como en el ejercicio anterior. Vamos a hacer un pull.
+
+```bash
+$ git pull origin main
+```
+
+Nos va a marcar que hay conflictos y que no puede hacer auto merge y nos dirá adicionalmente un mensaje similar al siguiente:
+
+```output
+warning: Cannot merge binary files: imagen_prueba.jpg (HEAD vs. 439dc8c08869c343538f6dc4a2b615b05b93c76e)
+```
+
+Esto se debe a que como es un archivo que no es de texto no puede empalmar los cambios. Entonces las opciones que tenemos es decidir quedarnos con solo una de las dos imágenes o renombrarlas para quedarnos con ambos.
+
+1) Quedarnos con la imagen del dueño del repo:
+
+La imagen del dueño del repo es el HEAD y la del colaborador tiene un id de commit. Entonces procedemos a lo siguiente.
+
+```bash
+$ git checkout HEAD imagen_prueba.jpg
+$ git add imagen_prueba.jpg
+$ git commit -m "Usar la imagen del dueño del repo en lugar de la del colaborador"
+```
+
+
+2) Quedarnos con la imagen del colaborador del repo:
+
+La imagen del colaborador tiene un id de commit, buscarlo. Entonces procedemos a lo siguiente.
+
+```bash
+$ git checkout 439dc8c0 imagen_prueba.jpg
+$ git add imagen_prueba.jpg
+$ git commit -m "Usar la imagen del colaborador del repo en lugar de la del dueño"
+```
+
+
+3) Quedarnos con ambas imágenes:
+
+```bash
+git checkout HEAD imagen_prueba.jpg
+$ git mv imagen_prueba.jpg imagen_prueba-dueño.jpg
+$ git checkout 439dc8c0 imagen_prueba.jpg
+$ mv imagen_prueba.jpg imagen_prueba-colaborador.jpg
+```
+
+Y finalmente para remover la imagen de prueba y añadir las dos nuevas versiones:
+
+```bash
+$ git rm imagen_prueba.jpg
+$ git add imagen_prueba-dueño.jpg
+$ git add imagen_prueba-colaborador.jpg
+$ git commit -m "Use two images: dueño y colaborador"
+$ git push origin main
+```
 
 ## Crear Ramas
 
