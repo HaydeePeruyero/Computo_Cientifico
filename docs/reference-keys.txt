@@ -62,3 +62,4 @@ paso-2-conectar-local-a-remoto
 paso-3-conexión-mediante-ssh
 paso-3.1-crear-un-par-de-llaves-ssh
 paso-4-push-and-pull
+conflictos

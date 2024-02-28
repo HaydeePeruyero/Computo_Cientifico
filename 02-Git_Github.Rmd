@@ -797,8 +797,8 @@ La última parte de esa instrucción es la dirección de su computadora donde se
 Ahora, el colaborador realizará un cambio en el repositorio. Para esto, creará un archivo, lo añadira al área de preparación, hará el commit correspondiente y enviará los cambios al remoto.
 
 ```bash
-$ nano colaborador.txt
-$ git add colaborador.txt
+$ nano notas.txt
+$ git add notas.txt
 $ git commit -m "Añadimos archivo de colaborador"
 $ git push origin main
 ```
@@ -823,13 +823,74 @@ Otra buena practica es trabajar con ramas, este sería un paso antes del 2.
 
 **Ejercicio:** Replicar lo que se hizo en esta sección cambiando roles de quien es el colaborador y quien el dueño del repositorio local.
 
+## Conflictos
+
+Cuando comenzamos a trabajar con colaboradores, es usual que generemos conflictos si no se trabaja de forma adecuada.
+
+Vamos a crear un conflicto para después resolverlo.
+
+El colaborador va a modificar el `notas.txt` añadiendo algo. Luego lo añadirá al área de preparación, realizará el commit correspondiente y finalmente actualizará el repositorio remoto.
+
+```bash
+$ nano notas.txt
+$ git add notas.txt
+$ git commit -m "Modificamos el archivo notas para crear un conflicto"
+$ git push origin main
+```
+
+Ahora, el dueño del repositorio realizará un cambio también al archivo notas (sin antes actualizar con los últimos cambios del colaborador) y realizará todos los pasos hasta poder actualizar el repositorio remoto.
+
+```bash
+$ nano notas.txt
+$ git add notas.txt
+$ git commit -m "Cambios en el archivo notas por el dueño del repositorio"
+$ git push origin main
+```
+
+![Conflicto generado cuando se intenta hacer un `git push`](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/git-colaborador-remoto.png)
+
+Git no autorizo hacer el push porque había cambios en el remoto que no habíamos actualizado en el local, entonces vamos a actualizar el local primero, hacer un merge en la copia en la que estamos trabajando y después ya hacer un push.
+
+```bash
+$ git pull origin main
+```
+
+Vamos a ver un mensaje de que hay un merge que no pudo resolver porque se trabajo en la misma línea en el mismo archivo. Si abrimos el archivo vamos a ver algo como lo siguiente:
+
+```output
+texto aqui
+<<<<<<< HEAD
+cambios locales aqui
+=======
+cambios del colaborador aqui
+>>>>>>> dabb4c8c450e8475aee9b14b4383acc99f42af1d
+```
+
+Ahora lo que tenemos que hacer es decidir que cambios queremos conservar, para eso, podemos borrar nuestros cambios, los del colaborador, ambos, o cambiar todo por algo nuevo (y borrar los identificadores de los conflictos).
+
+Una vez finalizado el merge/resolver conflicto, ya podemos añadirlo al área de preparación, realizar el commit y enviarlo al remoto.
+
+```bash
+$ git add notas.txt
+$ git status
+$ git commit -m "Resolvimos el conflicto en el archivo notas"
+$ git push origin main
+```
+
+Cuando el colaborador intente hacer un `git pull` no verá ningún conflicto ya que git conservo el registro de que se resolvió y a la copia del colaborador se actualizará sin ningún problema.
+
+```bash
+$ git pull origin main
+```
+Una forma de evitar algunos conflictos es trabajando en ramas, o distribuyendo el trabajo y que cada quien trabaje sobre archivos diferentes.
+
+También se puede dar el caso de que los conflictos sean por archivos con el mismo nombre pero con contenidos totalmente diferentes, por ejemplo con imágenes.
+
 
 ## Crear Ramas
 
 ## Actualizando ramas
 
 ## Revertir cambios
-
-## Resolver conflictos
 
 ## Conectar con overleaf
