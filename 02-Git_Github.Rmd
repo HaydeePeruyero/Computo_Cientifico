@@ -968,10 +968,135 @@ $ git commit -m "Use two images: dueño y colaborador"
 $ git push origin main
 ```
 
-## Crear Ramas
+## Trabajando con Ramas
 
-## Actualizando ramas
+Trabajar con ramas en Git es una parte fundamental del flujo de trabajo colaborativo. Los siguientes pasos son los básicos para trabajar de esta manera.
 
-## Revertir cambios
+
+### 1. Crear una rama
+
+Cuando trabajas en un proyecto, es una buena práctica crear una rama separada para cada nueva función o corrección de errores que estés desarrollando. Para crear una nueva rama en Git, utiliza el comando:
+
+```bash
+$ git checkout -b nombre_de_la_rama
+```
+
+Este comando crea una nueva rama y te cambia a ella al mismo tiempo.
+
+Otra opción es la siguiente:
+
+```bash
+$ git branch nombre_de_la_rama
+$ git switch nombre_de_la_rama
+```
+
+### 2. Trabajar en la rama
+
+Después de crear la rama, puedes comenzar a trabajar en tus cambios. Realiza tus modificaciones en los archivos como lo harías normalmente.
+
+### 3. Agregar y confirmar cambios
+
+Una vez que hayas realizado cambios que desees incluir en la rama, añádelos al área de preparación con:
+
+```bash
+$ git add nombre_del_archivo
+```
+
+Luego, confirma los cambios con un mensaje descriptivo:
+
+```bash
+$ git commit -m "Mensaje descriptivo de los cambios"
+```
+
+### 4. Empujar la rama al repositorio remoto
+
+Si estás trabajando en un repositorio remoto compartido con otros colaboradores, es posible que desees compartir tus cambios. Para esto, hay dos formas de hacerlo. La primera es enviar los cambios a una rama remota y después confirmarlos y unirlos, para eso utiliza el comando:
+
+```bash
+$ git push origin nombre_de_la_rama
+```
+
+Esto enviará la nueva rama y los cambios asociados al repositorio remoto.
+
+### 5. Fusionar cambios
+
+Una vez que hayas completado tus cambios y estés listo para incorporarlos al proyecto principal, puedes fusionar tu rama con la rama principal (generalmente `main` o `master`). Para hacerlo, primero cámbiate a la rama principal:
+
+```bash
+$ git checkout main
+```
+
+Otra opción:
+
+```bash
+$ git switch main
+```
+
+Luego, fusiona tu rama con la rama principal:
+
+```bash
+$ git merge nombre_de_la_rama
+```
+
+**NOTA:** Los pasos 4 y 5 se pueden intercambiar de orden, es decir primero hacer el merge local cambiandonos a la rama principal y después enviando los cambios al remoto. Es importante primero hacer un `git pull` para actualizar nuestro local en la rama principal.
+
+
+### 6. Resolver conflictos (si los hay)
+
+Es posible que ocurran conflictos durante el proceso de fusión si otros colaboradores han realizado cambios en las mismas partes de los archivos. Git te indicará los conflictos y te permitirá resolverlos manualmente.
+
+### 7. Eliminar la rama (opcional)
+
+Una vez que hayas fusionado tus cambios en la rama principal y ya no necesites la rama de la función, puedes eliminarla:
+
+```bash
+$ git branch -d nombre_de_la_rama
+```
+
+### 8. Actualizar y sincronizar
+
+Es importante mantener tu repositorio local actualizado con los cambios de otros colaboradores. Para hacerlo, utiliza:
+
+```bash
+$ git pull origin main
+```
+
+Esto traerá los últimos cambios de la rama principal del repositorio remoto y los fusionará con tu rama local.
+
+Siguiendo estos pasos, podrás trabajar de manera efectiva con ramas en Git en un entorno colaborativo. Recuerda comunicarte con tus colaboradores y mantener un flujo de trabajo ordenado para evitar conflictos y errores.
+
 
 ## Conectar con overleaf
+
+
+Lo primero es crear el documento en Overleaf que nos interesa. Después se clona el archivo con la dirección que da Overleaf. Esa será la	ruta de la carpeta. De manera local podemos cambiar el propio archivo *.tex* por uno que ya tengamos (parece que es más fácil hacer esto que intentar crear un nuevo documento en Overleaf a partir un repositorio existente, pero falta hacer más pruebas); también, es posible cambiar el nombre de la carpeta en la cual se generó el repositorio (parece que no hay problemas con Overleaf pero hay que hacer más pruebas).
+
+A continuación los pasos para trabajar localmente una vez que ya se tiene el repositorio creado.
+
+1) `cd ruta_de_la_carpeta`
+
+2) `git branch nombre_rama_local`
+ 
+3) `git switch nombre_rama_local` (o master)
+ 
+4) `git status` (para ver cambios)
+
+5) `git add .` (para añadir los cambios-todos)
+
+6) `git commit -m "nombre del mensaje"``
+ 
+7) `git switch master`
+
+8) `git pull`
+
+9) `git merge nombre_rama_local`
+
+  (a) `git switch nombre_rama_local`
+	(b) `git merge master` (para actualizar ahora rama local)
+	(c) seguir trabajando sobre la misma rama local
+	(d) repetir de 4 a 9
+			
+10) `git push`
+
+11) `git branch -d nombre_rama_local`
+

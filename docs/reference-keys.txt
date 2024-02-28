@@ -63,3 +63,12 @@ paso-3-conexión-mediante-ssh
 paso-3.1-crear-un-par-de-llaves-ssh
 paso-4-push-and-pull
 conflictos
+trabajando-con-ramas
+crear-una-rama
+trabajar-en-la-rama
+agregar-y-confirmar-cambios
+empujar-la-rama-al-repositorio-remoto
+fusionar-cambios
+resolver-conflictos-si-los-hay
+eliminar-la-rama-opcional
+actualizar-y-sincronizar

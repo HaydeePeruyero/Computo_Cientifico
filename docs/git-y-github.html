@@ -177,10 +177,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="git-y-github.html"><a href="git-y-github.html#colaboradores"><i class="fa fa-check"></i><b>3.7</b> Colaboradores</a></li>
 <li class="chapter" data-level="3.8" data-path="git-y-github.html"><a href="git-y-github.html#conflictos"><i class="fa fa-check"></i><b>3.8</b> Conflictos</a></li>
-<li class="chapter" data-level="3.9" data-path="git-y-github.html"><a href="git-y-github.html#crear-ramas"><i class="fa fa-check"></i><b>3.9</b> Crear Ramas</a></li>
-<li class="chapter" data-level="3.10" data-path="git-y-github.html"><a href="git-y-github.html#actualizando-ramas"><i class="fa fa-check"></i><b>3.10</b> Actualizando ramas</a></li>
-<li class="chapter" data-level="3.11" data-path="git-y-github.html"><a href="git-y-github.html#revertir-cambios"><i class="fa fa-check"></i><b>3.11</b> Revertir cambios</a></li>
-<li class="chapter" data-level="3.12" data-path="git-y-github.html"><a href="git-y-github.html#conectar-con-overleaf"><i class="fa fa-check"></i><b>3.12</b> Conectar con overleaf</a></li>
+<li class="chapter" data-level="3.9" data-path="git-y-github.html"><a href="git-y-github.html#trabajando-con-ramas"><i class="fa fa-check"></i><b>3.9</b> Trabajando con Ramas</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="git-y-github.html"><a href="git-y-github.html#crear-una-rama"><i class="fa fa-check"></i><b>3.9.1</b> 1. Crear una rama</a></li>
+<li class="chapter" data-level="3.9.2" data-path="git-y-github.html"><a href="git-y-github.html#trabajar-en-la-rama"><i class="fa fa-check"></i><b>3.9.2</b> 2. Trabajar en la rama</a></li>
+<li class="chapter" data-level="3.9.3" data-path="git-y-github.html"><a href="git-y-github.html#agregar-y-confirmar-cambios"><i class="fa fa-check"></i><b>3.9.3</b> 3. Agregar y confirmar cambios</a></li>
+<li class="chapter" data-level="3.9.4" data-path="git-y-github.html"><a href="git-y-github.html#empujar-la-rama-al-repositorio-remoto"><i class="fa fa-check"></i><b>3.9.4</b> 4. Empujar la rama al repositorio remoto</a></li>
+<li class="chapter" data-level="3.9.5" data-path="git-y-github.html"><a href="git-y-github.html#fusionar-cambios"><i class="fa fa-check"></i><b>3.9.5</b> 5. Fusionar cambios</a></li>
+<li class="chapter" data-level="3.9.6" data-path="git-y-github.html"><a href="git-y-github.html#resolver-conflictos-si-los-hay"><i class="fa fa-check"></i><b>3.9.6</b> 6. Resolver conflictos (si los hay)</a></li>
+<li class="chapter" data-level="3.9.7" data-path="git-y-github.html"><a href="git-y-github.html#eliminar-la-rama-opcional"><i class="fa fa-check"></i><b>3.9.7</b> 7. Eliminar la rama (opcional)</a></li>
+<li class="chapter" data-level="3.9.8" data-path="git-y-github.html"><a href="git-y-github.html#actualizar-y-sincronizar"><i class="fa fa-check"></i><b>3.9.8</b> 8. Actualizar y sincronizar</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="git-y-github.html"><a href="git-y-github.html#conectar-con-overleaf"><i class="fa fa-check"></i><b>3.10</b> Conectar con overleaf</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>4</b> Python</a>
 <ul>
@@ -759,17 +767,87 @@ cambios del colaborador aqui
 <span id="cb102-4"><a href="git-y-github.html#cb102-4" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Use two images: dueño y colaborador&quot;</span></span>
 <span id="cb102-5"><a href="git-y-github.html#cb102-5" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
 </div>
-<div id="crear-ramas" class="section level2 hasAnchor" number="3.9">
-<h2><span class="header-section-number">3.9</span> Crear Ramas<a href="git-y-github.html#crear-ramas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="trabajando-con-ramas" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Trabajando con Ramas<a href="git-y-github.html#trabajando-con-ramas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Trabajar con ramas en Git es una parte fundamental del flujo de trabajo colaborativo. Los siguientes pasos son los básicos para trabajar de esta manera.</p>
+<div id="crear-una-rama" class="section level3 hasAnchor" number="3.9.1">
+<h3><span class="header-section-number">3.9.1</span> 1. Crear una rama<a href="git-y-github.html#crear-una-rama" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cuando trabajas en un proyecto, es una buena práctica crear una rama separada para cada nueva función o corrección de errores que estés desarrollando. Para crear una nueva rama en Git, utiliza el comando:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb103-1"><a href="git-y-github.html#cb103-1" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">-b</span> nombre_de_la_rama</span></code></pre></div>
+<p>Este comando crea una nueva rama y te cambia a ella al mismo tiempo.</p>
+<p>Otra opción es la siguiente:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb104-1"><a href="git-y-github.html#cb104-1" tabindex="-1"></a><span class="ex">$</span> git branch nombre_de_la_rama</span>
+<span id="cb104-2"><a href="git-y-github.html#cb104-2" tabindex="-1"></a><span class="ex">$</span> git switch nombre_de_la_rama</span></code></pre></div>
 </div>
-<div id="actualizando-ramas" class="section level2 hasAnchor" number="3.10">
-<h2><span class="header-section-number">3.10</span> Actualizando ramas<a href="git-y-github.html#actualizando-ramas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="trabajar-en-la-rama" class="section level3 hasAnchor" number="3.9.2">
+<h3><span class="header-section-number">3.9.2</span> 2. Trabajar en la rama<a href="git-y-github.html#trabajar-en-la-rama" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Después de crear la rama, puedes comenzar a trabajar en tus cambios. Realiza tus modificaciones en los archivos como lo harías normalmente.</p>
 </div>
-<div id="revertir-cambios" class="section level2 hasAnchor" number="3.11">
-<h2><span class="header-section-number">3.11</span> Revertir cambios<a href="git-y-github.html#revertir-cambios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="agregar-y-confirmar-cambios" class="section level3 hasAnchor" number="3.9.3">
+<h3><span class="header-section-number">3.9.3</span> 3. Agregar y confirmar cambios<a href="git-y-github.html#agregar-y-confirmar-cambios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una vez que hayas realizado cambios que desees incluir en la rama, añádelos al área de preparación con:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb105-1"><a href="git-y-github.html#cb105-1" tabindex="-1"></a><span class="ex">$</span> git add nombre_del_archivo</span></code></pre></div>
+<p>Luego, confirma los cambios con un mensaje descriptivo:</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb106-1"><a href="git-y-github.html#cb106-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Mensaje descriptivo de los cambios&quot;</span></span></code></pre></div>
 </div>
-<div id="conectar-con-overleaf" class="section level2 hasAnchor" number="3.12">
-<h2><span class="header-section-number">3.12</span> Conectar con overleaf<a href="git-y-github.html#conectar-con-overleaf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="empujar-la-rama-al-repositorio-remoto" class="section level3 hasAnchor" number="3.9.4">
+<h3><span class="header-section-number">3.9.4</span> 4. Empujar la rama al repositorio remoto<a href="git-y-github.html#empujar-la-rama-al-repositorio-remoto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Si estás trabajando en un repositorio remoto compartido con otros colaboradores, es posible que desees compartir tus cambios. Para esto, hay dos formas de hacerlo. La primera es enviar los cambios a una rama remota y después confirmarlos y unirlos, para eso utiliza el comando:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb107-1"><a href="git-y-github.html#cb107-1" tabindex="-1"></a><span class="ex">$</span> git push origin nombre_de_la_rama</span></code></pre></div>
+<p>Esto enviará la nueva rama y los cambios asociados al repositorio remoto.</p>
+</div>
+<div id="fusionar-cambios" class="section level3 hasAnchor" number="3.9.5">
+<h3><span class="header-section-number">3.9.5</span> 5. Fusionar cambios<a href="git-y-github.html#fusionar-cambios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una vez que hayas completado tus cambios y estés listo para incorporarlos al proyecto principal, puedes fusionar tu rama con la rama principal (generalmente <code>main</code> o <code>master</code>). Para hacerlo, primero cámbiate a la rama principal:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb108-1"><a href="git-y-github.html#cb108-1" tabindex="-1"></a><span class="ex">$</span> git checkout main</span></code></pre></div>
+<p>Otra opción:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb109-1"><a href="git-y-github.html#cb109-1" tabindex="-1"></a><span class="ex">$</span> git switch main</span></code></pre></div>
+<p>Luego, fusiona tu rama con la rama principal:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb110-1"><a href="git-y-github.html#cb110-1" tabindex="-1"></a><span class="ex">$</span> git merge nombre_de_la_rama</span></code></pre></div>
+<p><strong>NOTA:</strong> Los pasos 4 y 5 se pueden intercambiar de orden, es decir primero hacer el merge local cambiandonos a la rama principal y después enviando los cambios al remoto. Es importante primero hacer un <code>git pull</code> para actualizar nuestro local en la rama principal.</p>
+</div>
+<div id="resolver-conflictos-si-los-hay" class="section level3 hasAnchor" number="3.9.6">
+<h3><span class="header-section-number">3.9.6</span> 6. Resolver conflictos (si los hay)<a href="git-y-github.html#resolver-conflictos-si-los-hay" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Es posible que ocurran conflictos durante el proceso de fusión si otros colaboradores han realizado cambios en las mismas partes de los archivos. Git te indicará los conflictos y te permitirá resolverlos manualmente.</p>
+</div>
+<div id="eliminar-la-rama-opcional" class="section level3 hasAnchor" number="3.9.7">
+<h3><span class="header-section-number">3.9.7</span> 7. Eliminar la rama (opcional)<a href="git-y-github.html#eliminar-la-rama-opcional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una vez que hayas fusionado tus cambios en la rama principal y ya no necesites la rama de la función, puedes eliminarla:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb111-1"><a href="git-y-github.html#cb111-1" tabindex="-1"></a><span class="ex">$</span> git branch <span class="at">-d</span> nombre_de_la_rama</span></code></pre></div>
+</div>
+<div id="actualizar-y-sincronizar" class="section level3 hasAnchor" number="3.9.8">
+<h3><span class="header-section-number">3.9.8</span> 8. Actualizar y sincronizar<a href="git-y-github.html#actualizar-y-sincronizar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Es importante mantener tu repositorio local actualizado con los cambios de otros colaboradores. Para hacerlo, utiliza:</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb112-1"><a href="git-y-github.html#cb112-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
+<p>Esto traerá los últimos cambios de la rama principal del repositorio remoto y los fusionará con tu rama local.</p>
+<p>Siguiendo estos pasos, podrás trabajar de manera efectiva con ramas en Git en un entorno colaborativo. Recuerda comunicarte con tus colaboradores y mantener un flujo de trabajo ordenado para evitar conflictos y errores.</p>
+</div>
+</div>
+<div id="conectar-con-overleaf" class="section level2 hasAnchor" number="3.10">
+<h2><span class="header-section-number">3.10</span> Conectar con overleaf<a href="git-y-github.html#conectar-con-overleaf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lo primero es crear el documento en Overleaf que nos interesa. Después se clona el archivo con la dirección que da Overleaf. Esa será la ruta de la carpeta. De manera local podemos cambiar el propio archivo <em>.tex</em> por uno que ya tengamos (parece que es más fácil hacer esto que intentar crear un nuevo documento en Overleaf a partir un repositorio existente, pero falta hacer más pruebas); también, es posible cambiar el nombre de la carpeta en la cual se generó el repositorio (parece que no hay problemas con Overleaf pero hay que hacer más pruebas).</p>
+<p>A continuación los pasos para trabajar localmente una vez que ya se tiene el repositorio creado.</p>
+<ol style="list-style-type: decimal">
+<li><p><code>cd ruta_de_la_carpeta</code></p></li>
+<li><p><code>git branch nombre_rama_local</code></p></li>
+<li><p><code>git switch nombre_rama_local</code> (o master)</p></li>
+<li><p><code>git status</code> (para ver cambios)</p></li>
+<li><p><code>git add .</code> (para añadir los cambios-todos)</p></li>
+<li><p>`git commit -m “nombre del mensaje”``</p></li>
+<li><p><code>git switch master</code></p></li>
+<li><p><code>git pull</code></p></li>
+<li><p><code>git merge nombre_rama_local</code></p></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><code>git switch nombre_rama_local</code>
+(b) <code>git merge master</code> (para actualizar ahora rama local)
+(c) seguir trabajando sobre la misma rama local
+(d) repetir de 4 a 9</li>
+</ol>
+<ol start="10" style="list-style-type: decimal">
+<li><p><code>git push</code></p></li>
+<li><p><code>git branch -d nombre_rama_local</code></p></li>
+</ol>
 
 </div>
 </div>
