@@ -1,211 +1,394 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Sección 3 Git y Github | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</title>
-<meta name="author" content="Haydeé Peruyero">
-<meta name="description" content="Usar control de versiones es una forma de manejar proyectos, todo a lo que se hace commit se pierde, se queda un registro de todos los cambios y siempre es posible regresar a una versión anterior....">
-<meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="Sección 3 Git y Github | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos">
-<meta property="og:type" content="book">
-<meta property="og:description" content="Usar control de versiones es una forma de manejar proyectos, todo a lo que se hace commit se pierde, se queda un registro de todos los cambios y siempre es posible regresar a una versión anterior....">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sección 3 Git y Github | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos">
-<meta name="twitter:description" content="Usar control de versiones es una forma de manejar proyectos, todo a lo que se hace commit se pierde, se queda un registro de todos los cambios y siempre es posible regresar a una versión anterior....">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
-    
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Sección 3 Git y Github | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</title>
+  <meta name="description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Sección 3 Git y Github | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  <meta name="github-repo" content="HaydeePeruyero/Computo_Cientifico" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sección 3 Git y Github | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos" />
+  
+  <meta name="twitter:description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  
+
+<meta name="author" content="Haydeé Peruyero" />
+
+
+<meta name="date" content="2024-03-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="shell.html"/>
+<link rel="next" href="python.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a></li>
-<li><a class="" href="shell.html"><span class="header-section-number">2</span> Shell</a></li>
-<li><a class="active" href="git-y-github.html"><span class="header-section-number">3</span> Git y Github</a></li>
-<li><a class="" href="python.html"><span class="header-section-number">4</span> Python</a></li>
-<li><a class="" href="sql.html"><span class="header-section-number">5</span> SQL</a></li>
-<li><a class="" href="power-bi.html"><span class="header-section-number">6</span> Power BI</a></li>
-<li><a class="" href="r.html"><span class="header-section-number">7</span> R</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Computo_Cientifico</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#temario"><i class="fa fa-check"></i><b>1.1</b> Temario</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#referencias"><i class="fa fa-check"></i><b>1.2</b> Referencias</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#material-interesante"><i class="fa fa-check"></i><b>1.3</b> Material interesante</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#datacamp"><i class="fa fa-check"></i><b>1.4</b> DataCamp</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="shell.html"><a href="shell.html"><i class="fa fa-check"></i><b>2</b> Shell</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="shell.html"><a href="shell.html#navegar-en-archivos-y-directorios"><i class="fa fa-check"></i><b>2.1</b> Navegar en archivos y directorios</a></li>
+<li class="chapter" data-level="2.2" data-path="shell.html"><a href="shell.html#manipulación-de-archivos-y-directorios"><i class="fa fa-check"></i><b>2.2</b> Manipulación de archivos y directorios</a></li>
+<li class="chapter" data-level="2.3" data-path="shell.html"><a href="shell.html#tuberías-y-filtros"><i class="fa fa-check"></i><b>2.3</b> Tuberías y filtros</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="shell.html"><a href="shell.html#tuberías"><i class="fa fa-check"></i><b>2.3.1</b> Tuberías</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="shell.html"><a href="shell.html#ciclos"><i class="fa fa-check"></i><b>2.4</b> Ciclos</a></li>
+<li class="chapter" data-level="2.5" data-path="shell.html"><a href="shell.html#scripts"><i class="fa fa-check"></i><b>2.5</b> Scripts</a></li>
+<li class="chapter" data-level="2.6" data-path="shell.html"><a href="shell.html#buscando-y-encontrando-cosas"><i class="fa fa-check"></i><b>2.6</b> Buscando y encontrando cosas</a></li>
+<li class="chapter" data-level="2.7" data-path="shell.html"><a href="shell.html#if-while-y-for"><i class="fa fa-check"></i><b>2.7</b> if, while y for</a></li>
+<li class="chapter" data-level="2.8" data-path="shell.html"><a href="shell.html#descarga-y-limpieza-de-bases-de-datos"><i class="fa fa-check"></i><b>2.8</b> Descarga y limpieza de bases de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="git-y-github.html"><a href="git-y-github.html"><i class="fa fa-check"></i><b>3</b> Git y Github</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="git-y-github.html"><a href="git-y-github.html#repositorios"><i class="fa fa-check"></i><b>3.1</b> Repositorios</a></li>
+<li class="chapter" data-level="3.2" data-path="git-y-github.html"><a href="git-y-github.html#rastrear-cambios"><i class="fa fa-check"></i><b>3.2</b> Rastrear cambios</a></li>
+<li class="chapter" data-level="3.3" data-path="git-y-github.html"><a href="git-y-github.html#explorando-el-historial"><i class="fa fa-check"></i><b>3.3</b> Explorando el historial</a></li>
+<li class="chapter" data-level="3.4" data-path="git-y-github.html"><a href="git-y-github.html#restore-y-reset"><i class="fa fa-check"></i><b>3.4</b> Restore y reset</a></li>
+<li class="chapter" data-level="3.5" data-path="git-y-github.html"><a href="git-y-github.html#ignorar-archivoscarpetas"><i class="fa fa-check"></i><b>3.5</b> Ignorar archivos/carpetas</a></li>
+<li class="chapter" data-level="3.6" data-path="git-y-github.html"><a href="git-y-github.html#github"><i class="fa fa-check"></i><b>3.6</b> Github</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="git-y-github.html"><a href="git-y-github.html#paso-1-crear-un-repositorio-remoto"><i class="fa fa-check"></i><b>3.6.1</b> Paso 1: Crear un repositorio remoto</a></li>
+<li class="chapter" data-level="3.6.2" data-path="git-y-github.html"><a href="git-y-github.html#paso-2-conectar-local-a-remoto"><i class="fa fa-check"></i><b>3.6.2</b> Paso 2: Conectar local a remoto</a></li>
+<li class="chapter" data-level="3.6.3" data-path="git-y-github.html"><a href="git-y-github.html#paso-3-conexión-mediante-ssh"><i class="fa fa-check"></i><b>3.6.3</b> Paso 3: Conexión mediante SSH</a></li>
+<li class="chapter" data-level="3.6.4" data-path="git-y-github.html"><a href="git-y-github.html#paso-4-push-and-pull"><i class="fa fa-check"></i><b>3.6.4</b> Paso 4: Push and pull</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="git-y-github.html"><a href="git-y-github.html#colaboradores"><i class="fa fa-check"></i><b>3.7</b> Colaboradores</a></li>
+<li class="chapter" data-level="3.8" data-path="git-y-github.html"><a href="git-y-github.html#conflictos"><i class="fa fa-check"></i><b>3.8</b> Conflictos</a></li>
+<li class="chapter" data-level="3.9" data-path="git-y-github.html"><a href="git-y-github.html#trabajando-con-ramas"><i class="fa fa-check"></i><b>3.9</b> Trabajando con Ramas</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="git-y-github.html"><a href="git-y-github.html#crear-una-rama"><i class="fa fa-check"></i><b>3.9.1</b> 1. Crear una rama</a></li>
+<li class="chapter" data-level="3.9.2" data-path="git-y-github.html"><a href="git-y-github.html#trabajar-en-la-rama"><i class="fa fa-check"></i><b>3.9.2</b> 2. Trabajar en la rama</a></li>
+<li class="chapter" data-level="3.9.3" data-path="git-y-github.html"><a href="git-y-github.html#agregar-y-confirmar-cambios"><i class="fa fa-check"></i><b>3.9.3</b> 3. Agregar y confirmar cambios</a></li>
+<li class="chapter" data-level="3.9.4" data-path="git-y-github.html"><a href="git-y-github.html#empujar-la-rama-al-repositorio-remoto"><i class="fa fa-check"></i><b>3.9.4</b> 4. Empujar la rama al repositorio remoto</a></li>
+<li class="chapter" data-level="3.9.5" data-path="git-y-github.html"><a href="git-y-github.html#fusionar-cambios"><i class="fa fa-check"></i><b>3.9.5</b> 5. Fusionar cambios</a></li>
+<li class="chapter" data-level="3.9.6" data-path="git-y-github.html"><a href="git-y-github.html#resolver-conflictos-si-los-hay"><i class="fa fa-check"></i><b>3.9.6</b> 6. Resolver conflictos (si los hay)</a></li>
+<li class="chapter" data-level="3.9.7" data-path="git-y-github.html"><a href="git-y-github.html#eliminar-la-rama-opcional"><i class="fa fa-check"></i><b>3.9.7</b> 7. Eliminar la rama (opcional)</a></li>
+<li class="chapter" data-level="3.9.8" data-path="git-y-github.html"><a href="git-y-github.html#actualizar-y-sincronizar"><i class="fa fa-check"></i><b>3.9.8</b> 8. Actualizar y sincronizar</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="git-y-github.html"><a href="git-y-github.html#conectar-con-overleaf"><i class="fa fa-check"></i><b>3.10</b> Conectar con overleaf</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>4</b> Python</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="python.html"><a href="python.html#tipos-de-datos"><i class="fa fa-check"></i><b>4.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="4.2" data-path="python.html"><a href="python.html#flujo-de-control"><i class="fa fa-check"></i><b>4.2</b> Flujo de control</a></li>
+<li class="chapter" data-level="4.3" data-path="python.html"><a href="python.html#visualización-de-datos"><i class="fa fa-check"></i><b>4.3</b> Visualización de datos</a></li>
+<li class="chapter" data-level="4.4" data-path="python.html"><a href="python.html#manipulación-de-bases-de-datos"><i class="fa fa-check"></i><b>4.4</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="4.5" data-path="python.html"><a href="python.html#análisis-exploratorio-de-bases-de-datos"><i class="fa fa-check"></i><b>4.5</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="4.6" data-path="python.html"><a href="python.html#funciones-y-scripts"><i class="fa fa-check"></i><b>4.6</b> Funciones y scripts</a></li>
+<li class="chapter" data-level="4.7" data-path="python.html"><a href="python.html#buenas-practicas"><i class="fa fa-check"></i><b>4.7</b> Buenas practicas</a></li>
+<li class="chapter" data-level="4.8" data-path="python.html"><a href="python.html#procesamiento-de-alto-rendimiento"><i class="fa fa-check"></i><b>4.8</b> Procesamiento de alto rendimiento</a></li>
+<li class="chapter" data-level="4.9" data-path="python.html"><a href="python.html#programación-en-paralelo"><i class="fa fa-check"></i><b>4.9</b> Programación en paralelo</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>5</b> SQL</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="sql.html"><a href="sql.html#bases-de-datos-y-manipulación"><i class="fa fa-check"></i><b>5.1</b> Bases de datos y manipulación</a></li>
+<li class="chapter" data-level="5.2" data-path="sql.html"><a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado"><i class="fa fa-check"></i><b>5.2</b> Explorar datos categóricos y texto no estructurado</a></li>
+<li class="chapter" data-level="5.3" data-path="sql.html"><a href="sql.html#comparación-con-los-otros-programas"><i class="fa fa-check"></i><b>5.3</b> Comparación con los otros programas</a></li>
+<li class="chapter" data-level="5.4" data-path="sql.html"><a href="sql.html#valores-faltantes"><i class="fa fa-check"></i><b>5.4</b> Valores faltantes</a></li>
+<li class="chapter" data-level="5.5" data-path="sql.html"><a href="sql.html#combinar-bases-de-datos"><i class="fa fa-check"></i><b>5.5</b> Combinar bases de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="power-bi.html"><a href="power-bi.html"><i class="fa fa-check"></i><b>6</b> Power BI</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="power-bi.html"><a href="power-bi.html#introducción-a-power-bi"><i class="fa fa-check"></i><b>6.1</b> Introducción a Power BI</a></li>
+<li class="chapter" data-level="6.2" data-path="power-bi.html"><a href="power-bi.html#transformando-y-visualizando-datos"><i class="fa fa-check"></i><b>6.2</b> Transformando y visualizando datos</a></li>
+<li class="chapter" data-level="6.3" data-path="power-bi.html"><a href="power-bi.html#manipulación-de-bases-de-datos-1"><i class="fa fa-check"></i><b>6.3</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="6.4" data-path="power-bi.html"><a href="power-bi.html#análisis-exploratorio-de-bases-de-datos-1"><i class="fa fa-check"></i><b>6.4</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="6.5" data-path="power-bi.html"><a href="power-bi.html#variables-categóricas-y-continuas"><i class="fa fa-check"></i><b>6.5</b> Variables categóricas y continuas</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>7</b> R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="r.html"><a href="r.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>7.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="7.2" data-path="r.html"><a href="r.html#manipulación-de-bases-de-datos-2"><i class="fa fa-check"></i><b>7.2</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="7.3" data-path="r.html"><a href="r.html#análisis-exploratorio-de-bases-de-datos-2"><i class="fa fa-check"></i><b>7.3</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="7.4" data-path="r.html"><a href="r.html#reportes-con-rmarkdown"><i class="fa fa-check"></i><b>7.4</b> Reportes con RMarkdown</a></li>
+<li class="chapter" data-level="7.5" data-path="r.html"><a href="r.html#páginas-web"><i class="fa fa-check"></i><b>7.5</b> Páginas web</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/HaydeePeruyero/Computo_Cientifico/" target="blank">Published with bookdown</a></li>
+
 </ul>
 
-        <div class="book-extra">
-          
-        </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="git-y-github" class="section level1" number="3">
-<h1>
-<span class="header-section-number">Sección 3</span> Git y Github<a class="anchor" aria-label="anchor" href="#git-y-github"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="git-y-github" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Sección 3</span> Git y Github<a href="git-y-github.html#git-y-github" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Usar control de versiones es una forma de manejar proyectos, todo a lo que se hace <code>commit</code> se pierde, se queda un registro de todos los cambios y siempre es posible regresar a una versión anterior. Nos evitamos estar enviando y enviando correos con versiones finales para después comparar versiones. Se guarda el usuario que hizo el cambio y automáticamente obtenemos una notificación de si intentamos modificar lo mismo que un colaborador para revisar cual cambio guardar.</p>
 <p>Pueden pensar en versión de control como una forma de <code>undo</code> ilimitado y de trabajar paralelamente con sus colaboradores.</p>
 <p>Lo primero que vamos a hacer es configurar <code>Git</code> en nuestra computadora.</p>
 <p>Vamos a abrir <code>Git bash</code> y configurar nuestro usuario y correo con la que vamos a enlazar más adelante Github.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb138-1"><a href="git-y-github.html#cb138-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Usuario"</span></span>
-<span id="cb138-2"><a href="git-y-github.html#cb138-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"email@domain.com"</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="git-y-github.html#cb1-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">&quot;Usuario&quot;</span></span>
+<span id="cb1-2"><a href="git-y-github.html#cb1-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">&quot;email@domain.com&quot;</span></span></code></pre></div>
 <p>Ahora, vamos a configurar los saltos de línea para no tener conflicto según el sistema operativo.</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb139-1"><a href="git-y-github.html#cb139-1" tabindex="-1"></a><span class="co"># Mac o Linux</span></span>
-<span id="cb139-2"><a href="git-y-github.html#cb139-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.autocrlf input</span>
-<span id="cb139-3"><a href="git-y-github.html#cb139-3" tabindex="-1"></a><span class="co"># Windows</span></span>
-<span id="cb139-4"><a href="git-y-github.html#cb139-4" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.autocrlf true</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="git-y-github.html#cb2-1" tabindex="-1"></a><span class="co"># Mac o Linux</span></span>
+<span id="cb2-2"><a href="git-y-github.html#cb2-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.autocrlf input</span>
+<span id="cb2-3"><a href="git-y-github.html#cb2-3" tabindex="-1"></a><span class="co"># Windows</span></span>
+<span id="cb2-4"><a href="git-y-github.html#cb2-4" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.autocrlf true</span></code></pre></div>
 <p>Para configurar el editor de texto por default:</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb140-1"><a href="git-y-github.html#cb140-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.editor <span class="st">"nano -w"</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="git-y-github.html#cb3-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.editor <span class="st">&quot;nano -w&quot;</span></span></code></pre></div>
 <p>Por default, Git inicializa un repositorio con una rama llamada <code>master</code>, a partir del 2020, la mayoría de los servidores de Git cambiaron esto a que la rama principal fuera <code>main</code>, para configurar esto usaremos lo siguiente:</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb141-1"><a href="git-y-github.html#cb141-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> init.defaultBranch main</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="git-y-github.html#cb4-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> init.defaultBranch main</span></code></pre></div>
 <p>Los comandos anteriores solo se necesitan configurar una sola vez. Para ver la configuración que acabamos de realizar y probar cual es nuestro editor de texto usamos lo siguiente:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb142-1"><a href="git-y-github.html#cb142-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--edit</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="git-y-github.html#cb5-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--edit</span></span></code></pre></div>
 <p>Y para revisar esta configuración sin entrar al editor:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb143-1"><a href="git-y-github.html#cb143-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--list</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="git-y-github.html#cb6-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--list</span></span></code></pre></div>
 <p>Si debieran hacer cambios en su usuario o correo o cualquier otra configuración lo pueden hacer ilimitadas veces con los comandos anteriores.</p>
 <p>Para pedir ayuda nos sirve aún <code>git comando -h</code> o <code>git comando --help</code>, por ejemplo:</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb144-1"><a href="git-y-github.html#cb144-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">-h</span></span>
-<span id="cb144-2"><a href="git-y-github.html#cb144-2" tabindex="-1"></a><span class="co"># La siguiente nos abre en un navegador el manual completo</span></span>
-<span id="cb144-3"><a href="git-y-github.html#cb144-3" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--help</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="git-y-github.html#cb7-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">-h</span></span>
+<span id="cb7-2"><a href="git-y-github.html#cb7-2" tabindex="-1"></a><span class="co"># La siguiente nos abre en un navegador el manual completo</span></span>
+<span id="cb7-3"><a href="git-y-github.html#cb7-3" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--help</span></span></code></pre></div>
 <p>O para ayuda general de Git: <code>git help</code>.</p>
-<div id="repositorios" class="section level2" number="3.1">
-<h2>
-<span class="header-section-number">3.1</span> Repositorios<a class="anchor" aria-label="anchor" href="#repositorios"><i class="fas fa-link"></i></a>
-</h2>
+<div id="repositorios" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Repositorios<a href="git-y-github.html#repositorios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Un repositorio es donde se va a almacenar toda la información de nuestro proyecto, es donde vamos a tener toda la historia y registro de cambios y usuarios. Es recomendable tener un repositorio por proyecto y no multiples proyectos en un solo repositorio.</p>
 <p>Vamos a movernos a la carpeta del curso y vamos a hacer una carpeta para trabajar con git.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb145-1"><a href="git-y-github.html#cb145-1" tabindex="-1"></a><span class="ex">$</span> cd Curso_Comp_cient</span>
-<span id="cb145-2"><a href="git-y-github.html#cb145-2" tabindex="-1"></a><span class="ex">$</span> mkdir Mi_primer_repo</span>
-<span id="cb145-3"><a href="git-y-github.html#cb145-3" tabindex="-1"></a><span class="ex">$</span> cd Mi_primer_repo</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="git-y-github.html#cb8-1" tabindex="-1"></a><span class="ex">$</span> cd Curso_Comp_cient</span>
+<span id="cb8-2"><a href="git-y-github.html#cb8-2" tabindex="-1"></a><span class="ex">$</span> mkdir Mi_primer_repo</span>
+<span id="cb8-3"><a href="git-y-github.html#cb8-3" tabindex="-1"></a><span class="ex">$</span> cd Mi_primer_repo</span></code></pre></div>
 <p>Para inicializar un repositorio usamos lo siguiente (dentro de la carperta).</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb146-1"><a href="git-y-github.html#cb146-1" tabindex="-1"></a><span class="ex">$</span> git init</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="git-y-github.html#cb9-1" tabindex="-1"></a><span class="ex">$</span> git init</span></code></pre></div>
 <p>Al inicializar el repositorio, cualquier carpeta y archivo que se cree dentro de la carpeta quedará su registro, no es necesario inicializar las carpetas anidadas.</p>
 <p>Si revisamos que tiene la carpeta solo con <code>ls</code> no vamos a notar ningún cambio pero si listamos con la opción <code>-a</code> veremos que contiene archivos ocultos. En el archivo <code>.git</code> se almacena <strong>TODA</strong> la información de nuestro repositorio, así que si lo borramos perderemos todo el historial del repositorio.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb147-1"><a href="git-y-github.html#cb147-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-a</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="git-y-github.html#cb10-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-a</span></span></code></pre></div>
 <p>Para cambiar manualmente la rama de nuestro repositorio si no es la main, lo podemos hacer como sigue.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb148-1"><a href="git-y-github.html#cb148-1" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">-b</span> main</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="git-y-github.html#cb11-1" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">-b</span> main</span></code></pre></div>
 <p>Para preguntarle a git el estado de nuestro proyecto:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb149-1"><a href="git-y-github.html#cb149-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="git-y-github.html#cb12-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Si dentro de una carpeta preguntamos <code>git status</code> y obtenemos el siguiente mensaje:</p>
 <pre class="output"><code>fatal: not a git repository (or any of the parent directories): .git</code></pre>
 <p>significa que si podemos inicializarlo como un repositorio.</p>
 <p><strong>Ejercicio:</strong> Dentro de la carpeta <code>Mi_primer_repo</code> crea una carpeta llamada <code>subproyecto1</code>. Si quieres llevar un registro de lo que hagas en ese subproyecto, ¿debes inicializarla? Inicializala. Ahora, ¿cómo borras el archivo <code>.git</code>?</p>
 </div>
-<div id="rastrear-cambios" class="section level2" number="3.2">
-<h2>
-<span class="header-section-number">3.2</span> Rastrear cambios<a class="anchor" aria-label="anchor" href="#rastrear-cambios"><i class="fas fa-link"></i></a>
-</h2>
+<div id="rastrear-cambios" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Rastrear cambios<a href="git-y-github.html#rastrear-cambios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Vamos a crear un archivo de texto dentro de la carpeta <code>Mi_primer_repo</code>.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb151-1"><a href="git-y-github.html#cb151-1" tabindex="-1"></a><span class="ex">$</span> nano prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="git-y-github.html#cb14-1" tabindex="-1"></a><span class="ex">$</span> nano prueba.txt</span></code></pre></div>
 <p>Y escribamos algo en el archivo y guardemoslo.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb152-1"><a href="git-y-github.html#cb152-1" tabindex="-1"></a><span class="ex">Primer</span> archivo en el que rastrearemos cambios.</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="git-y-github.html#cb15-1" tabindex="-1"></a><span class="ex">Primer</span> archivo en el que rastrearemos cambios.</span></code></pre></div>
 <p>Ahora, si preguntamos por el estado de nuestro proyecto vamos a obtener un mensaje de que hay algo nuevo:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb153-1"><a href="git-y-github.html#cb153-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="git-y-github.html#cb16-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>El mensaje que dice <code>untracked files</code> nos indica que hay cambios y que a Git no se le ha indicado que debe registrarlos. Para añadir estos cambios hacemos lo siguiente:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb154-1"><a href="git-y-github.html#cb154-1" tabindex="-1"></a><span class="ex">$</span> git add prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="git-y-github.html#cb17-1" tabindex="-1"></a><span class="ex">$</span> git add prueba.txt</span></code></pre></div>
 <p>Si revisamos el estado del proyecto vemos que ahora un mensaje diferente, ahora solo nos indica que no se ha realizado ningún commit pero que si se tiene registro de algo que cambio.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb155-1"><a href="git-y-github.html#cb155-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="git-y-github.html#cb18-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Para hacer un commit:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb156-1"><a href="git-y-github.html#cb156-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Comenzando archivo de prueba y registro de cambios"</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="git-y-github.html#cb19-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Comenzando archivo de prueba y registro de cambios&quot;</span></span></code></pre></div>
 <p>Este comando le dice a Git que tome todo lo que se añadió y que guarde una copia permanente dentro del directorio <code>.git</code>. Cada commit tiene un identificador único. Si no especificamos el mensaje, Git abrirá un editor de texto para colocar el mensaje. Los mensajes deben de reflejar lo que se está guardando para que sean útiles en el futuro.</p>
 <p>Si ahora verificamos el estado del proyecto veremos que nos dice que no hay nada a lo que hacer commit ya que en el paso anterior añadimos todo y no hemos realizado ningún cambio.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb157-1"><a href="git-y-github.html#cb157-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="git-y-github.html#cb20-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Para mostrar el historial del proyecto:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb158-1"><a href="git-y-github.html#cb158-1" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="git-y-github.html#cb21-1" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre></div>
 <p>Ahora, añadamos una línea nueva al archivo <code>prueba.txt</code></p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb159-1"><a href="git-y-github.html#cb159-1" tabindex="-1"></a><span class="ex">$</span> nano prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="git-y-github.html#cb22-1" tabindex="-1"></a><span class="ex">$</span> nano prueba.txt</span></code></pre></div>
 <pre class="output"><code>Primer archivo en el que rastrearemos cambios.
 Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 <p>Si revisamos el estado veremos de nuevo que nos devuelve el mensaje de que hay archivos sin rastrear. Para comparar las diferencias del archivo usamos:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb161-1"><a href="git-y-github.html#cb161-1" tabindex="-1"></a><span class="ex">$</span> git diff</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="git-y-github.html#cb24-1" tabindex="-1"></a><span class="ex">$</span> git diff</span></code></pre></div>
 <p>El signo <code>+</code> nos está indicando cuales son los cambios en el archivo nuevo.</p>
 <p>Vamos a hacer un commit de este cambio.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb162-1"><a href="git-y-github.html#cb162-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Añadimos la segunda linea al archivo"</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="git-y-github.html#cb25-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Añadimos la segunda linea al archivo&quot;</span></span></code></pre></div>
 <p>¿Qué paso? Nos esta diciendo que no hemos añadido nada al <code>staged area</code> a lo que le podamos hacer un commit, recuerden añadir todo antes de hacer commit.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb163-1"><a href="git-y-github.html#cb163-1" tabindex="-1"></a><span class="ex">$</span> git add prueba.txt</span>
-<span id="cb163-2"><a href="git-y-github.html#cb163-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Añadimos la segunda linea al archivo"</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="git-y-github.html#cb26-1" tabindex="-1"></a><span class="ex">$</span> git add prueba.txt</span>
+<span id="cb26-2"><a href="git-y-github.html#cb26-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Añadimos la segunda linea al archivo&quot;</span></span></code></pre></div>
 <p>Añadir todo primero al área de preparación nos permite tener un mejor control de a que le estamos haciendo commit, por ejemplo podemos añadir y hacerle commit solo al archivo donde tenemos la bibliografía y no a todo el proyecto donde hay partes no completas.</p>
 <div class="float">
-<img src="img/git-staging-area.png" alt="Software Carpentry - Version Control with Git"><div class="figcaption">Software Carpentry - Version Control with Git</div>
+<img src="img/git-staging-area.png" alt="Software Carpentry - Version Control with Git" />
+<div class="figcaption">Software Carpentry - Version Control with Git</div>
 </div>
 <p><strong>Ejercicio:</strong> Añadamos una tercera línea al archivo y verifiquemos las diferencias en los archivos, después añadamoslo al área de preparación y revicemos las diferencias. ¿Qué sucede?</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb164-1"><a href="git-y-github.html#cb164-1" tabindex="-1"></a><span class="ex">$</span> nano prueba.txt</span>
-<span id="cb164-2"><a href="git-y-github.html#cb164-2" tabindex="-1"></a><span class="ex">$</span> git diff</span>
-<span id="cb164-3"><a href="git-y-github.html#cb164-3" tabindex="-1"></a><span class="ex">$</span> git add prueba.txt</span>
-<span id="cb164-4"><a href="git-y-github.html#cb164-4" tabindex="-1"></a><span class="ex">$</span> git diff</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="git-y-github.html#cb27-1" tabindex="-1"></a><span class="ex">$</span> nano prueba.txt</span>
+<span id="cb27-2"><a href="git-y-github.html#cb27-2" tabindex="-1"></a><span class="ex">$</span> git diff</span>
+<span id="cb27-3"><a href="git-y-github.html#cb27-3" tabindex="-1"></a><span class="ex">$</span> git add prueba.txt</span>
+<span id="cb27-4"><a href="git-y-github.html#cb27-4" tabindex="-1"></a><span class="ex">$</span> git diff</span></code></pre></div>
 <p>Al añadirlo al área de preparación lo estamos añadiendo permanentemente, entonces no hay ninguna diferencia. Si queremos las diferencias con lo último a lo que se le hizo commit podemos hacer lo siguiente:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb165-1"><a href="git-y-github.html#cb165-1" tabindex="-1"></a><span class="ex">$</span> git diff <span class="at">--staged</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="git-y-github.html#cb28-1" tabindex="-1"></a><span class="ex">$</span> git diff <span class="at">--staged</span></span></code></pre></div>
 <p>Ahora hagamos el commit.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb166-1"><a href="git-y-github.html#cb166-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Tercera línea para probar que pasa cuando se añade al área de preparación"</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="git-y-github.html#cb29-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Tercera línea para probar que pasa cuando se añade al área de preparación&quot;</span></span></code></pre></div>
 <p>Si revisamos el historial, veremos ahora 3 commit diferentes:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb167-1"><a href="git-y-github.html#cb167-1" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="git-y-github.html#cb30-1" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre></div>
 <p>Cuando el historial es muy grande no nos va a mostrar todo el historial nuestra terminal, para ir avanzando debemos presionar <kbd>Spacebar</kbd> y para salir la letra <kbd>Q</kbd>. Al presionar <kbd>/</kbd> se puede buscar alguna palabra en los mensajes de los commits. Para limitar la cantidad de información que nos regresa <code>log</code> podemos especificar con la opción <code>-n</code> la cantidad de commits desde el más reciente. Para ver por ejemplo el último utilizariamos lo siguiente:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb168-1"><a href="git-y-github.html#cb168-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">-1</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="git-y-github.html#cb31-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">-1</span></span></code></pre></div>
 <p>Si queremos ver los mensajes en una sola línea usamos:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb169-1"><a href="git-y-github.html#cb169-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--oneline</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="git-y-github.html#cb32-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--oneline</span></span></code></pre></div>
 <p>Git no guarda información de directorios vacíos. Por ejemplo:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb170-1"><a href="git-y-github.html#cb170-1" tabindex="-1"></a><span class="ex">$</span> mkdir dic_prueba</span>
-<span id="cb170-2"><a href="git-y-github.html#cb170-2" tabindex="-1"></a><span class="ex">$</span> git status</span>
-<span id="cb170-3"><a href="git-y-github.html#cb170-3" tabindex="-1"></a><span class="ex">$</span> git add dic_prueba</span>
-<span id="cb170-4"><a href="git-y-github.html#cb170-4" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="git-y-github.html#cb33-1" tabindex="-1"></a><span class="ex">$</span> mkdir dic_prueba</span>
+<span id="cb33-2"><a href="git-y-github.html#cb33-2" tabindex="-1"></a><span class="ex">$</span> git status</span>
+<span id="cb33-3"><a href="git-y-github.html#cb33-3" tabindex="-1"></a><span class="ex">$</span> git add dic_prueba</span>
+<span id="cb33-4"><a href="git-y-github.html#cb33-4" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Si creamos un directorio con archivos, entonces si podemos añadir todos los archivos a la vez y si quedará el registro del directorio también.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb171-1"><a href="git-y-github.html#cb171-1" tabindex="-1"></a><span class="ex">$</span> git touch dic_prueba/prueba1.txt dic_prueba/prueba2.txt dic_prueba/prueba3.txt</span>
-<span id="cb171-2"><a href="git-y-github.html#cb171-2" tabindex="-1"></a><span class="ex">$</span> git status</span>
-<span id="cb171-3"><a href="git-y-github.html#cb171-3" tabindex="-1"></a><span class="ex">$</span> git add dic_prueba</span>
-<span id="cb171-4"><a href="git-y-github.html#cb171-4" tabindex="-1"></a><span class="ex">$</span> git status</span>
-<span id="cb171-5"><a href="git-y-github.html#cb171-5" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Ejemplo de como realizar un registro de directorios con archivos"</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="git-y-github.html#cb34-1" tabindex="-1"></a><span class="ex">$</span> git touch dic_prueba/prueba1.txt dic_prueba/prueba2.txt dic_prueba/prueba3.txt</span>
+<span id="cb34-2"><a href="git-y-github.html#cb34-2" tabindex="-1"></a><span class="ex">$</span> git status</span>
+<span id="cb34-3"><a href="git-y-github.html#cb34-3" tabindex="-1"></a><span class="ex">$</span> git add dic_prueba</span>
+<span id="cb34-4"><a href="git-y-github.html#cb34-4" tabindex="-1"></a><span class="ex">$</span> git status</span>
+<span id="cb34-5"><a href="git-y-github.html#cb34-5" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Ejemplo de como realizar un registro de directorios con archivos&quot;</span></span></code></pre></div>
 <p>En algunas ocasiones verán directorios vacíos con un archivo <code>.gitkeep</code>, este archivo es solo para que podamos añadir el repo a Git.</p>
 <p><strong>Ejercicio:</strong> Crea un archivo <code>mi_archivo.txt</code>, escribe algo en el y guárdalo en la ruta <code>Mi_primer_repo</code>. Añádelo a la historia de tu repo. ¿Cuáles son los pasos que debes realizar?</p>
 <p><strong>Ejercicio:</strong> Modifica el archivo <code>prueba.txt</code> añadiéndole una línea, ahora en el archivo <code>mi_archivo.txt</code> agrega algo y guárdalo. ¿Cómo añadirías los dos archivos al staging área? Añádelos y realiza el commit correspondiente.</p>
 <p><strong>Ejercicio:</strong> Crea un repositorio llamado <code>bio</code>. Escribe en un archivo llamado <code>me.txt</code> tres líneas de tu biografía, has un commit con tus cambios. Modifica una línea y agrega una cuarta línea. Muestra las diferencias entre el archivo en el staging área y el actual.</p>
 </div>
-<div id="explorando-el-historial" class="section level2" number="3.3">
-<h2>
-<span class="header-section-number">3.3</span> Explorando el historial<a class="anchor" aria-label="anchor" href="#explorando-el-historial"><i class="fas fa-link"></i></a>
-</h2>
+<div id="explorando-el-historial" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Explorando el historial<a href="git-y-github.html#explorando-el-historial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A los commits nos podemos referir a ellos con sus identificadores. Al último commit también nos podemos referir como <code>HEAD</code>. Añadamos una línea más al archivo <code>prueba.txt</code>.</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb172-1"><a href="git-y-github.html#cb172-1" tabindex="-1"></a><span class="ex">$</span> nano prueba.txt</span>
-<span id="cb172-2"><a href="git-y-github.html#cb172-2" tabindex="-1"></a><span class="ex">$</span> cat prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="git-y-github.html#cb35-1" tabindex="-1"></a><span class="ex">$</span> nano prueba.txt</span>
+<span id="cb35-2"><a href="git-y-github.html#cb35-2" tabindex="-1"></a><span class="ex">$</span> cat prueba.txt</span></code></pre></div>
 <p>Ahora, para ver el último cambio con el último commit:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb173-1"><a href="git-y-github.html#cb173-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="git-y-github.html#cb36-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD prueba.txt</span></code></pre></div>
 <p>Si quitamos el HEAD de esa última instrucción veremos lo mismo. Pero si colocamos un <code>~numero</code> vamos a ver que nos estamos refiriendo al commit anterior número n. </p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb174-1"><a href="git-y-github.html#cb174-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~1 prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="git-y-github.html#cb37-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~1 prueba.txt</span></code></pre></div>
 <p>Con <code>git show</code> vamos a ver los cambios con respecto a un commit anterior.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb175-1"><a href="git-y-github.html#cb175-1" tabindex="-1"></a><span class="ex">$</span> git show HEAD~1 prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="git-y-github.html#cb38-1" tabindex="-1"></a><span class="ex">$</span> git show HEAD~1 prueba.txt</span></code></pre></div>
 <p>También podemos referirnos a los commit por su identificador de números y letras enorme o por los primeros 7 números o letras:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb176-1"><a href="git-y-github.html#cb176-1" tabindex="-1"></a><span class="ex">$</span> git diff 451b2ad469b96e13547e13dc0e718613acdc987c prueba.txt</span>
-<span id="cb176-2"><a href="git-y-github.html#cb176-2" tabindex="-1"></a><span class="ex">$</span> git diff 451b2ad prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="git-y-github.html#cb39-1" tabindex="-1"></a><span class="ex">$</span> git diff 451b2ad469b96e13547e13dc0e718613acdc987c prueba.txt</span>
+<span id="cb39-2"><a href="git-y-github.html#cb39-2" tabindex="-1"></a><span class="ex">$</span> git diff 451b2ad prueba.txt</span></code></pre></div>
 <p>Revisemos el estado:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb177-1"><a href="git-y-github.html#cb177-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="git-y-github.html#cb40-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Con la siguiente instrucción podemos regresar las cosas a como estaban antes de hacer el último cambio.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb178-1"><a href="git-y-github.html#cb178-1" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD prueba.txt</span>
-<span id="cb178-2"><a href="git-y-github.html#cb178-2" tabindex="-1"></a><span class="ex">$</span> cat prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="git-y-github.html#cb41-1" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD prueba.txt</span>
+<span id="cb41-2"><a href="git-y-github.html#cb41-2" tabindex="-1"></a><span class="ex">$</span> cat prueba.txt</span></code></pre></div>
 <p>O podríamos usar uno de los identificadores de commits:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb179-1"><a href="git-y-github.html#cb179-1" tabindex="-1"></a><span class="ex">$</span> git checkout 451b2ad prueba.txt</span>
-<span id="cb179-2"><a href="git-y-github.html#cb179-2" tabindex="-1"></a><span class="ex">$</span> cat prueba.txt</span>
-<span id="cb179-3"><a href="git-y-github.html#cb179-3" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="git-y-github.html#cb42-1" tabindex="-1"></a><span class="ex">$</span> git checkout 451b2ad prueba.txt</span>
+<span id="cb42-2"><a href="git-y-github.html#cb42-2" tabindex="-1"></a><span class="ex">$</span> cat prueba.txt</span>
+<span id="cb42-3"><a href="git-y-github.html#cb42-3" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Y para regresarlo al último commit de nuevo:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb180-1"><a href="git-y-github.html#cb180-1" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="git-y-github.html#cb43-1" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD prueba.txt</span></code></pre></div>
 <div class="float">
-<img src="img/git-checkout.png" alt="git checkout &lt;ID commit&gt; &lt;archivo&gt;, basdo en ASSP"><div class="figcaption">
-<code>git checkout &lt;ID commit&gt; &lt;archivo&gt;</code>, basdo en ASSP</div>
+<img src="img/git-checkout.png" alt="git checkout &lt;ID commit&gt; &lt;archivo&gt;, basdo en ASSP" />
+<div class="figcaption"><code>git checkout &lt;ID commit&gt; &lt;archivo&gt;</code>, basdo en ASSP</div>
 </div>
 <p>El comando <code>git checkout</code> revierte los archivos a alguna versión anterior siempre que no lo hayamos añadido al staging área. Para revertir un commit usamos la instrucción <code>git revert [ID commit]</code>. Supongamos que tenemos un error en el archivo <code>prueba.txt</code> y que ya hicimos commit y queremos revertir al último cambio. Los pasos que haríamos serían los siguientes:</p>
 <ol style="list-style-type: decimal">
@@ -216,8 +399,8 @@ Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 <li><p>Guardar y cerrar</p></li>
 </ol>
 <div class="float">
-<img src="img/revert-commit.png" alt="git revert &lt;ID commit&gt;, basado en APP"><div class="figcaption">
-<code>git revert &lt;ID commit&gt;</code>, basado en APP</div>
+<img src="img/revert-commit.png" alt="git revert &lt;ID commit&gt;, basado en APP" />
+<div class="figcaption"><code>git revert &lt;ID commit&gt;</code>, basado en APP</div>
 </div>
 <p>Si ya añadimos los cambios al área de preparación, ya no podemos usar git checkout simplemente.</p>
 <p><strong>Ejercicio:</strong> Realiza las siguientes instrucciones:</p>
@@ -238,25 +421,23 @@ Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 <ol style="list-style-type: decimal">
 <li>Para ver tanto las diferencias entre los archivos y los ID de los commits. Se puede colocar solo el nombre de un archivo y solo mostrara los commit que afectaban ese archivo o si no se coloca el nombre del archivo aplica sobre todo el historial de commits.</li>
 </ol>
-<div class="sourceCode" id="cb181"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb181-1"><a href="git-y-github.html#cb181-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--patch</span> prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="git-y-github.html#cb44-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--patch</span> prueba.txt</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Para mostrar las descripciones detalladas de las modificaciones y archivos.</li>
 </ol>
-<div class="sourceCode" id="cb182"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb182-1"><a href="git-y-github.html#cb182-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">-p</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="git-y-github.html#cb45-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">-p</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Para mostrar los nombres de los archivos afectados en cada commit.</li>
 </ol>
-<div class="sourceCode" id="cb183"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb183-1"><a href="git-y-github.html#cb183-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--name-only</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="git-y-github.html#cb46-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--name-only</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Para mostrar los archivos afectados en cada commit con la leyenda de si fueron modificados (M) o añadidos (A) o eliminados.</li>
 </ol>
-<div class="sourceCode" id="cb184"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb184-1"><a href="git-y-github.html#cb184-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--name-status</span></span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="git-y-github.html#cb47-1" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--name-status</span></span></code></pre></div>
 <p>Consultar el siguiente <a href="https://git-scm.com/book/es/v2/Fundamentos-de-Git-Ver-el-Historial-de-Confirmaciones">link</a> para ver más opciones y ejemplos.</p>
 </div>
-<div id="restore-y-reset" class="section level2" number="3.4">
-<h2>
-<span class="header-section-number">3.4</span> Restore y reset<a class="anchor" aria-label="anchor" href="#restore-y-reset"><i class="fas fa-link"></i></a>
-</h2>
+<div id="restore-y-reset" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Restore y reset<a href="git-y-github.html#restore-y-reset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Otra forma de deshacer cambios es con <code>restore</code> y <code>reset</code>. Usualmente deshacer cambios se requiere para deshacer:</p>
 <ul>
 <li><p>Cambios antes de mandarlos al área de preparación.</p></li>
@@ -264,246 +445,238 @@ Segunda línea de cambios para continuar con el ejemplo.</code></pre>
 <li><p>Commits</p></li>
 </ul>
 <p>Supongamos que hicimos un cambio en el archivo de prueba y lo guardamos y después decidimos que ya no queremos ese cambio, entonces usamos la opción:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb185-1"><a href="git-y-github.html#cb185-1" tabindex="-1"></a><span class="ex">$</span> git restore prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="git-y-github.html#cb48-1" tabindex="-1"></a><span class="ex">$</span> git restore prueba.txt</span></code></pre></div>
 <p>Esto nos regresará a la versión del archivo del último commit. Esto no se puede deshacer, una vez echo esto no hay forma de recuperar los cambios que se habían realizado.</p>
 <div class="float">
-<img src="img/restore-archivo.png" alt="git restore &lt;archivo&gt;, basado en ASSP"><div class="figcaption">
-<code>git restore &lt;archivo&gt;</code>, basado en ASSP</div>
+<img src="img/restore-archivo.png" alt="git restore &lt;archivo&gt;, basado en ASSP" />
+<div class="figcaption"><code>git restore &lt;archivo&gt;</code>, basado en ASSP</div>
 </div>
 <p>Ahora, supongamos que hicimos un cambio y lo mandamos al área de preparación, entonces para sacarlo de esa área usamos:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb186-1"><a href="git-y-github.html#cb186-1" tabindex="-1"></a><span class="ex">$</span> git restore <span class="at">--staged</span> prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="git-y-github.html#cb49-1" tabindex="-1"></a><span class="ex">$</span> git restore <span class="at">--staged</span> prueba.txt</span></code></pre></div>
 <div class="float">
-<img src="img/restore-staged.png" alt="git restore --staged &lt;archivo&gt;, basado en ASSP"><div class="figcaption">
-<code>git restore --staged &lt;archivo&gt;</code>, basado en ASSP</div>
+<img src="img/restore-staged.png" alt="git restore --staged &lt;archivo&gt;, basado en ASSP" />
+<div class="figcaption"><code>git restore --staged &lt;archivo&gt;</code>, basado en ASSP</div>
 </div>
 <p>También se pueden restaurar todos los archivos de un proyecto con:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb187-1"><a href="git-y-github.html#cb187-1" tabindex="-1"></a><span class="ex">$</span> git restore .</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb50-1"><a href="git-y-github.html#cb50-1" tabindex="-1"></a><span class="ex">$</span> git restore .</span></code></pre></div>
 <p>Para restaurar a un commit anterior usamos el identificador del commit, por ejemplo:</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb188-1"><a href="git-y-github.html#cb188-1" tabindex="-1"></a><span class="ex">$</span> git restore <span class="at">--source</span> d3a9d6d prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="git-y-github.html#cb51-1" tabindex="-1"></a><span class="ex">$</span> git restore <span class="at">--source</span> d3a9d6d prueba.txt</span></code></pre></div>
 <p>Si ahora revisamos el estado del proyecto veremos que si hay cambios.</p>
 <p>Agreguemos una línea al archivo <code>prueba.txt</code> y añadamos el cambio al área de preparación. Usen <code>git checkout</code> para ver si podemos revertir el cambio. Veamos que nos dice el estado <code>git status</code>. Si usamos <code>git checkout -- prueba.txt</code> ya no veremos errores pero tampoco se restaurará el archivo.</p>
 <p>Para hacerlo debemos usar <code>reset</code>:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb189-1"><a href="git-y-github.html#cb189-1" tabindex="-1"></a><span class="ex">$</span> git reset HEAD prueba.txt</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="git-y-github.html#cb52-1" tabindex="-1"></a><span class="ex">$</span> git reset HEAD prueba.txt</span></code></pre></div>
 <p>Y si usamos ahora:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb190-1"><a href="git-y-github.html#cb190-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="git-y-github.html#cb53-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Nos indica que ya podemos realizar la modificación con checkout:</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb191-1"><a href="git-y-github.html#cb191-1" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">--</span> prueba.txt</span>
-<span id="cb191-2"><a href="git-y-github.html#cb191-2" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="git-y-github.html#cb54-1" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">--</span> prueba.txt</span>
+<span id="cb54-2"><a href="git-y-github.html#cb54-2" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Con <code>reset</code> tenemos tres posibles situaciones.</p>
 <ul>
 <li>Situación 1: <code>reset --soft HEAD~1</code>: si realizamos un cambio en nuestro archivo y lo añadimos al área de preparación, al realizar el <code>reset soft</code> al commit <code>HEAD~1</code> lo que estamos haciendo es como regresar a un commit anterior pero sin perder los cambios que ya tenemos en el área de preparación, entonces lo que va a resultar es que nuestro historial va a cambiar de un commit anterior hasta el cambio que tenemos ahora. Con <code>git status</code> vemos que no cambio nuestra área de preparación y después con <code>git log</code> podemos ver el cambio en el historial de commits.</li>
 </ul>
 <div class="float">
-<img src="img/reset-soft.png" alt="git reset --soft HEAD~1, basado en ASSP"><div class="figcaption">
-<code>git reset --soft HEAD~1</code>, basado en ASSP</div>
+<img src="img/reset-soft.png" alt="git reset --soft HEAD~1, basado en ASSP" />
+<div class="figcaption"><code>git reset --soft HEAD~1</code>, basado en ASSP</div>
 </div>
 <ul>
 <li>Situación 2: <code>reset --mixed HEAD~1</code>: si realizamos un cambio en nuestro archivo y lo añadimos al área de preparación, al realizar el <code>reset mixed</code> al commit <code>HEAD~1</code> lo que estamos haciendo es como regresar nuestra área de preparación a como estaba antes de ese commit, no perdemos el cambio realizado en el archivo pero nuestro historial cambiará, pasará del commit anterior hasta el próximo commit que realicemos. Con <code>git status</code> vemos que nuestra área de preparación si cambio y con <code>git log</code> vemos que nuestro último commit desapareció.</li>
 </ul>
-<p><img src="img/reset-mixed.png" alt="git reset --mixed HEAD~1, basado en ASSP">
+<p><img src="img/reset-mixed.png" alt="git reset --mixed HEAD~1, basado en ASSP" />
 - Situación 3: <code>reset --hard HEAD~1</code>: si realizamos un cambio en nuestro archivo y lo añadimos al área de preparación, al realizar el <code>reset hard</code> al commit <code>HEAD~1</code> lo que estamos haciendo es como regresar a un commit anterior pero perdiendo los cambios que ya tenemos en el área de preparación y en nuestro archivo actual, entonces lo que va a resultar es que estaríamos regresando hasta el commit anterior todo nuestro historial y a partir de ahí comenzarían nuestros cambios.</p>
 <div class="float">
-<img src="img/reset-hard.png" alt="git reset --hard HEAD~1, basado en ASSP"><div class="figcaption">
-<code>git reset --hard HEAD~1</code>, basado en ASSP</div>
+<img src="img/reset-hard.png" alt="git reset --hard HEAD~1, basado en ASSP" />
+<div class="figcaption"><code>git reset --hard HEAD~1</code>, basado en ASSP</div>
 </div>
 </div>
-<div id="ignorar-archivoscarpetas" class="section level2" number="3.5">
-<h2>
-<span class="header-section-number">3.5</span> Ignorar archivos/carpetas<a class="anchor" aria-label="anchor" href="#ignorar-archivoscarpetas"><i class="fas fa-link"></i></a>
-</h2>
+<div id="ignorar-archivoscarpetas" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Ignorar archivos/carpetas<a href="git-y-github.html#ignorar-archivoscarpetas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Es muy usual tener un archivo llamado <code>.gitignore</code> donde se pueden colocar los nombres de archivos o carpetas que no queremos llevar registro.</p>
 <p>Creemos unos archivos de prueba.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb192-1"><a href="git-y-github.html#cb192-1" tabindex="-1"></a><span class="ex">$</span> cd Mi_primer_repo</span>
-<span id="cb192-2"><a href="git-y-github.html#cb192-2" tabindex="-1"></a><span class="ex">$</span> mkdir resultados</span>
-<span id="cb192-3"><a href="git-y-github.html#cb192-3" tabindex="-1"></a><span class="ex">$</span> touch a.csv b.csv c.csv resultados/a.out resultados/b.out</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="git-y-github.html#cb55-1" tabindex="-1"></a><span class="ex">$</span> cd Mi_primer_repo</span>
+<span id="cb55-2"><a href="git-y-github.html#cb55-2" tabindex="-1"></a><span class="ex">$</span> mkdir resultados</span>
+<span id="cb55-3"><a href="git-y-github.html#cb55-3" tabindex="-1"></a><span class="ex">$</span> touch a.csv b.csv c.csv resultados/a.out resultados/b.out</span></code></pre></div>
 <p>Si preguntamos el estado veremos los cambios no registrados en el historial.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb193-1"><a href="git-y-github.html#cb193-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="git-y-github.html#cb56-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Estos archivos por el momento no nos sirven de nada y guardarlos o registrarlos sería una perdida de tiempo/espacio. Para ignorarlos, creamos el archivo <code>.gitigno</code> y añadimos los nombres a ese archivo:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb194-1"><a href="git-y-github.html#cb194-1" tabindex="-1"></a><span class="ex">$</span> nano .gitignore</span></code></pre></div>
-<div class="sourceCode" id="cb195"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb195-1"><a href="git-y-github.html#cb195-1" tabindex="-1"></a><span class="ex">*.csv</span></span>
-<span id="cb195-2"><a href="git-y-github.html#cb195-2" tabindex="-1"></a><span class="ex">resultados/</span></span></code></pre></div>
-<div class="sourceCode" id="cb196"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb196-1"><a href="git-y-github.html#cb196-1" tabindex="-1"></a><span class="ex">$</span> cat .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="git-y-github.html#cb57-1" tabindex="-1"></a><span class="ex">$</span> nano .gitignore</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="git-y-github.html#cb58-1" tabindex="-1"></a><span class="ex">*.csv</span></span>
+<span id="cb58-2"><a href="git-y-github.html#cb58-2" tabindex="-1"></a><span class="ex">resultados/</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="git-y-github.html#cb59-1" tabindex="-1"></a><span class="ex">$</span> cat .gitignore</span></code></pre></div>
 <p>Estos patrones le están diciendo a Git que ignore todos los archivos <code>.csv</code> y todo lo que hay en la carpeta <code>resultados</code>, si después añadimos algo a la carpeta lo seguirá ignorando. Y si alguno de esos archivos ya se le dijo a Git que llevará su registro lo seguirá registrando.</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb197-1"><a href="git-y-github.html#cb197-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="git-y-github.html#cb60-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>Si nos fijamos, el único documento que ahora nos menciona <code>Git</code> es el archivo <code>.gitignore</code>. Lo que nos falta es añadirlo y hacer el commit.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb198-1"><a href="git-y-github.html#cb198-1" tabindex="-1"></a><span class="ex">$</span> git add .gitignore</span>
-<span id="cb198-2"><a href="git-y-github.html#cb198-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Creamos el archivo gitignore e ignoramos todo lo que hay en resultados y archivos csv"</span></span>
-<span id="cb198-3"><a href="git-y-github.html#cb198-3" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="git-y-github.html#cb61-1" tabindex="-1"></a><span class="ex">$</span> git add .gitignore</span>
+<span id="cb61-2"><a href="git-y-github.html#cb61-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Creamos el archivo gitignore e ignoramos todo lo que hay en resultados y archivos csv&quot;</span></span>
+<span id="cb61-3"><a href="git-y-github.html#cb61-3" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div>
 <p>El archivo <code>.gitignore</code> nos ayuda a no cometer el error de accidentalmente tratar de registrar y rastrear algo que se le dijo que no lo hiciera.</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb199-1"><a href="git-y-github.html#cb199-1" tabindex="-1"></a><span class="ex">$</span> git add a.csv</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="git-y-github.html#cb62-1" tabindex="-1"></a><span class="ex">$</span> git add a.csv</span></code></pre></div>
 <p>Si realmente queremos agregarlo, tendríamos que usar la opción <code>-f</code>:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb200-1"><a href="git-y-github.html#cb200-1" tabindex="-1"></a><span class="ex">$</span> git add <span class="at">-f</span> a.csv</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="git-y-github.html#cb63-1" tabindex="-1"></a><span class="ex">$</span> git add <span class="at">-f</span> a.csv</span></code></pre></div>
 <p>Para ver el estado de los archivos ignorados usamos la siguiente instrucción:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb201-1"><a href="git-y-github.html#cb201-1" tabindex="-1"></a><span class="ex">$</span> git status <span class="at">--ignored</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="git-y-github.html#cb64-1" tabindex="-1"></a><span class="ex">$</span> git status <span class="at">--ignored</span></span></code></pre></div>
 <p><strong>Ejercicio:</strong> Supongamos que tenemos las siguientes subcarpetas:</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb202-1"><a href="git-y-github.html#cb202-1" tabindex="-1"></a><span class="ex">resultados/plots</span></span>
-<span id="cb202-2"><a href="git-y-github.html#cb202-2" tabindex="-1"></a><span class="ex">resultados/datos</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="git-y-github.html#cb65-1" tabindex="-1"></a><span class="ex">resultados/plots</span></span>
+<span id="cb65-2"><a href="git-y-github.html#cb65-2" tabindex="-1"></a><span class="ex">resultados/datos</span></span></code></pre></div>
 <p>¿Qué tenemos que hacer si queremos ignorar solamente lo que hay en <code>datos</code> y no lo que hay en <code>plots</code>?</p>
 <p>Para ignorar por ejemplo todos los archivos que terminan en <code>.csv</code> excepto uno en específico (<code>b.csv</code>) podemos indicarlo en el archivo <code>.gitignore</code> como:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb203-1"><a href="git-y-github.html#cb203-1" tabindex="-1"></a><span class="ex">*.csv</span>  <span class="co"># ignoramos todos los csv</span></span>
-<span id="cb203-2"><a href="git-y-github.html#cb203-2" tabindex="-1"></a><span class="ex">!b.csv</span> <span class="co"># exepto el que se llama b.csv</span></span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="git-y-github.html#cb66-1" tabindex="-1"></a><span class="ex">*.csv</span>  <span class="co"># ignoramos todos los csv</span></span>
+<span id="cb66-2"><a href="git-y-github.html#cb66-2" tabindex="-1"></a><span class="ex">!b.csv</span> <span class="co"># exepto el que se llama b.csv</span></span></code></pre></div>
 <p><strong>Ejercicio:</strong> Supongamos ahora que tenemos la siguiente estructura de carpetas:</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb204-1"><a href="git-y-github.html#cb204-1" tabindex="-1"></a><span class="ex">resultados/plots</span></span>
-<span id="cb204-2"><a href="git-y-github.html#cb204-2" tabindex="-1"></a><span class="ex">resultados/datos</span></span>
-<span id="cb204-3"><a href="git-y-github.html#cb204-3" tabindex="-1"></a><span class="ex">resultados/img</span></span>
-<span id="cb204-4"><a href="git-y-github.html#cb204-4" tabindex="-1"></a><span class="ex">resultados/analisis</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="git-y-github.html#cb67-1" tabindex="-1"></a><span class="ex">resultados/plots</span></span>
+<span id="cb67-2"><a href="git-y-github.html#cb67-2" tabindex="-1"></a><span class="ex">resultados/datos</span></span>
+<span id="cb67-3"><a href="git-y-github.html#cb67-3" tabindex="-1"></a><span class="ex">resultados/img</span></span>
+<span id="cb67-4"><a href="git-y-github.html#cb67-4" tabindex="-1"></a><span class="ex">resultados/analisis</span></span></code></pre></div>
 <p>Y que queremos ignorar todo excepto lo que hay en datos. ¿Cómo lo harían?</p>
 <p><strong>Ejemplo:</strong> Supongamos que tenemos la siguiente estructura de archivos:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb205-1"><a href="git-y-github.html#cb205-1" tabindex="-1"></a><span class="ex">resultados/rdatos/a.csv</span></span>
-<span id="cb205-2"><a href="git-y-github.html#cb205-2" tabindex="-1"></a><span class="ex">resultados/rdatos/b.csv</span></span>
-<span id="cb205-3"><a href="git-y-github.html#cb205-3" tabindex="-1"></a><span class="ex">resultados/rdatos/c.csv</span></span>
-<span id="cb205-4"><a href="git-y-github.html#cb205-4" tabindex="-1"></a><span class="ex">resultados/rdatos/info.txt</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="git-y-github.html#cb68-1" tabindex="-1"></a><span class="ex">resultados/rdatos/a.csv</span></span>
+<span id="cb68-2"><a href="git-y-github.html#cb68-2" tabindex="-1"></a><span class="ex">resultados/rdatos/b.csv</span></span>
+<span id="cb68-3"><a href="git-y-github.html#cb68-3" tabindex="-1"></a><span class="ex">resultados/rdatos/c.csv</span></span>
+<span id="cb68-4"><a href="git-y-github.html#cb68-4" tabindex="-1"></a><span class="ex">resultados/rdatos/info.txt</span></span></code></pre></div>
 <p>¿Cómo le indicas a Git que ignore todos los <code>csv</code> de la carpeta <code>rdatos</code> menos el que se llama <code>info.txt</code>?</p>
 <p><strong>Ejercicio:</strong> Supongamos que tenemos la siguiente estructura de datos:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb206-1"><a href="git-y-github.html#cb206-1" tabindex="-1"></a><span class="ex">resultados/a.csv</span></span>
-<span id="cb206-2"><a href="git-y-github.html#cb206-2" tabindex="-1"></a><span class="ex">resultados/analisis1/b.csv</span></span>
-<span id="cb206-3"><a href="git-y-github.html#cb206-3" tabindex="-1"></a><span class="ex">resultados/analisis2/c.csv</span></span>
-<span id="cb206-4"><a href="git-y-github.html#cb206-4" tabindex="-1"></a><span class="ex">resultados/analisis2/sub_1/d.csv</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="git-y-github.html#cb69-1" tabindex="-1"></a><span class="ex">resultados/a.csv</span></span>
+<span id="cb69-2"><a href="git-y-github.html#cb69-2" tabindex="-1"></a><span class="ex">resultados/analisis1/b.csv</span></span>
+<span id="cb69-3"><a href="git-y-github.html#cb69-3" tabindex="-1"></a><span class="ex">resultados/analisis2/c.csv</span></span>
+<span id="cb69-4"><a href="git-y-github.html#cb69-4" tabindex="-1"></a><span class="ex">resultados/analisis2/sub_1/d.csv</span></span></code></pre></div>
 <p>¿Cómo le indicamos a Git que ignore todos los archivos <code>.csv</code> sin indicar manualmente todos los directorios?</p>
 <p><strong>Ejercicio:</strong> Si en el archivo <code>.gitignore</code> escribimos lo siguiente, ¿qué está ignorando?</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb207-1"><a href="git-y-github.html#cb207-1" tabindex="-1"></a><span class="ex">*.csv</span></span>
-<span id="cb207-2"><a href="git-y-github.html#cb207-2" tabindex="-1"></a><span class="ex">!*.csv</span></span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="git-y-github.html#cb70-1" tabindex="-1"></a><span class="ex">*.csv</span></span>
+<span id="cb70-2"><a href="git-y-github.html#cb70-2" tabindex="-1"></a><span class="ex">!*.csv</span></span></code></pre></div>
 </div>
-<div id="github" class="section level2" number="3.6">
-<h2>
-<span class="header-section-number">3.6</span> Github<a class="anchor" aria-label="anchor" href="#github"><i class="fas fa-link"></i></a>
-</h2>
+<div id="github" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Github<a href="git-y-github.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>El valor del control de versiones se hace evidente al comenzar a colaborar con otros. Contamos con la mayor parte de las herramientas necesarias para ello; lo único que resta es transferir cambios de un repositorio a otro.</p>
 <p>Sistemas como Git posibilitan el traslado de trabajo entre cualquier par de repositorios. No obstante, en la práctica, resulta más conveniente utilizar una copia como punto central y mantenerla en la web en lugar de en la computadora portátil de alguien.</p>
 <p>Vamos a comenzar por crear un repositorio remoto, pero para eso necesitamos configurar nuestra cuenta de Github también.</p>
-<div id="paso-1-crear-un-repositorio-remoto" class="section level3" number="3.6.1">
-<h3>
-<span class="header-section-number">3.6.1</span> Paso 1: Crear un repositorio remoto<a class="anchor" aria-label="anchor" href="#paso-1-crear-un-repositorio-remoto"><i class="fas fa-link"></i></a>
-</h3>
+<div id="paso-1-crear-un-repositorio-remoto" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Paso 1: Crear un repositorio remoto<a href="git-y-github.html#paso-1-crear-un-repositorio-remoto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Lo primero que vamos a hacer es crear un repositorio remoto. Entra a tu cuenta de Github y dale click en Nuevo.</p>
 <div class="float">
-<img src="img/github_1.png" alt="Crear repositorio nuevo"><div class="figcaption">Crear repositorio nuevo</div>
+<img src="img/github_1.png" alt="Crear repositorio nuevo" />
+<div class="figcaption">Crear repositorio nuevo</div>
 </div>
 <p>Ponle de nombre <code>Mi_primer_repo</code> (o el nombre que hayas usado en las secciones anteriores). Deja marcada la opción de público y no añadas un README ni una licencia.</p>
 <div class="float">
-<img src="img/github_2.png" alt="Crear repositorio vacío"><div class="figcaption">Crear repositorio vacío</div>
+<img src="img/github_2.png" alt="Crear repositorio vacío" />
+<div class="figcaption">Crear repositorio vacío</div>
 </div>
 <p>Al darle click en crear repositorio, la página nos mostrará la siguiente información que es la que usaremos para configurar nuestro local con el remoto.</p>
-<div class="inline-figure">
-<img src="img/github_3.png" alt="Información del repositorio remoto para configurar con nuestro local">
-Lo que acabamos de hacer es como si en nuestra terminal hubiéramos realizado lo siguiente:</div>
-<div class="sourceCode" id="cb208"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb208-1"><a href="git-y-github.html#cb208-1" tabindex="-1"></a><span class="ex">$</span> mkdir Mi_primer_repo</span>
-<span id="cb208-2"><a href="git-y-github.html#cb208-2" tabindex="-1"></a><span class="ex">$</span> cd Mi_primer_repo</span>
-<span id="cb208-3"><a href="git-y-github.html#cb208-3" tabindex="-1"></a><span class="ex">$</span> git init</span></code></pre></div>
+<p><img src="img/github_3.png" alt="Información del repositorio remoto para configurar con nuestro local" />
+Lo que acabamos de hacer es como si en nuestra terminal hubiéramos realizado lo siguiente:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="git-y-github.html#cb71-1" tabindex="-1"></a><span class="ex">$</span> mkdir Mi_primer_repo</span>
+<span id="cb71-2"><a href="git-y-github.html#cb71-2" tabindex="-1"></a><span class="ex">$</span> cd Mi_primer_repo</span>
+<span id="cb71-3"><a href="git-y-github.html#cb71-3" tabindex="-1"></a><span class="ex">$</span> git init</span></code></pre></div>
 </div>
-<div id="paso-2-conectar-local-a-remoto" class="section level3" number="3.6.2">
-<h3>
-<span class="header-section-number">3.6.2</span> Paso 2: Conectar local a remoto<a class="anchor" aria-label="anchor" href="#paso-2-conectar-local-a-remoto"><i class="fas fa-link"></i></a>
-</h3>
+<div id="paso-2-conectar-local-a-remoto" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> Paso 2: Conectar local a remoto<a href="git-y-github.html#paso-2-conectar-local-a-remoto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La página principal del repositorio remoto muestra una serie de información que necesitamos usar para conectar el repositorio remoto en Github con el repositorio local de nuestra computadora. Vamos a usar el protocolo de conexión SSH, da click en donde dice SSH y a continuación en el icono de copiar.</p>
 <div class="float">
-<img src="img/github_4.png" alt="SSH link para clonar el repositorio"><div class="figcaption">SSH link para clonar el repositorio</div>
+<img src="img/github_4.png" alt="SSH link para clonar el repositorio" />
+<div class="figcaption">SSH link para clonar el repositorio</div>
 </div>
 <p>Ahora, dentro de nuestra carpeta del repositorio local, abrir una terminal y correr lo siguiente:</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb209-1"><a href="git-y-github.html#cb209-1" tabindex="-1"></a><span class="ex">$</span> git remote add origin git@github.com:User/Mi_primer_repo.git</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="git-y-github.html#cb72-1" tabindex="-1"></a><span class="ex">$</span> git remote add origin git@github.com:User/Mi_primer_repo.git</span></code></pre></div>
 <p>Para revisar que si se haya realizado correctamente procedemos a usar lo siguiente:</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb210-1"><a href="git-y-github.html#cb210-1" tabindex="-1"></a><span class="ex">$</span> git remote <span class="at">-v</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="git-y-github.html#cb73-1" tabindex="-1"></a><span class="ex">$</span> git remote <span class="at">-v</span></span></code></pre></div>
 </div>
-<div id="paso-3-conexión-mediante-ssh" class="section level3" number="3.6.3">
-<h3>
-<span class="header-section-number">3.6.3</span> Paso 3: Conexión mediante SSH<a class="anchor" aria-label="anchor" href="#paso-3-conexi%C3%B3n-mediante-ssh"><i class="fas fa-link"></i></a>
-</h3>
+<div id="paso-3-conexión-mediante-ssh" class="section level3 hasAnchor" number="3.6.3">
+<h3><span class="header-section-number">3.6.3</span> Paso 3: Conexión mediante SSH<a href="git-y-github.html#paso-3-conexión-mediante-ssh" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Primero verificamos si ya tenemos algún par de llaves:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb211-1"><a href="git-y-github.html#cb211-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-al</span> ~/.ssh</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="git-y-github.html#cb74-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-al</span> ~/.ssh</span></code></pre></div>
 <p>Si ya tienen algún par de llaves configuradas las van a ver listadas, si no tiene ninguna les saldrá una leyenda como la siguiente:</p>
-<pre class="output"><code>ls: cannot access '/c/Users/User/.ssh': No such file or directory</code></pre>
-<div id="paso-3.1-crear-un-par-de-llaves-ssh" class="section level4" number="3.6.3.1">
-<h4>
-<span class="header-section-number">3.6.3.1</span> Paso 3.1: Crear un par de llaves SSH<a class="anchor" aria-label="anchor" href="#paso-3.1-crear-un-par-de-llaves-ssh"><i class="fas fa-link"></i></a>
-</h4>
+<pre class="output"><code>ls: cannot access &#39;/c/Users/User/.ssh&#39;: No such file or directory</code></pre>
+<div id="paso-3.1-crear-un-par-de-llaves-ssh" class="section level4 hasAnchor" number="3.6.3.1">
+<h4><span class="header-section-number">3.6.3.1</span> Paso 3.1: Crear un par de llaves SSH<a href="git-y-github.html#paso-3.1-crear-un-par-de-llaves-ssh" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Para crear el par de llaves usamos el siguiente comando, la opción <code>-t</code> se refiere al tipo de algoritmo usado y la opción <code>-C</code> indica un comentario para la llave, en este caso el comentario es nuestro correo.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb213-1"><a href="git-y-github.html#cb213-1" tabindex="-1"></a><span class="ex">$</span> ssh-keygen <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"email@dominio.com"</span></span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="git-y-github.html#cb76-1" tabindex="-1"></a><span class="ex">$</span> ssh-keygen <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">&quot;email@dominio.com&quot;</span></span></code></pre></div>
 <p>Si tu sistema operativo no lo permite, usa <code>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code>.</p>
 <p>Como queremos usar el archivo default, solo damos <kbd>Enter</kbd>. Ahora nos pedirá una contraseña, tecleala, no vas a ver nada en la pantalla. Una vez creada verás en pantalla algo como lo siguiente:</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb214-1"><a href="git-y-github.html#cb214-1" tabindex="-1"></a><span class="ex">Your</span> identification has been saved in /c/Users/user/.ssh/id_ed25519</span>
-<span id="cb214-2"><a href="git-y-github.html#cb214-2" tabindex="-1"></a><span class="ex">Your</span> public key has been saved in /c/Users/user/.ssh/id_ed25519.pub</span>
-<span id="cb214-3"><a href="git-y-github.html#cb214-3" tabindex="-1"></a><span class="ex">The</span> key fingerprint is:</span>
-<span id="cb214-4"><a href="git-y-github.html#cb214-4" tabindex="-1"></a><span class="ex">SHA256:SMSPIStNyA10KPxuYu94KpZg9AYjgt9g46A4kFy3g1o</span> user@domain</span>
-<span id="cb214-5"><a href="git-y-github.html#cb214-5" tabindex="-1"></a><span class="ex">The</span> keys randomart image is:</span>
-<span id="cb214-6"><a href="git-y-github.html#cb214-6" tabindex="-1"></a><span class="ex">+--[ED25519</span> 256]--+</span>
-<span id="cb214-7"><a href="git-y-github.html#cb214-7" tabindex="-1"></a><span class="kw">|</span><span class="ex">^B==</span> o.          <span class="kw">|</span></span>
-<span id="cb214-8"><a href="git-y-github.html#cb214-8" tabindex="-1"></a><span class="kw">|</span><span class="ex">%*=</span> <span class="pp">*</span>.+          <span class="kw">|</span></span>
-<span id="cb214-9"><a href="git-y-github.html#cb214-9" tabindex="-1"></a><span class="kw">|</span><span class="ex">+=.E</span> =.+         <span class="kw">|</span></span>
-<span id="cb214-10"><a href="git-y-github.html#cb214-10" tabindex="-1"></a><span class="kw">|</span> <span class="bu">.</span>=.+.o..        <span class="kw">|</span></span>
-<span id="cb214-11"><a href="git-y-github.html#cb214-11" tabindex="-1"></a><span class="kw">|</span><span class="ex">...</span>   . S        <span class="kw">|</span></span>
-<span id="cb214-12"><a href="git-y-github.html#cb214-12" tabindex="-1"></a><span class="kw">|</span><span class="bu">.</span>+ o             <span class="kw">|</span></span>
-<span id="cb214-13"><a href="git-y-github.html#cb214-13" tabindex="-1"></a><span class="kw">|</span><span class="ex">+</span> =              <span class="kw">|</span></span>
-<span id="cb214-14"><a href="git-y-github.html#cb214-14" tabindex="-1"></a><span class="kw">|</span><span class="ex">.o.o</span>             <span class="kw">|</span></span>
-<span id="cb214-15"><a href="git-y-github.html#cb214-15" tabindex="-1"></a><span class="kw">|</span><span class="ex">oo+.</span>             <span class="kw">|</span></span>
-<span id="cb214-16"><a href="git-y-github.html#cb214-16" tabindex="-1"></a><span class="ex">+----[SHA256]-----+</span></span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb77-1"><a href="git-y-github.html#cb77-1" tabindex="-1"></a><span class="ex">Your</span> identification has been saved in /c/Users/user/.ssh/id_ed25519</span>
+<span id="cb77-2"><a href="git-y-github.html#cb77-2" tabindex="-1"></a><span class="ex">Your</span> public key has been saved in /c/Users/user/.ssh/id_ed25519.pub</span>
+<span id="cb77-3"><a href="git-y-github.html#cb77-3" tabindex="-1"></a><span class="ex">The</span> key fingerprint is:</span>
+<span id="cb77-4"><a href="git-y-github.html#cb77-4" tabindex="-1"></a><span class="ex">SHA256:SMSPIStNyA10KPxuYu94KpZg9AYjgt9g46A4kFy3g1o</span> user@domain</span>
+<span id="cb77-5"><a href="git-y-github.html#cb77-5" tabindex="-1"></a><span class="ex">The</span> keys randomart image is:</span>
+<span id="cb77-6"><a href="git-y-github.html#cb77-6" tabindex="-1"></a><span class="ex">+--[ED25519</span> 256]--+</span>
+<span id="cb77-7"><a href="git-y-github.html#cb77-7" tabindex="-1"></a><span class="kw">|</span><span class="ex">^B==</span> o.          <span class="kw">|</span></span>
+<span id="cb77-8"><a href="git-y-github.html#cb77-8" tabindex="-1"></a><span class="kw">|</span><span class="ex">%*=</span> <span class="pp">*</span>.+          <span class="kw">|</span></span>
+<span id="cb77-9"><a href="git-y-github.html#cb77-9" tabindex="-1"></a><span class="kw">|</span><span class="ex">+=.E</span> =.+         <span class="kw">|</span></span>
+<span id="cb77-10"><a href="git-y-github.html#cb77-10" tabindex="-1"></a><span class="kw">|</span> <span class="bu">.</span>=.+.o..        <span class="kw">|</span></span>
+<span id="cb77-11"><a href="git-y-github.html#cb77-11" tabindex="-1"></a><span class="kw">|</span><span class="ex">...</span>   . S        <span class="kw">|</span></span>
+<span id="cb77-12"><a href="git-y-github.html#cb77-12" tabindex="-1"></a><span class="kw">|</span><span class="bu">.</span>+ o             <span class="kw">|</span></span>
+<span id="cb77-13"><a href="git-y-github.html#cb77-13" tabindex="-1"></a><span class="kw">|</span><span class="ex">+</span> =              <span class="kw">|</span></span>
+<span id="cb77-14"><a href="git-y-github.html#cb77-14" tabindex="-1"></a><span class="kw">|</span><span class="ex">.o.o</span>             <span class="kw">|</span></span>
+<span id="cb77-15"><a href="git-y-github.html#cb77-15" tabindex="-1"></a><span class="kw">|</span><span class="ex">oo+.</span>             <span class="kw">|</span></span>
+<span id="cb77-16"><a href="git-y-github.html#cb77-16" tabindex="-1"></a><span class="ex">+----[SHA256]-----+</span></span></code></pre></div>
 <p>Lo que dice <code>identification</code> ser refiere a la llave privada la cual no debes compartir nunca y la cadena de caracteres que dice <code>fingerprint</code> se refiere a parte de tu llave pública.</p>
 <p>Si repetimos el comando siguiente, verán ahora ya sus dos claves pública y privada.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb215-1"><a href="git-y-github.html#cb215-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-al</span> ~/.ssh</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb78-1"><a href="git-y-github.html#cb78-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-al</span> ~/.ssh</span></code></pre></div>
 <p>Ahora que ya tenemos las claves, debemos decirle a GitHub cuales son.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb216-1"><a href="git-y-github.html#cb216-1" tabindex="-1"></a><span class="ex">$</span> cat ~/.ssh/id_ed25519.pub</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb79-1"><a href="git-y-github.html#cb79-1" tabindex="-1"></a><span class="ex">$</span> cat ~/.ssh/id_ed25519.pub</span></code></pre></div>
 <p>Copia la cadena de caracteres, ve a la configuración de tu perfil de GitHub y da clic en “SSH and GPG Keys”.</p>
 <div class="float">
-<img src="img/github_5.png" alt="SSH and GPG Keys"><div class="figcaption">SSH and GPG Keys</div>
+<img src="img/github_5.png" alt="SSH and GPG Keys" />
+<div class="figcaption">SSH and GPG Keys</div>
 </div>
 <p>Una vez ahí da clic en “Nueva llave SSH”.</p>
 <div class="float">
-<img src="img/github_6.png" alt="Nueva llave SSH"><div class="figcaption">Nueva llave SSH</div>
+<img src="img/github_6.png" alt="Nueva llave SSH" />
+<div class="figcaption">Nueva llave SSH</div>
 </div>
 <p>Después coloca un título que te permita identificar que será la clave con la que usarás la computadora y pega tu llave pública.</p>
 <div class="float">
-<img src="img/github_7.png" alt="Llave pública"><div class="figcaption">Llave pública</div>
+<img src="img/github_7.png" alt="Llave pública" />
+<div class="figcaption">Llave pública</div>
 </div>
 <p>Ahora solo falta revisar la conexión desde la terminal.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb217-1"><a href="git-y-github.html#cb217-1" tabindex="-1"></a><span class="ex">$</span> ssh <span class="at">-T</span> git@github.com</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb80-1"><a href="git-y-github.html#cb80-1" tabindex="-1"></a><span class="ex">$</span> ssh <span class="at">-T</span> git@github.com</span></code></pre></div>
 <p>Si vez un mensaje similar al siguiente, significa que quedo completa la autenticación.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb218-1"><a href="git-y-github.html#cb218-1" tabindex="-1"></a><span class="ex">$</span> Hi Name! Youve successfully authenticated, but GitHub does not provide shell access.</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb81-1"><a href="git-y-github.html#cb81-1" tabindex="-1"></a><span class="ex">$</span> Hi Name! Youve successfully authenticated, but GitHub does not provide shell access.</span></code></pre></div>
 </div>
 </div>
-<div id="paso-4-push-and-pull" class="section level3" number="3.6.4">
-<h3>
-<span class="header-section-number">3.6.4</span> Paso 4: Push and pull<a class="anchor" aria-label="anchor" href="#paso-4-push-and-pull"><i class="fas fa-link"></i></a>
-</h3>
+<div id="paso-4-push-and-pull" class="section level3 hasAnchor" number="3.6.4">
+<h3><span class="header-section-number">3.6.4</span> Paso 4: Push and pull<a href="git-y-github.html#paso-4-push-and-pull" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una vez que ya tenemos configurado todo, solo falta enviar todo lo que tenemos en el repo local al remoto. Si se establecio la contraseña nos la va a pedir en la terminal o una ventana aparte.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb219-1"><a href="git-y-github.html#cb219-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb82-1"><a href="git-y-github.html#cb82-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
 <p>En esa instrucción, <code>origin</code> se refiere al repositorio remoto y <code>main</code> al local (las ramas que estamos intentando poner en el mismo contenido).</p>
 <p>La situación en la que estamos es la siguiente:</p>
 <div class="float">
-<img src="img/github-repo-after-first-push.png" alt="git push origin main"><div class="figcaption"><code>git push origin main</code></div>
+<img src="img/github-repo-after-first-push.png" alt="git push origin main" />
+<div class="figcaption"><code>git push origin main</code></div>
 </div>
 <p>Para actualizar nuestro repositorio local, lo que debemos hacer es lo siguiente:</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb220-1"><a href="git-y-github.html#cb220-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb83-1"><a href="git-y-github.html#cb83-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
 <p>Como no hemos realizado ningún cambio en el remoto, no veremos nada nuevo en el local. En el remoto también podemos añadir archivos directamente.</p>
 <p><strong>Ejercicio:</strong> Añade un archivo nuevo desde el repositorio remoto y actualiza tus cambios en el local.</p>
 </div>
 </div>
-<div id="colaboradores" class="section level2" number="3.7">
-<h2>
-<span class="header-section-number">3.7</span> Colaboradores<a class="anchor" aria-label="anchor" href="#colaboradores"><i class="fas fa-link"></i></a>
-</h2>
+<div id="colaboradores" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Colaboradores<a href="git-y-github.html#colaboradores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Para esta parte, vamos a trabajar en parejas (si no es posible pueden abrir una segunda terminal para la realizar la parte de su equipo).</p>
 <p>Vamos a ir a nuestro repositorio que creamos en GitHub y vamos a ir a la configuración y después en donde dice colaboradores.</p>
 <div class="float">
-<img src="img/github_8.png" alt="Configurar colaboradores"><div class="figcaption">Configurar colaboradores</div>
+<img src="img/github_8.png" alt="Configurar colaboradores" />
+<div class="figcaption">Configurar colaboradores</div>
 </div>
 <p>Una vez en esa ventana, den clic en añadir colaboradores. Van a buscar con el nombre de usuario de su compañero y dan enter.</p>
 <div class="float">
-<img src="img/github_9.png" alt="Añadir colaboradores"><div class="figcaption">Añadir colaboradores</div>
+<img src="img/github_9.png" alt="Añadir colaboradores" />
+<div class="figcaption">Añadir colaboradores</div>
 </div>
 <p>En su correo o cuenta de github, deben ir a notificaciones y aceptar la invitación. También pueden usar el <a href="https://github.com/notifications">link</a>.</p>
 <p>Ahora, su colaborador debe descargar el repositorio a su computadora, a este paso se le llama clonar un repositorio. Para esto, abran una terminal y realicen lo siguiente:</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb221-1"><a href="git-y-github.html#cb221-1" tabindex="-1"></a><span class="ex">$</span> git clone git@github.com:User/Mi_primer_repo.git ~/colaborador-Mi_primer_repo</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb84-1"><a href="git-y-github.html#cb84-1" tabindex="-1"></a><span class="ex">$</span> git clone git@github.com:User/Mi_primer_repo.git ~/colaborador-Mi_primer_repo</span></code></pre></div>
 <p>La última parte de esa instrucción es la dirección de su computadora donde se clonara el repositorio de su colaborador.</p>
 <div class="float">
-<img src="img/github-collaboration.png" alt="Estructura de los repositorios al clonarlos. Imagen de SC"><div class="figcaption">Estructura de los repositorios al clonarlos. Imagen de <a href="https://swcarpentry.github.io/git-novice/08-collab.html">SC</a>
+<img src="img/github-collaboration.png" alt="Estructura de los repositorios al clonarlos. Imagen de SC" />
+<div class="figcaption">Estructura de los repositorios al clonarlos. Imagen de <a href="https://swcarpentry.github.io/git-novice/08-collab.html">SC</a></div>
 </div>
-</div>
-<p>Ahora, el colaborador realizará un cambio en el repositorio. Para esto, creará un archivo, lo añadira al área de preparación, hará el commit correspondiente y enviará los cambios al remoto.</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb222-1"><a href="git-y-github.html#cb222-1" tabindex="-1"></a><span class="ex">$</span> nano notas.txt</span>
-<span id="cb222-2"><a href="git-y-github.html#cb222-2" tabindex="-1"></a><span class="ex">$</span> git add notas.txt</span>
-<span id="cb222-3"><a href="git-y-github.html#cb222-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Añadimos archivo de colaborador"</span></span>
-<span id="cb222-4"><a href="git-y-github.html#cb222-4" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<p>Ahora, el colaborador realizará un cambio en el repositorio. Para esto, creará un archivo, lo añadirá al área de preparación, hará el commit correspondiente y enviará los cambios al remoto.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb85-1"><a href="git-y-github.html#cb85-1" tabindex="-1"></a><span class="ex">$</span> nano notas.txt</span>
+<span id="cb85-2"><a href="git-y-github.html#cb85-2" tabindex="-1"></a><span class="ex">$</span> git add notas.txt</span>
+<span id="cb85-3"><a href="git-y-github.html#cb85-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Añadimos archivo de colaborador&quot;</span></span>
+<span id="cb85-4"><a href="git-y-github.html#cb85-4" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
 <p>Si revisamos en la página de Github, veremos ahora un cambio en el repositorio, junto con el commit y quien lo realizo. Finalmente, actualizaremos el repositorio original local con los cambios del colaborador.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb223-1"><a href="git-y-github.html#cb223-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb86-1"><a href="git-y-github.html#cb86-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
 <p>Una buena practica cuando se trabaja con colaboradores es realizar la siguiente serie de pasos:</p>
 <ol style="list-style-type: decimal">
 <li><p>Antes de comenzar a trabajar, siempre actualizar nuestro repositorio local con <code>git pull origin main</code></p></li>
@@ -514,28 +687,26 @@ Lo que acabamos de hacer es como si en nuestra terminal hubiéramos realizado lo
 <p>Otra buena practica es trabajar con ramas, este sería un paso antes del 2.</p>
 <p><strong>Ejercicio:</strong> Replicar lo que se hizo en esta sección cambiando roles de quien es el colaborador y quien el dueño del repositorio local.</p>
 </div>
-<div id="conflictos" class="section level2" number="3.8">
-<h2>
-<span class="header-section-number">3.8</span> Conflictos<a class="anchor" aria-label="anchor" href="#conflictos"><i class="fas fa-link"></i></a>
-</h2>
+<div id="conflictos" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Conflictos<a href="git-y-github.html#conflictos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Cuando comenzamos a trabajar con colaboradores, es usual que generemos conflictos si no se trabaja de forma adecuada.</p>
 <p>Vamos a crear un conflicto para después resolverlo.</p>
 <p>El colaborador va a modificar el <code>notas.txt</code> añadiendo algo. Luego lo añadirá al área de preparación, realizará el commit correspondiente y finalmente actualizará el repositorio remoto.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb224-1"><a href="git-y-github.html#cb224-1" tabindex="-1"></a><span class="ex">$</span> nano notas.txt</span>
-<span id="cb224-2"><a href="git-y-github.html#cb224-2" tabindex="-1"></a><span class="ex">$</span> git add notas.txt</span>
-<span id="cb224-3"><a href="git-y-github.html#cb224-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Modificamos el archivo notas para crear un conflicto"</span></span>
-<span id="cb224-4"><a href="git-y-github.html#cb224-4" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb87-1"><a href="git-y-github.html#cb87-1" tabindex="-1"></a><span class="ex">$</span> nano notas.txt</span>
+<span id="cb87-2"><a href="git-y-github.html#cb87-2" tabindex="-1"></a><span class="ex">$</span> git add notas.txt</span>
+<span id="cb87-3"><a href="git-y-github.html#cb87-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Modificamos el archivo notas para crear un conflicto&quot;</span></span>
+<span id="cb87-4"><a href="git-y-github.html#cb87-4" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
 <p>Ahora, el dueño del repositorio realizará un cambio también al archivo notas (sin antes actualizar con los últimos cambios del colaborador) y realizará todos los pasos hasta poder actualizar el repositorio remoto.</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb225-1"><a href="git-y-github.html#cb225-1" tabindex="-1"></a><span class="ex">$</span> nano notas.txt</span>
-<span id="cb225-2"><a href="git-y-github.html#cb225-2" tabindex="-1"></a><span class="ex">$</span> git add notas.txt</span>
-<span id="cb225-3"><a href="git-y-github.html#cb225-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Cambios en el archivo notas por el dueño del repositorio"</span></span>
-<span id="cb225-4"><a href="git-y-github.html#cb225-4" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb88-1"><a href="git-y-github.html#cb88-1" tabindex="-1"></a><span class="ex">$</span> nano notas.txt</span>
+<span id="cb88-2"><a href="git-y-github.html#cb88-2" tabindex="-1"></a><span class="ex">$</span> git add notas.txt</span>
+<span id="cb88-3"><a href="git-y-github.html#cb88-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Cambios en el archivo notas por el dueño del repositorio&quot;</span></span>
+<span id="cb88-4"><a href="git-y-github.html#cb88-4" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
 <div class="float">
-<img src="img/git-colaborador-remoto.png" alt="Conflicto generado cuando se intenta hacer un git push"><div class="figcaption">Conflicto generado cuando se intenta hacer un <code>git push</code>
-</div>
+<img src="img/git-colaborador-remoto.png" alt="Conflicto generado cuando se intenta hacer un git push" />
+<div class="figcaption">Conflicto generado cuando se intenta hacer un <code>git push</code></div>
 </div>
 <p>Git no autorizo hacer el push porque había cambios en el remoto que no habíamos actualizado en el local, entonces vamos a actualizar el local primero, hacer un merge en la copia en la que estamos trabajando y después ya hacer un push.</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb226-1"><a href="git-y-github.html#cb226-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb89-1"><a href="git-y-github.html#cb89-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
 <p>Vamos a ver un mensaje de que hay un merge que no pudo resolver porque se trabajo en la misma línea en el mismo archivo. Si abrimos el archivo vamos a ver algo como lo siguiente:</p>
 <pre class="output"><code>texto aqui
 &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
@@ -545,26 +716,26 @@ cambios del colaborador aqui
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; dabb4c8c450e8475aee9b14b4383acc99f42af1d</code></pre>
 <p>Ahora lo que tenemos que hacer es decidir que cambios queremos conservar, para eso, podemos borrar nuestros cambios, los del colaborador, ambos, o cambiar todo por algo nuevo (y borrar los identificadores de los conflictos).</p>
 <p>Una vez finalizado el merge/resolver conflicto, ya podemos añadirlo al área de preparación, realizar el commit y enviarlo al remoto.</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb228-1"><a href="git-y-github.html#cb228-1" tabindex="-1"></a><span class="ex">$</span> git add notas.txt</span>
-<span id="cb228-2"><a href="git-y-github.html#cb228-2" tabindex="-1"></a><span class="ex">$</span> git status</span>
-<span id="cb228-3"><a href="git-y-github.html#cb228-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Resolvimos el conflicto en el archivo notas"</span></span>
-<span id="cb228-4"><a href="git-y-github.html#cb228-4" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb91-1"><a href="git-y-github.html#cb91-1" tabindex="-1"></a><span class="ex">$</span> git add notas.txt</span>
+<span id="cb91-2"><a href="git-y-github.html#cb91-2" tabindex="-1"></a><span class="ex">$</span> git status</span>
+<span id="cb91-3"><a href="git-y-github.html#cb91-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Resolvimos el conflicto en el archivo notas&quot;</span></span>
+<span id="cb91-4"><a href="git-y-github.html#cb91-4" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
 <p>Cuando el colaborador intente hacer un <code>git pull</code> no verá ningún conflicto ya que git conservo el registro de que se resolvió y a la copia del colaborador se actualizará sin ningún problema.</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb229-1"><a href="git-y-github.html#cb229-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="git-y-github.html#cb92-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
 <p>Una forma de evitar algunos conflictos es trabajando en ramas, o distribuyendo el trabajo y que cada quien trabaje sobre archivos diferentes.</p>
 <p>También se puede dar el caso de que los conflictos sean por archivos con el mismo nombre pero con contenidos totalmente diferentes, por ejemplo con imágenes.</p>
 <p>Vamos a crear de nuevo un conflicto con una imagen y vamos a tratar de resolverlo. Tanto el colaborador como el dueño del proyecto va a crear una imagen con el nombre imagen_prueba.jpg, guardará los cambios y realizará todo hasta mandarlo al repositorio remoto.</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb230-1"><a href="git-y-github.html#cb230-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-c</span> 1024 /dev/urandom <span class="op">&gt;</span> imagen_prueba.jpg</span>
-<span id="cb230-2"><a href="git-y-github.html#cb230-2" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span> imagen_prueba.jpg</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb93-1"><a href="git-y-github.html#cb93-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-c</span> 1024 /dev/urandom <span class="op">&gt;</span> imagen_prueba.jpg</span>
+<span id="cb93-2"><a href="git-y-github.html#cb93-2" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span> imagen_prueba.jpg</span></code></pre></div>
 <p>Lo añadimos al área de preparación, realizamos commit y lo enviamos al repositorio remoto.</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb231-1"><a href="git-y-github.html#cb231-1" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba.jpg</span>
-<span id="cb231-2"><a href="git-y-github.html#cb231-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Se creo imagen random para generar conflicto."</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb94-1"><a href="git-y-github.html#cb94-1" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba.jpg</span>
+<span id="cb94-2"><a href="git-y-github.html#cb94-2" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Se creo imagen random para generar conflicto.&quot;</span></span></code></pre></div>
 <p>El colaborador realizará un push de su imagen al repositorio remoto.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb232-1"><a href="git-y-github.html#cb232-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb95-1"><a href="git-y-github.html#cb95-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
 <p>Ahora el dueño del repositorio tratará de hacer un push también al repositorio.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb233-1"><a href="git-y-github.html#cb233-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb96-1"><a href="git-y-github.html#cb96-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
 <p>Lo primero que nos va a pasar y decir git, es que no actualizamos nuestro repositorio con los cambios como en el ejercicio anterior. Vamos a hacer un pull.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb234-1"><a href="git-y-github.html#cb234-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="git-y-github.html#cb97-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
 <p>Nos va a marcar que hay conflictos y que no puede hacer auto merge y nos dirá adicionalmente un mensaje similar al siguiente:</p>
 <pre class="output"><code>warning: Cannot merge binary files: imagen_prueba.jpg (HEAD vs. 439dc8c08869c343538f6dc4a2b615b05b93c76e)</code></pre>
 <p>Esto se debe a que como es un archivo que no es de texto no puede empalmar los cambios. Entonces las opciones que tenemos es decidir quedarnos con solo una de las dos imágenes o renombrarlas para quedarnos con ambos.</p>
@@ -572,108 +743,88 @@ cambios del colaborador aqui
 <li>Quedarnos con la imagen del dueño del repo:</li>
 </ol>
 <p>La imagen del dueño del repo es el HEAD y la del colaborador tiene un id de commit. Entonces procedemos a lo siguiente.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb236-1"><a href="git-y-github.html#cb236-1" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD imagen_prueba.jpg</span>
-<span id="cb236-2"><a href="git-y-github.html#cb236-2" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba.jpg</span>
-<span id="cb236-3"><a href="git-y-github.html#cb236-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Usar la imagen del dueño del repo en lugar de la del colaborador"</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb99-1"><a href="git-y-github.html#cb99-1" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD imagen_prueba.jpg</span>
+<span id="cb99-2"><a href="git-y-github.html#cb99-2" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba.jpg</span>
+<span id="cb99-3"><a href="git-y-github.html#cb99-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Usar la imagen del dueño del repo en lugar de la del colaborador&quot;</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Quedarnos con la imagen del colaborador del repo:</li>
 </ol>
 <p>La imagen del colaborador tiene un id de commit, buscarlo. Entonces procedemos a lo siguiente.</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb237-1"><a href="git-y-github.html#cb237-1" tabindex="-1"></a><span class="ex">$</span> git checkout 439dc8c0 imagen_prueba.jpg</span>
-<span id="cb237-2"><a href="git-y-github.html#cb237-2" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba.jpg</span>
-<span id="cb237-3"><a href="git-y-github.html#cb237-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Usar la imagen del colaborador del repo en lugar de la del dueño"</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb100-1"><a href="git-y-github.html#cb100-1" tabindex="-1"></a><span class="ex">$</span> git checkout 439dc8c0 imagen_prueba.jpg</span>
+<span id="cb100-2"><a href="git-y-github.html#cb100-2" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba.jpg</span>
+<span id="cb100-3"><a href="git-y-github.html#cb100-3" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Usar la imagen del colaborador del repo en lugar de la del dueño&quot;</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Quedarnos con ambas imágenes:</li>
 </ol>
-<div class="sourceCode" id="cb238"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb238-1"><a href="git-y-github.html#cb238-1" tabindex="-1"></a><span class="fu">git</span> checkout HEAD imagen_prueba.jpg</span>
-<span id="cb238-2"><a href="git-y-github.html#cb238-2" tabindex="-1"></a><span class="ex">$</span> git mv imagen_prueba.jpg imagen_prueba-dueño.jpg</span>
-<span id="cb238-3"><a href="git-y-github.html#cb238-3" tabindex="-1"></a><span class="ex">$</span> git checkout 439dc8c0 imagen_prueba.jpg</span>
-<span id="cb238-4"><a href="git-y-github.html#cb238-4" tabindex="-1"></a><span class="ex">$</span> mv imagen_prueba.jpg imagen_prueba-colaborador.jpg</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb101-1"><a href="git-y-github.html#cb101-1" tabindex="-1"></a><span class="fu">git</span> checkout HEAD imagen_prueba.jpg</span>
+<span id="cb101-2"><a href="git-y-github.html#cb101-2" tabindex="-1"></a><span class="ex">$</span> git mv imagen_prueba.jpg imagen_prueba-dueño.jpg</span>
+<span id="cb101-3"><a href="git-y-github.html#cb101-3" tabindex="-1"></a><span class="ex">$</span> git checkout 439dc8c0 imagen_prueba.jpg</span>
+<span id="cb101-4"><a href="git-y-github.html#cb101-4" tabindex="-1"></a><span class="ex">$</span> mv imagen_prueba.jpg imagen_prueba-colaborador.jpg</span></code></pre></div>
 <p>Y finalmente para remover la imagen de prueba y añadir las dos nuevas versiones:</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb239-1"><a href="git-y-github.html#cb239-1" tabindex="-1"></a><span class="ex">$</span> git rm imagen_prueba.jpg</span>
-<span id="cb239-2"><a href="git-y-github.html#cb239-2" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba-dueño.jpg</span>
-<span id="cb239-3"><a href="git-y-github.html#cb239-3" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba-colaborador.jpg</span>
-<span id="cb239-4"><a href="git-y-github.html#cb239-4" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Use two images: dueño y colaborador"</span></span>
-<span id="cb239-5"><a href="git-y-github.html#cb239-5" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb102-1"><a href="git-y-github.html#cb102-1" tabindex="-1"></a><span class="ex">$</span> git rm imagen_prueba.jpg</span>
+<span id="cb102-2"><a href="git-y-github.html#cb102-2" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba-dueño.jpg</span>
+<span id="cb102-3"><a href="git-y-github.html#cb102-3" tabindex="-1"></a><span class="ex">$</span> git add imagen_prueba-colaborador.jpg</span>
+<span id="cb102-4"><a href="git-y-github.html#cb102-4" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Use two images: dueño y colaborador&quot;</span></span>
+<span id="cb102-5"><a href="git-y-github.html#cb102-5" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre></div>
 </div>
-<div id="trabajando-con-ramas" class="section level2" number="3.9">
-<h2>
-<span class="header-section-number">3.9</span> Trabajando con Ramas<a class="anchor" aria-label="anchor" href="#trabajando-con-ramas"><i class="fas fa-link"></i></a>
-</h2>
+<div id="trabajando-con-ramas" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Trabajando con Ramas<a href="git-y-github.html#trabajando-con-ramas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Trabajar con ramas en Git es una parte fundamental del flujo de trabajo colaborativo. Los siguientes pasos son los básicos para trabajar de esta manera.</p>
-<div id="crear-una-rama" class="section level3" number="3.9.1">
-<h3>
-<span class="header-section-number">3.9.1</span> 1. Crear una rama<a class="anchor" aria-label="anchor" href="#crear-una-rama"><i class="fas fa-link"></i></a>
-</h3>
+<div id="crear-una-rama" class="section level3 hasAnchor" number="3.9.1">
+<h3><span class="header-section-number">3.9.1</span> 1. Crear una rama<a href="git-y-github.html#crear-una-rama" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Cuando trabajas en un proyecto, es una buena práctica crear una rama separada para cada nueva función o corrección de errores que estés desarrollando. Para crear una nueva rama en Git, utiliza el comando:</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb240-1"><a href="git-y-github.html#cb240-1" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">-b</span> nombre_de_la_rama</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb103-1"><a href="git-y-github.html#cb103-1" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">-b</span> nombre_de_la_rama</span></code></pre></div>
 <p>Este comando crea una nueva rama y te cambia a ella al mismo tiempo.</p>
 <p>Otra opción es la siguiente:</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb241-1"><a href="git-y-github.html#cb241-1" tabindex="-1"></a><span class="ex">$</span> git branch nombre_de_la_rama</span>
-<span id="cb241-2"><a href="git-y-github.html#cb241-2" tabindex="-1"></a><span class="ex">$</span> git switch nombre_de_la_rama</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb104-1"><a href="git-y-github.html#cb104-1" tabindex="-1"></a><span class="ex">$</span> git branch nombre_de_la_rama</span>
+<span id="cb104-2"><a href="git-y-github.html#cb104-2" tabindex="-1"></a><span class="ex">$</span> git switch nombre_de_la_rama</span></code></pre></div>
 </div>
-<div id="trabajar-en-la-rama" class="section level3" number="3.9.2">
-<h3>
-<span class="header-section-number">3.9.2</span> 2. Trabajar en la rama<a class="anchor" aria-label="anchor" href="#trabajar-en-la-rama"><i class="fas fa-link"></i></a>
-</h3>
+<div id="trabajar-en-la-rama" class="section level3 hasAnchor" number="3.9.2">
+<h3><span class="header-section-number">3.9.2</span> 2. Trabajar en la rama<a href="git-y-github.html#trabajar-en-la-rama" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Después de crear la rama, puedes comenzar a trabajar en tus cambios. Realiza tus modificaciones en los archivos como lo harías normalmente.</p>
 </div>
-<div id="agregar-y-confirmar-cambios" class="section level3" number="3.9.3">
-<h3>
-<span class="header-section-number">3.9.3</span> 3. Agregar y confirmar cambios<a class="anchor" aria-label="anchor" href="#agregar-y-confirmar-cambios"><i class="fas fa-link"></i></a>
-</h3>
+<div id="agregar-y-confirmar-cambios" class="section level3 hasAnchor" number="3.9.3">
+<h3><span class="header-section-number">3.9.3</span> 3. Agregar y confirmar cambios<a href="git-y-github.html#agregar-y-confirmar-cambios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una vez que hayas realizado cambios que desees incluir en la rama, añádelos al área de preparación con:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb242-1"><a href="git-y-github.html#cb242-1" tabindex="-1"></a><span class="ex">$</span> git add nombre_del_archivo</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb105-1"><a href="git-y-github.html#cb105-1" tabindex="-1"></a><span class="ex">$</span> git add nombre_del_archivo</span></code></pre></div>
 <p>Luego, confirma los cambios con un mensaje descriptivo:</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb243-1"><a href="git-y-github.html#cb243-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Mensaje descriptivo de los cambios"</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb106-1"><a href="git-y-github.html#cb106-1" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">&quot;Mensaje descriptivo de los cambios&quot;</span></span></code></pre></div>
 </div>
-<div id="empujar-la-rama-al-repositorio-remoto" class="section level3" number="3.9.4">
-<h3>
-<span class="header-section-number">3.9.4</span> 4. Empujar la rama al repositorio remoto<a class="anchor" aria-label="anchor" href="#empujar-la-rama-al-repositorio-remoto"><i class="fas fa-link"></i></a>
-</h3>
+<div id="empujar-la-rama-al-repositorio-remoto" class="section level3 hasAnchor" number="3.9.4">
+<h3><span class="header-section-number">3.9.4</span> 4. Empujar la rama al repositorio remoto<a href="git-y-github.html#empujar-la-rama-al-repositorio-remoto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Si estás trabajando en un repositorio remoto compartido con otros colaboradores, es posible que desees compartir tus cambios. Para esto, hay dos formas de hacerlo. La primera es enviar los cambios a una rama remota y después confirmarlos y unirlos, para eso utiliza el comando:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb244-1"><a href="git-y-github.html#cb244-1" tabindex="-1"></a><span class="ex">$</span> git push origin nombre_de_la_rama</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb107-1"><a href="git-y-github.html#cb107-1" tabindex="-1"></a><span class="ex">$</span> git push origin nombre_de_la_rama</span></code></pre></div>
 <p>Esto enviará la nueva rama y los cambios asociados al repositorio remoto.</p>
 </div>
-<div id="fusionar-cambios" class="section level3" number="3.9.5">
-<h3>
-<span class="header-section-number">3.9.5</span> 5. Fusionar cambios<a class="anchor" aria-label="anchor" href="#fusionar-cambios"><i class="fas fa-link"></i></a>
-</h3>
+<div id="fusionar-cambios" class="section level3 hasAnchor" number="3.9.5">
+<h3><span class="header-section-number">3.9.5</span> 5. Fusionar cambios<a href="git-y-github.html#fusionar-cambios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una vez que hayas completado tus cambios y estés listo para incorporarlos al proyecto principal, puedes fusionar tu rama con la rama principal (generalmente <code>main</code> o <code>master</code>). Para hacerlo, primero cámbiate a la rama principal:</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb245-1"><a href="git-y-github.html#cb245-1" tabindex="-1"></a><span class="ex">$</span> git checkout main</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb108-1"><a href="git-y-github.html#cb108-1" tabindex="-1"></a><span class="ex">$</span> git checkout main</span></code></pre></div>
 <p>Otra opción:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb246-1"><a href="git-y-github.html#cb246-1" tabindex="-1"></a><span class="ex">$</span> git switch main</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb109-1"><a href="git-y-github.html#cb109-1" tabindex="-1"></a><span class="ex">$</span> git switch main</span></code></pre></div>
 <p>Luego, fusiona tu rama con la rama principal:</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb247-1"><a href="git-y-github.html#cb247-1" tabindex="-1"></a><span class="ex">$</span> git merge nombre_de_la_rama</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb110-1"><a href="git-y-github.html#cb110-1" tabindex="-1"></a><span class="ex">$</span> git merge nombre_de_la_rama</span></code></pre></div>
 <p><strong>NOTA:</strong> Los pasos 4 y 5 se pueden intercambiar de orden, es decir primero hacer el merge local cambiandonos a la rama principal y después enviando los cambios al remoto. Es importante primero hacer un <code>git pull</code> para actualizar nuestro local en la rama principal.</p>
 </div>
-<div id="resolver-conflictos-si-los-hay" class="section level3" number="3.9.6">
-<h3>
-<span class="header-section-number">3.9.6</span> 6. Resolver conflictos (si los hay)<a class="anchor" aria-label="anchor" href="#resolver-conflictos-si-los-hay"><i class="fas fa-link"></i></a>
-</h3>
+<div id="resolver-conflictos-si-los-hay" class="section level3 hasAnchor" number="3.9.6">
+<h3><span class="header-section-number">3.9.6</span> 6. Resolver conflictos (si los hay)<a href="git-y-github.html#resolver-conflictos-si-los-hay" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Es posible que ocurran conflictos durante el proceso de fusión si otros colaboradores han realizado cambios en las mismas partes de los archivos. Git te indicará los conflictos y te permitirá resolverlos manualmente.</p>
 </div>
-<div id="eliminar-la-rama-opcional" class="section level3" number="3.9.7">
-<h3>
-<span class="header-section-number">3.9.7</span> 7. Eliminar la rama (opcional)<a class="anchor" aria-label="anchor" href="#eliminar-la-rama-opcional"><i class="fas fa-link"></i></a>
-</h3>
+<div id="eliminar-la-rama-opcional" class="section level3 hasAnchor" number="3.9.7">
+<h3><span class="header-section-number">3.9.7</span> 7. Eliminar la rama (opcional)<a href="git-y-github.html#eliminar-la-rama-opcional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una vez que hayas fusionado tus cambios en la rama principal y ya no necesites la rama de la función, puedes eliminarla:</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb248-1"><a href="git-y-github.html#cb248-1" tabindex="-1"></a><span class="ex">$</span> git branch <span class="at">-d</span> nombre_de_la_rama</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb111-1"><a href="git-y-github.html#cb111-1" tabindex="-1"></a><span class="ex">$</span> git branch <span class="at">-d</span> nombre_de_la_rama</span></code></pre></div>
 </div>
-<div id="actualizar-y-sincronizar" class="section level3" number="3.9.8">
-<h3>
-<span class="header-section-number">3.9.8</span> 8. Actualizar y sincronizar<a class="anchor" aria-label="anchor" href="#actualizar-y-sincronizar"><i class="fas fa-link"></i></a>
-</h3>
+<div id="actualizar-y-sincronizar" class="section level3 hasAnchor" number="3.9.8">
+<h3><span class="header-section-number">3.9.8</span> 8. Actualizar y sincronizar<a href="git-y-github.html#actualizar-y-sincronizar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Es importante mantener tu repositorio local actualizado con los cambios de otros colaboradores. Para hacerlo, utiliza:</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb249-1"><a href="git-y-github.html#cb249-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb112-1"><a href="git-y-github.html#cb112-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre></div>
 <p>Esto traerá los últimos cambios de la rama principal del repositorio remoto y los fusionará con tu rama local.</p>
 <p>Siguiendo estos pasos, podrás trabajar de manera efectiva con ramas en Git en un entorno colaborativo. Recuerda comunicarte con tus colaboradores y mantener un flujo de trabajo ordenado para evitar conflictos y errores.</p>
 </div>
 </div>
-<div id="conectar-con-overleaf" class="section level2" number="3.10">
-<h2>
-<span class="header-section-number">3.10</span> Conectar con overleaf<a class="anchor" aria-label="anchor" href="#conectar-con-overleaf"><i class="fas fa-link"></i></a>
-</h2>
+<div id="conectar-con-overleaf" class="section level2 hasAnchor" number="3.10">
+<h2><span class="header-section-number">3.10</span> Conectar con overleaf<a href="git-y-github.html#conectar-con-overleaf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Lo primero es crear el documento en Overleaf que nos interesa. Después se clona el archivo con la dirección que da Overleaf. Esa será la ruta de la carpeta. De manera local podemos cambiar el propio archivo <em>.tex</em> por uno que ya tengamos (parece que es más fácil hacer esto que intentar crear un nuevo documento en Overleaf a partir un repositorio existente, pero falta hacer más pruebas); también, es posible cambiar el nombre de la carpeta en la cual se generó el repositorio (parece que no hay problemas con Overleaf pero hay que hacer más pruebas).</p>
 <p>A continuación los pasos para trabajar localmente una vez que ya se tiene el repositorio creado.</p>
 <ol style="list-style-type: decimal">
@@ -688,8 +839,7 @@ cambios del colaborador aqui
 <li><p><code>git merge nombre_rama_local</code></p></li>
 </ol>
 <ol style="list-style-type: lower-alpha">
-<li>
-<code>git switch nombre_rama_local</code>
+<li><code>git switch nombre_rama_local</code>
 (b) <code>git merge master</code> (para actualizar ahora rama local)
 (c) seguir trabajando sobre la misma rama local
 (d) repetir de 4 a 9</li>
@@ -698,95 +848,69 @@ cambios del colaborador aqui
 <li><p><code>git push</code></p></li>
 <li><p><code>git branch -d nombre_rama_local</code></p></li>
 </ol>
-</div>
-</div>
-  <div class="chapter-nav">
-<div class="prev"><a href="shell.html"><span class="header-section-number">2</span> Shell</a></div>
-<div class="next"><a href="python.html"><span class="header-section-number">4</span> Python</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#git-y-github"><span class="header-section-number">3</span> Git y Github</a></li>
-<li><a class="nav-link" href="#repositorios"><span class="header-section-number">3.1</span> Repositorios</a></li>
-<li><a class="nav-link" href="#rastrear-cambios"><span class="header-section-number">3.2</span> Rastrear cambios</a></li>
-<li><a class="nav-link" href="#explorando-el-historial"><span class="header-section-number">3.3</span> Explorando el historial</a></li>
-<li><a class="nav-link" href="#restore-y-reset"><span class="header-section-number">3.4</span> Restore y reset</a></li>
-<li><a class="nav-link" href="#ignorar-archivoscarpetas"><span class="header-section-number">3.5</span> Ignorar archivos/carpetas</a></li>
-<li>
-<a class="nav-link" href="#github"><span class="header-section-number">3.6</span> Github</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#paso-1-crear-un-repositorio-remoto"><span class="header-section-number">3.6.1</span> Paso 1: Crear un repositorio remoto</a></li>
-<li><a class="nav-link" href="#paso-2-conectar-local-a-remoto"><span class="header-section-number">3.6.2</span> Paso 2: Conectar local a remoto</a></li>
-<li><a class="nav-link" href="#paso-3-conexi%C3%B3n-mediante-ssh"><span class="header-section-number">3.6.3</span> Paso 3: Conexión mediante SSH</a></li>
-<li><a class="nav-link" href="#paso-4-push-and-pull"><span class="header-section-number">3.6.4</span> Paso 4: Push and pull</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#colaboradores"><span class="header-section-number">3.7</span> Colaboradores</a></li>
-<li><a class="nav-link" href="#conflictos"><span class="header-section-number">3.8</span> Conflictos</a></li>
-<li>
-<a class="nav-link" href="#trabajando-con-ramas"><span class="header-section-number">3.9</span> Trabajando con Ramas</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#crear-una-rama"><span class="header-section-number">3.9.1</span> 1. Crear una rama</a></li>
-<li><a class="nav-link" href="#trabajar-en-la-rama"><span class="header-section-number">3.9.2</span> 2. Trabajar en la rama</a></li>
-<li><a class="nav-link" href="#agregar-y-confirmar-cambios"><span class="header-section-number">3.9.3</span> 3. Agregar y confirmar cambios</a></li>
-<li><a class="nav-link" href="#empujar-la-rama-al-repositorio-remoto"><span class="header-section-number">3.9.4</span> 4. Empujar la rama al repositorio remoto</a></li>
-<li><a class="nav-link" href="#fusionar-cambios"><span class="header-section-number">3.9.5</span> 5. Fusionar cambios</a></li>
-<li><a class="nav-link" href="#resolver-conflictos-si-los-hay"><span class="header-section-number">3.9.6</span> 6. Resolver conflictos (si los hay)</a></li>
-<li><a class="nav-link" href="#eliminar-la-rama-opcional"><span class="header-section-number">3.9.7</span> 7. Eliminar la rama (opcional)</a></li>
-<li><a class="nav-link" href="#actualizar-y-sincronizar"><span class="header-section-number">3.9.8</span> 8. Actualizar y sincronizar</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#conectar-con-overleaf"><span class="header-section-number">3.10</span> Conectar con overleaf</a></li>
-</ul>
-
-      <div class="book-extra">
-        <ul class="list-unstyled">
-          
-        </ul>
-</div>
-    </nav>
-</div>
 
 </div>
-</div> <!-- .container -->
+</div>
+            </section>
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</strong>" was written by Haydeé Peruyero. It was last built on 2024-03-01.</p>
+          </div>
+        </div>
+      </div>
+<a href="shell.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="python.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/HaydeePeruyero/Computo_Cientifico/edit/main/02-Git_Github.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Computo_Cientifico.pdf", "Computo_Cientifico.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
 }
+});
+});
 </script>
+
 </body>
+
 </html>

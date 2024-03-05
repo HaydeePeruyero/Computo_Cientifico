@@ -794,7 +794,7 @@ La última parte de esa instrucción es la dirección de su computadora donde se
 
 ![Estructura de los repositorios al clonarlos. Imagen de [SC](https://swcarpentry.github.io/git-novice/08-collab.html)](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github-collaboration.png)
 
-Ahora, el colaborador realizará un cambio en el repositorio. Para esto, creará un archivo, lo añadira al área de preparación, hará el commit correspondiente y enviará los cambios al remoto.
+Ahora, el colaborador realizará un cambio en el repositorio. Para esto, creará un archivo, lo añadirá al área de preparación, hará el commit correspondiente y enviará los cambios al remoto.
 
 ```bash
 $ nano notas.txt

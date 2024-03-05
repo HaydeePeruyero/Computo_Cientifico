@@ -1,180 +1,278 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Sección 4 Python | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</title>
-<meta name="author" content="Haydeé Peruyero">
-<meta name="description" content="4.1 Tipos de datos   4.2 Flujo de control   4.3 Visualización de datos   4.4 Manipulación de bases de datos   4.5 Análisis exploratorio de bases de datos   4.6 Funciones y scripts   4.7 Buenas...">
-<meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="Sección 4 Python | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos">
-<meta property="og:type" content="book">
-<meta property="og:description" content="4.1 Tipos de datos   4.2 Flujo de control   4.3 Visualización de datos   4.4 Manipulación de bases de datos   4.5 Análisis exploratorio de bases de datos   4.6 Funciones y scripts   4.7 Buenas...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sección 4 Python | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos">
-<meta name="twitter:description" content="4.1 Tipos de datos   4.2 Flujo de control   4.3 Visualización de datos   4.4 Manipulación de bases de datos   4.5 Análisis exploratorio de bases de datos   4.6 Funciones y scripts   4.7 Buenas...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
-    
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Sección 4 Python | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</title>
+  <meta name="description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Sección 4 Python | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  <meta name="github-repo" content="HaydeePeruyero/Computo_Cientifico" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sección 4 Python | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos" />
+  
+  <meta name="twitter:description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  
+
+<meta name="author" content="Haydeé Peruyero" />
+
+
+<meta name="date" content="2024-03-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="git-y-github.html"/>
+<link rel="next" href="sql.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Computo_Cientifico</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#temario"><i class="fa fa-check"></i><b>1.1</b> Temario</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#referencias"><i class="fa fa-check"></i><b>1.2</b> Referencias</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#material-interesante"><i class="fa fa-check"></i><b>1.3</b> Material interesante</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#datacamp"><i class="fa fa-check"></i><b>1.4</b> DataCamp</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="shell.html"><a href="shell.html"><i class="fa fa-check"></i><b>2</b> Shell</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="shell.html"><a href="shell.html#navegar-en-archivos-y-directorios"><i class="fa fa-check"></i><b>2.1</b> Navegar en archivos y directorios</a></li>
+<li class="chapter" data-level="2.2" data-path="shell.html"><a href="shell.html#manipulación-de-archivos-y-directorios"><i class="fa fa-check"></i><b>2.2</b> Manipulación de archivos y directorios</a></li>
+<li class="chapter" data-level="2.3" data-path="shell.html"><a href="shell.html#tuberías-y-filtros"><i class="fa fa-check"></i><b>2.3</b> Tuberías y filtros</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="shell.html"><a href="shell.html#tuberías"><i class="fa fa-check"></i><b>2.3.1</b> Tuberías</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="shell.html"><a href="shell.html#ciclos"><i class="fa fa-check"></i><b>2.4</b> Ciclos</a></li>
+<li class="chapter" data-level="2.5" data-path="shell.html"><a href="shell.html#scripts"><i class="fa fa-check"></i><b>2.5</b> Scripts</a></li>
+<li class="chapter" data-level="2.6" data-path="shell.html"><a href="shell.html#buscando-y-encontrando-cosas"><i class="fa fa-check"></i><b>2.6</b> Buscando y encontrando cosas</a></li>
+<li class="chapter" data-level="2.7" data-path="shell.html"><a href="shell.html#if-while-y-for"><i class="fa fa-check"></i><b>2.7</b> if, while y for</a></li>
+<li class="chapter" data-level="2.8" data-path="shell.html"><a href="shell.html#descarga-y-limpieza-de-bases-de-datos"><i class="fa fa-check"></i><b>2.8</b> Descarga y limpieza de bases de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="git-y-github.html"><a href="git-y-github.html"><i class="fa fa-check"></i><b>3</b> Git y Github</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="git-y-github.html"><a href="git-y-github.html#repositorios"><i class="fa fa-check"></i><b>3.1</b> Repositorios</a></li>
+<li class="chapter" data-level="3.2" data-path="git-y-github.html"><a href="git-y-github.html#rastrear-cambios"><i class="fa fa-check"></i><b>3.2</b> Rastrear cambios</a></li>
+<li class="chapter" data-level="3.3" data-path="git-y-github.html"><a href="git-y-github.html#explorando-el-historial"><i class="fa fa-check"></i><b>3.3</b> Explorando el historial</a></li>
+<li class="chapter" data-level="3.4" data-path="git-y-github.html"><a href="git-y-github.html#restore-y-reset"><i class="fa fa-check"></i><b>3.4</b> Restore y reset</a></li>
+<li class="chapter" data-level="3.5" data-path="git-y-github.html"><a href="git-y-github.html#ignorar-archivoscarpetas"><i class="fa fa-check"></i><b>3.5</b> Ignorar archivos/carpetas</a></li>
+<li class="chapter" data-level="3.6" data-path="git-y-github.html"><a href="git-y-github.html#github"><i class="fa fa-check"></i><b>3.6</b> Github</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="git-y-github.html"><a href="git-y-github.html#paso-1-crear-un-repositorio-remoto"><i class="fa fa-check"></i><b>3.6.1</b> Paso 1: Crear un repositorio remoto</a></li>
+<li class="chapter" data-level="3.6.2" data-path="git-y-github.html"><a href="git-y-github.html#paso-2-conectar-local-a-remoto"><i class="fa fa-check"></i><b>3.6.2</b> Paso 2: Conectar local a remoto</a></li>
+<li class="chapter" data-level="3.6.3" data-path="git-y-github.html"><a href="git-y-github.html#paso-3-conexión-mediante-ssh"><i class="fa fa-check"></i><b>3.6.3</b> Paso 3: Conexión mediante SSH</a></li>
+<li class="chapter" data-level="3.6.4" data-path="git-y-github.html"><a href="git-y-github.html#paso-4-push-and-pull"><i class="fa fa-check"></i><b>3.6.4</b> Paso 4: Push and pull</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="git-y-github.html"><a href="git-y-github.html#colaboradores"><i class="fa fa-check"></i><b>3.7</b> Colaboradores</a></li>
+<li class="chapter" data-level="3.8" data-path="git-y-github.html"><a href="git-y-github.html#conflictos"><i class="fa fa-check"></i><b>3.8</b> Conflictos</a></li>
+<li class="chapter" data-level="3.9" data-path="git-y-github.html"><a href="git-y-github.html#trabajando-con-ramas"><i class="fa fa-check"></i><b>3.9</b> Trabajando con Ramas</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="git-y-github.html"><a href="git-y-github.html#crear-una-rama"><i class="fa fa-check"></i><b>3.9.1</b> 1. Crear una rama</a></li>
+<li class="chapter" data-level="3.9.2" data-path="git-y-github.html"><a href="git-y-github.html#trabajar-en-la-rama"><i class="fa fa-check"></i><b>3.9.2</b> 2. Trabajar en la rama</a></li>
+<li class="chapter" data-level="3.9.3" data-path="git-y-github.html"><a href="git-y-github.html#agregar-y-confirmar-cambios"><i class="fa fa-check"></i><b>3.9.3</b> 3. Agregar y confirmar cambios</a></li>
+<li class="chapter" data-level="3.9.4" data-path="git-y-github.html"><a href="git-y-github.html#empujar-la-rama-al-repositorio-remoto"><i class="fa fa-check"></i><b>3.9.4</b> 4. Empujar la rama al repositorio remoto</a></li>
+<li class="chapter" data-level="3.9.5" data-path="git-y-github.html"><a href="git-y-github.html#fusionar-cambios"><i class="fa fa-check"></i><b>3.9.5</b> 5. Fusionar cambios</a></li>
+<li class="chapter" data-level="3.9.6" data-path="git-y-github.html"><a href="git-y-github.html#resolver-conflictos-si-los-hay"><i class="fa fa-check"></i><b>3.9.6</b> 6. Resolver conflictos (si los hay)</a></li>
+<li class="chapter" data-level="3.9.7" data-path="git-y-github.html"><a href="git-y-github.html#eliminar-la-rama-opcional"><i class="fa fa-check"></i><b>3.9.7</b> 7. Eliminar la rama (opcional)</a></li>
+<li class="chapter" data-level="3.9.8" data-path="git-y-github.html"><a href="git-y-github.html#actualizar-y-sincronizar"><i class="fa fa-check"></i><b>3.9.8</b> 8. Actualizar y sincronizar</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="git-y-github.html"><a href="git-y-github.html#conectar-con-overleaf"><i class="fa fa-check"></i><b>3.10</b> Conectar con overleaf</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>4</b> Python</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="python.html"><a href="python.html#tipos-de-datos"><i class="fa fa-check"></i><b>4.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="4.2" data-path="python.html"><a href="python.html#flujo-de-control"><i class="fa fa-check"></i><b>4.2</b> Flujo de control</a></li>
+<li class="chapter" data-level="4.3" data-path="python.html"><a href="python.html#visualización-de-datos"><i class="fa fa-check"></i><b>4.3</b> Visualización de datos</a></li>
+<li class="chapter" data-level="4.4" data-path="python.html"><a href="python.html#manipulación-de-bases-de-datos"><i class="fa fa-check"></i><b>4.4</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="4.5" data-path="python.html"><a href="python.html#análisis-exploratorio-de-bases-de-datos"><i class="fa fa-check"></i><b>4.5</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="4.6" data-path="python.html"><a href="python.html#funciones-y-scripts"><i class="fa fa-check"></i><b>4.6</b> Funciones y scripts</a></li>
+<li class="chapter" data-level="4.7" data-path="python.html"><a href="python.html#buenas-practicas"><i class="fa fa-check"></i><b>4.7</b> Buenas practicas</a></li>
+<li class="chapter" data-level="4.8" data-path="python.html"><a href="python.html#procesamiento-de-alto-rendimiento"><i class="fa fa-check"></i><b>4.8</b> Procesamiento de alto rendimiento</a></li>
+<li class="chapter" data-level="4.9" data-path="python.html"><a href="python.html#programación-en-paralelo"><i class="fa fa-check"></i><b>4.9</b> Programación en paralelo</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>5</b> SQL</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="sql.html"><a href="sql.html#bases-de-datos-y-manipulación"><i class="fa fa-check"></i><b>5.1</b> Bases de datos y manipulación</a></li>
+<li class="chapter" data-level="5.2" data-path="sql.html"><a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado"><i class="fa fa-check"></i><b>5.2</b> Explorar datos categóricos y texto no estructurado</a></li>
+<li class="chapter" data-level="5.3" data-path="sql.html"><a href="sql.html#comparación-con-los-otros-programas"><i class="fa fa-check"></i><b>5.3</b> Comparación con los otros programas</a></li>
+<li class="chapter" data-level="5.4" data-path="sql.html"><a href="sql.html#valores-faltantes"><i class="fa fa-check"></i><b>5.4</b> Valores faltantes</a></li>
+<li class="chapter" data-level="5.5" data-path="sql.html"><a href="sql.html#combinar-bases-de-datos"><i class="fa fa-check"></i><b>5.5</b> Combinar bases de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="power-bi.html"><a href="power-bi.html"><i class="fa fa-check"></i><b>6</b> Power BI</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="power-bi.html"><a href="power-bi.html#introducción-a-power-bi"><i class="fa fa-check"></i><b>6.1</b> Introducción a Power BI</a></li>
+<li class="chapter" data-level="6.2" data-path="power-bi.html"><a href="power-bi.html#transformando-y-visualizando-datos"><i class="fa fa-check"></i><b>6.2</b> Transformando y visualizando datos</a></li>
+<li class="chapter" data-level="6.3" data-path="power-bi.html"><a href="power-bi.html#manipulación-de-bases-de-datos-1"><i class="fa fa-check"></i><b>6.3</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="6.4" data-path="power-bi.html"><a href="power-bi.html#análisis-exploratorio-de-bases-de-datos-1"><i class="fa fa-check"></i><b>6.4</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="6.5" data-path="power-bi.html"><a href="power-bi.html#variables-categóricas-y-continuas"><i class="fa fa-check"></i><b>6.5</b> Variables categóricas y continuas</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>7</b> R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="r.html"><a href="r.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>7.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="7.2" data-path="r.html"><a href="r.html#manipulación-de-bases-de-datos-2"><i class="fa fa-check"></i><b>7.2</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="7.3" data-path="r.html"><a href="r.html#análisis-exploratorio-de-bases-de-datos-2"><i class="fa fa-check"></i><b>7.3</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="7.4" data-path="r.html"><a href="r.html#reportes-con-rmarkdown"><i class="fa fa-check"></i><b>7.4</b> Reportes con RMarkdown</a></li>
+<li class="chapter" data-level="7.5" data-path="r.html"><a href="r.html#páginas-web"><i class="fa fa-check"></i><b>7.5</b> Páginas web</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/HaydeePeruyero/Computo_Cientifico/" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
     </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
-
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a></li>
-<li><a class="" href="shell.html"><span class="header-section-number">2</span> Shell</a></li>
-<li><a class="" href="git-y-github.html"><span class="header-section-number">3</span> Git y Github</a></li>
-<li><a class="active" href="python.html"><span class="header-section-number">4</span> Python</a></li>
-<li><a class="" href="sql.html"><span class="header-section-number">5</span> SQL</a></li>
-<li><a class="" href="power-bi.html"><span class="header-section-number">6</span> Power BI</a></li>
-<li><a class="" href="r.html"><span class="header-section-number">7</span> R</a></li>
-</ul>
-
-        <div class="book-extra">
-          
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
+          </h1>
         </div>
-      </nav>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="python" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Sección 4</span> Python<a href="python.html#python" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="tipos-de-datos" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Tipos de datos<a href="python.html#tipos-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="python" class="section level1" number="4">
-<h1>
-<span class="header-section-number">Sección 4</span> Python<a class="anchor" aria-label="anchor" href="#python"><i class="fas fa-link"></i></a>
-</h1>
-<div id="tipos-de-datos" class="section level2" number="4.1">
-<h2>
-<span class="header-section-number">4.1</span> Tipos de datos<a class="anchor" aria-label="anchor" href="#tipos-de-datos"><i class="fas fa-link"></i></a>
-</h2>
+<div id="flujo-de-control" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Flujo de control<a href="python.html#flujo-de-control" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="flujo-de-control" class="section level2" number="4.2">
-<h2>
-<span class="header-section-number">4.2</span> Flujo de control<a class="anchor" aria-label="anchor" href="#flujo-de-control"><i class="fas fa-link"></i></a>
-</h2>
+<div id="visualización-de-datos" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Visualización de datos<a href="python.html#visualización-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="visualización-de-datos" class="section level2" number="4.3">
-<h2>
-<span class="header-section-number">4.3</span> Visualización de datos<a class="anchor" aria-label="anchor" href="#visualizaci%C3%B3n-de-datos"><i class="fas fa-link"></i></a>
-</h2>
+<div id="manipulación-de-bases-de-datos" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Manipulación de bases de datos<a href="python.html#manipulación-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="manipulación-de-bases-de-datos" class="section level2" number="4.4">
-<h2>
-<span class="header-section-number">4.4</span> Manipulación de bases de datos<a class="anchor" aria-label="anchor" href="#manipulaci%C3%B3n-de-bases-de-datos"><i class="fas fa-link"></i></a>
-</h2>
+<div id="análisis-exploratorio-de-bases-de-datos" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Análisis exploratorio de bases de datos<a href="python.html#análisis-exploratorio-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="análisis-exploratorio-de-bases-de-datos" class="section level2" number="4.5">
-<h2>
-<span class="header-section-number">4.5</span> Análisis exploratorio de bases de datos<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-exploratorio-de-bases-de-datos"><i class="fas fa-link"></i></a>
-</h2>
+<div id="funciones-y-scripts" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Funciones y scripts<a href="python.html#funciones-y-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="funciones-y-scripts" class="section level2" number="4.6">
-<h2>
-<span class="header-section-number">4.6</span> Funciones y scripts<a class="anchor" aria-label="anchor" href="#funciones-y-scripts"><i class="fas fa-link"></i></a>
-</h2>
+<div id="buenas-practicas" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Buenas practicas<a href="python.html#buenas-practicas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="buenas-practicas" class="section level2" number="4.7">
-<h2>
-<span class="header-section-number">4.7</span> Buenas practicas<a class="anchor" aria-label="anchor" href="#buenas-practicas"><i class="fas fa-link"></i></a>
-</h2>
+<div id="procesamiento-de-alto-rendimiento" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Procesamiento de alto rendimiento<a href="python.html#procesamiento-de-alto-rendimiento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="procesamiento-de-alto-rendimiento" class="section level2" number="4.8">
-<h2>
-<span class="header-section-number">4.8</span> Procesamiento de alto rendimiento<a class="anchor" aria-label="anchor" href="#procesamiento-de-alto-rendimiento"><i class="fas fa-link"></i></a>
-</h2>
-</div>
-<div id="programación-en-paralelo" class="section level2" number="4.9">
-<h2>
-<span class="header-section-number">4.9</span> Programación en paralelo<a class="anchor" aria-label="anchor" href="#programaci%C3%B3n-en-paralelo"><i class="fas fa-link"></i></a>
-</h2>
+<div id="programación-en-paralelo" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> Programación en paralelo<a href="python.html#programación-en-paralelo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="git-y-github.html"><span class="header-section-number">3</span> Git y Github</a></div>
-<div class="next"><a href="sql.html"><span class="header-section-number">5</span> SQL</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#python"><span class="header-section-number">4</span> Python</a></li>
-<li><a class="nav-link" href="#tipos-de-datos"><span class="header-section-number">4.1</span> Tipos de datos</a></li>
-<li><a class="nav-link" href="#flujo-de-control"><span class="header-section-number">4.2</span> Flujo de control</a></li>
-<li><a class="nav-link" href="#visualizaci%C3%B3n-de-datos"><span class="header-section-number">4.3</span> Visualización de datos</a></li>
-<li><a class="nav-link" href="#manipulaci%C3%B3n-de-bases-de-datos"><span class="header-section-number">4.4</span> Manipulación de bases de datos</a></li>
-<li><a class="nav-link" href="#an%C3%A1lisis-exploratorio-de-bases-de-datos"><span class="header-section-number">4.5</span> Análisis exploratorio de bases de datos</a></li>
-<li><a class="nav-link" href="#funciones-y-scripts"><span class="header-section-number">4.6</span> Funciones y scripts</a></li>
-<li><a class="nav-link" href="#buenas-practicas"><span class="header-section-number">4.7</span> Buenas practicas</a></li>
-<li><a class="nav-link" href="#procesamiento-de-alto-rendimiento"><span class="header-section-number">4.8</span> Procesamiento de alto rendimiento</a></li>
-<li><a class="nav-link" href="#programaci%C3%B3n-en-paralelo"><span class="header-section-number">4.9</span> Programación en paralelo</a></li>
-</ul>
+            </section>
 
-      <div class="book-extra">
-        <ul class="list-unstyled">
-          
-        </ul>
-</div>
-    </nav>
-</div>
-
-</div>
-</div> <!-- .container -->
-
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</strong>" was written by Haydeé Peruyero. It was last built on 2024-03-01.</p>
+          </div>
+        </div>
+      </div>
+<a href="git-y-github.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sql.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/HaydeePeruyero/Computo_Cientifico/edit/main/03-Python.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Computo_Cientifico.pdf", "Computo_Cientifico.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
 }
+});
+});
 </script>
+
 </body>
+
 </html>
