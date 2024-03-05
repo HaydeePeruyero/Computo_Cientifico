@@ -203,7 +203,7 @@ $ git commit -m "Añadimos la segunda linea al archivo"
 
 Añadir todo primero al área de preparación nos permite tener un mejor control de a que le estamos haciendo commit, por ejemplo podemos añadir y hacerle commit solo al archivo donde tenemos la bibliografía y no a todo el proyecto donde hay partes no completas.
 
-![Software Carpentry - Version Control with Git](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/git-staging-area.svg)
+![Software Carpentry - Version Control with Git](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/git-staging-area.png)
 
 
 **Ejercicio:** Añadamos una tercera línea al archivo y verifiquemos las diferencias en los archivos, después añadamoslo al área de preparación y revicemos las diferencias. ¿Qué sucede?
@@ -758,7 +758,7 @@ En esa instrucción, `origin` se refiere al repositorio remoto y `main` al local
 
 La situación en la que estamos es la siguiente:
 
-![`git push origin main`](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github-repo-after-first-push.svg)
+![`git push origin main`](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github-repo-after-first-push.png)
 
 Para actualizar nuestro repositorio local, lo que debemos hacer es lo siguiente:
 
@@ -792,7 +792,7 @@ $ git clone git@github.com:User/Mi_primer_repo.git ~/colaborador-Mi_primer_repo
 
 La última parte de esa instrucción es la dirección de su computadora donde se clonara el repositorio de su colaborador.
 
-![Estructura de los repositorios al clonarlos. Imagen de [SC](https://swcarpentry.github.io/git-novice/08-collab.html)](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github-collaboration.svg)
+![Estructura de los repositorios al clonarlos. Imagen de [SC](https://swcarpentry.github.io/git-novice/08-collab.html)](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/github-collaboration.png)
 
 Ahora, el colaborador realizará un cambio en el repositorio. Para esto, creará un archivo, lo añadira al área de preparación, hará el commit correspondiente y enviará los cambios al remoto.
 
