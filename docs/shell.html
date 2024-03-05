@@ -1,71 +1,257 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Sección 2 Shell | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</title>
-<meta name="author" content="Haydeé Peruyero">
-<meta name="description" content="Descargar git bash para Windows o seguir las instrucciones de Software carpentries para otros sistemas operativos. Basado en la lección de The carpentries  2.1 Navegar en archivos y directorios...">
-<meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="Sección 2 Shell | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos">
-<meta property="og:type" content="book">
-<meta property="og:description" content="Descargar git bash para Windows o seguir las instrucciones de Software carpentries para otros sistemas operativos. Basado en la lección de The carpentries  2.1 Navegar en archivos y directorios...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sección 2 Shell | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos">
-<meta name="twitter:description" content="Descargar git bash para Windows o seguir las instrucciones de Software carpentries para otros sistemas operativos. Basado en la lección de The carpentries  2.1 Navegar en archivos y directorios...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
-    
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Sección 2 Shell | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</title>
+  <meta name="description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Sección 2 Shell | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  <meta name="github-repo" content="HaydeePeruyero/Computo_Cientifico" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sección 2 Shell | Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos" />
+  
+  <meta name="twitter:description" content="Curso del posgrado conjunto en Ciencias Matemáticas PCCM UNAM UMICH 2024-2" />
+  
+
+<meta name="author" content="Haydeé Peruyero" />
+
+
+<meta name="date" content="2024-03-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="git-y-github.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a></li>
-<li><a class="active" href="shell.html"><span class="header-section-number">2</span> Shell</a></li>
-<li><a class="" href="git-y-github.html"><span class="header-section-number">3</span> Git y Github</a></li>
-<li><a class="" href="python.html"><span class="header-section-number">4</span> Python</a></li>
-<li><a class="" href="sql.html"><span class="header-section-number">5</span> SQL</a></li>
-<li><a class="" href="power-bi.html"><span class="header-section-number">6</span> Power BI</a></li>
-<li><a class="" href="r.html"><span class="header-section-number">7</span> R</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Computo_Cientifico</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#temario"><i class="fa fa-check"></i><b>1.1</b> Temario</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#referencias"><i class="fa fa-check"></i><b>1.2</b> Referencias</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#material-interesante"><i class="fa fa-check"></i><b>1.3</b> Material interesante</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#datacamp"><i class="fa fa-check"></i><b>1.4</b> DataCamp</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="shell.html"><a href="shell.html"><i class="fa fa-check"></i><b>2</b> Shell</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="shell.html"><a href="shell.html#navegar-en-archivos-y-directorios"><i class="fa fa-check"></i><b>2.1</b> Navegar en archivos y directorios</a></li>
+<li class="chapter" data-level="2.2" data-path="shell.html"><a href="shell.html#manipulación-de-archivos-y-directorios"><i class="fa fa-check"></i><b>2.2</b> Manipulación de archivos y directorios</a></li>
+<li class="chapter" data-level="2.3" data-path="shell.html"><a href="shell.html#tuberías-y-filtros"><i class="fa fa-check"></i><b>2.3</b> Tuberías y filtros</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="shell.html"><a href="shell.html#tuberías"><i class="fa fa-check"></i><b>2.3.1</b> Tuberías</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="shell.html"><a href="shell.html#ciclos"><i class="fa fa-check"></i><b>2.4</b> Ciclos</a></li>
+<li class="chapter" data-level="2.5" data-path="shell.html"><a href="shell.html#scripts"><i class="fa fa-check"></i><b>2.5</b> Scripts</a></li>
+<li class="chapter" data-level="2.6" data-path="shell.html"><a href="shell.html#buscando-y-encontrando-cosas"><i class="fa fa-check"></i><b>2.6</b> Buscando y encontrando cosas</a></li>
+<li class="chapter" data-level="2.7" data-path="shell.html"><a href="shell.html#if-while-y-for"><i class="fa fa-check"></i><b>2.7</b> if, while y for</a></li>
+<li class="chapter" data-level="2.8" data-path="shell.html"><a href="shell.html#descarga-y-limpieza-de-bases-de-datos"><i class="fa fa-check"></i><b>2.8</b> Descarga y limpieza de bases de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="git-y-github.html"><a href="git-y-github.html"><i class="fa fa-check"></i><b>3</b> Git y Github</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="git-y-github.html"><a href="git-y-github.html#repositorios"><i class="fa fa-check"></i><b>3.1</b> Repositorios</a></li>
+<li class="chapter" data-level="3.2" data-path="git-y-github.html"><a href="git-y-github.html#rastrear-cambios"><i class="fa fa-check"></i><b>3.2</b> Rastrear cambios</a></li>
+<li class="chapter" data-level="3.3" data-path="git-y-github.html"><a href="git-y-github.html#explorando-el-historial"><i class="fa fa-check"></i><b>3.3</b> Explorando el historial</a></li>
+<li class="chapter" data-level="3.4" data-path="git-y-github.html"><a href="git-y-github.html#restore-y-reset"><i class="fa fa-check"></i><b>3.4</b> Restore y reset</a></li>
+<li class="chapter" data-level="3.5" data-path="git-y-github.html"><a href="git-y-github.html#ignorar-archivoscarpetas"><i class="fa fa-check"></i><b>3.5</b> Ignorar archivos/carpetas</a></li>
+<li class="chapter" data-level="3.6" data-path="git-y-github.html"><a href="git-y-github.html#github"><i class="fa fa-check"></i><b>3.6</b> Github</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="git-y-github.html"><a href="git-y-github.html#paso-1-crear-un-repositorio-remoto"><i class="fa fa-check"></i><b>3.6.1</b> Paso 1: Crear un repositorio remoto</a></li>
+<li class="chapter" data-level="3.6.2" data-path="git-y-github.html"><a href="git-y-github.html#paso-2-conectar-local-a-remoto"><i class="fa fa-check"></i><b>3.6.2</b> Paso 2: Conectar local a remoto</a></li>
+<li class="chapter" data-level="3.6.3" data-path="git-y-github.html"><a href="git-y-github.html#paso-3-conexión-mediante-ssh"><i class="fa fa-check"></i><b>3.6.3</b> Paso 3: Conexión mediante SSH</a></li>
+<li class="chapter" data-level="3.6.4" data-path="git-y-github.html"><a href="git-y-github.html#paso-4-push-and-pull"><i class="fa fa-check"></i><b>3.6.4</b> Paso 4: Push and pull</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="git-y-github.html"><a href="git-y-github.html#colaboradores"><i class="fa fa-check"></i><b>3.7</b> Colaboradores</a></li>
+<li class="chapter" data-level="3.8" data-path="git-y-github.html"><a href="git-y-github.html#conflictos"><i class="fa fa-check"></i><b>3.8</b> Conflictos</a></li>
+<li class="chapter" data-level="3.9" data-path="git-y-github.html"><a href="git-y-github.html#trabajando-con-ramas"><i class="fa fa-check"></i><b>3.9</b> Trabajando con Ramas</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="git-y-github.html"><a href="git-y-github.html#crear-una-rama"><i class="fa fa-check"></i><b>3.9.1</b> 1. Crear una rama</a></li>
+<li class="chapter" data-level="3.9.2" data-path="git-y-github.html"><a href="git-y-github.html#trabajar-en-la-rama"><i class="fa fa-check"></i><b>3.9.2</b> 2. Trabajar en la rama</a></li>
+<li class="chapter" data-level="3.9.3" data-path="git-y-github.html"><a href="git-y-github.html#agregar-y-confirmar-cambios"><i class="fa fa-check"></i><b>3.9.3</b> 3. Agregar y confirmar cambios</a></li>
+<li class="chapter" data-level="3.9.4" data-path="git-y-github.html"><a href="git-y-github.html#empujar-la-rama-al-repositorio-remoto"><i class="fa fa-check"></i><b>3.9.4</b> 4. Empujar la rama al repositorio remoto</a></li>
+<li class="chapter" data-level="3.9.5" data-path="git-y-github.html"><a href="git-y-github.html#fusionar-cambios"><i class="fa fa-check"></i><b>3.9.5</b> 5. Fusionar cambios</a></li>
+<li class="chapter" data-level="3.9.6" data-path="git-y-github.html"><a href="git-y-github.html#resolver-conflictos-si-los-hay"><i class="fa fa-check"></i><b>3.9.6</b> 6. Resolver conflictos (si los hay)</a></li>
+<li class="chapter" data-level="3.9.7" data-path="git-y-github.html"><a href="git-y-github.html#eliminar-la-rama-opcional"><i class="fa fa-check"></i><b>3.9.7</b> 7. Eliminar la rama (opcional)</a></li>
+<li class="chapter" data-level="3.9.8" data-path="git-y-github.html"><a href="git-y-github.html#actualizar-y-sincronizar"><i class="fa fa-check"></i><b>3.9.8</b> 8. Actualizar y sincronizar</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="git-y-github.html"><a href="git-y-github.html#conectar-con-overleaf"><i class="fa fa-check"></i><b>3.10</b> Conectar con overleaf</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>4</b> Python</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="python.html"><a href="python.html#tipos-de-datos"><i class="fa fa-check"></i><b>4.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="4.2" data-path="python.html"><a href="python.html#flujo-de-control"><i class="fa fa-check"></i><b>4.2</b> Flujo de control</a></li>
+<li class="chapter" data-level="4.3" data-path="python.html"><a href="python.html#visualización-de-datos"><i class="fa fa-check"></i><b>4.3</b> Visualización de datos</a></li>
+<li class="chapter" data-level="4.4" data-path="python.html"><a href="python.html#manipulación-de-bases-de-datos"><i class="fa fa-check"></i><b>4.4</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="4.5" data-path="python.html"><a href="python.html#análisis-exploratorio-de-bases-de-datos"><i class="fa fa-check"></i><b>4.5</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="4.6" data-path="python.html"><a href="python.html#funciones-y-scripts"><i class="fa fa-check"></i><b>4.6</b> Funciones y scripts</a></li>
+<li class="chapter" data-level="4.7" data-path="python.html"><a href="python.html#buenas-practicas"><i class="fa fa-check"></i><b>4.7</b> Buenas practicas</a></li>
+<li class="chapter" data-level="4.8" data-path="python.html"><a href="python.html#procesamiento-de-alto-rendimiento"><i class="fa fa-check"></i><b>4.8</b> Procesamiento de alto rendimiento</a></li>
+<li class="chapter" data-level="4.9" data-path="python.html"><a href="python.html#programación-en-paralelo"><i class="fa fa-check"></i><b>4.9</b> Programación en paralelo</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>5</b> SQL</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="sql.html"><a href="sql.html#bases-de-datos-y-manipulación"><i class="fa fa-check"></i><b>5.1</b> Bases de datos y manipulación</a></li>
+<li class="chapter" data-level="5.2" data-path="sql.html"><a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado"><i class="fa fa-check"></i><b>5.2</b> Explorar datos categóricos y texto no estructurado</a></li>
+<li class="chapter" data-level="5.3" data-path="sql.html"><a href="sql.html#comparación-con-los-otros-programas"><i class="fa fa-check"></i><b>5.3</b> Comparación con los otros programas</a></li>
+<li class="chapter" data-level="5.4" data-path="sql.html"><a href="sql.html#valores-faltantes"><i class="fa fa-check"></i><b>5.4</b> Valores faltantes</a></li>
+<li class="chapter" data-level="5.5" data-path="sql.html"><a href="sql.html#combinar-bases-de-datos"><i class="fa fa-check"></i><b>5.5</b> Combinar bases de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="power-bi.html"><a href="power-bi.html"><i class="fa fa-check"></i><b>6</b> Power BI</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="power-bi.html"><a href="power-bi.html#introducción-a-power-bi"><i class="fa fa-check"></i><b>6.1</b> Introducción a Power BI</a></li>
+<li class="chapter" data-level="6.2" data-path="power-bi.html"><a href="power-bi.html#transformando-y-visualizando-datos"><i class="fa fa-check"></i><b>6.2</b> Transformando y visualizando datos</a></li>
+<li class="chapter" data-level="6.3" data-path="power-bi.html"><a href="power-bi.html#manipulación-de-bases-de-datos-1"><i class="fa fa-check"></i><b>6.3</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="6.4" data-path="power-bi.html"><a href="power-bi.html#análisis-exploratorio-de-bases-de-datos-1"><i class="fa fa-check"></i><b>6.4</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="6.5" data-path="power-bi.html"><a href="power-bi.html#variables-categóricas-y-continuas"><i class="fa fa-check"></i><b>6.5</b> Variables categóricas y continuas</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>7</b> R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="r.html"><a href="r.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>7.1</b> Tipos de datos</a></li>
+<li class="chapter" data-level="7.2" data-path="r.html"><a href="r.html#manipulación-de-bases-de-datos-2"><i class="fa fa-check"></i><b>7.2</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="7.3" data-path="r.html"><a href="r.html#análisis-exploratorio-de-bases-de-datos-2"><i class="fa fa-check"></i><b>7.3</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="7.4" data-path="r.html"><a href="r.html#reportes-con-rmarkdown"><i class="fa fa-check"></i><b>7.4</b> Reportes con RMarkdown</a></li>
+<li class="chapter" data-level="7.5" data-path="r.html"><a href="r.html#páginas-web"><i class="fa fa-check"></i><b>7.5</b> Páginas web</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/HaydeePeruyero/Computo_Cientifico/" target="blank">Published with bookdown</a></li>
+
 </ul>
 
-        <div class="book-extra">
-          
-        </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="shell" class="section level1" number="2">
-<h1>
-<span class="header-section-number">Sección 2</span> Shell<a class="anchor" aria-label="anchor" href="#shell"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="shell" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Sección 2</span> Shell<a href="shell.html#shell" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Descargar <a href="https://gitforwindows.org/">git bash</a> para Windows o seguir las instrucciones de <a href="https://carpentries.github.io/workshop-template/install_instructions/#shell">Software carpentries</a> para otros sistemas operativos.
 Basado en la lección de <a href="https://swcarpentry.github.io/shell-novice/">The carpentries</a></p>
-<div id="navegar-en-archivos-y-directorios" class="section level2" number="2.1">
-<h2>
-<span class="header-section-number">2.1</span> Navegar en archivos y directorios<a class="anchor" aria-label="anchor" href="#navegar-en-archivos-y-directorios"><i class="fas fa-link"></i></a>
-</h2>
+<div id="navegar-en-archivos-y-directorios" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Navegar en archivos y directorios<a href="shell.html#navegar-en-archivos-y-directorios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Cuando abrimos una terminal por primera vez, vamos a ver un <strong>prompt</strong> (usualmente es <code>$</code>) que nos indica que esta esperando los comandos. Después de teclear los comandos, debemos siempre presionar <kbd>Enter</kbd>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="shell.html#cb1-1" tabindex="-1"></a><span class="ex">$</span> </span></code></pre></div>
 <p>Para listar lo que hay en un directorio usamos el comando <code>ls</code>.</p>
@@ -102,16 +288,14 @@ Basado en la lección de <a href="https://swcarpentry.github.io/shell-novice/">T
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="shell.html#cb16-1" tabindex="-1"></a><span class="ex">$</span> cd /c/Users/hayde/Desktop</span></code></pre></div>
 <p><strong>Ejercicio:</strong> Supongamos que tenemos el siguiente árbol de datos en nuestra computadora y que estamos en <code>/Users/thing/</code>. ¿Si colocamos en la terminal <code>ls -F ../backup</code> que nos mostrará?</p>
 <div class="float">
-<img src="img/ej_shell.png" alt="Ejercicio SC"><div class="figcaption">Ejercicio <a href="https://swcarpentry.github.io/shell-novice/02-filedir.html">SC</a>
-</div>
+<img src="img/ej_shell.png" alt="Ejercicio SC" />
+<div class="figcaption">Ejercicio <a href="https://swcarpentry.github.io/shell-novice/02-filedir.html">SC</a></div>
 </div>
 <p><strong>Ejercicio:</strong> Explora las opciones <code>-s</code> y <code>-S</code>. ¿Hay diferencia entre mayúsculas y minúsculas?</p>
 <p>La tecla <kbd>Tab</kbd> nos ayuda a completar los comando/rutas. Si la presionamos dos veces nos mostrará todas las posibles opciones.</p>
 </div>
-<div id="manipulación-de-archivos-y-directorios" class="section level2" number="2.2">
-<h2>
-<span class="header-section-number">2.2</span> Manipulación de archivos y directorios<a class="anchor" aria-label="anchor" href="#manipulaci%C3%B3n-de-archivos-y-directorios"><i class="fas fa-link"></i></a>
-</h2>
+<div id="manipulación-de-archivos-y-directorios" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Manipulación de archivos y directorios<a href="shell.html#manipulación-de-archivos-y-directorios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Para crear directorios/carpetas desde la línea de comandos usamos el comando <code>mkdir nombre</code>. Vamos a crear la carpeta del curso. Es recomendable <strong>no usar espacios en nombres de carpetas ni archivos</strong>.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="shell.html#cb17-1" tabindex="-1"></a><span class="ex">$</span> mkdir Curso_Comp_Cien</span></code></pre></div>
 <p>El comando <code>mkdir</code> nos permite crear más de un directorio y directorios anidados usando la opción <code>-p</code>.</p>
@@ -173,7 +357,7 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <span id="cb35-3"><a href="shell.html#cb35-3" tabindex="-1"></a><span class="ex">$</span> ls ejercicios/</span></code></pre></div>
 <p>Una forma segura de borrar archivos es usando la opción <code>-i</code>, con esto nos saldrá un mensaje preguntando si en verdad deseamos borrar el archivo. Para confirmar debemos colocar <code>y</code>.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="shell.html#cb36-1" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-i</span> /data/ej3.csv</span></code></pre></div>
-<pre class="output"><code>rm: remove regular empty file 'ej3.txt'?</code></pre>
+<pre class="output"><code>rm: remove regular empty file &#39;ej3.txt&#39;?</code></pre>
 <p>Si queremos borrar una carpeta, debemos hacerlo con la opción <code>-r</code>, de lo contrario obtendremos un error.</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="shell.html#cb38-1" tabindex="-1"></a><span class="ex">$</span> rm data</span></code></pre></div>
 <div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="shell.html#cb39-1" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-r</span> data</span></code></pre></div>
@@ -202,10 +386,8 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <li><p><code>{...}</code>: busca coincidencias con cada uno de los elementos separados por comas dentro de las llaves, por ejemplo <code>{*.txt, *.csv}</code> buscaría todos los archivos con terminaciones <code>.txt</code> y <code>.csv</code> pero no con los que sean <code>.pdf</code>.</p></li>
 </ul>
 </div>
-<div id="tuberías-y-filtros" class="section level2" number="2.3">
-<h2>
-<span class="header-section-number">2.3</span> Tuberías y filtros<a class="anchor" aria-label="anchor" href="#tuber%C3%ADas-y-filtros"><i class="fas fa-link"></i></a>
-</h2>
+<div id="tuberías-y-filtros" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Tuberías y filtros<a href="shell.html#tuberías-y-filtros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Vamos a usar los archivos de prueba de la lección de Shell de Software Carpentry. Descargarlos en el directorio que creamos que se llama <a href="https://swcarpentry.github.io/shell-novice/data/shell-lesson-data.zip">Shell</a>.</p>
 <p>Vamos a explorar los archivos que están en la carpeta <code>excercise-data/alkanes</code>. Para contar cuantos palabras, líneas o caracteres tiene un archivo, usamos el comando <code>wc</code> que viene de <code>word count</code>.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="shell.html#cb43-1" tabindex="-1"></a><span class="ex">$</span> ls</span></code></pre></div>
@@ -244,10 +426,8 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <p><strong>Ejercicio:</strong> Considera el archivo <code>/exercise-data/animal-counts/animals.csv</code>. Después de aplicar los siguientes dos comandos, ¿qué hay en el archivo <code>animals-subset.csv</code>?</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="shell.html#cb59-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 3 animals.csv <span class="op">&gt;</span> animals-subset.csv</span>
 <span id="cb59-2"><a href="shell.html#cb59-2" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> 2 animals.csv <span class="op">&gt;&gt;</span> animals-subset.csv</span></code></pre></div>
-<div id="tuberías" class="section level3" number="2.3.1">
-<h3>
-<span class="header-section-number">2.3.1</span> Tuberías<a class="anchor" aria-label="anchor" href="#tuber%C3%ADas"><i class="fas fa-link"></i></a>
-</h3>
+<div id="tuberías" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Tuberías<a href="shell.html#tuberías" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Además de redirigir los output de los comandos que hemos ocupado, también podríamos anidarlos y al final mandarlo a un archivo. Para hacer esto se usan <strong>tuberías</strong> y su símbolo es <code>|</code>. Por ejemplo:</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="shell.html#cb60-1" tabindex="-1"></a><span class="ex">$</span> sort <span class="at">-n</span> lineas.txt <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 1</span></code></pre></div>
 <p>En esta instrucción le estamos diciendo a la consola que primero nos ordene lo que hay en el archivo líneas en orden númerico y después que nos muestre la primera línea. De esta forma nos evitamos por ejemplo el haber creado el archivo <code>lineas_ordenadas.txt</code>.</p>
@@ -265,10 +445,8 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <p><strong>Ejercicio:</strong> Si quisiéramos ver cuantos animales hay de cada tipo, ¿que instrucción tendríamos que usar?</p>
 </div>
 </div>
-<div id="ciclos" class="section level2" number="2.4">
-<h2>
-<span class="header-section-number">2.4</span> Ciclos<a class="anchor" aria-label="anchor" href="#ciclos"><i class="fas fa-link"></i></a>
-</h2>
+<div id="ciclos" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Ciclos<a href="shell.html#ciclos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Los ciclos nos ayudan a repetir comandos o un conjunto de comandos para cada elemento de una lista. La estructura del ciclo <code>for</code> es como sigue:</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="shell.html#cb65-1" tabindex="-1"></a><span class="cf">for</span> elemento <span class="kw">in</span> lista</span>
 <span id="cb65-2"><a href="shell.html#cb65-2" tabindex="-1"></a><span class="cf">do</span> </span>
@@ -316,9 +494,9 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <p>¿Cuál sería la diferencia si usamos ahora <code>&gt;&gt;</code>?</p>
 <p><strong>Ejercicio:</strong> Crea un ciclo que muestre las últimas 20 líneas de cada archivo en la carpeta <code>creatures</code>.</p>
 <p>Como ya mencionamos, no es recomendable usar espacios ni caracteres especiales en nombres de archivos o carpetas. Si fuera el caso de que nuestros archivos tienen espacios, entonces deberíamos pasarlos al ciclo for encerrados entre comillas los nombres. Por ejemplo, supongamos que tenemos los archivos <code>archivo 1.txt</code> y <code>archivo 2.txt</code>. Para leerlos en el ciclo for tendríamos que usar la siguiente sintaxis.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="shell.html#cb72-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="st">"archivo 1.txt"</span> <span class="st">"archivo 2.txt"</span></span>
+<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="shell.html#cb72-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="st">&quot;archivo 1.txt&quot;</span> <span class="st">&quot;archivo 2.txt&quot;</span></span>
 <span id="cb72-2"><a href="shell.html#cb72-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb72-3"><a href="shell.html#cb72-3" tabindex="-1"></a><span class="op">&gt;</span>     head <span class="ex">-n20</span> <span class="st">"</span><span class="va">$filename</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n5</span> </span>
+<span id="cb72-3"><a href="shell.html#cb72-3" tabindex="-1"></a><span class="op">&gt;</span>     head <span class="ex">-n20</span> <span class="st">&quot;</span><span class="va">$filename</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n5</span> </span>
 <span id="cb72-4"><a href="shell.html#cb72-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>Supongamos que queremos modificar nuestros archivos que se encuentran en la carpeta <code>creatures</code> pero que antes queremos respaldarlos en otros archivos llamados <code>original-basilisk.dat</code>, <code>original-unicorn.dat</code> y <code>original-minotaur.dat</code>. Una forma de hacerlo sería copiarlos a nuevos archivos con esos nombres, pero si no lo queremos hacer manualmente, ¿qué pasa si usamos el siguiente código?</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="shell.html#cb73-1" tabindex="-1"></a><span class="ex">$</span> cp <span class="pp">*</span>.dat original-<span class="pp">*</span>.dat</span></code></pre></div>
@@ -330,7 +508,8 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <span id="cb74-3"><a href="shell.html#cb74-3" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="fu">cp</span> <span class="va">$filename</span> original-<span class="va">$filename</span></span>
 <span id="cb74-4"><a href="shell.html#cb74-4" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <div class="float">
-<img src="img/shell_script_for_loop_flow_chart.png" alt="Debugging"><div class="figcaption">Debugging</div>
+<img src="img/shell_script_for_loop_flow_chart.png" alt="Debugging" />
+<div class="figcaption">Debugging</div>
 </div>
 <p><strong>Ejercicio:</strong> Supongamos que queremos previsualizar los comandos que el siguiente ciclo va a realizar en lugar de correrlo primero para asegurarnos de que está haciendo lo que queremos.</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb75-1"><a href="shell.html#cb75-1" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.pdb</span>
@@ -346,12 +525,13 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <div class="sourceCode" id="cb77"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb77-1"><a href="shell.html#cb77-1" tabindex="-1"></a><span class="co"># Versión 2</span></span>
 <span id="cb77-2"><a href="shell.html#cb77-2" tabindex="-1"></a><span class="ex">$</span> for filename in <span class="pp">*</span>.pdb</span>
 <span id="cb77-3"><a href="shell.html#cb77-3" tabindex="-1"></a><span class="op">&gt;</span> do</span>
-<span id="cb77-4"><a href="shell.html#cb77-4" tabindex="-1"></a><span class="op">&gt;</span>    echo <span class="st">"cat </span><span class="va">$filename</span><span class="st"> &gt;&gt; all.pdb"</span></span>
+<span id="cb77-4"><a href="shell.html#cb77-4" tabindex="-1"></a><span class="op">&gt;</span>    echo <span class="st">&quot;cat </span><span class="va">$filename</span><span class="st"> &gt;&gt; all.pdb&quot;</span></span>
 <span id="cb77-5"><a href="shell.html#cb77-5" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>Corre los dos códigos y explora el contenido del archivo <code>all.pdb</code>.</p>
 <p>Supongamos que queremos crear una estructura de directorios como sigue, para cada compuesto y cada temperatura queremos una carpeta para ir guardando ahí sus resultados, y que cada carpeta se llame <code>compuesto-temperatura</code>, ¿cómo podemos hacer esto? Una opción son los ciclos anidados.</p>
 <div class="float">
-<img src="img/estructura-alkanes.png" alt="estructura-experimentos"><div class="figcaption">estructura-experimentos</div>
+<img src="img/estructura-alkanes.png" alt="estructura-experimentos" />
+<div class="figcaption">estructura-experimentos</div>
 </div>
 <div class="sourceCode" id="cb78"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb78-1"><a href="shell.html#cb78-1" tabindex="-1"></a><span class="ex">$</span> for species in cubane ethane methane </span>
 <span id="cb78-2"><a href="shell.html#cb78-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
@@ -380,10 +560,8 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <li><p>Agrega un <code>echo $datafile</code> para saber en que archivo va tu ciclo.</p></li>
 </ol>
 </div>
-<div id="scripts" class="section level2" number="2.5">
-<h2>
-<span class="header-section-number">2.5</span> Scripts<a class="anchor" aria-label="anchor" href="#scripts"><i class="fas fa-link"></i></a>
-</h2>
+<div id="scripts" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Scripts<a href="shell.html#scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Los scripts nos ayudan a repetir los comandos sobre listas de archivos. Supongamos que existen ciertos comando que siempre repetimos, vamos a guardarlos en un archivo para con un solo comando ejecutar esa lista de comandos.</p>
 <p>Vamos al directorio <code>alkanes</code>. Supongamos que siempre queremos extraer las líneas de la 11 a la 15 de cada archivo. Por ejemplo, una forma en la que lo hacemos es:</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb79-1"><a href="shell.html#cb79-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> 15 octane.pdb <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5</span></code></pre></div>
@@ -394,13 +572,13 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <div class="sourceCode" id="cb81"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb81-1"><a href="shell.html#cb81-1" tabindex="-1"></a><span class="ex">$</span> bash middle.sh</span></code></pre></div>
 <p>Supongamos que queremos las líneas de la 11 a la 15 pero de cualquier otro archivo. Vamos a modificar el archivo que creamos.</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb82-1"><a href="shell.html#cb82-1" tabindex="-1"></a><span class="ex">$</span> nano middle.sh</span></code></pre></div>
-<div class="sourceCode" id="cb83"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb83-1"><a href="shell.html#cb83-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 15 <span class="st">"</span><span class="va">$1</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb83-1"><a href="shell.html#cb83-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 15 <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5</span></code></pre></div>
 <p>En el script, cuando colocamos <code>"$1"</code> se refiere al primer argumento/archivo en la línea de comandos, por ejemplo cuando colocamos en la línea de comandos:</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb84-1"><a href="shell.html#cb84-1" tabindex="-1"></a><span class="ex">$</span> bash middle.sh octane.pdb</span></code></pre></div>
 <p>Lo que estamos diciéndole a la consola es que reemplace dentro del script “$1” por el archivo <code>octane.pdb</code>. De esta forma nuestro script ahora lo podemos correr sobre cualquier archivo.</p>
 <p>Nuestro script por el momento funciona solo con las líneas de la 11 a la 15. Supongamos que queremos modificar esto de tal forma que cuando vayamos a ejecutar el script le indiquemos las líneas que queremos extraer. Así como usamos <code>$1</code> para indicarle que era la primera variable en la línea de comandos, podemos usar las variables <code>$2</code> y <code>$3</code> para indicarle la segunda y tercera variable.</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb85-1"><a href="shell.html#cb85-1" tabindex="-1"></a><span class="ex">$</span> nano middle.sh</span></code></pre></div>
-<div class="sourceCode" id="cb86"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb86-1"><a href="shell.html#cb86-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> <span class="st">"</span><span class="va">$2</span><span class="st">"</span> <span class="st">"</span><span class="va">$1</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> <span class="st">"</span><span class="va">$3</span><span class="st">"</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb86-1"><a href="shell.html#cb86-1" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$2</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$3</span><span class="st">&quot;</span></span></code></pre></div>
 <p>Entonces podemos ejecutar el script como sigue:</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb87-1"><a href="shell.html#cb87-1" tabindex="-1"></a><span class="ex">$</span> bash middle.sh octane.pdb 15 5</span></code></pre></div>
 <p>Y podemos cambiar las líneas a mostrar, por ejemplo:</p>
@@ -409,14 +587,14 @@ Vamos a crear un archivo de prueba en la carpeta ejercicios y escribamos algo en
 <div class="sourceCode" id="cb89"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb89-1"><a href="shell.html#cb89-1" tabindex="-1"></a><span class="ex">$</span> nano middle.sh</span></code></pre></div>
 <div class="sourceCode" id="cb90"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb90-1"><a href="shell.html#cb90-1" tabindex="-1"></a><span class="co"># Selecciona líneas intermedias de un archivo.</span></span>
 <span id="cb90-2"><a href="shell.html#cb90-2" tabindex="-1"></a><span class="co"># Uso: bash middle.sh nombre_archivo linea_final linea_inicial</span></span>
-<span id="cb90-3"><a href="shell.html#cb90-3" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> <span class="st">"</span><span class="va">$2</span><span class="st">"</span> <span class="st">"</span><span class="va">$1</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> <span class="st">"</span><span class="va">$3</span><span class="st">"</span></span></code></pre></div>
+<span id="cb90-3"><a href="shell.html#cb90-3" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$2</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$3</span><span class="st">&quot;</span></span></code></pre></div>
 <p>Ahora, supongamos que queremos ordenar los archivos <code>.pdb</code> por cantidad de líneas. Sin un script eso lo hacemos así:</p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb91-1"><a href="shell.html#cb91-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="pp">*</span>.pdb <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span> </span></code></pre></div>
 <p>Si queremos poner esto en un script pero queremos correrlo sobre varios tipos de archivos, digamos los <code>.pdb</code> y los <code>.dat</code>, no podemos colocar en nuestro script <code>*.pdb</code>, y si usamos como en los ejemplos anteriores <code>"$1"</code> o <code>"$2</code>, eso limitaría la cantidad de archivos que podemos pasarle después en la consola. Una forma de no depender de eso es con la variable <code>$@</code>, esto indica que pueden ser cualquier cantidad de argumentos en la línea de comandos.</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb92-1"><a href="shell.html#cb92-1" tabindex="-1"></a><span class="ex">$</span> nano sorted.sh</span></code></pre></div>
 <div class="sourceCode" id="cb93"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb93-1"><a href="shell.html#cb93-1" tabindex="-1"></a><span class="co"># Ordena archivos por su longitud</span></span>
 <span id="cb93-2"><a href="shell.html#cb93-2" tabindex="-1"></a><span class="co"># Uso: bash sorted.sh uno_o_mas_archivos</span></span>
-<span id="cb93-3"><a href="shell.html#cb93-3" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="st">"</span><span class="va">$@</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span></span></code></pre></div>
+<span id="cb93-3"><a href="shell.html#cb93-3" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span></span></code></pre></div>
 <div class="sourceCode" id="cb94"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb94-1"><a href="shell.html#cb94-1" tabindex="-1"></a><span class="ex">$</span> bash sorted.sh <span class="pp">*</span>.pdb ../creatures/<span class="pp">*</span>.dat</span></code></pre></div>
 <p><strong>Ejercicio:</strong> El archivo <code>animals.csv</code> ya vimos que es un archivo separado por comas que indica las especies y la cantidad de cada uno. Crea un script que se pueda aplicar a cualquier cantidad de archivos con ese formato y que te diga las especies únicas de cada archivo.
 Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueba tu script.</p>
@@ -427,7 +605,7 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
 <div class="sourceCode" id="cb96"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb96-1"><a href="shell.html#cb96-1" tabindex="-1"></a><span class="ex">$</span> head <span class="at">-n</span> <span class="va">$2</span> <span class="va">$1</span></span>
 <span id="cb96-2"><a href="shell.html#cb96-2" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> <span class="va">$3</span> <span class="va">$1</span></span></code></pre></div>
 <p>Dentro del directorio <code>alkanes</code>, corre lo siguiente:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="shell.html#cb97-1" tabindex="-1"></a><span class="ex">$</span> bash script.sh <span class="st">'*.pdb'</span> 1 1</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="shell.html#cb97-1" tabindex="-1"></a><span class="ex">$</span> bash script.sh <span class="st">&#39;*.pdb&#39;</span> 1 1</span></code></pre></div>
 <p>¿Qué esperas obtener?</p>
 <p><strong>Ejercicio:</strong> Crea un script llamado <code>longest.sh</code> que reciba como argumentos un directorio y una extensión de archivos y que te devuelva el archivo en el directorio, que tenga esa extensión, con el mayor número de líneas.</p>
 <p><strong>Ejercicio:</strong> Considera los archivos que están en la carpeta <code>alkanes</code>. Explica que hace cada uno de los siguientes scripts al correrlos como <code>bash script1.sh *.pdb</code>, <code>bash script2.sh *.pdb</code> y <code>bash script3.sh *.pdb</code>.</p>
@@ -442,7 +620,7 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
 <span id="cb100-2"><a href="shell.html#cb100-2" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$@</span>.pdb</span></code></pre></div>
 <p><strong>Ejercicio:</strong> (Debugging) Supongamos que tienen el siguiente script <code>do-errors.sh</code> en la carpeta <code>north-pacific-gyre</code>:</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb101-1"><a href="shell.html#cb101-1" tabindex="-1"></a><span class="co"># Calcular estadisticas para los archivos</span></span>
-<span id="cb101-2"><a href="shell.html#cb101-2" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="st">"</span><span class="va">$@</span><span class="st">"</span></span>
+<span id="cb101-2"><a href="shell.html#cb101-2" tabindex="-1"></a><span class="cf">for</span> datafile <span class="kw">in</span> <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span></span>
 <span id="cb101-3"><a href="shell.html#cb101-3" tabindex="-1"></a><span class="cf">do</span></span>
 <span id="cb101-4"><a href="shell.html#cb101-4" tabindex="-1"></a>  <span class="bu">echo</span> <span class="va">$datafile</span></span>
 <span id="cb101-5"><a href="shell.html#cb101-5" tabindex="-1"></a>  <span class="fu">bash</span> goostats.sh <span class="va">$datfile</span> stats-<span class="va">$datafile</span></span>
@@ -465,10 +643,8 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
 <div class="sourceCode" id="cb105"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb105-1"><a href="shell.html#cb105-1" tabindex="-1"></a><span class="bu">exec</span> <span class="dv">1</span><span class="op">&gt;&gt;</span> output.txt <span class="dv">2</span><span class="op">&gt;&gt;</span> error.txt</span></code></pre></div>
 <p>Al inicio de un script se suele colocar <code>#!/usr/bash</code> para que el interprete sepa que es un script de bash y use el bash que se encuentra en <code>usr/bash</code>. Si no está ahí se coloca la ruta correspondiente, para saber donde está usamos <code>which bash</code>.</p>
 </div>
-<div id="buscando-y-encontrando-cosas" class="section level2" number="2.6">
-<h2>
-<span class="header-section-number">2.6</span> Buscando y encontrando cosas<a class="anchor" aria-label="anchor" href="#buscando-y-encontrando-cosas"><i class="fas fa-link"></i></a>
-</h2>
+<div id="buscando-y-encontrando-cosas" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Buscando y encontrando cosas<a href="shell.html#buscando-y-encontrando-cosas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>La función <code>grep</code> (<em>global/regular expression/print</em>) nos ayuda a encontrar e imprimir líneas de archivos que contengan un patrón especificado.</p>
 <p>Vamos a la ruta <code>excercise-data/writing</code>.</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb106-1"><a href="shell.html#cb106-1" tabindex="-1"></a><span class="ex">$</span> cat haiku.txt</span></code></pre></div>
@@ -479,21 +655,21 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
 <p>Observemos que ahora nos está regresando una palabra que contiene <code>The</code> en su estructura: <code>Thesis</code>. Para restringir a que solo sean coincidencias exactas, usamos la bandera <code>-w</code>.</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb109-1"><a href="shell.html#cb109-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-w</span> The haiuku.txt</span></code></pre></div>
 <p>En el caso de querer buscar frases, debemos encerrarlas entre comillas.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb110-1"><a href="shell.html#cb110-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-w</span> <span class="st">"is not"</span> haiku.txt</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb110-1"><a href="shell.html#cb110-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-w</span> <span class="st">&quot;is not&quot;</span> haiku.txt</span></code></pre></div>
 <p>Si agregamos la opción <code>-n</code>, esto nos mostrará también la línea en la que se encuentra la coincidencia.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb111-1"><a href="shell.html#cb111-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="st">"it"</span> haiku.txt</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb111-1"><a href="shell.html#cb111-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="st">&quot;it&quot;</span> haiku.txt</span></code></pre></div>
 <p>Las banderas se pueden combinar, por ejemplo <code>-nw</code> (<code>-wn</code> o <code>-n -w</code>) nos buscaría coincidencias exactas y los números de líneas.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb112-1"><a href="shell.html#cb112-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-nw</span> <span class="st">"it"</span> haiku.txt</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb112-1"><a href="shell.html#cb112-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-nw</span> <span class="st">&quot;it&quot;</span> haiku.txt</span></code></pre></div>
 <p>Para que no nos importe mayúsculas o minúsculas, usamos la opción <code>-i</code>.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb113-1"><a href="shell.html#cb113-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="at">-w</span> <span class="at">-i</span> <span class="st">"the"</span> haiku.txt</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb113-1"><a href="shell.html#cb113-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="at">-w</span> <span class="at">-i</span> <span class="st">&quot;the&quot;</span> haiku.txt</span></code></pre></div>
 <p>La opción <code>-v</code> es para invertir nuestra búsqueda, es decir para mostrarnos las líneas que no contienen esa palabra/frase.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb114-1"><a href="shell.html#cb114-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="at">-w</span> <span class="at">-v</span> <span class="st">"the"</span> haiku.txt</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb114-1"><a href="shell.html#cb114-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-n</span> <span class="at">-w</span> <span class="at">-v</span> <span class="st">&quot;the&quot;</span> haiku.txt</span></code></pre></div>
 <p>La opción <code>-r</code> busca recursivamente por la coincidencia en un conjunto de archivos indicados.</p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb115-1"><a href="shell.html#cb115-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-r</span> Yesterday .</span></code></pre></div>
 <p><strong>Ejercicio:</strong> ¿Cómo obtendrían solo lo siguiente del archivo <code>haiku.txt</code>?</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb116-1"><a href="shell.html#cb116-1" tabindex="-1"></a><span class="ex">and</span> the presence of absence.</span></code></pre></div>
 <p>Dentro del comando <code>grep</code> también podemos usar comodines (expresiones regulares), por ejemplo:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb117-1"><a href="shell.html#cb117-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">"^.o"</span> haiku.txt</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb117-1"><a href="shell.html#cb117-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">&quot;^.o&quot;</span> haiku.txt</span></code></pre></div>
 <p>El <code>^</code> se refiere al inicio de la línea, el <code>.</code> se refiere a un carácter (análogo a <code>?</code>), entonces estaría buscando todas las líneas una palabra donde su segunda letra sea la letra <code>o</code>.</p>
 <p><strong>Ejercicio:</strong> El archivo que se encuentra en la carpeta <code>animal-counts/animals.csv</code> contiene una lista de animales, con su fecha de observación y cuantos animales se observaron.</p>
 <pre class="output"><code>2012-11-05,deer,5
@@ -511,7 +687,7 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
 <p>Usa las opciones de ayuda de los comandos <code>cut</code> y <code>grep</code> (puedes usar <code>man grep</code> o <code>man cut</code> también para pedir ayuda de esos comandos, la palabra <code>man</code> se refiere a manual.)</p>
 <p><strong>Ejercicio:</strong> En la carpeta <code>exercise-data/writing</code> se encuentra el texto completo de Mujercitas <code>LittleWomen.txt</code>. Usando un <code>for</code> encuentra que hermana aparece más veces: <em>Jo</em>, <em>Meg</em>, <em>Beth</em>, <em>Amy</em>.</p>
 <p>No solo podemos buscar una sola palabra, podríamos buscar dos palabras o buscar entre dos palabras:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb120-1"><a href="shell.html#cb120-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">"cadena1|cadena2"</span> archivo</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb120-1"><a href="shell.html#cb120-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="at">-E</span> <span class="st">&quot;cadena1|cadena2&quot;</span> archivo</span></code></pre></div>
 <p><strong>Ejercicio:</strong> ¿Cómo podrías mostrar en color lo que estás buscando? Explora la ayuda de <code>grep</code>.</p>
 <p>Para buscar entre directorios, usamos el comando <code>find</code>. Por ejemplo, el siguiente comando nos encontrará todo lo que este en directorio actual</p>
 <div class="sourceCode" id="cb121"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb121-1"><a href="shell.html#cb121-1" tabindex="-1"></a><span class="ex">$</span> find .</span></code></pre></div>
@@ -521,17 +697,15 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
 <p>Si queremos encontrar algo que concuerde con algún nombre:</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb123-1"><a href="shell.html#cb123-1" tabindex="-1"></a><span class="ex">$</span> find . <span class="at">-name</span> <span class="pp">*</span>.csv</span></code></pre></div>
 <p>Hay que tener cuidado con esta instrucción, <code>find</code> expande los comodines antes de correr los comandos, en el caso de tener más de un archivo veremos un mensaje de error. Para prevenir esto y que si busque todos los archivos, debemos encerrar el patrón entre comillas.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb124-1"><a href="shell.html#cb124-1" tabindex="-1"></a><span class="ex">$</span> find . <span class="at">-name</span> <span class="st">"*.txt"</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb124-1"><a href="shell.html#cb124-1" tabindex="-1"></a><span class="ex">$</span> find . <span class="at">-name</span> <span class="st">&quot;*.txt&quot;</span></span></code></pre></div>
 <p>Podemos hacer tuberías también con este comando, por ejemplo si quisieramos contar cuantas líneas tienen todos los archivos con terminación <code>txt</code>, podríamos hacer lo siguiente:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb125-1"><a href="shell.html#cb125-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="va">$(</span><span class="fu">find</span> . <span class="at">-name</span> <span class="st">"*.txt"</span><span class="va">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb125-1"><a href="shell.html#cb125-1" tabindex="-1"></a><span class="ex">$</span> wc <span class="at">-l</span> <span class="va">$(</span><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.txt&quot;</span><span class="va">)</span></span></code></pre></div>
 <p>Otro ejemplo:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb126-1"><a href="shell.html#cb126-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">"searching"</span> <span class="va">$(</span><span class="fu">find</span> . <span class="at">-name</span> <span class="st">"*.txt"</span><span class="va">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb126-1"><a href="shell.html#cb126-1" tabindex="-1"></a><span class="ex">$</span> grep <span class="st">&quot;searching&quot;</span> <span class="va">$(</span><span class="fu">find</span> . <span class="at">-name</span> <span class="st">&quot;*.txt&quot;</span><span class="va">)</span></span></code></pre></div>
 <p><strong>Ejercicio:</strong> La opción <code>-v</code> en <code>grep</code> busca todo lo que no concuerde con el patrón indicado. En la carpeta <code>creatures</code>, ¿cómo listarías todos los archivos que terminen en <code>.dat</code> menos el que se llama <code>unicorn</code>?</p>
 </div>
-<div id="if-while-y-for" class="section level2" number="2.7">
-<h2>
-<span class="header-section-number">2.7</span> if, while y for<a class="anchor" aria-label="anchor" href="#if-while-y-for"><i class="fas fa-link"></i></a>
-</h2>
+<div id="if-while-y-for" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> if, while y for<a href="shell.html#if-while-y-for" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ya vimos que la sintaxis del ciclo for es como sigue:</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb127-1"><a href="shell.html#cb127-1" tabindex="-1"></a><span class="ex">$</span> for file in list</span>
 <span id="cb127-2"><a href="shell.html#cb127-2" tabindex="-1"></a><span class="op">&gt;</span> do</span>
@@ -561,22 +735,22 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
 </ul>
 <div class="sourceCode" id="cb131"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb131-1"><a href="shell.html#cb131-1" tabindex="-1"></a><span class="ex">$</span> x=10</span>
 <span id="cb131-2"><a href="shell.html#cb131-2" tabindex="-1"></a><span class="ex">$</span> if [ <span class="va">$x</span> <span class="at">-gt</span> 5 ]<span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb131-3"><a href="shell.html#cb131-3" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="st">"</span><span class="va">$x</span><span class="st"> es mayor que 5"</span></span>
+<span id="cb131-3"><a href="shell.html#cb131-3" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="st">&quot;</span><span class="va">$x</span><span class="st"> es mayor que 5&quot;</span></span>
 <span id="cb131-4"><a href="shell.html#cb131-4" tabindex="-1"></a><span class="op">&gt;</span> fi</span></code></pre></div>
 <p>Otros banderas para los condicionales las pueden encontrar en el siguiente <a href="https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html">link</a>.</p>
 <p>La notación <code>&amp;&amp;</code> es para un <strong>Y</strong> y la notación <code>||</code> para un <strong>O</strong>, las cuales nos sirven para verificar más de una condición:</p>
 <div class="sourceCode" id="cb132"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb132-1"><a href="shell.html#cb132-1" tabindex="-1"></a><span class="ex">$</span> x=8</span>
 <span id="cb132-2"><a href="shell.html#cb132-2" tabindex="-1"></a><span class="ex">$</span> if [ <span class="va">$x</span> <span class="at">-gt</span> 5 ] <span class="kw">&amp;&amp;</span> <span class="bu">[</span> <span class="va">$x</span> <span class="ot">-lt</span> 10]<span class="er">;</span> <span class="er">then</span></span>
-<span id="cb132-3"><a href="shell.html#cb132-3" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="st">"</span><span class="va">$x</span><span class="st"> es mayor que 5 y menor que 10"</span></span>
+<span id="cb132-3"><a href="shell.html#cb132-3" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="st">&quot;</span><span class="va">$x</span><span class="st"> es mayor que 5 y menor que 10&quot;</span></span>
 <span id="cb132-4"><a href="shell.html#cb132-4" tabindex="-1"></a><span class="op">&gt;</span> fi</span></code></pre></div>
 <p>También podemos usar la siguiente estructura: <code>[[ $x -gt 5 &amp;&amp; $x -lt 10]]</code>.</p>
 <p>Dentro de un <code>if</code> podemos pedir que nos busque en algún archivo combinandolo con <code>grep</code>, dentro de la carpeta animal-count:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb133-1"><a href="shell.html#cb133-1" tabindex="-1"></a><span class="ex">$</span> if grep <span class="at">-q</span> <span class="st">"rabbit"</span> animals.csv<span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb133-2"><a href="shell.html#cb133-2" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="st">"Rabbit esta en el archivo"</span></span>
+<div class="sourceCode" id="cb133"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb133-1"><a href="shell.html#cb133-1" tabindex="-1"></a><span class="ex">$</span> if grep <span class="at">-q</span> <span class="st">&quot;rabbit&quot;</span> animals.csv<span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb133-2"><a href="shell.html#cb133-2" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="st">&quot;Rabbit esta en el archivo&quot;</span></span>
 <span id="cb133-3"><a href="shell.html#cb133-3" tabindex="-1"></a><span class="op">&gt;</span> fi</span></code></pre></div>
 <p>El mismo resultado lo podemos obtener como sigue:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb134-1"><a href="shell.html#cb134-1" tabindex="-1"></a><span class="ex">$</span> if <span class="va">$(</span><span class="fu">grep</span> <span class="at">-q</span> <span class="st">"rabbit"</span> animals.csv<span class="va">)</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb134-2"><a href="shell.html#cb134-2" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="st">"rabbit esta en el archivo"</span></span>
+<div class="sourceCode" id="cb134"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb134-1"><a href="shell.html#cb134-1" tabindex="-1"></a><span class="ex">$</span> if <span class="va">$(</span><span class="fu">grep</span> <span class="at">-q</span> <span class="st">&quot;rabbit&quot;</span> animals.csv<span class="va">)</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb134-2"><a href="shell.html#cb134-2" tabindex="-1"></a><span class="op">&gt;</span>     echo <span class="st">&quot;rabbit esta en el archivo&quot;</span></span>
 <span id="cb134-3"><a href="shell.html#cb134-3" tabindex="-1"></a><span class="op">&gt;</span> fi</span></code></pre></div>
 <p>El ciclo <code>while</code> tiene la misma estructura del ciclo <code>for</code> y los operadores aritméticos son los mismos que en el <code>if</code>. Siempre recuerden poner un fin al ciclo para que no sea infinito.</p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb135-1"><a href="shell.html#cb135-1" tabindex="-1"></a><span class="ex">$</span> x=1</span>
@@ -586,7 +760,7 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
 <span id="cb135-5"><a href="shell.html#cb135-5" tabindex="-1"></a><span class="op">&gt;</span>     <span class="kw">((</span><span class="va">x</span><span class="op">+=</span><span class="dv">1</span><span class="kw">))</span></span>
 <span id="cb135-6"><a href="shell.html#cb135-6" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div>
 <p>Aparte de estos ciclos, existen los <strong>CASE Statements</strong>, los cuales pueden llegar a ser más útiles que los <code>if</code> cuando se tienen condiciones muy complicadas. Su estructura es la siguiente:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb136-1"><a href="shell.html#cb136-1" tabindex="-1"></a><span class="ex">$</span> case <span class="st">'String'</span> in</span>
+<div class="sourceCode" id="cb136"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb136-1"><a href="shell.html#cb136-1" tabindex="-1"></a><span class="ex">$</span> case <span class="st">&#39;String&#39;</span> in</span>
 <span id="cb136-2"><a href="shell.html#cb136-2" tabindex="-1"></a><span class="op">&gt;</span>     patron1<span class="er">)</span></span>
 <span id="cb136-3"><a href="shell.html#cb136-3" tabindex="-1"></a><span class="op">&gt;</span>     comando1<span class="kw">;;</span></span>
 <span id="cb136-4"><a href="shell.html#cb136-4" tabindex="-1"></a><span class="op">&gt;</span>     patron2<span class="er">)</span></span>
@@ -597,75 +771,93 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
 <p>Por ejemplo:</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb137-1"><a href="shell.html#cb137-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb137-2"><a href="shell.html#cb137-2" tabindex="-1"></a><span class="co">#Control de flujo: case</span></span>
-<span id="cb137-3"><a href="shell.html#cb137-3" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Escribe una frase"</span></span>
+<span id="cb137-3"><a href="shell.html#cb137-3" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;Escribe una frase&quot;</span></span>
 <span id="cb137-4"><a href="shell.html#cb137-4" tabindex="-1"></a><span class="bu">read</span> <span class="va">frase</span></span>
 <span id="cb137-5"><a href="shell.html#cb137-5" tabindex="-1"></a><span class="cf">case</span> <span class="va">$frase</span> <span class="kw">in</span></span>
 <span id="cb137-6"><a href="shell.html#cb137-6" tabindex="-1"></a>  <span class="ss">a</span><span class="pp">*</span><span class="kw">)</span></span>
-<span id="cb137-7"><a href="shell.html#cb137-7" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"La frase empieza con a"</span></span>
+<span id="cb137-7"><a href="shell.html#cb137-7" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;La frase empieza con a&quot;</span></span>
 <span id="cb137-8"><a href="shell.html#cb137-8" tabindex="-1"></a>  <span class="cf">;;</span></span>
 <span id="cb137-9"><a href="shell.html#cb137-9" tabindex="-1"></a>  <span class="ss">c</span><span class="pp">*</span><span class="ss">t</span><span class="kw">)</span></span>
-<span id="cb137-10"><a href="shell.html#cb137-10" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"La frase empieza con c y termina con t"</span></span>
+<span id="cb137-10"><a href="shell.html#cb137-10" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;La frase empieza con c y termina con t&quot;</span></span>
 <span id="cb137-11"><a href="shell.html#cb137-11" tabindex="-1"></a>  <span class="cf">;;</span></span>
 <span id="cb137-12"><a href="shell.html#cb137-12" tabindex="-1"></a>  <span class="pp">*</span><span class="ss">com</span><span class="kw">)</span></span>
-<span id="cb137-13"><a href="shell.html#cb137-13" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"La frase termina con la cadena com"</span></span>
+<span id="cb137-13"><a href="shell.html#cb137-13" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;La frase termina con la cadena com&quot;</span></span>
 <span id="cb137-14"><a href="shell.html#cb137-14" tabindex="-1"></a>  <span class="cf">;;</span></span>
 <span id="cb137-15"><a href="shell.html#cb137-15" tabindex="-1"></a>  <span class="pp">*</span><span class="kw">)</span></span>
-<span id="cb137-16"><a href="shell.html#cb137-16" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"La frase no cumple con ninguna de las condiciones"</span></span>
+<span id="cb137-16"><a href="shell.html#cb137-16" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;La frase no cumple con ninguna de las condiciones&quot;</span></span>
 <span id="cb137-17"><a href="shell.html#cb137-17" tabindex="-1"></a>  <span class="cf">;;</span></span>
 <span id="cb137-18"><a href="shell.html#cb137-18" tabindex="-1"></a><span class="cf">esac</span></span></code></pre></div>
 <p>Si corremos este script en la terminal con <code>bash case_ejemplo.sh</code> veremos que dependiendo de la frase que coloquemos en la terminal, nos arrojará una de las opciones.</p>
 <p><strong>Ejercicio:</strong> Crea un case statement para adivinar tu edad. Debes pedirle al usuario que introduzca el número correspondiente a tu edad y que los casos o patrones obtengan por resultado una frase referente a si adivinaron o no su edad. Realiza lo mismo con un <code>if</code>.</p>
 </div>
-<div id="descarga-y-limpieza-de-bases-de-datos" class="section level2" number="2.8">
-<h2>
-<span class="header-section-number">2.8</span> Descarga y limpieza de bases de datos<a class="anchor" aria-label="anchor" href="#descarga-y-limpieza-de-bases-de-datos"><i class="fas fa-link"></i></a>
-</h2>
+<div id="descarga-y-limpieza-de-bases-de-datos" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Descarga y limpieza de bases de datos<a href="shell.html#descarga-y-limpieza-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Pendiente</strong>: Se verá después de SQL.</p>
 
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="index.html"><span class="header-section-number">1</span> Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</a></div>
-<div class="next"><a href="git-y-github.html"><span class="header-section-number">3</span> Git y Github</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#shell"><span class="header-section-number">2</span> Shell</a></li>
-<li><a class="nav-link" href="#navegar-en-archivos-y-directorios"><span class="header-section-number">2.1</span> Navegar en archivos y directorios</a></li>
-<li><a class="nav-link" href="#manipulaci%C3%B3n-de-archivos-y-directorios"><span class="header-section-number">2.2</span> Manipulación de archivos y directorios</a></li>
-<li>
-<a class="nav-link" href="#tuber%C3%ADas-y-filtros"><span class="header-section-number">2.3</span> Tuberías y filtros</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#tuber%C3%ADas"><span class="header-section-number">2.3.1</span> Tuberías</a></li></ul>
-</li>
-<li><a class="nav-link" href="#ciclos"><span class="header-section-number">2.4</span> Ciclos</a></li>
-<li><a class="nav-link" href="#scripts"><span class="header-section-number">2.5</span> Scripts</a></li>
-<li><a class="nav-link" href="#buscando-y-encontrando-cosas"><span class="header-section-number">2.6</span> Buscando y encontrando cosas</a></li>
-<li><a class="nav-link" href="#if-while-y-for"><span class="header-section-number">2.7</span> if, while y for</a></li>
-<li><a class="nav-link" href="#descarga-y-limpieza-de-bases-de-datos"><span class="header-section-number">2.8</span> Descarga y limpieza de bases de datos</a></li>
-</ul>
+            </section>
 
-      <div class="book-extra">
-        <ul class="list-unstyled">
-          
-        </ul>
-</div>
-    </nav>
-</div>
-
-</div>
-</div> <!-- .container -->
-
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Temas Selectos de Análisis Numérico y Computación Científica: Computo científico para el análisis de datos</strong>" was written by Haydeé Peruyero. It was last built on 2024-03-01.</p>
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="git-y-github.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/HaydeePeruyero/Computo_Cientifico/edit/main/01-Shell.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Computo_Cientifico.pdf", "Computo_Cientifico.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
 
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -677,22 +869,7 @@ Crea 3 archivos similares al <code>animals.csv</code> (copia y modifica) y prueb
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
+
 </html>
