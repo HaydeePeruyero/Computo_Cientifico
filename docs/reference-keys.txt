@@ -65,3 +65,15 @@ manipulación-de-bases-de-datos-2
 análisis-exploratorio-de-bases-de-datos-2
 reportes-con-rmarkdown
 páginas-web
+números
+cadenas-de-caracteres
+listas
+tuplas
+conjuntos
+diccionarios
+operaciones-básicas
+ejercicios
+breve-introducción-a-los-lenguajes-de-programación.
+entornos-interactivos
+palabras-reservadas-de-python.
+sintaxis-de-nombres-en-python

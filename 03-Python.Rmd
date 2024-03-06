@@ -9,9 +9,296 @@ workingDir <-  "."
 setwd(workingDir)
 ```
 
+Python es un lenguaje de programación de alto nivel, interactivo e interpretado. Es de código abierto, multi-plataforma y se adecua a diversos paradigmas de programación como lo es la programación orientada a objetos. 
+
+El intérprete de Python y su amplia gama de bibliotecas estándar están disponibles de forma gratuita para la mayoría de plataformas en el sitio web oficial de Python. Además, este sitio proporciona documentación adicional, programas y herramientas que complementan su ecosistema.
+
+- **Características de Python:**
+  
+  - Sintaxis muy clara y legible.
+  
+  - Fuerte capacidad de introspección.
+  
+  - Orientación a objetos intuitiva.
+  
+  - Altamente modular, soporta paquetes jerárquicos.
+  
+  - Enfocado en el uso de excepciones para el manejo de errores.
+  
+  - Tipos de datos dinámicos de muy alto nivel.
+  
+  - Extensa biblioteca estándar (STL) y módulos de terceros para prácticamente todas las tareas.
+  
+  - Extensiones y módulos fácilmente escritos en C, C + + (o Java para Jython, o. NET para IronPython).
+  
+  - Integrable dentro de las aplicaciones como una interfaz de scripting.
+
+- **Aplicaciones de Python:** se ha utilizado para desarrollar:
+
+  - Aplicaciones de escritorio.
+
+  - Aplicaciones web.
+
+  - Análisis de datos.
+
+  - Administración de servidores.
+
+  - Seguridad y análisis de penetración.
+
+  - Cómputo en la nube.
+
+ - Cómputo científico.
+
+  - Análisis de lenguaje natural.
+
+  - Visión artificial.
+
+  - Animación, videojuegos e imágenes generadas por computadora.
+
+  - Aplicaciones móviles.
+  
+  
+## Breve introducción a los lenguajes de programación.
+
+Un lenguaje se define como un conjunto de secuencias de símbolos que posibilitan la creación y transmisión de mensajes entre un emisor y un receptor. Aunque la naturaleza exhibe ciertos tipos de lenguajes, los seres humanos han desarrollado una variedad de sistemas lingüísticos de gran complejidad.
+
+Los lenguajes se componen principalmente de dos aspectos: la gramática, que aborda la estructura del lenguaje, y la semántica, que se ocupa del significado del lenguaje.
+
+La gramática, a su vez, incluye:
+
+- Morfología: relacionada con la construcción de las unidades lingüísticas (género, tiempos verbales, declinaciones).
+- Sintaxis: referente a la manera en que se deben ordenar y estructurar las unidades lingüísticas en las expresiones.
+
+
+En el transcurso del siglo XX, figuras como Alan Turing y Alonzo Church sentaron los fundamentos del cálculo, la programación y sus respectivos lenguajes. Los lenguajes de programación contemporáneos, a diferencia de los lenguajes naturales, presentan una morfología estructurada y simplificada diseñada para ejecutar instrucciones precisas en los sistemas informáticos.
+
+- **Lenguajes de alto y bajo nivel:**
+
+Los lenguajes de bajo nivel, como el lenguaje ensamblador, consisten en un conjunto elemental de instrucciones que son ejecutadas directamente por la unidad de procesamiento de un sistema informático. Estos lenguajes están estrechamente vinculados al tipo de procesador que los procesa y suelen ser difíciles de elaborar e interpretar para las personas.
+
+Por otro lado, los lenguajes de alto nivel son más comprensibles para los humanos y, en general, menos dependientes del hardware específico, aunque requieren ser traducidos a lenguaje de bajo nivel para su ejecución.
+
+- **Lenguajes compilados e interpretados: **
+
+Los lenguajes de alto nivel se comunican con los sistemas informáticos de dos maneras distintas:
+
+1. A través de un compilador, que traduce el código del programa a lenguaje de bajo nivel, generando un "archivo binario" que puede ser ejecutado posteriormente.
+
+2. Mediante un intérprete, que ejecuta las instrucciones ingresadas de inmediato.
+
+Por lo general, los lenguajes compilados son más eficientes en términos de velocidad y consumo de recursos que los lenguajes interpretados, ya que el archivo resultante es código de bajo nivel. En contraste, los lenguajes interpretados requieren un proceso adicional a través de varios niveles de abstracción antes de que las instrucciones sean ejecutadas por el sistema.
+
+
+**Python es un lenguaje interpretado de alto nivel.**
+
+## Entornos interactivos
+
+Debido a que Python es un lenguaje interpretado, es posible utilizarlo mediante un entorno interactivo (shell) o mediante el uso de scripts.
+
+El shell interactivo de Python funciona a través de una terminal.
+
+Para sistemas basados en UNIX, como GNU/Linux, y Mac OS X, es requerido abrir una terminal y llamar al shell de la siguiente manera:
+
+```python
+python
+```
+
+Dependiendo de la versión o la forma en que fue instalado, a veces se manda a llamar con la siguiente forma:
+
+```python
+python3
+```
+
+Para salir del entorno interactivo usamos `exit()`
+
+Para desplegar el texto Hola Mundo desde en entorno interactivo sólo es necesario teclear lo siguiente:
+
+```{python}
+print("Hola, Mundo.")
+```
+
+## Palabras reservadas de Python.
+
+Las palabras reservadas, también conocidas como keywords, son los nombres predeterminados que el intérprete de Python proporciona de forma inherente. No se recomienda emplear estas palabras para asignar nombres a otros objetos.
+
+Para acceder al listado completo de palabras reservadas, se puede consultar ingresando help('keywords') desde la interfaz interactiva de Python.
+
+```{python}
+help("keywords")
+```
+
+## Sintaxis de nombres en Python
+
+En Python 3, la sintaxis para la elaboración de nombres sigue ciertas reglas y convenciones que son importantes para escribir un código claro y legible. Aquí hay algunas pautas clave:
+
+- **Caracteres permitidos:** Los nombres pueden incluir letras minúsculas (a-z), letras mayúsculas (A-Z), dígitos (0-9) y el guion bajo (_). No pueden comenzar con un número.
+
+- **Convenciones de estilo:** Se recomienda seguir las convenciones de estilo de Python, que generalmente sugieren el uso de minúsculas para los nombres de variables y funciones, y mayúsculas para constantes. Para nombres compuestos, se recomienda separar las palabras con guiones bajos (snake_case).
+
+- **Palabras reservadas:** No se pueden utilizar palabras reservadas de Python como nombres de variables, ya que estas palabras tienen significados específicos en el lenguaje y están reservadas para su uso en la sintaxis de Python.
+
+- **Significado claro:** Es importante elegir nombres que proporcionen un significado claro y descriptivo sobre el propósito de la variable, función o clase que están representando. Esto ayuda a que el código sea más legible y comprensible para otros programadores.
+
+- **Evitar nombres genéricos:** Trate de evitar nombres genéricos como "a", "b", "x", etc. Utilice nombres que reflejen el propósito y la función de la variable o función.
+
 
 ## Tipos de datos
 
+
+En Python, los tipos de datos son la base de cualquier programa. Python es un lenguaje de programación dinámico, por lo que no es necesario declarar explícitamente el tipo de datos cuando se crea una variable. A continuación, exploraremos los tipos de datos básicos en Python.
+
+| Tipo de dato  | Descripción                                   | Ejemplo            | Colección | Indexable | Mutable |
+|----------------|-----------------------------------------------|--------------------|-----------|-----------|---------|
+| int            | Números enteros                               | 5, -10, 100       | No        | No        | No      |
+| float          | Números de punto flotante                     | 3.14, -0.001, 2.0 | No        | No        | No      |
+| str            | Cadena de caracteres                          | 'Hola', "Mundo"   | No        | Sí        | No      |
+| bool           | Booleano (Verdadero o Falso)                  | True, False       | No        | Sí        | No      |
+| list           | Lista ordenada de elementos                   | [1, 2, 3], ['a', 'b', 'c'] | Sí    | Sí        | Sí      |
+| tuple          | Secuencia inmutable de elementos              | (1, 2, 3), ('a', 'b', 'c') | Sí   | Sí        | No      |
+| dict           | Colección de pares clave-valor               | {'nombre': 'Juan', 'edad': 30} | Sí | No        | Sí      |
+| set            | Colección no ordenada de elementos únicos     | {1, 2, 3}, {'a', 'b', 'c'} | Sí     | No        | Sí      |
+
+
+Las **colecciones** son estructuras que almacenan una serie de elementos. Cada uno de estos elementos se puede considerar como una entidad independiente dentro de la colección.
+
+Los **tipos indexables** permiten acceder a cada elemento dentro de la colección mediante un identificador único, que puede ser un número entero (índice) o una clave, dependiendo del tipo de colección.
+
+Los **tipos mutables** tienen la característica de permitir la modificación de su contenido. Esto incluye la capacidad de agregar, eliminar o modificar elementos existentes en la colección.
+
+### Números
+
+En Python, hay tres tipos principales de números: enteros (int), números de punto flotante (float) y números complejos (complex). Veamos ejemplos de cada uno:
+
+```{python}
+# Entero
+numero_entero = 10
+print(numero_entero)
+
+# Punto flotante
+numero_flotante = 3.14
+print(numero_flotante)
+
+# Complejo
+numero_complejo = 2 + 3j
+print(numero_complejo)
+```
+
+
+La precisión de los números flotantes debe ser considerada cuidadosamente, ya que está influenciada significativamente por la capacidad del equipo de cómputo. En ciertas ocasiones, las operaciones con números de tipo float pueden arrojar aproximaciones en lugar de resultados exactos. Es importante tener en cuenta estas limitaciones al trabajar con números flotantes.
+
+```{python}
+2 / 3
+```
+
+
+### Cadenas de Caracteres
+
+Las cadenas de caracteres (str) se utilizan para representar texto en Python. Se pueden definir utilizando comillas simples (') o dobles ("):
+
+```{python}
+cadena_simple = 'Hola, mundo!'
+print(cadena_simple)
+
+cadena_doble = "¡Hola, Python!"
+print(cadena_doble)
+```
+
+
+### Listas
+
+Una lista (list) en Python es una secuencia ordenada de elementos que pueden ser de diferentes tipos. Se definen utilizando corchetes []:
+
+```{python}
+mi_lista = [1, 2, 3, 'cuatro', 5.0]
+print(mi_lista)
+```
+
+### Tuplas
+
+Las tuplas (tuple) son secuencias ordenadas similares a las listas, pero son inmutables, es decir, no se pueden modificar después de su creación. Se definen utilizando paréntesis ():
+
+```{python}
+mi_tupla = (1, 2, 3, 'cuatro', 5.0)
+print(mi_tupla)
+```
+
+### Conjuntos
+
+Los conjuntos (set) son colecciones desordenadas de elementos únicos. Se definen utilizando llaves {}:
+
+```{python}
+mi_conjunto = {1, 2, 3, 4, 5}
+print(mi_conjunto)
+```
+
+
+### Diccionarios
+
+Los diccionarios (dict) son colecciones de pares clave-valor. Cada elemento del diccionario tiene una clave y un valor asociado. Se definen utilizando llaves {} y separando las claves y los valores con ::
+
+```{python}
+mi_diccionario = {'nombre': 'Robeto', 'edad': 20, 'ciudad': 'Morelia'}
+print(mi_diccionario)
+```
+
+
+### Operaciones Básicas
+
+Python permite realizar operaciones básicas con los tipos de datos mencionados anteriormente. A continuación, se muestran algunos ejemplos:
+
+```{python}
+# Operaciones numéricas
+resultado = 10 + 5
+diferencia = 10 - 5
+producto = 10 * 5
+cociente = 10 / 5
+modulo = 10 % 3
+potencia = 10 ** 2
+```
+
+```{python}
+# Concatenación de cadenas
+saludo = "Hola" + " " + "Mundo"
+print(saludo)
+```
+
+Para acceder a los elementos de listas y tuplas podemos indicarle el índice asociado entre corchetes.
+
+```{python}
+mi_lista = [1, 2, 3, 4, 5]
+primer_elemento = mi_lista[0]
+print(primer_elemento)
+
+```
+
+```{python}
+mi_tupla = (1, 2, 3, 4, 5)
+ultimo_elemento = mi_tupla[-1]
+print(ultimo_elemento)
+```
+
+```{python}
+# Agregando elementos a un conjunto
+mi_conjunto = {1, 2, 3}
+mi_conjunto.add(4)
+```
+
+```{python}
+# Accediendo a valores de un diccionario
+mi_diccionario = {'nombre': 'Roberto', 'edad': 20}
+nombre = mi_diccionario['nombre']
+print(nombre)
+```
+
+### Ejercicios
+
+1) Crea una lista que contenga los nombres de tres amigos tuyos.
+
+2) Crea un diccionario que represente la información de un libro (título, autor, año de publicación).
+
+3) Realiza la suma de dos números y guarda el resultado en una variable.
+
+4) Concatena dos cadenas de caracteres y muestra el resultado.
 
 
 ## Flujo de control

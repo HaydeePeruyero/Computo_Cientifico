@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-03-04" />
+<meta name="date" content="2024-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -128,15 +192,29 @@
 </ul></li>
 <li class="chapter" data-level="4" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>4</b> Python</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="python.html"><a href="python.html#tipos-de-datos"><i class="fa fa-check"></i><b>4.1</b> Tipos de datos</a></li>
-<li class="chapter" data-level="4.2" data-path="python.html"><a href="python.html#flujo-de-control"><i class="fa fa-check"></i><b>4.2</b> Flujo de control</a></li>
-<li class="chapter" data-level="4.3" data-path="python.html"><a href="python.html#visualización-de-datos"><i class="fa fa-check"></i><b>4.3</b> Visualización de datos</a></li>
-<li class="chapter" data-level="4.4" data-path="python.html"><a href="python.html#manipulación-de-bases-de-datos"><i class="fa fa-check"></i><b>4.4</b> Manipulación de bases de datos</a></li>
-<li class="chapter" data-level="4.5" data-path="python.html"><a href="python.html#análisis-exploratorio-de-bases-de-datos"><i class="fa fa-check"></i><b>4.5</b> Análisis exploratorio de bases de datos</a></li>
-<li class="chapter" data-level="4.6" data-path="python.html"><a href="python.html#funciones-y-scripts"><i class="fa fa-check"></i><b>4.6</b> Funciones y scripts</a></li>
-<li class="chapter" data-level="4.7" data-path="python.html"><a href="python.html#buenas-practicas"><i class="fa fa-check"></i><b>4.7</b> Buenas practicas</a></li>
-<li class="chapter" data-level="4.8" data-path="python.html"><a href="python.html#procesamiento-de-alto-rendimiento"><i class="fa fa-check"></i><b>4.8</b> Procesamiento de alto rendimiento</a></li>
-<li class="chapter" data-level="4.9" data-path="python.html"><a href="python.html#programación-en-paralelo"><i class="fa fa-check"></i><b>4.9</b> Programación en paralelo</a></li>
+<li class="chapter" data-level="4.1" data-path="python.html"><a href="python.html#breve-introducción-a-los-lenguajes-de-programación."><i class="fa fa-check"></i><b>4.1</b> Breve introducción a los lenguajes de programación.</a></li>
+<li class="chapter" data-level="4.2" data-path="python.html"><a href="python.html#entornos-interactivos"><i class="fa fa-check"></i><b>4.2</b> Entornos interactivos</a></li>
+<li class="chapter" data-level="4.3" data-path="python.html"><a href="python.html#palabras-reservadas-de-python."><i class="fa fa-check"></i><b>4.3</b> Palabras reservadas de Python.</a></li>
+<li class="chapter" data-level="4.4" data-path="python.html"><a href="python.html#sintaxis-de-nombres-en-python"><i class="fa fa-check"></i><b>4.4</b> Sintaxis de nombres en Python</a></li>
+<li class="chapter" data-level="4.5" data-path="python.html"><a href="python.html#tipos-de-datos"><i class="fa fa-check"></i><b>4.5</b> Tipos de datos</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="python.html"><a href="python.html#números"><i class="fa fa-check"></i><b>4.5.1</b> Números</a></li>
+<li class="chapter" data-level="4.5.2" data-path="python.html"><a href="python.html#cadenas-de-caracteres"><i class="fa fa-check"></i><b>4.5.2</b> Cadenas de Caracteres</a></li>
+<li class="chapter" data-level="4.5.3" data-path="python.html"><a href="python.html#listas"><i class="fa fa-check"></i><b>4.5.3</b> Listas</a></li>
+<li class="chapter" data-level="4.5.4" data-path="python.html"><a href="python.html#tuplas"><i class="fa fa-check"></i><b>4.5.4</b> Tuplas</a></li>
+<li class="chapter" data-level="4.5.5" data-path="python.html"><a href="python.html#conjuntos"><i class="fa fa-check"></i><b>4.5.5</b> Conjuntos</a></li>
+<li class="chapter" data-level="4.5.6" data-path="python.html"><a href="python.html#diccionarios"><i class="fa fa-check"></i><b>4.5.6</b> Diccionarios</a></li>
+<li class="chapter" data-level="4.5.7" data-path="python.html"><a href="python.html#operaciones-básicas"><i class="fa fa-check"></i><b>4.5.7</b> Operaciones Básicas</a></li>
+<li class="chapter" data-level="4.5.8" data-path="python.html"><a href="python.html#ejercicios"><i class="fa fa-check"></i><b>4.5.8</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="python.html"><a href="python.html#flujo-de-control"><i class="fa fa-check"></i><b>4.6</b> Flujo de control</a></li>
+<li class="chapter" data-level="4.7" data-path="python.html"><a href="python.html#visualización-de-datos"><i class="fa fa-check"></i><b>4.7</b> Visualización de datos</a></li>
+<li class="chapter" data-level="4.8" data-path="python.html"><a href="python.html#manipulación-de-bases-de-datos"><i class="fa fa-check"></i><b>4.8</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="4.9" data-path="python.html"><a href="python.html#análisis-exploratorio-de-bases-de-datos"><i class="fa fa-check"></i><b>4.9</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="4.10" data-path="python.html"><a href="python.html#funciones-y-scripts"><i class="fa fa-check"></i><b>4.10</b> Funciones y scripts</a></li>
+<li class="chapter" data-level="4.11" data-path="python.html"><a href="python.html#buenas-practicas"><i class="fa fa-check"></i><b>4.11</b> Buenas practicas</a></li>
+<li class="chapter" data-level="4.12" data-path="python.html"><a href="python.html#procesamiento-de-alto-rendimiento"><i class="fa fa-check"></i><b>4.12</b> Procesamiento de alto rendimiento</a></li>
+<li class="chapter" data-level="4.13" data-path="python.html"><a href="python.html#programación-en-paralelo"><i class="fa fa-check"></i><b>4.13</b> Programación en paralelo</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>5</b> SQL</a>
 <ul>
@@ -184,32 +262,318 @@
             <section class="normal" id="section-">
 <div id="python" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Sección 4</span> Python<a href="python.html#python" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="tipos-de-datos" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Tipos de datos<a href="python.html#tipos-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Python es un lenguaje de programación de alto nivel, interactivo e interpretado. Es de código abierto, multi-plataforma y se adecua a diversos paradigmas de programación como lo es la programación orientada a objetos.</p>
+<p>El intérprete de Python y su amplia gama de bibliotecas estándar están disponibles de forma gratuita para la mayoría de plataformas en el sitio web oficial de Python. Además, este sitio proporciona documentación adicional, programas y herramientas que complementan su ecosistema.</p>
+<ul>
+<li><p><strong>Características de Python:</strong></p>
+<ul>
+<li><p>Sintaxis muy clara y legible.</p></li>
+<li><p>Fuerte capacidad de introspección.</p></li>
+<li><p>Orientación a objetos intuitiva.</p></li>
+<li><p>Altamente modular, soporta paquetes jerárquicos.</p></li>
+<li><p>Enfocado en el uso de excepciones para el manejo de errores.</p></li>
+<li><p>Tipos de datos dinámicos de muy alto nivel.</p></li>
+<li><p>Extensa biblioteca estándar (STL) y módulos de terceros para prácticamente todas las tareas.</p></li>
+<li><p>Extensiones y módulos fácilmente escritos en C, C + + (o Java para Jython, o. NET para IronPython).</p></li>
+<li><p>Integrable dentro de las aplicaciones como una interfaz de scripting.</p></li>
+</ul></li>
+<li><p><strong>Aplicaciones de Python:</strong> se ha utilizado para desarrollar:</p>
+<ul>
+<li><p>Aplicaciones de escritorio.</p></li>
+<li><p>Aplicaciones web.</p></li>
+<li><p>Análisis de datos.</p></li>
+<li><p>Administración de servidores.</p></li>
+<li><p>Seguridad y análisis de penetración.</p></li>
+<li><p>Cómputo en la nube.</p></li>
+</ul></li>
+<li><p>Cómputo científico.</p></li>
+<li><p>Análisis de lenguaje natural.</p></li>
+<li><p>Visión artificial.</p></li>
+<li><p>Animación, videojuegos e imágenes generadas por computadora.</p></li>
+<li><p>Aplicaciones móviles.</p></li>
+</ul>
+<div id="breve-introducción-a-los-lenguajes-de-programación." class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Breve introducción a los lenguajes de programación.<a href="python.html#breve-introducción-a-los-lenguajes-de-programación." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un lenguaje se define como un conjunto de secuencias de símbolos que posibilitan la creación y transmisión de mensajes entre un emisor y un receptor. Aunque la naturaleza exhibe ciertos tipos de lenguajes, los seres humanos han desarrollado una variedad de sistemas lingüísticos de gran complejidad.</p>
+<p>Los lenguajes se componen principalmente de dos aspectos: la gramática, que aborda la estructura del lenguaje, y la semántica, que se ocupa del significado del lenguaje.</p>
+<p>La gramática, a su vez, incluye:</p>
+<ul>
+<li>Morfología: relacionada con la construcción de las unidades lingüísticas (género, tiempos verbales, declinaciones).</li>
+<li>Sintaxis: referente a la manera en que se deben ordenar y estructurar las unidades lingüísticas en las expresiones.</li>
+</ul>
+<p>En el transcurso del siglo XX, figuras como Alan Turing y Alonzo Church sentaron los fundamentos del cálculo, la programación y sus respectivos lenguajes. Los lenguajes de programación contemporáneos, a diferencia de los lenguajes naturales, presentan una morfología estructurada y simplificada diseñada para ejecutar instrucciones precisas en los sistemas informáticos.</p>
+<ul>
+<li><strong>Lenguajes de alto y bajo nivel:</strong></li>
+</ul>
+<p>Los lenguajes de bajo nivel, como el lenguaje ensamblador, consisten en un conjunto elemental de instrucciones que son ejecutadas directamente por la unidad de procesamiento de un sistema informático. Estos lenguajes están estrechamente vinculados al tipo de procesador que los procesa y suelen ser difíciles de elaborar e interpretar para las personas.</p>
+<p>Por otro lado, los lenguajes de alto nivel son más comprensibles para los humanos y, en general, menos dependientes del hardware específico, aunque requieren ser traducidos a lenguaje de bajo nivel para su ejecución.</p>
+<ul>
+<li><strong>Lenguajes compilados e interpretados: </strong></li>
+</ul>
+<p>Los lenguajes de alto nivel se comunican con los sistemas informáticos de dos maneras distintas:</p>
+<ol style="list-style-type: decimal">
+<li><p>A través de un compilador, que traduce el código del programa a lenguaje de bajo nivel, generando un “archivo binario” que puede ser ejecutado posteriormente.</p></li>
+<li><p>Mediante un intérprete, que ejecuta las instrucciones ingresadas de inmediato.</p></li>
+</ol>
+<p>Por lo general, los lenguajes compilados son más eficientes en términos de velocidad y consumo de recursos que los lenguajes interpretados, ya que el archivo resultante es código de bajo nivel. En contraste, los lenguajes interpretados requieren un proceso adicional a través de varios niveles de abstracción antes de que las instrucciones sean ejecutadas por el sistema.</p>
+<p><strong>Python es un lenguaje interpretado de alto nivel.</strong></p>
 </div>
-<div id="flujo-de-control" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Flujo de control<a href="python.html#flujo-de-control" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="entornos-interactivos" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Entornos interactivos<a href="python.html#entornos-interactivos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Debido a que Python es un lenguaje interpretado, es posible utilizarlo mediante un entorno interactivo (shell) o mediante el uso de scripts.</p>
+<p>El shell interactivo de Python funciona a través de una terminal.</p>
+<p>Para sistemas basados en UNIX, como GNU/Linux, y Mac OS X, es requerido abrir una terminal y llamar al shell de la siguiente manera:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="python.html#cb1-1" tabindex="-1"></a>python</span></code></pre></div>
+<p>Dependiendo de la versión o la forma en que fue instalado, a veces se manda a llamar con la siguiente forma:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="python.html#cb2-1" tabindex="-1"></a>python3</span></code></pre></div>
+<p>Para salir del entorno interactivo usamos <code>exit()</code></p>
+<p>Para desplegar el texto Hola Mundo desde en entorno interactivo sólo es necesario teclear lo siguiente:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="python.html#cb3-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Hola, Mundo.&quot;</span>)</span></code></pre></div>
+<pre><code>## Hola, Mundo.</code></pre>
 </div>
-<div id="visualización-de-datos" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Visualización de datos<a href="python.html#visualización-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="palabras-reservadas-de-python." class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Palabras reservadas de Python.<a href="python.html#palabras-reservadas-de-python." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Las palabras reservadas, también conocidas como keywords, son los nombres predeterminados que el intérprete de Python proporciona de forma inherente. No se recomienda emplear estas palabras para asignar nombres a otros objetos.</p>
+<p>Para acceder al listado completo de palabras reservadas, se puede consultar ingresando help(‘keywords’) desde la interfaz interactiva de Python.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="python.html#cb5-1" tabindex="-1"></a><span class="bu">help</span>(<span class="st">&quot;keywords&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## Here is a list of the Python keywords.  Enter any keyword to get more help.
+## 
+## False               class               from                or
+## None                continue            global              pass
+## True                def                 if                  raise
+## and                 del                 import              return
+## as                  elif                in                  try
+## assert              else                is                  while
+## async               except              lambda              with
+## await               finally             nonlocal            yield
+## break               for                 not</code></pre>
 </div>
-<div id="manipulación-de-bases-de-datos" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Manipulación de bases de datos<a href="python.html#manipulación-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sintaxis-de-nombres-en-python" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Sintaxis de nombres en Python<a href="python.html#sintaxis-de-nombres-en-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En Python 3, la sintaxis para la elaboración de nombres sigue ciertas reglas y convenciones que son importantes para escribir un código claro y legible. Aquí hay algunas pautas clave:</p>
+<ul>
+<li><p><strong>Caracteres permitidos:</strong> Los nombres pueden incluir letras minúsculas (a-z), letras mayúsculas (A-Z), dígitos (0-9) y el guion bajo (_). No pueden comenzar con un número.</p></li>
+<li><p><strong>Convenciones de estilo:</strong> Se recomienda seguir las convenciones de estilo de Python, que generalmente sugieren el uso de minúsculas para los nombres de variables y funciones, y mayúsculas para constantes. Para nombres compuestos, se recomienda separar las palabras con guiones bajos (snake_case).</p></li>
+<li><p><strong>Palabras reservadas:</strong> No se pueden utilizar palabras reservadas de Python como nombres de variables, ya que estas palabras tienen significados específicos en el lenguaje y están reservadas para su uso en la sintaxis de Python.</p></li>
+<li><p><strong>Significado claro:</strong> Es importante elegir nombres que proporcionen un significado claro y descriptivo sobre el propósito de la variable, función o clase que están representando. Esto ayuda a que el código sea más legible y comprensible para otros programadores.</p></li>
+<li><p><strong>Evitar nombres genéricos:</strong> Trate de evitar nombres genéricos como “a”, “b”, “x”, etc. Utilice nombres que reflejen el propósito y la función de la variable o función.</p></li>
+</ul>
 </div>
-<div id="análisis-exploratorio-de-bases-de-datos" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Análisis exploratorio de bases de datos<a href="python.html#análisis-exploratorio-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tipos-de-datos" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Tipos de datos<a href="python.html#tipos-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En Python, los tipos de datos son la base de cualquier programa. Python es un lenguaje de programación dinámico, por lo que no es necesario declarar explícitamente el tipo de datos cuando se crea una variable. A continuación, exploraremos los tipos de datos básicos en Python.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="14%" />
+<col width="41%" />
+<col width="17%" />
+<col width="9%" />
+<col width="9%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo de dato</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+<th>Colección</th>
+<th>Indexable</th>
+<th>Mutable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>int</td>
+<td>Números enteros</td>
+<td>5, -10, 100</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>float</td>
+<td>Números de punto flotante</td>
+<td>3.14, -0.001, 2.0</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>str</td>
+<td>Cadena de caracteres</td>
+<td>‘Hola’, “Mundo”</td>
+<td>No</td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>bool</td>
+<td>Booleano (Verdadero o Falso)</td>
+<td>True, False</td>
+<td>No</td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>list</td>
+<td>Lista ordenada de elementos</td>
+<td>[1, 2, 3], [‘a’, ‘b’, ‘c’]</td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr class="even">
+<td>tuple</td>
+<td>Secuencia inmutable de elementos</td>
+<td>(1, 2, 3), (‘a’, ‘b’, ‘c’)</td>
+<td>Sí</td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>dict</td>
+<td>Colección de pares clave-valor</td>
+<td>{‘nombre’: ‘Juan’, ‘edad’: 30}</td>
+<td>Sí</td>
+<td>No</td>
+<td>Sí</td>
+</tr>
+<tr class="even">
+<td>set</td>
+<td>Colección no ordenada de elementos únicos</td>
+<td>{1, 2, 3}, {‘a’, ‘b’, ‘c’}</td>
+<td>Sí</td>
+<td>No</td>
+<td>Sí</td>
+</tr>
+</tbody>
+</table>
+<p>Las <strong>colecciones</strong> son estructuras que almacenan una serie de elementos. Cada uno de estos elementos se puede considerar como una entidad independiente dentro de la colección.</p>
+<p>Los <strong>tipos indexables</strong> permiten acceder a cada elemento dentro de la colección mediante un identificador único, que puede ser un número entero (índice) o una clave, dependiendo del tipo de colección.</p>
+<p>Los <strong>tipos mutables</strong> tienen la característica de permitir la modificación de su contenido. Esto incluye la capacidad de agregar, eliminar o modificar elementos existentes en la colección.</p>
+<div id="números" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Números<a href="python.html#números" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En Python, hay tres tipos principales de números: enteros (int), números de punto flotante (float) y números complejos (complex). Veamos ejemplos de cada uno:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="python.html#cb7-1" tabindex="-1"></a><span class="co"># Entero</span></span>
+<span id="cb7-2"><a href="python.html#cb7-2" tabindex="-1"></a>numero_entero <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb7-3"><a href="python.html#cb7-3" tabindex="-1"></a><span class="bu">print</span>(numero_entero)</span></code></pre></div>
+<pre><code>## 10</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="python.html#cb9-1" tabindex="-1"></a><span class="co"># Punto flotante</span></span>
+<span id="cb9-2"><a href="python.html#cb9-2" tabindex="-1"></a>numero_flotante <span class="op">=</span> <span class="fl">3.14</span></span>
+<span id="cb9-3"><a href="python.html#cb9-3" tabindex="-1"></a><span class="bu">print</span>(numero_flotante)</span></code></pre></div>
+<pre><code>## 3.14</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="python.html#cb11-1" tabindex="-1"></a><span class="co"># Complejo</span></span>
+<span id="cb11-2"><a href="python.html#cb11-2" tabindex="-1"></a>numero_complejo <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="ot">3j</span></span>
+<span id="cb11-3"><a href="python.html#cb11-3" tabindex="-1"></a><span class="bu">print</span>(numero_complejo)</span></code></pre></div>
+<pre><code>## (2+3j)</code></pre>
+<p>La precisión de los números flotantes debe ser considerada cuidadosamente, ya que está influenciada significativamente por la capacidad del equipo de cómputo. En ciertas ocasiones, las operaciones con números de tipo float pueden arrojar aproximaciones en lugar de resultados exactos. Es importante tener en cuenta estas limitaciones al trabajar con números flotantes.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="python.html#cb13-1" tabindex="-1"></a><span class="dv">2</span> <span class="op">/</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## 0.6666666666666666</code></pre>
 </div>
-<div id="funciones-y-scripts" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> Funciones y scripts<a href="python.html#funciones-y-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cadenas-de-caracteres" class="section level3 hasAnchor" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Cadenas de Caracteres<a href="python.html#cadenas-de-caracteres" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las cadenas de caracteres (str) se utilizan para representar texto en Python. Se pueden definir utilizando comillas simples (’) o dobles (“):</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="python.html#cb15-1" tabindex="-1"></a>cadena_simple <span class="op">=</span> <span class="st">&#39;Hola, mundo!&#39;</span></span>
+<span id="cb15-2"><a href="python.html#cb15-2" tabindex="-1"></a><span class="bu">print</span>(cadena_simple)</span></code></pre></div>
+<pre><code>## Hola, mundo!</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="python.html#cb17-1" tabindex="-1"></a>cadena_doble <span class="op">=</span> <span class="st">&quot;¡Hola, Python!&quot;</span></span>
+<span id="cb17-2"><a href="python.html#cb17-2" tabindex="-1"></a><span class="bu">print</span>(cadena_doble)</span></code></pre></div>
+<pre><code>## ¡Hola, Python!</code></pre>
 </div>
-<div id="buenas-practicas" class="section level2 hasAnchor" number="4.7">
-<h2><span class="header-section-number">4.7</span> Buenas practicas<a href="python.html#buenas-practicas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="listas" class="section level3 hasAnchor" number="4.5.3">
+<h3><span class="header-section-number">4.5.3</span> Listas<a href="python.html#listas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una lista (list) en Python es una secuencia ordenada de elementos que pueden ser de diferentes tipos. Se definen utilizando corchetes []:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="python.html#cb19-1" tabindex="-1"></a>mi_lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">&#39;cuatro&#39;</span>, <span class="fl">5.0</span>]</span>
+<span id="cb19-2"><a href="python.html#cb19-2" tabindex="-1"></a><span class="bu">print</span>(mi_lista)</span></code></pre></div>
+<pre><code>## [1, 2, 3, &#39;cuatro&#39;, 5.0]</code></pre>
 </div>
-<div id="procesamiento-de-alto-rendimiento" class="section level2 hasAnchor" number="4.8">
-<h2><span class="header-section-number">4.8</span> Procesamiento de alto rendimiento<a href="python.html#procesamiento-de-alto-rendimiento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tuplas" class="section level3 hasAnchor" number="4.5.4">
+<h3><span class="header-section-number">4.5.4</span> Tuplas<a href="python.html#tuplas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las tuplas (tuple) son secuencias ordenadas similares a las listas, pero son inmutables, es decir, no se pueden modificar después de su creación. Se definen utilizando paréntesis ():</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="python.html#cb21-1" tabindex="-1"></a>mi_tupla <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">&#39;cuatro&#39;</span>, <span class="fl">5.0</span>)</span>
+<span id="cb21-2"><a href="python.html#cb21-2" tabindex="-1"></a><span class="bu">print</span>(mi_tupla)</span></code></pre></div>
+<pre><code>## (1, 2, 3, &#39;cuatro&#39;, 5.0)</code></pre>
 </div>
-<div id="programación-en-paralelo" class="section level2 hasAnchor" number="4.9">
-<h2><span class="header-section-number">4.9</span> Programación en paralelo<a href="python.html#programación-en-paralelo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conjuntos" class="section level3 hasAnchor" number="4.5.5">
+<h3><span class="header-section-number">4.5.5</span> Conjuntos<a href="python.html#conjuntos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los conjuntos (set) son colecciones desordenadas de elementos únicos. Se definen utilizando llaves {}:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="python.html#cb23-1" tabindex="-1"></a>mi_conjunto <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>}</span>
+<span id="cb23-2"><a href="python.html#cb23-2" tabindex="-1"></a><span class="bu">print</span>(mi_conjunto)</span></code></pre></div>
+<pre><code>## {1, 2, 3, 4, 5}</code></pre>
+</div>
+<div id="diccionarios" class="section level3 hasAnchor" number="4.5.6">
+<h3><span class="header-section-number">4.5.6</span> Diccionarios<a href="python.html#diccionarios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los diccionarios (dict) son colecciones de pares clave-valor. Cada elemento del diccionario tiene una clave y un valor asociado. Se definen utilizando llaves {} y separando las claves y los valores con ::</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="python.html#cb25-1" tabindex="-1"></a>mi_diccionario <span class="op">=</span> {<span class="st">&#39;nombre&#39;</span>: <span class="st">&#39;Robeto&#39;</span>, <span class="st">&#39;edad&#39;</span>: <span class="dv">20</span>, <span class="st">&#39;ciudad&#39;</span>: <span class="st">&#39;Morelia&#39;</span>}</span>
+<span id="cb25-2"><a href="python.html#cb25-2" tabindex="-1"></a><span class="bu">print</span>(mi_diccionario)</span></code></pre></div>
+<pre><code>## {&#39;nombre&#39;: &#39;Robeto&#39;, &#39;edad&#39;: 20, &#39;ciudad&#39;: &#39;Morelia&#39;}</code></pre>
+</div>
+<div id="operaciones-básicas" class="section level3 hasAnchor" number="4.5.7">
+<h3><span class="header-section-number">4.5.7</span> Operaciones Básicas<a href="python.html#operaciones-básicas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Python permite realizar operaciones básicas con los tipos de datos mencionados anteriormente. A continuación, se muestran algunos ejemplos:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="python.html#cb27-1" tabindex="-1"></a><span class="co"># Operaciones numéricas</span></span>
+<span id="cb27-2"><a href="python.html#cb27-2" tabindex="-1"></a>resultado <span class="op">=</span> <span class="dv">10</span> <span class="op">+</span> <span class="dv">5</span></span>
+<span id="cb27-3"><a href="python.html#cb27-3" tabindex="-1"></a>diferencia <span class="op">=</span> <span class="dv">10</span> <span class="op">-</span> <span class="dv">5</span></span>
+<span id="cb27-4"><a href="python.html#cb27-4" tabindex="-1"></a>producto <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> <span class="dv">5</span></span>
+<span id="cb27-5"><a href="python.html#cb27-5" tabindex="-1"></a>cociente <span class="op">=</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">5</span></span>
+<span id="cb27-6"><a href="python.html#cb27-6" tabindex="-1"></a>modulo <span class="op">=</span> <span class="dv">10</span> <span class="op">%</span> <span class="dv">3</span></span>
+<span id="cb27-7"><a href="python.html#cb27-7" tabindex="-1"></a>potencia <span class="op">=</span> <span class="dv">10</span> <span class="op">**</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="python.html#cb28-1" tabindex="-1"></a><span class="co"># Concatenación de cadenas</span></span>
+<span id="cb28-2"><a href="python.html#cb28-2" tabindex="-1"></a>saludo <span class="op">=</span> <span class="st">&quot;Hola&quot;</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> <span class="st">&quot;Mundo&quot;</span></span>
+<span id="cb28-3"><a href="python.html#cb28-3" tabindex="-1"></a><span class="bu">print</span>(saludo)</span></code></pre></div>
+<pre><code>## Hola Mundo</code></pre>
+<p>Para acceder a los elementos de listas y tuplas podemos indicarle el índice asociado entre corchetes.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="python.html#cb30-1" tabindex="-1"></a>mi_lista <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb30-2"><a href="python.html#cb30-2" tabindex="-1"></a>primer_elemento <span class="op">=</span> mi_lista[<span class="dv">0</span>]</span>
+<span id="cb30-3"><a href="python.html#cb30-3" tabindex="-1"></a><span class="bu">print</span>(primer_elemento)</span></code></pre></div>
+<pre><code>## 1</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="python.html#cb32-1" tabindex="-1"></a>mi_tupla <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb32-2"><a href="python.html#cb32-2" tabindex="-1"></a>ultimo_elemento <span class="op">=</span> mi_tupla[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb32-3"><a href="python.html#cb32-3" tabindex="-1"></a><span class="bu">print</span>(ultimo_elemento)</span></code></pre></div>
+<pre><code>## 5</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="python.html#cb34-1" tabindex="-1"></a><span class="co"># Agregando elementos a un conjunto</span></span>
+<span id="cb34-2"><a href="python.html#cb34-2" tabindex="-1"></a>mi_conjunto <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb34-3"><a href="python.html#cb34-3" tabindex="-1"></a>mi_conjunto.add(<span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="python.html#cb35-1" tabindex="-1"></a><span class="co"># Accediendo a valores de un diccionario</span></span>
+<span id="cb35-2"><a href="python.html#cb35-2" tabindex="-1"></a>mi_diccionario <span class="op">=</span> {<span class="st">&#39;nombre&#39;</span>: <span class="st">&#39;Roberto&#39;</span>, <span class="st">&#39;edad&#39;</span>: <span class="dv">20</span>}</span>
+<span id="cb35-3"><a href="python.html#cb35-3" tabindex="-1"></a>nombre <span class="op">=</span> mi_diccionario[<span class="st">&#39;nombre&#39;</span>]</span>
+<span id="cb35-4"><a href="python.html#cb35-4" tabindex="-1"></a><span class="bu">print</span>(nombre)</span></code></pre></div>
+<pre><code>## Roberto</code></pre>
+</div>
+<div id="ejercicios" class="section level3 hasAnchor" number="4.5.8">
+<h3><span class="header-section-number">4.5.8</span> Ejercicios<a href="python.html#ejercicios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>Crea una lista que contenga los nombres de tres amigos tuyos.</p></li>
+<li><p>Crea un diccionario que represente la información de un libro (título, autor, año de publicación).</p></li>
+<li><p>Realiza la suma de dos números y guarda el resultado en una variable.</p></li>
+<li><p>Concatena dos cadenas de caracteres y muestra el resultado.</p></li>
+</ol>
+</div>
+</div>
+<div id="flujo-de-control" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Flujo de control<a href="python.html#flujo-de-control" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="visualización-de-datos" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Visualización de datos<a href="python.html#visualización-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="manipulación-de-bases-de-datos" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Manipulación de bases de datos<a href="python.html#manipulación-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="análisis-exploratorio-de-bases-de-datos" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> Análisis exploratorio de bases de datos<a href="python.html#análisis-exploratorio-de-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="funciones-y-scripts" class="section level2 hasAnchor" number="4.10">
+<h2><span class="header-section-number">4.10</span> Funciones y scripts<a href="python.html#funciones-y-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="buenas-practicas" class="section level2 hasAnchor" number="4.11">
+<h2><span class="header-section-number">4.11</span> Buenas practicas<a href="python.html#buenas-practicas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="procesamiento-de-alto-rendimiento" class="section level2 hasAnchor" number="4.12">
+<h2><span class="header-section-number">4.12</span> Procesamiento de alto rendimiento<a href="python.html#procesamiento-de-alto-rendimiento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="programación-en-paralelo" class="section level2 hasAnchor" number="4.13">
+<h2><span class="header-section-number">4.13</span> Programación en paralelo<a href="python.html#programación-en-paralelo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
