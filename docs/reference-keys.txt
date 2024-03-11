@@ -77,3 +77,13 @@ breve-introducción-a-los-lenguajes-de-programación.
 entornos-interactivos
 palabras-reservadas-de-python.
 sintaxis-de-nombres-en-python
+estructuras-de-control-condicionales
+if-statement
+if-else-statement
+if-elif-else-statement
+estructuras-de-control-de-bucles
+while-loop
+for-loop
+estructuras-de-control-de-interrupción
+break-statement
+continue-statement

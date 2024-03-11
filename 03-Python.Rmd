@@ -213,6 +213,64 @@ mi_lista = [1, 2, 3, 'cuatro', 5.0]
 print(mi_lista)
 ```
 
+Para acceder a los elementos de una listam, podemos usar su índice. Los índices en Python comienzan desde 0 para el primer elemento y van incrementando de uno en uno.
+
+```{python}
+print(mi_lista[0])  # Imprime el primer elemento: 1
+print(mi_lista[3])  # Imprime 'cuatro'
+```
+
+También se puede acceder a los elementos de la lista utilizando índices negativos, los cuales cuentan desde el final de la lista hacia el principio.
+
+```{python}
+print(mi_lista[-1])  # Imprime el último elemento: 5.0
+print(mi_lista[-2])  # Imprime 'cuatro'
+```
+
+Puedes añadir elementos a una lista utilizando el método `append()` para agregar un elemento al final de la lista.
+
+```{python}
+mi_lista.append(6)
+print(mi_lista)  
+```
+
+También puedes extender una lista añadiendo todos los elementos de otra lista utilizando el método `extend()`.
+
+```{python}
+mi_lista.extend([7, 8, 9])
+print(mi_lista)  
+```
+
+Puedes eliminar elementos de una lista utilizando la palabra clave `del` seguida del índice del elemento que deseas eliminar.
+
+```{python}
+del mi_lista[3]  # Elimina el elemento 'cuatro'
+print(mi_lista) 
+```
+
+También puedes utilizar el método `remove()` para eliminar un elemento específico por su valor.
+
+```{python}
+mi_lista.remove(3)  # Elimina el elemento 3
+print(mi_lista)  
+```
+
+Puedes unir dos listas utilizando el operador `+` o el método `extend()`.
+
+```{python}
+lista1 = [1, 2, 3]
+lista2 = [4, 5, 6]
+
+nueva_lista = lista1 + lista2
+print(nueva_lista)  
+
+lista1.extend(lista2)
+print(lista1)  
+```
+
+Las listas en Python son estructuras de datos versátiles y fundamentales que permiten almacenar y manipular colecciones de elementos de manera eficiente.
+
+
 ### Tuplas
 
 Las tuplas (tuple) son secuencias ordenadas similares a las listas, pero son inmutables, es decir, no se pueden modificar después de su creación. Se definen utilizando paréntesis ():
@@ -221,6 +279,83 @@ Las tuplas (tuple) son secuencias ordenadas similares a las listas, pero son inm
 mi_tupla = (1, 2, 3, 'cuatro', 5.0)
 print(mi_tupla)
 ```
+
+Para acceder a los elementos de una tupla, podemos utilizar su índice, al igual que en las listas.
+
+```{python}
+print(mi_tupla[0])  # Imprime el primer elemento: 1
+print(mi_tupla[3])  # Imprime 'cuatro'
+```
+
+También se puede acceder a los elementos de la tupla utilizando índices negativos, que cuentan desde el final de la tupla hacia el principio.
+
+```{python}
+print(mi_tupla[-1])  # Imprime el último elemento: 5.0
+print(mi_tupla[-2])  # Imprime 'cuatro'
+```
+
+Dado que las tuplas son inmutables, no se pueden borrar elementos individualmente ni modificar la tupla después de su creación. Aunque las tuplas son inmutables, todavía tienen algunas características útiles en Python:
+
+- **Empaquetado y desempaquetado de tuplas**: Puedes empaquetar múltiples valores en una sola tupla y desempaquetarlos en variables individuales.
+
+```{python}
+tupla = 1, 2, 3  # Empaquetado de valores
+a, b, c = tupla  # Desempaquetado en variables individuales
+print(a, b, c)   # Imprime 1 2 3
+```
+
+El empaquetado y desempaquetado de tuplas son conceptos importantes en Python que permiten trabajar con múltiples valores de manera eficiente.
+
+El empaquetado de tuplas es el proceso de agrupar múltiples valores en una sola tupla. Esto se hace simplemente colocando los valores separados por comas, sin necesidad de utilizar paréntesis, por ejemplo: 
+
+```{python}
+tupla_empaquetada = 1, 2, 3
+```
+
+Aquí, hemos empaquetado los valores 1, 2 y 3 en una sola tupla llamada `tupla_empaquetada`.
+
+El desempaquetado de tuplas es el proceso inverso al empaquetado. Permite extraer los valores individuales de una tupla y asignarlos a variables individuales. Esto se hace asignando la tupla a la derecha del signo de igualdad y las variables a la izquierda, por ejemplo:
+
+```{python}
+a, b, c = tupla_empaquetada
+```
+
+Aquí, estamos desempaquetando la tupla `tupla_empaquetada` y asignando sus valores a las variables `a`, `b` y `c` respectivamente.
+Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las siguientes:
+
+(a) **Sintaxis concisa**: El empaquetado y desempaquetado de tuplas permite escribir código de manera más concisa y legible.
+
+(b) **Asignación múltiple**: Permite asignar valores a múltiples variables en una sola línea de código.
+
+Los usos más comunes que tienen son los siguientes:
+
+i) **Intercambio de valores**: Se pueden intercambiar los valores de dos variables sin necesidad de una variable temporal utilizando el desempaquetado de tuplas.
+
+```{python}
+a, b = b, a
+```
+
+ii) **Retorno múltiple de funciones**: Las funciones pueden devolver múltiples valores empaquetados en una tupla, y luego estos valores pueden ser desempaquetados cuando se llama a la función.
+
+```{python}
+def obtener_coordenadas():
+    return 10, 20
+
+x, y = obtener_coordenadas()
+print("Coordenadas:", x, y)
+```
+
+El empaquetado y desempaquetado de tuplas son herramientas poderosas que permiten trabajar con múltiples valores de manera eficiente en Python.
+
+- **Tuplas como claves de diccionario**: Dado que las tuplas son inmutables, pueden ser utilizadas como claves en un diccionario de Python.
+
+```{python}
+diccionario = {(1, 2): 'valor', (3, 4): 'otro valor'}
+print(diccionario[(1, 2)])  # Imprime 'valor'
+```
+
+Aunque las tuplas son más simples que las listas, su inmutabilidad las hace útiles en situaciones donde no deseas que los datos cambien después de su definición.
+
 
 ### Conjuntos
 
@@ -232,6 +367,52 @@ print(mi_conjunto)
 ```
 
 
+Los conjuntos en Python son mutables, lo que significa que puedes agregar y eliminar elementos, pero no puedes modificar los elementos existentes directamente. Para agregar elementos a un conjunto, puedes utilizar el método `add()`.
+
+```{python}
+mi_conjunto.add(6)
+print(mi_conjunto)  
+```
+
+Para eliminar un elemento de un conjunto, puedes usar el método `remove()` o `discard()`. La diferencia entre estos dos métodos radica en cómo manejan la eliminación de un elemento que no está presente en el conjunto. `remove()` generará un error, mientras que `discard()` no.
+
+```{python}
+mi_conjunto.remove(3)
+print(mi_conjunto)
+
+mi_conjunto.discard(5)
+print(mi_conjunto)
+```
+
+Los conjuntos en Python admiten operaciones comunes de teoría de conjuntos como unión, intersección y diferencia.
+
+- **Unión**: Combina todos los elementos únicos de dos conjuntos.
+
+```{python}
+conjunto1 = {1, 2, 3}
+conjunto2 = {3, 4, 5}
+
+union = conjunto1.union(conjunto2)
+print(union)
+```
+
+- **Intersección**: Devuelve un conjunto que contiene los elementos que son comunes a ambos conjuntos.
+```{python}
+interseccion = conjunto1.intersection(conjunto2)
+print(interseccion)  
+```
+
+- **Diferencia**: Devuelve un conjunto que contiene los elementos que están en el primer conjunto pero no en el segundo.
+```{python}
+diferencia = conjunto1.difference(conjunto2)
+print(diferencia) 
+```
+
+Los conjuntos son útiles cuando necesitas almacenar una colección de elementos únicos y realizar operaciones de conjuntos eficientes como la eliminación de duplicados y la comparación de colecciones.
+
+En resumen, los conjuntos en Python proporcionan una manera eficiente de trabajar con colecciones de elementos únicos y son útiles para una variedad de tareas, como la eliminación de duplicadosy la realización de operaciones de conjuntos.
+
+
 ### Diccionarios
 
 Los diccionarios (dict) son colecciones de pares clave-valor. Cada elemento del diccionario tiene una clave y un valor asociado. Se definen utilizando llaves {} y separando las claves y los valores con ::
@@ -241,6 +422,110 @@ mi_diccionario = {'nombre': 'Robeto', 'edad': 20, 'ciudad': 'Morelia'}
 print(mi_diccionario)
 ```
 
+
+Los diccionarios en Python son mutables, lo que significa que puedes agregar, modificar y eliminar elementos según sea necesario.
+
+Puedes acceder a los valores del diccionario utilizando sus claves.
+
+```{python}
+print(mi_diccionario['nombre'])  # Imprime 'Roberto'
+print(mi_diccionario['edad'])    # Imprime 20
+```
+
+Si intentas acceder a una clave que no existe en el diccionario, Python generará un error `KeyError`.
+
+Puedes agregar un nuevo par clave-valor al diccionario simplemente asignando un valor a una nueva clave.
+
+```{python}
+mi_diccionario['email'] = 'roberto@example.com'
+print(mi_diccionario)
+```
+
+Puedes modificar el valor asociado a una clave existente del diccionario.
+
+```{python}
+mi_diccionario['edad'] = 21
+print(mi_diccionario)
+```
+
+Puedes eliminar un elemento del diccionario utilizando la palabra clave `del`.
+
+```{python}
+del mi_diccionario['ciudad']
+print(mi_diccionario)
+```
+
+También puedes utilizar el método `pop()` para eliminar un elemento y devolver su valor.
+
+```{python}
+valor_eliminado = mi_diccionario.pop('edad')
+print(valor_eliminado)   # Imprime 21
+print(mi_diccionario)
+```
+
+Algunos conceptos clave de los diccionarios son los siguientes:
+
+- **`keys()`, `values()`, `items()`:** Estos métodos devuelven vistas de las claves, valores y pares clave-valor del diccionario, respectivamente.
+
+  i) Ejemplo de `keys()`:
+  
+```{python}
+mi_diccionario = {'nombre': 'Juan', 'edad': 30, 'ciudad': 'Madrid'}
+claves = mi_diccionario.keys()
+print(claves)  
+
+# Iterar sobre las claves
+for clave in claves:
+    print(clave)
+```
+
+  ii) Ejemplo de `values()`:
+  
+```{python}
+mi_diccionario = {'nombre': 'Juan', 'edad': 30, 'ciudad': 'Madrid'}
+valores = mi_diccionario.values()
+print(valores)
+
+# Iterar sobre los valores
+for valor in valores:
+    print(valor)  
+```
+
+  iii) Ejemplo de `items()`:
+
+```{python}
+mi_diccionario = {'nombre': 'Juan', 'edad': 30, 'ciudad': 'Madrid'}
+items = mi_diccionario.items()
+print(items) 
+
+# Iterar sobre los pares clave-valor
+for clave, valor in items:
+    print(clave, valor) 
+```
+
+- **`update()`:** Este método agrega los elementos de un diccionario a otro diccionario existente.
+
+```{python}
+diccionario1 = {'a': 1, 'b': 2}
+diccionario2 = {'b': 3, 'c': 4}
+
+diccionario1.update(diccionario2)
+print(diccionario1)  # Salida: {'a': 1, 'b': 3, 'c': 4}
+```
+
+
+- **`clear()`:** Este método elimina todos los elementos del diccionario.
+
+```{python}
+mi_diccionario = {'nombre': 'Juan', 'edad': 30, 'ciudad': 'Madrid'}
+mi_diccionario.clear()
+print(mi_diccionario)  # Salida: {}
+```
+
+Estos métodos son muy útiles para trabajar con diccionarios en Python y permiten manipular fácilmente las claves, valores y pares clave-valor, así como agregar, eliminar y actualizar elementos en los diccionarios de manera eficiente.
+
+
+Los diccionarios en Python son estructuras de datos muy versátiles y se utilizan ampliamente para mapear claves a valores y para almacenar datos de manera eficiente. Son útiles para muchas tareas, como el almacenamiento de configuraciones, el modelado de datos y la manipulación de datos estructurados.
 
 ### Operaciones Básicas
 
@@ -302,6 +587,113 @@ print(nombre)
 
 
 ## Flujo de control
+
+
+El flujo de control en Python se refiere a la secuencia en la que se ejecutan las instrucciones en un programa. Python ofrece varias estructuras de control que permiten tomar decisiones, repetir acciones y ejecutar código en función de condiciones específicas.
+
+### Estructuras de Control Condicionales
+
+#### `if` Statement
+
+El `if` statement permite ejecutar un bloque de código si se cumple una condición. Por ejemplo: 
+
+```{python}
+edad = 20
+if edad >= 18:
+    print("Eres mayor de edad")
+```
+
+#### `if-else` Statement
+
+El `if-else` statement ejecuta un bloque de código si se cumple una condición y otro bloque de código si la condición no se cumple. Por ejemplo:
+
+```{python}
+edad = 15
+if edad >= 18:
+    print("Eres mayor de edad")
+else:
+    print("Eres menor de edad")
+```
+
+#### `if-elif-else` Statement
+
+El `if-elif-else` statement permite evaluar múltiples condiciones de manera secuencial. Por ejemplo:
+
+```{python}
+puntuacion = 75
+if puntuacion >= 90:
+    print("Excelente")
+elif puntuacion >= 70:
+    print("Bien")
+else:
+    print("Puedes mejorar")
+```
+
+**Ejercicios:**
+
+1. Escribe un programa que verifique si un número es positivo, negativo o cero.
+
+2. Crea un programa que determine si un número es par o impar.
+
+### Estructuras de Control de Bucles
+
+#### `while` Loop
+
+El bucle `while` ejecuta un bloque de código mientras se cumpla una condición. Por ejemplo:
+
+```{python}
+contador = 0
+while contador < 5:
+    print(contador)
+    contador += 1
+```
+
+#### `for` Loop
+
+El bucle `for` itera sobre una secuencia, como una lista o una cadena de texto. Por ejemplo:
+
+```{python}
+frutas = ["manzana", "banana", "cereza"]
+for fruta in frutas:
+    print(fruta)
+```
+
+**Ejercicios:**
+
+1. Escribe un programa que muestre los números del 1 al 10 utilizando un bucle `while`.
+
+2. Crea un programa que calcule la suma de los números del 1 al 100 utilizando un bucle `for`.
+
+### Estructuras de Control de Interrupción
+
+#### `break` Statement
+
+El `break` statement se utiliza para salir de un bucle antes de que se haya completado. Por ejemplo:
+
+```{python}
+for numero in range(10):
+    if numero == 5:
+        break
+    print(numero)
+```
+
+#### `continue` Statement
+
+El `continue` statement se utiliza para saltar la iteración actual de un bucle y continuar con la siguiente. Por ejemplo:
+
+```{python}
+for numero in range(10):
+    if numero == 5:
+        continue
+    print(numero)
+```
+
+**Ejercicios:**
+
+1. Escribe un programa que encuentre el primer número divisible entre 7 y 5, entre 1500 y 2700.
+
+2. Crea un programa que imprima los números impares del 1 al 50, excepto aquellos que sean múltiplos de 3.
+
 
 ## Visualización de datos
 
