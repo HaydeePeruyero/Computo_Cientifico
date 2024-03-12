@@ -191,6 +191,18 @@ La precisión de los números flotantes debe ser considerada cuidadosamente, ya 
 ```
 
 
+Python permite realizar operaciones básicas con los tipos de datos mencionados anteriormente. A continuación, se muestran algunos ejemplos:
+
+```{python}
+# Operaciones numéricas
+resultado = 10 + 5
+diferencia = 10 - 5
+producto = 10 * 5
+cociente = 10 / 5
+modulo = 10 % 3
+potencia = 10 ** 2
+```
+
 ### Cadenas de Caracteres
 
 Las cadenas de caracteres (str) se utilizan para representar texto en Python. Se pueden definir utilizando comillas simples (') o dobles ("):
@@ -203,6 +215,119 @@ cadena_doble = "¡Hola, Python!"
 print(cadena_doble)
 ```
 
+En Python podemos concatenar cadenas de caracteres al sumarlas:
+
+```{python}
+# Concatenación de cadenas
+saludo = "Hola" + " " + "Mundo"
+print(saludo)
+```
+
+
+La indexación en Python te permite acceder a elementos individuales dentro de una secuencia, como una cadena de caracteres (string) o una lista. Los índices se utilizan para identificar la posición de un elemento en la secuencia.
+
+- **Índices positivos:** Comienzan desde 0 y avanzan hacia la derecha.
+- **Índices negativos:** Comienzan desde -1 y avanzan hacia la izquierda.
+
+```{python}
+a = "hola"
+print(a[0])  # Salida: 'h'
+print(a[1])  # Salida: 'o'
+print(a[-1]) # Salida: 'a'
+```
+
+El rebanado (slicing) te permite extraer subconjuntos de elementos de una secuencia, como una cadena de caracteres o una lista. La sintaxis general para el rebanado es `inicio:fin:paso`, donde:
+
+- `inicio`: Índice desde el cual comienza la rebanada.
+
+- `fin`: Índice hasta el cual se incluyen elementos en la rebanada, pero no incluyendo el elemento en este índice.
+
+- `paso`: Tamaño del paso o incremento entre los elementos seleccionados.
+
+```{python}
+a = "hola, mundooo!"
+print(a[3:6])   
+print(a[2:10:2]) 
+print(a[::3])    
+```
+
+Las cadenas de caracteres son inmutables en Python, lo que significa que no se pueden modificar directamente. Sin embargo, puedes crear nuevas cadenas basadas en las originales utilizando métodos como `replace()`.
+
+```{python}
+a = "hola, clase!"
+nueva_cadena = a.replace('l', 'z', 1) 
+print(nueva_cadena) 
+```
+
+```{python}
+a = "hola, clase!"
+nueva_cadena = a.replace('l', 'z')      # Reemplaza todas las 'l' con 'z'
+print(nueva_cadena) 
+```
+
+
+Las cadenas de caracteres en Python tienen una variedad de métodos útiles que puedes utilizar para manipular y trabajar con ellas. Puedes acceder a estos métodos utilizando la notación de punto después de una cadena de caracteres seguida por el método que deseas utilizar.
+
+El formateo de cadenas en Python te permite crear cadenas complejas combinando texto y valores de variables de una manera legible y eficiente. Hay varias formas de formatear cadenas en Python, incluidas las expresiones de formato, el método `format()`, y el formateo de cadenas con el operador `%`.
+
+El operador `%` se utiliza para insertar valores en una cadena utilizando un formato específico.
+
+- **Especificadores de Formato:**
+  
+  - `%d`: Entero decimal.
+  
+  - `%f`: Número de punto flotante.
+  
+  - `%s`: Cadena de caracteres.
+
+
+```{python}
+# Ejemplo de formateo de cadena con el operador %
+cadena = 'Un entero: %i; un flotante: %f; otra cadena: %s' % (1, 0.1, 'cadena')
+print(cadena)
+
+# Formateo de nombres de archivos
+i = 102
+nombre_archivo = 'procesamiento_del_dataset_%d.txt' % i
+print(nombre_archivo) 
+```
+
+En el primer ejemplo, se insertan un entero, un flotante y una cadena en la cadena de formato utilizando el operador `%`. En el segundo ejemplo, se utiliza el operador `%` para insertar un entero en el nombre del archivo.
+
+Cuando se insertan múltiples valores, estos deben estar dentro de una tupla `( )` después del operador `%`. Si solo se inserta un valor, no es necesario el uso de tuplas después del operador `%`. El operador `%` es útil pero está siendo reemplazado gradualmente por el método `format()`.
+
+
+El método `format()` es una técnica más moderna y flexible para formatear cadenas en comparación con el uso del operador `%`. Aunque el operador `%` todavía es válido y funcional, se recomienda utilizar el método `format()` debido a su mayor versatilidad y legibilidad.
+
+El método `format()` permite insertar valores en una cadena de forma más explícita y flexible. Utiliza llaves `{}` como marcadores de posición en la cadena, y luego proporciona los valores que se insertarán en esos marcadores de posición. Por ejemplo:
+
+
+```{python}
+# Ejemplo básico
+cadena = "Hola, {}! Hoy es {}."
+mensaje = cadena.format("Juan", "miércoles")
+print(mensaje)
+
+# Especificando el orden de los argumentos
+cadena = "Hola, {1}! Hoy es {0}."
+mensaje = cadena.format("lunes", "María")
+print(mensaje)  
+
+# Especificando nombres de argumentos
+cadena = "Hola, {nombre}! Hoy es {dia}."
+mensaje = cadena.format(nombre="Pedro", dia="jueves")
+print(mensaje)  
+```
+
+
+Algunas ventajas de `format()` sobre `%`:
+
+1. **Legibilidad mejorada:** El método `format()` ofrece una sintaxis más clara y legible en comparación con el operador `%`.
+
+2. **Mayor flexibilidad:** `format()` permite especificar el orden de los argumentos y asignar nombres a los argumentos, lo que lo hace más flexible y fácil de mantener en comparación con el operador `%`.
+
+3. **Compatible con objetos de diferentes tipos:** `format()` es compatible con una amplia gama de tipos de datos y objetos, lo que lo hace más versátil en comparación con el operador `%`.
+
 
 ### Listas
 
@@ -213,7 +338,15 @@ mi_lista = [1, 2, 3, 'cuatro', 5.0]
 print(mi_lista)
 ```
 
-Para acceder a los elementos de una listam, podemos usar su índice. Los índices en Python comienzan desde 0 para el primer elemento y van incrementando de uno en uno.
+
+Para acceder a los elementos de una lista, podemos usar su índice. Los índices en Python comienzan desde 0 para el primer elemento y van incrementando de uno en uno.
+
+```{python}
+mi_lista = [1, 2, 3, 'cuatro', 5.0]
+primer_elemento = mi_lista[0]
+print(primer_elemento)
+```
+
 
 ```{python}
 print(mi_lista[0])  # Imprime el primer elemento: 1
@@ -268,7 +401,155 @@ lista1.extend(lista2)
 print(lista1)  
 ```
 
-Las listas en Python son estructuras de datos versátiles y fundamentales que permiten almacenar y manipular colecciones de elementos de manera eficiente.
+Otra forma de operar listas es la siguiente. La repetición de listas implica crear una nueva lista duplicando los elementos de una lista existente un número determinado de veces. Puedes lograr esto utilizando el operador de multiplicación. Por ejemplo:
+
+```{python}
+colores = ['rojo', 'verde', 'azul']
+colores_repetidos = colores * 3
+print(colores_repetidos) 
+```
+
+
+El método `sort()` ordena los elementos de la lista en orden ascendente de forma predeterminada. Sin embargo, también acepta argumentos opcionales que te permiten personalizar el ordenamiento según tus necesidades. Por ejemplo, para ordenarlos ascendente:
+
+```{python}
+# Definir una lista desordenada de colores
+colores = ['rojo', 'verde', 'azul', 'amarillo', 'naranja', 'morado']
+
+# Ordenar la lista de colores en orden ascendente
+colores.sort()
+
+# Imprimir la lista ordenada
+print(colores)
+```
+
+Para ordenarlas de forma descendente:
+
+```{python}
+# Definir una lista desordenada de colores
+colores = ['rojo', 'verde', 'azul', 'amarillo', 'naranja', 'morado']
+
+# Ordenar la lista de colores en orden descendente
+colores.sort(reverse=True)
+
+# Imprimir la lista ordenada
+print(colores)
+```
+
+Algunas notas a considerar:
+
+- El método `sort()` modifica la lista original y no devuelve ningún valor.
+
+- Si los elementos de la lista son de tipos diferentes, la función `sort()` generará un error de tipo.
+
+- Si deseas ordenar una lista sin modificar la original, puedes usar la función `sorted()`, que devuelve una nueva lista ordenada sin modificar la lista original.
+
+Otra forma de acceder a los datos de las listas en Python es usando el método de "rebanada" (slice): `lista[inicio:fin]`. Esta rebanada incluye los elementos cuyos índices están en el rango desde `inicio` hasta `fin - 1`:
+
+  - `inicio`: Es el índice desde el cual comenzamos a incluir elementos en la rebanada.
+  
+  - `fin`: Es el índice hasta el cual incluimos elementos en la rebanada, pero no incluyendo el elemento en este índice.
+
+Supongamos que tenemos una lista llamada `colores`:
+
+```{python}
+colores = ['rojo', 'verde', 'azul', 'amarillo', 'naranja', 'morado']
+```
+
+Por ejemplo, si queremos obtener una rebanada de `colores` desde el índice 1 hasta el índice 4, usaríamos la notación `colores[1:4]` y vamos a obtener una rebanada que incluye elementos desde el índice 1 (inclusive) hasta el índice 4 (no inclusive).
+
+```{python}
+colores[1:4]
+```
+
+Si ejecutamos `colores[2:5]`, obtendremos una rebanada que incluye elementos desde el índice 2 (inclusive) hasta el índice 5 (no inclusive). La rebanada contendrá los elementos `'azul'`, `'amarillo'` y `'naranja'`.
+
+```{python}
+print(colores[2:5])  
+```
+
+La longitud de la rebanada `colores[inicio:fin]` es `fin - inicio`. Es decir, el número de elementos en la rebanada es igual a la diferencia entre el índice de parada y el índice de inicio.
+
+Por ejemplo, `colores[1:4]` contiene los elementos desde el índice 1 hasta el índice 3 (no incluido), lo que hace que tenga una longitud de `4 - 1 = 3`.
+
+Esta es una manera flexible y poderosa de acceder a subconjuntos de elementos en una lista en Python.
+
+Otra sintaxis de "rebanadas" en Python con la notación `colores[inicio:fin:salto]` se refiere a la técnica para seleccionar un subconjunto de elementos de una lista (colors) utilizando tres parámetros:
+
+- `inicio`: Indica el índice desde el cual comenzamos a incluir elementos en la rebanada.
+
+- `fin`: Indica el índice hasta el cual incluimos elementos en la rebanada, sin incluir el elemento en este índice.
+
+- `salto`: Indica el tamaño del paso o incremento entre los elementos seleccionados. Es decir, cuántos elementos saltamos en cada paso.
+
+Si ejecutamos `colores[::2]`, obtenemos una rebanada que incluye todos los elementos de la lista colores, pero seleccionando cada segundo elemento. Es como si empezáramos desde el principio de la lista, terminando al final y seleccionando cada segundo elemento.
+
+
+```{python}
+print(colores[::2])
+```
+
+
+Si ejecutamos `colores[1:5:2]`, obtenemos una rebanada que incluye elementos desde el índice 1 (inclusive) hasta el índice 5 (no inclusive), seleccionando cada segundo elemento en ese rango.
+
+```{python}
+print(colores[1:5:2])
+```
+
+También es posible usar un valor de salto negativo, lo que significa que los elementos se seleccionan en orden inverso. Por ejemplo, `colores[::-1]` devuelve una rebanada que incluye todos los elementos de colores, pero en orden inverso.
+
+```{python}
+print(colores[::-1])
+```
+
+
+**Ejercicios: **
+
+1. Dada una lista de números, intercambia cada par de elementos adyacentes. Por ejemplo, si la lista es [1, 2, 3, 4, 5], el resultado sería [2, 1, 4, 3, 5].
+
+2. Dada una lista de letras, invierte el orden de los elementos en grupos de tres. Por ejemplo, si la lista es ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'], el resultado sería ['c', 'b', 'a', 'f', 'e', 'd', 'i', 'h', 'g'].
+
+
+Cuando necesitas realizar una copia de una lista en Python, es importante entender que simplemente hacer `colores2 = colores` no crea una copia real de la lista. Ambas variables, `colores2` y `colores`, apuntarán a la misma lista en la memoria. Esto significa que cualquier modificación realizada en una de las variables afectará a la otra. Para crear una copia real de la lista, puedes usar el método `list()` o la técnica de rebanada.
+
+- **Usando el método `list()`:**
+
+```{python}
+colores2 = list(colores)  # Crear una copia de colores en una nueva lista colores2
+```
+
+- **Usando rebanadas:**
+
+```{python}
+rcolores2 = colores[:]  # Crear una copia de colores en una nueva lista rcolores2
+```
+
+En Python, puedes revertir el orden de los elementos en una lista utilizando el método `reverse()`.
+
+- **Uso del método `reverse()`:**
+
+```{python}
+rcolores2.reverse()  # Revertir el orden de los elementos en la lista rcolores2
+```
+
+Esto modificará la lista original en su lugar y no devolverá ninguna nueva lista.
+
+```{python}
+
+# Definir una lista de colores
+colores = ['rojo', 'verde', 'azul', 'amarillo', 'naranja', 'morado']
+
+# Crear una copia de colors en una nueva lista rcolors2
+rcolores2 = list(colores)
+
+# Revertir el orden de los elementos en la lista rcolors2
+rcolores2.reverse()
+
+# Imprimir la lista original y la lista revertida
+print("Lista original:", colores)
+print("Lista revertida:", rcolores2)
+```
+
 
 
 ### Tuplas
@@ -281,6 +562,12 @@ print(mi_tupla)
 ```
 
 Para acceder a los elementos de una tupla, podemos utilizar su índice, al igual que en las listas.
+
+```{python}
+ultimo_elemento = mi_tupla[-1]
+print(ultimo_elemento)
+```
+
 
 ```{python}
 print(mi_tupla[0])  # Imprime el primer elemento: 1
@@ -365,7 +652,6 @@ Los conjuntos (set) son colecciones desordenadas de elementos únicos. Se define
 mi_conjunto = {1, 2, 3, 4, 5}
 print(mi_conjunto)
 ```
-
 
 Los conjuntos en Python son mutables, lo que significa que puedes agregar y eliminar elementos, pero no puedes modificar los elementos existentes directamente. Para agregar elementos a un conjunto, puedes utilizar el método `add()`.
 
@@ -527,53 +813,6 @@ Estos métodos son muy útiles para trabajar con diccionarios en Python y permit
 
 Los diccionarios en Python son estructuras de datos muy versátiles y se utilizan ampliamente para mapear claves a valores y para almacenar datos de manera eficiente. Son útiles para muchas tareas, como el almacenamiento de configuraciones, el modelado de datos y la manipulación de datos estructurados.
 
-### Operaciones Básicas
-
-Python permite realizar operaciones básicas con los tipos de datos mencionados anteriormente. A continuación, se muestran algunos ejemplos:
-
-```{python}
-# Operaciones numéricas
-resultado = 10 + 5
-diferencia = 10 - 5
-producto = 10 * 5
-cociente = 10 / 5
-modulo = 10 % 3
-potencia = 10 ** 2
-```
-
-```{python}
-# Concatenación de cadenas
-saludo = "Hola" + " " + "Mundo"
-print(saludo)
-```
-
-Para acceder a los elementos de listas y tuplas podemos indicarle el índice asociado entre corchetes.
-
-```{python}
-mi_lista = [1, 2, 3, 4, 5]
-primer_elemento = mi_lista[0]
-print(primer_elemento)
-
-```
-
-```{python}
-mi_tupla = (1, 2, 3, 4, 5)
-ultimo_elemento = mi_tupla[-1]
-print(ultimo_elemento)
-```
-
-```{python}
-# Agregando elementos a un conjunto
-mi_conjunto = {1, 2, 3}
-mi_conjunto.add(4)
-```
-
-```{python}
-# Accediendo a valores de un diccionario
-mi_diccionario = {'nombre': 'Roberto', 'edad': 20}
-nombre = mi_diccionario['nombre']
-print(nombre)
-```
 
 ### Ejercicios
 
@@ -637,6 +876,29 @@ else:
 
 ### Estructuras de Control de Bucles
 
+#### `for` Loop
+
+El bucle `for` itera sobre una secuencia, como una lista o una cadena de texto. Por ejemplo:
+
+```{python}
+for i in range(4):
+  print(i)
+```
+
+También podemos iterar sobre listas de caracteres.
+
+```{python}
+frutas = ["manzana", "banana", "cereza"]
+for fruta in frutas:
+    print(fruta)
+```
+
+```{python}
+for palabra in ('genial', 'poderoso', 'legible'):
+    print('Python es %s' % palabra)
+```
+
+
 #### `while` Loop
 
 El bucle `while` ejecuta un bloque de código mientras se cumpla una condición. Por ejemplo:
@@ -648,15 +910,6 @@ while contador < 5:
     contador += 1
 ```
 
-#### `for` Loop
-
-El bucle `for` itera sobre una secuencia, como una lista o una cadena de texto. Por ejemplo:
-
-```{python}
-frutas = ["manzana", "banana", "cereza"]
-for fruta in frutas:
-    print(fruta)
-```
 
 **Ejercicios:**
 
@@ -688,14 +941,258 @@ for numero in range(10):
     print(numero)
 ```
 
+
+Otro ejemplo:
+
+```{python}
+numeros = [2, 0, 5, 3, 0, 7]
+
+for numero in numeros:
+    if numero == 0:
+        continue
+    print(f"El inverso de {numero} es {1 / numero}")
+```
+
 **Ejercicios:**
 
 1. Escribe un programa que encuentre el primer número divisible entre 7 y 5, entre 1500 y 2700.
 
 2. Crea un programa que imprima los números impares del 1 al 50, excepto aquellos que sean múltiplos de 3.
 
+### Expresiones condicionales
+
+Algunas expresiones condicionales que podemos usar en las estructuras de control son las siguientes:
+
+  - `a == b:` para comprobar igualdad entre dos objetos. Por ejemplo:
+
+```{python}
+1==1
+```
+
+ - `a is b`: para comprobar identidad entre ambos lados. Por ejemplo:
+ 
+```{python}
+1 is 1
+```
+
+
+```{python}
+a = 1
+b = 1
+a is b
+```
+
+  - `a in b`: Para ver si la colección `b` contiene a `a`. Por ejemplo:
+  
+```{python}
+b = [1, 2, 3]
+2 in b
+5 in b
+```
+
+En el caso de que `b` sea un diccionario, esto nos verifica si `a` es una llave de `b`.
+
+```{python}
+# Diccionario de nombres y edades
+b = {'Juan': 30, 'María': 25, 'Pedro': 35}
+
+# Verificamos si 'Juan' es una llave en el diccionario 'b'
+if 'Juan' in b:
+    print('Juan está en el diccionario.')
+
+# Verificamos si 'Ana' es una llave en el diccionario 'b'
+if 'Ana' in b:
+    print('Ana está en el diccionario.')
+else:
+    print('Ana no está en el diccionario.')
+
+```
+
+### Iteraciones sobre secuencias
+
+En Python, puedes iterar sobre cualquier secuencia, lo que incluye listas, tuplas, cadenas, diccionarios y conjuntos. La iteración te permite recorrer cada elemento de la secuencia uno por uno para realizar operaciones o tomar decisiones según cada elemento.
+
+```{python}
+vocales = 'aeiouy'
+
+for letra in 'poderoso':
+    if letra in vocales:
+        print(letra)
+
+```
+
+
+```{python}
+mensaje = "Hola ¿cómo estás?"
+palabras = mensaje.split()  # retorna una lista
+
+for palabra in palabras:
+    print(palabra)
+
+```
+
+
+A veces queremos llevar un registro sobre lo que estamos iterando, una forma de hacerlo es con un for.
+
+```{python}
+colores = ['rojo', 'verde', 'azul', 'amarillo']
+for i in range(0, len(colores)):
+    print((i, colores[i]))
+
+```
+
+
+Otra forma de hacerlo es usando una función de python llamada `enumerate`. La función `enumerate()` en Python es una herramienta muy útil que te permite iterar sobre una secuencia mientras llevas un seguimiento del número de índice de cada elemento en la secuencia.  La función `enumerate()` toma una secuencia (como una lista, tupla, cadena, etc.) y devuelve un objeto enumerado que genera pares de índice-elemento para cada elemento en la secuencia.
+
+- Utilizando `enumerate()` con una lista:
+
+```{python}
+frutas = ['manzana', 'banana', 'cereza', 'dátil']
+
+for indice, fruta in enumerate(frutas):
+    print(f'Índice: {indice}, Fruta: {fruta}')
+```
+
+En este ejemplo, `enumerate(frutas)` genera pares de índice-fruta para cada elemento en la lista `frutas`, y luego iteramos sobre estos pares. En cada iteración, `indice` contiene el índice del elemento y `fruta` contiene el valor del elemento.
+
+- Utilizando `enumerate()` con una cadena:
+
+```{python}
+mensaje = "Python es genial"
+
+for indice, letra in enumerate(mensaje):
+    print(f'Índice: {indice}, Letra: {letra}')
+```
+
+Aquí, `enumerate(mensaje)` genera pares de índice-letra para cada letra en la cadena `mensaje`.
+
+La función `enumerate()` es útil cuando necesitas iterar sobre una secuencia y necesitas saber tanto el índice como el valor del elemento en cada iteración. Es más legible y más eficiente que usar un contador y acceder a los elementos por índice.
+
+### Iteraciones sobre diccionarios
+
+También podemos iterar sobre un diccionario en Python, tanto sobre las claves, los valores, como sobre los pares clave-valor.
+
+- Iterar sobre claves: Puedes iterar sobre las claves de un diccionario utilizando un bucle `for`. Por ejemplo:
+
+```{python}
+# Diccionario
+persona = {'nombre': 'Juan', 'edad': 30, 'ciudad': 'Nueva York'}
+
+# Iterar sobre las claves
+for clave in persona:
+    print(clave)
+```
+
+- Iterar sobre valores: De igual forma, puedes iterar sobre los valores de un diccionario utilizando un bucle `for`:
+
+```{python}
+# Iterar sobre los valores
+for valor in persona.values():
+    print(valor)
+```
+
+- Iterar sobre pares clave-valor: Para iterar sobre las claves y valores simultáneamente, puedes usar el método `items()` del diccionario:
+
+```{python}
+# Iterar sobre pares clave-valor
+for clave, valor in persona.items():
+    print(clave, valor)
+```
+
+
+Veamos otros ejemplos. Supongamos que tenemos un diccionario representando estudiantes y sus calificaciones:
+
+```{python}
+estudiantes = {'Ana': 85, 'Beto': 90, 'Carlos': 80, 'Diana': 95}
+```
+
+Ahora, podemos iterar sobre el diccionario para imprimir el nombre de cada estudiante junto con su calificación:
+
+```{python}
+for estudiante, calificacion in estudiantes.items():
+    print(f'{estudiante}: {calificacion}')
+```
+
+
+### Compresiones de listas
+
+Las comprensiones de listas son una característica poderosa de Python que te permite crear listas de forma concisa y legible utilizando una sintaxis compacta. La sintaxis general de una comprensión de lista es la siguiente:
+
+```python
+nueva_lista = [expresion for elemento in iterable if condicion]
+```
+
+- `expresion`: Es la expresión que define cómo se va a modificar o construir cada elemento de la nueva lista.
+
+- `elemento`: Es la variable que representa cada elemento del iterable.
+
+- `iterable`: Es la secuencia o iterable sobre la cual se va a iterar.
+
+- `condicion` (opcional): Es una condición que filtra los elementos del iterable.
+
+Veamos algunos ejemplos.
+
+1. Crear una lista de los cuadrados de los primeros 10 números enteros:
+
+```{python}
+cuadrados = [x ** 2 for x in range(1, 11)]
+print(cuadrados)
+```
+
+2. Filtrar los números pares de una lista:
+
+```{python}
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+pares = [x for x in numeros if x % 2 == 0]
+print(pares)
+```
+
+3. Convertir una lista de cadenas a una lista de sus longitudes:
+
+```{python}
+palabras = ['python', 'es', 'genial']
+longitudes = [len(palabra) for palabra in palabras]
+print(longitudes)
+```
+
+También es posible utilizar una condición `else` en una comprensión de lista. La sintaxis es la siguiente:
+
+```python
+resultado = [valor_verdadero if condicion else valor_falso for elemento in iterable]
+```
+Por ejemplo:
+
+```{python}
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+resultado = ['par' if x % 2 == 0 else 'impar' for x in numeros]
+print(resultado)
+```
+
+Las comprensiones de listas son una forma elegante y eficiente de construir listas en Python. Son fáciles de leer y escribir, y pueden ayudarte a escribir código más limpio y conciso. 
+
+**Ejercicios:**
+
+- Ejercicio 1: Dada una lista de números, crea una lista que contenga los cuadrados de los números pares presentes en la lista dada.
+
+
+- Ejercicio 2: Dada una lista de cadenas, crea una nueva lista que contenga todas las cadenas convertidas a mayúsculas. Por ejemplo, si tienes la lista siguiente:
+
+```python
+palabras = ['hola', 'python', 'mundo', 'programación']
+```
+
+Lo que quieres obtener es:
+
+```
+['HOLA', 'PYTHON', 'MUNDO', 'PROGRAMACIÓN']
+```
+
+- Ejercicio 3: Dada una lista de números enteros, crea una lista que contenga solo los números primos de la lista dada, sin definir una función adicional.
+
 
 ## Visualización de datos
+
+
 
 ## Manipulación de bases de datos
 

@@ -87,3 +87,7 @@ for-loop
 estructuras-de-control-de-interrupción
 break-statement
 continue-statement
+expresiones-condicionales
+iteraciones-sobre-secuencias
+iteraciones-sobre-diccionarios
+compresiones-de-listas
