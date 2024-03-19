@@ -509,6 +509,8 @@ print(colores[::-1])
 
 2. Dada una lista de letras, invierte el orden de los elementos en grupos de tres. Por ejemplo, si la lista es ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'], el resultado sería ['c', 'b', 'a', 'f', 'e', 'd', 'i', 'h', 'g'].
 
+**Soluciones:** [Link](https://cursosposgradoccm.github.io/Python/)
+
 
 Cuando necesitas realizar una copia de una lista en Python, es importante entender que simplemente hacer `colores2 = colores` no crea una copia real de la lista. Ambas variables, `colores2` y `colores`, apuntarán a la misma lista en la memoria. Esto significa que cualquier modificación realizada en una de las variables afectará a la otra. Para crear una copia real de la lista, puedes usar el método `list()` o la técnica de rebanada.
 
