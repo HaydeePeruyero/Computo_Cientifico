@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-03-11" />
+<meta name="date" content="2024-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -919,6 +919,73 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <span id="cb161-3"><a href="python.html#cb161-3" tabindex="-1"></a><span class="bu">print</span>(mi_diccionario)  <span class="co"># Salida: {}</span></span></code></pre></div>
 <pre><code>## {}</code></pre>
 <p>Estos métodos son muy útiles para trabajar con diccionarios en Python y permiten manipular fácilmente las claves, valores y pares clave-valor, así como agregar, eliminar y actualizar elementos en los diccionarios de manera eficiente.</p>
+<p>Supongamos que queremos agregar nuevas entradas a nuestro diccionario, para eso usamos el método <code>append</code>.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb163-1"><a href="python.html#cb163-1" tabindex="-1"></a>mi_diccionario <span class="op">=</span> {</span>
+<span id="cb163-2"><a href="python.html#cb163-2" tabindex="-1"></a>    <span class="st">&#39;nombre&#39;</span>: [<span class="st">&#39;Roberta&#39;</span>, <span class="st">&#39;María&#39;</span>, <span class="st">&#39;Pedro&#39;</span>],</span>
+<span id="cb163-3"><a href="python.html#cb163-3" tabindex="-1"></a>    <span class="st">&#39;edad&#39;</span>: [<span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">35</span>],</span>
+<span id="cb163-4"><a href="python.html#cb163-4" tabindex="-1"></a>    <span class="st">&#39;ciudad&#39;</span>: [<span class="st">&#39;Madrid&#39;</span>, <span class="st">&#39;Barcelona&#39;</span>, <span class="st">&#39;Sevilla&#39;</span>]</span>
+<span id="cb163-5"><a href="python.html#cb163-5" tabindex="-1"></a>}</span>
+<span id="cb163-6"><a href="python.html#cb163-6" tabindex="-1"></a></span>
+<span id="cb163-7"><a href="python.html#cb163-7" tabindex="-1"></a>mi_diccionario[<span class="st">&#39;nombre&#39;</span>].append(<span class="st">&#39;Luis&#39;</span>)</span></code></pre></div>
+<p>O podríamos definir las variables a agregar y usar el método <code>append</code>.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb164-1"><a href="python.html#cb164-1" tabindex="-1"></a>mi_diccionario <span class="op">=</span> {</span>
+<span id="cb164-2"><a href="python.html#cb164-2" tabindex="-1"></a>    <span class="st">&#39;nombre&#39;</span>: [<span class="st">&#39;Roberta&#39;</span>, <span class="st">&#39;María&#39;</span>, <span class="st">&#39;Pedro&#39;</span>],</span>
+<span id="cb164-3"><a href="python.html#cb164-3" tabindex="-1"></a>    <span class="st">&#39;edad&#39;</span>: [<span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">35</span>],</span>
+<span id="cb164-4"><a href="python.html#cb164-4" tabindex="-1"></a>    <span class="st">&#39;ciudad&#39;</span>: [<span class="st">&#39;Madrid&#39;</span>, <span class="st">&#39;Barcelona&#39;</span>, <span class="st">&#39;Sevilla&#39;</span>]</span>
+<span id="cb164-5"><a href="python.html#cb164-5" tabindex="-1"></a>}</span>
+<span id="cb164-6"><a href="python.html#cb164-6" tabindex="-1"></a></span>
+<span id="cb164-7"><a href="python.html#cb164-7" tabindex="-1"></a><span class="co"># Agregar un nuevo nombre, edad y ciudad</span></span>
+<span id="cb164-8"><a href="python.html#cb164-8" tabindex="-1"></a>nuevo_nombre <span class="op">=</span> <span class="st">&#39;Luis&#39;</span></span>
+<span id="cb164-9"><a href="python.html#cb164-9" tabindex="-1"></a>nueva_edad <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb164-10"><a href="python.html#cb164-10" tabindex="-1"></a>nueva_ciudad <span class="op">=</span> <span class="st">&#39;Valencia&#39;</span></span>
+<span id="cb164-11"><a href="python.html#cb164-11" tabindex="-1"></a></span>
+<span id="cb164-12"><a href="python.html#cb164-12" tabindex="-1"></a>mi_diccionario[<span class="st">&#39;nombre&#39;</span>].append(nuevo_nombre)</span>
+<span id="cb164-13"><a href="python.html#cb164-13" tabindex="-1"></a>mi_diccionario[<span class="st">&#39;edad&#39;</span>].append(nueva_edad)</span>
+<span id="cb164-14"><a href="python.html#cb164-14" tabindex="-1"></a>mi_diccionario[<span class="st">&#39;ciudad&#39;</span>].append(nueva_ciudad)</span>
+<span id="cb164-15"><a href="python.html#cb164-15" tabindex="-1"></a></span>
+<span id="cb164-16"><a href="python.html#cb164-16" tabindex="-1"></a><span class="co"># Imprimir el diccionario actualizado</span></span>
+<span id="cb164-17"><a href="python.html#cb164-17" tabindex="-1"></a><span class="bu">print</span>(mi_diccionario)</span></code></pre></div>
+<pre><code>## {&#39;nombre&#39;: [&#39;Roberta&#39;, &#39;María&#39;, &#39;Pedro&#39;, &#39;Luis&#39;], &#39;edad&#39;: [30, 25, 35, 40], &#39;ciudad&#39;: [&#39;Madrid&#39;, &#39;Barcelona&#39;, &#39;Sevilla&#39;, &#39;Valencia&#39;]}</code></pre>
+<p>Una forma de obtener los valores de edad y ciudad para cada nombre es la siguiente.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb166-1"><a href="python.html#cb166-1" tabindex="-1"></a>mi_diccionario <span class="op">=</span> {</span>
+<span id="cb166-2"><a href="python.html#cb166-2" tabindex="-1"></a>    <span class="st">&#39;nombre&#39;</span>: [<span class="st">&#39;Roberta&#39;</span>, <span class="st">&#39;María&#39;</span>, <span class="st">&#39;Pedro&#39;</span>],</span>
+<span id="cb166-3"><a href="python.html#cb166-3" tabindex="-1"></a>    <span class="st">&#39;edad&#39;</span>: [<span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">35</span>],</span>
+<span id="cb166-4"><a href="python.html#cb166-4" tabindex="-1"></a>    <span class="st">&#39;ciudad&#39;</span>: [<span class="st">&#39;Madrid&#39;</span>, <span class="st">&#39;Barcelona&#39;</span>, <span class="st">&#39;Sevilla&#39;</span>]</span>
+<span id="cb166-5"><a href="python.html#cb166-5" tabindex="-1"></a>}</span>
+<span id="cb166-6"><a href="python.html#cb166-6" tabindex="-1"></a></span>
+<span id="cb166-7"><a href="python.html#cb166-7" tabindex="-1"></a><span class="co"># Recuperar listas de nombres y edades</span></span>
+<span id="cb166-8"><a href="python.html#cb166-8" tabindex="-1"></a>nombres <span class="op">=</span> mi_diccionario[<span class="st">&#39;nombre&#39;</span>]</span>
+<span id="cb166-9"><a href="python.html#cb166-9" tabindex="-1"></a>edades <span class="op">=</span> mi_diccionario[<span class="st">&#39;edad&#39;</span>]</span>
+<span id="cb166-10"><a href="python.html#cb166-10" tabindex="-1"></a></span>
+<span id="cb166-11"><a href="python.html#cb166-11" tabindex="-1"></a><span class="co"># Buscar la posición de María y Pedro en la lista de nombres</span></span>
+<span id="cb166-12"><a href="python.html#cb166-12" tabindex="-1"></a>pos_maria <span class="op">=</span> nombres.index(<span class="st">&#39;María&#39;</span>)</span>
+<span id="cb166-13"><a href="python.html#cb166-13" tabindex="-1"></a>pos_pedro <span class="op">=</span> nombres.index(<span class="st">&#39;Pedro&#39;</span>)</span>
+<span id="cb166-14"><a href="python.html#cb166-14" tabindex="-1"></a></span>
+<span id="cb166-15"><a href="python.html#cb166-15" tabindex="-1"></a><span class="co"># Obtener las edades de María y Pedro usando las posiciones encontradas</span></span>
+<span id="cb166-16"><a href="python.html#cb166-16" tabindex="-1"></a>edad_maria <span class="op">=</span> edades[pos_maria]</span>
+<span id="cb166-17"><a href="python.html#cb166-17" tabindex="-1"></a>edad_pedro <span class="op">=</span> edades[pos_pedro]</span>
+<span id="cb166-18"><a href="python.html#cb166-18" tabindex="-1"></a></span>
+<span id="cb166-19"><a href="python.html#cb166-19" tabindex="-1"></a><span class="co"># Imprimir las edades de María y Pedro</span></span>
+<span id="cb166-20"><a href="python.html#cb166-20" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Edad de María:&quot;</span>, edad_maria)</span></code></pre></div>
+<pre><code>## Edad de María: 25</code></pre>
+<div class="sourceCode" id="cb168"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb168-1"><a href="python.html#cb168-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Edad de Pedro:&quot;</span>, edad_pedro)</span></code></pre></div>
+<pre><code>## Edad de Pedro: 35</code></pre>
+<p>De una forma más directa, podemos obtener los valores como sigue:</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb170-1"><a href="python.html#cb170-1" tabindex="-1"></a>mi_diccionario <span class="op">=</span> {</span>
+<span id="cb170-2"><a href="python.html#cb170-2" tabindex="-1"></a>    <span class="st">&#39;nombre&#39;</span>: [<span class="st">&#39;Juan&#39;</span>, <span class="st">&#39;María&#39;</span>, <span class="st">&#39;Pedro&#39;</span>],</span>
+<span id="cb170-3"><a href="python.html#cb170-3" tabindex="-1"></a>    <span class="st">&#39;edad&#39;</span>: [<span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">35</span>],</span>
+<span id="cb170-4"><a href="python.html#cb170-4" tabindex="-1"></a>    <span class="st">&#39;ciudad&#39;</span>: [<span class="st">&#39;Madrid&#39;</span>, <span class="st">&#39;Barcelona&#39;</span>, <span class="st">&#39;Sevilla&#39;</span>]</span>
+<span id="cb170-5"><a href="python.html#cb170-5" tabindex="-1"></a>}</span>
+<span id="cb170-6"><a href="python.html#cb170-6" tabindex="-1"></a></span>
+<span id="cb170-7"><a href="python.html#cb170-7" tabindex="-1"></a><span class="co"># Obtener las edades de María y Pedro directamente del diccionario</span></span>
+<span id="cb170-8"><a href="python.html#cb170-8" tabindex="-1"></a>edad_maria <span class="op">=</span> mi_diccionario[<span class="st">&#39;edad&#39;</span>][mi_diccionario[<span class="st">&#39;nombre&#39;</span>].index(<span class="st">&#39;María&#39;</span>)]</span>
+<span id="cb170-9"><a href="python.html#cb170-9" tabindex="-1"></a>edad_pedro <span class="op">=</span> mi_diccionario[<span class="st">&#39;edad&#39;</span>][mi_diccionario[<span class="st">&#39;nombre&#39;</span>].index(<span class="st">&#39;Pedro&#39;</span>)]</span>
+<span id="cb170-10"><a href="python.html#cb170-10" tabindex="-1"></a></span>
+<span id="cb170-11"><a href="python.html#cb170-11" tabindex="-1"></a><span class="co"># Imprimir las edades de María y Pedro</span></span>
+<span id="cb170-12"><a href="python.html#cb170-12" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Edad de María:&quot;</span>, edad_maria)</span></code></pre></div>
+<pre><code>## Edad de María: 25</code></pre>
+<div class="sourceCode" id="cb172"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb172-1"><a href="python.html#cb172-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Edad de Pedro:&quot;</span>, edad_pedro)</span></code></pre></div>
+<pre><code>## Edad de Pedro: 35</code></pre>
 <p>Los diccionarios en Python son estructuras de datos muy versátiles y se utilizan ampliamente para mapear claves a valores y para almacenar datos de manera eficiente. Son útiles para muchas tareas, como el almacenamiento de configuraciones, el modelado de datos y la manipulación de datos estructurados.</p>
 </div>
 <div id="ejercicios" class="section level3 hasAnchor" number="4.5.7">
@@ -939,31 +1006,31 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <div id="if-statement" class="section level4 hasAnchor" number="4.6.1.1">
 <h4><span class="header-section-number">4.6.1.1</span> <code>if</code> Statement<a href="python.html#if-statement" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>El <code>if</code> statement permite ejecutar un bloque de código si se cumple una condición. Por ejemplo:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb163-1"><a href="python.html#cb163-1" tabindex="-1"></a>edad <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb163-2"><a href="python.html#cb163-2" tabindex="-1"></a><span class="cf">if</span> edad <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
-<span id="cb163-3"><a href="python.html#cb163-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Eres mayor de edad&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb174-1"><a href="python.html#cb174-1" tabindex="-1"></a>edad <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb174-2"><a href="python.html#cb174-2" tabindex="-1"></a><span class="cf">if</span> edad <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
+<span id="cb174-3"><a href="python.html#cb174-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Eres mayor de edad&quot;</span>)</span></code></pre></div>
 <pre><code>## Eres mayor de edad</code></pre>
 </div>
 <div id="if-else-statement" class="section level4 hasAnchor" number="4.6.1.2">
 <h4><span class="header-section-number">4.6.1.2</span> <code>if-else</code> Statement<a href="python.html#if-else-statement" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>El <code>if-else</code> statement ejecuta un bloque de código si se cumple una condición y otro bloque de código si la condición no se cumple. Por ejemplo:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb165-1"><a href="python.html#cb165-1" tabindex="-1"></a>edad <span class="op">=</span> <span class="dv">15</span></span>
-<span id="cb165-2"><a href="python.html#cb165-2" tabindex="-1"></a><span class="cf">if</span> edad <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
-<span id="cb165-3"><a href="python.html#cb165-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Eres mayor de edad&quot;</span>)</span>
-<span id="cb165-4"><a href="python.html#cb165-4" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb165-5"><a href="python.html#cb165-5" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Eres menor de edad&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb176-1"><a href="python.html#cb176-1" tabindex="-1"></a>edad <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb176-2"><a href="python.html#cb176-2" tabindex="-1"></a><span class="cf">if</span> edad <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
+<span id="cb176-3"><a href="python.html#cb176-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Eres mayor de edad&quot;</span>)</span>
+<span id="cb176-4"><a href="python.html#cb176-4" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb176-5"><a href="python.html#cb176-5" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Eres menor de edad&quot;</span>)</span></code></pre></div>
 <pre><code>## Eres menor de edad</code></pre>
 </div>
 <div id="if-elif-else-statement" class="section level4 hasAnchor" number="4.6.1.3">
 <h4><span class="header-section-number">4.6.1.3</span> <code>if-elif-else</code> Statement<a href="python.html#if-elif-else-statement" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>El <code>if-elif-else</code> statement permite evaluar múltiples condiciones de manera secuencial. Por ejemplo:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb167-1"><a href="python.html#cb167-1" tabindex="-1"></a>puntuacion <span class="op">=</span> <span class="dv">75</span></span>
-<span id="cb167-2"><a href="python.html#cb167-2" tabindex="-1"></a><span class="cf">if</span> puntuacion <span class="op">&gt;=</span> <span class="dv">90</span>:</span>
-<span id="cb167-3"><a href="python.html#cb167-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Excelente&quot;</span>)</span>
-<span id="cb167-4"><a href="python.html#cb167-4" tabindex="-1"></a><span class="cf">elif</span> puntuacion <span class="op">&gt;=</span> <span class="dv">70</span>:</span>
-<span id="cb167-5"><a href="python.html#cb167-5" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Bien&quot;</span>)</span>
-<span id="cb167-6"><a href="python.html#cb167-6" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb167-7"><a href="python.html#cb167-7" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Puedes mejorar&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb178-1"><a href="python.html#cb178-1" tabindex="-1"></a>puntuacion <span class="op">=</span> <span class="dv">75</span></span>
+<span id="cb178-2"><a href="python.html#cb178-2" tabindex="-1"></a><span class="cf">if</span> puntuacion <span class="op">&gt;=</span> <span class="dv">90</span>:</span>
+<span id="cb178-3"><a href="python.html#cb178-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Excelente&quot;</span>)</span>
+<span id="cb178-4"><a href="python.html#cb178-4" tabindex="-1"></a><span class="cf">elif</span> puntuacion <span class="op">&gt;=</span> <span class="dv">70</span>:</span>
+<span id="cb178-5"><a href="python.html#cb178-5" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Bien&quot;</span>)</span>
+<span id="cb178-6"><a href="python.html#cb178-6" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb178-7"><a href="python.html#cb178-7" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Puedes mejorar&quot;</span>)</span></code></pre></div>
 <pre><code>## Bien</code></pre>
 <p><strong>Ejercicios:</strong></p>
 <ol style="list-style-type: decimal">
@@ -977,21 +1044,21 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <div id="for-loop" class="section level4 hasAnchor" number="4.6.2.1">
 <h4><span class="header-section-number">4.6.2.1</span> <code>for</code> Loop<a href="python.html#for-loop" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>El bucle <code>for</code> itera sobre una secuencia, como una lista o una cadena de texto. Por ejemplo:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb169-1"><a href="python.html#cb169-1" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
-<span id="cb169-2"><a href="python.html#cb169-2" tabindex="-1"></a>  <span class="bu">print</span>(i)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb180-1"><a href="python.html#cb180-1" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb180-2"><a href="python.html#cb180-2" tabindex="-1"></a>  <span class="bu">print</span>(i)</span></code></pre></div>
 <pre><code>## 0
 ## 1
 ## 2
 ## 3</code></pre>
 <p>También podemos iterar sobre listas de caracteres.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb171-1"><a href="python.html#cb171-1" tabindex="-1"></a>frutas <span class="op">=</span> [<span class="st">&quot;manzana&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cereza&quot;</span>]</span>
-<span id="cb171-2"><a href="python.html#cb171-2" tabindex="-1"></a><span class="cf">for</span> fruta <span class="kw">in</span> frutas:</span>
-<span id="cb171-3"><a href="python.html#cb171-3" tabindex="-1"></a>    <span class="bu">print</span>(fruta)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb182-1"><a href="python.html#cb182-1" tabindex="-1"></a>frutas <span class="op">=</span> [<span class="st">&quot;manzana&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cereza&quot;</span>]</span>
+<span id="cb182-2"><a href="python.html#cb182-2" tabindex="-1"></a><span class="cf">for</span> fruta <span class="kw">in</span> frutas:</span>
+<span id="cb182-3"><a href="python.html#cb182-3" tabindex="-1"></a>    <span class="bu">print</span>(fruta)</span></code></pre></div>
 <pre><code>## manzana
 ## banana
 ## cereza</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb173-1"><a href="python.html#cb173-1" tabindex="-1"></a><span class="cf">for</span> palabra <span class="kw">in</span> (<span class="st">&#39;genial&#39;</span>, <span class="st">&#39;poderoso&#39;</span>, <span class="st">&#39;legible&#39;</span>):</span>
-<span id="cb173-2"><a href="python.html#cb173-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Python es </span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> palabra)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb184-1"><a href="python.html#cb184-1" tabindex="-1"></a><span class="cf">for</span> palabra <span class="kw">in</span> (<span class="st">&#39;genial&#39;</span>, <span class="st">&#39;poderoso&#39;</span>, <span class="st">&#39;legible&#39;</span>):</span>
+<span id="cb184-2"><a href="python.html#cb184-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Python es </span><span class="sc">%s</span><span class="st">&#39;</span> <span class="op">%</span> palabra)</span></code></pre></div>
 <pre><code>## Python es genial
 ## Python es poderoso
 ## Python es legible</code></pre>
@@ -999,10 +1066,10 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <div id="while-loop" class="section level4 hasAnchor" number="4.6.2.2">
 <h4><span class="header-section-number">4.6.2.2</span> <code>while</code> Loop<a href="python.html#while-loop" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>El bucle <code>while</code> ejecuta un bloque de código mientras se cumpla una condición. Por ejemplo:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb175-1"><a href="python.html#cb175-1" tabindex="-1"></a>contador <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb175-2"><a href="python.html#cb175-2" tabindex="-1"></a><span class="cf">while</span> contador <span class="op">&lt;</span> <span class="dv">5</span>:</span>
-<span id="cb175-3"><a href="python.html#cb175-3" tabindex="-1"></a>    <span class="bu">print</span>(contador)</span>
-<span id="cb175-4"><a href="python.html#cb175-4" tabindex="-1"></a>    contador <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb186-1"><a href="python.html#cb186-1" tabindex="-1"></a>contador <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb186-2"><a href="python.html#cb186-2" tabindex="-1"></a><span class="cf">while</span> contador <span class="op">&lt;</span> <span class="dv">5</span>:</span>
+<span id="cb186-3"><a href="python.html#cb186-3" tabindex="-1"></a>    <span class="bu">print</span>(contador)</span>
+<span id="cb186-4"><a href="python.html#cb186-4" tabindex="-1"></a>    contador <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## 0
 ## 1
 ## 2
@@ -1020,10 +1087,10 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <div id="break-statement" class="section level4 hasAnchor" number="4.6.3.1">
 <h4><span class="header-section-number">4.6.3.1</span> <code>break</code> Statement<a href="python.html#break-statement" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>El <code>break</code> statement se utiliza para salir de un bucle antes de que se haya completado. Por ejemplo:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb177-1"><a href="python.html#cb177-1" tabindex="-1"></a><span class="cf">for</span> numero <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb177-2"><a href="python.html#cb177-2" tabindex="-1"></a>    <span class="cf">if</span> numero <span class="op">==</span> <span class="dv">5</span>:</span>
-<span id="cb177-3"><a href="python.html#cb177-3" tabindex="-1"></a>        <span class="cf">break</span></span>
-<span id="cb177-4"><a href="python.html#cb177-4" tabindex="-1"></a>    <span class="bu">print</span>(numero)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb188-1"><a href="python.html#cb188-1" tabindex="-1"></a><span class="cf">for</span> numero <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb188-2"><a href="python.html#cb188-2" tabindex="-1"></a>    <span class="cf">if</span> numero <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb188-3"><a href="python.html#cb188-3" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb188-4"><a href="python.html#cb188-4" tabindex="-1"></a>    <span class="bu">print</span>(numero)</span></code></pre></div>
 <pre><code>## 0
 ## 1
 ## 2
@@ -1033,10 +1100,10 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <div id="continue-statement" class="section level4 hasAnchor" number="4.6.3.2">
 <h4><span class="header-section-number">4.6.3.2</span> <code>continue</code> Statement<a href="python.html#continue-statement" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>El <code>continue</code> statement se utiliza para saltar la iteración actual de un bucle y continuar con la siguiente. Por ejemplo:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb179-1"><a href="python.html#cb179-1" tabindex="-1"></a><span class="cf">for</span> numero <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb179-2"><a href="python.html#cb179-2" tabindex="-1"></a>    <span class="cf">if</span> numero <span class="op">==</span> <span class="dv">5</span>:</span>
-<span id="cb179-3"><a href="python.html#cb179-3" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb179-4"><a href="python.html#cb179-4" tabindex="-1"></a>    <span class="bu">print</span>(numero)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb190-1"><a href="python.html#cb190-1" tabindex="-1"></a><span class="cf">for</span> numero <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb190-2"><a href="python.html#cb190-2" tabindex="-1"></a>    <span class="cf">if</span> numero <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb190-3"><a href="python.html#cb190-3" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb190-4"><a href="python.html#cb190-4" tabindex="-1"></a>    <span class="bu">print</span>(numero)</span></code></pre></div>
 <pre><code>## 0
 ## 1
 ## 2
@@ -1047,12 +1114,12 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 ## 8
 ## 9</code></pre>
 <p>Otro ejemplo:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb181-1"><a href="python.html#cb181-1" tabindex="-1"></a>numeros <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">7</span>]</span>
-<span id="cb181-2"><a href="python.html#cb181-2" tabindex="-1"></a></span>
-<span id="cb181-3"><a href="python.html#cb181-3" tabindex="-1"></a><span class="cf">for</span> numero <span class="kw">in</span> numeros:</span>
-<span id="cb181-4"><a href="python.html#cb181-4" tabindex="-1"></a>    <span class="cf">if</span> numero <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb181-5"><a href="python.html#cb181-5" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb181-6"><a href="python.html#cb181-6" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;El inverso de </span><span class="sc">{</span>numero<span class="sc">}</span><span class="ss"> es </span><span class="sc">{</span><span class="dv">1</span> <span class="op">/</span> numero<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb192-1"><a href="python.html#cb192-1" tabindex="-1"></a>numeros <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">7</span>]</span>
+<span id="cb192-2"><a href="python.html#cb192-2" tabindex="-1"></a></span>
+<span id="cb192-3"><a href="python.html#cb192-3" tabindex="-1"></a><span class="cf">for</span> numero <span class="kw">in</span> numeros:</span>
+<span id="cb192-4"><a href="python.html#cb192-4" tabindex="-1"></a>    <span class="cf">if</span> numero <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb192-5"><a href="python.html#cb192-5" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb192-6"><a href="python.html#cb192-6" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;El inverso de </span><span class="sc">{</span>numero<span class="sc">}</span><span class="ss"> es </span><span class="sc">{</span><span class="dv">1</span> <span class="op">/</span> numero<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
 <pre><code>## El inverso de 2 es 0.5
 ## El inverso de 5 es 0.2
 ## El inverso de 3 es 0.3333333333333333
@@ -1070,64 +1137,64 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <ul>
 <li><code>a == b:</code> para comprobar igualdad entre dos objetos. Por ejemplo:</li>
 </ul>
-<div class="sourceCode" id="cb183"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb183-1"><a href="python.html#cb183-1" tabindex="-1"></a><span class="dv">1</span><span class="op">==</span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb194-1"><a href="python.html#cb194-1" tabindex="-1"></a><span class="dv">1</span><span class="op">==</span><span class="dv">1</span></span></code></pre></div>
 <pre><code>## True</code></pre>
 <ul>
 <li><code>a is b</code>: para comprobar identidad entre ambos lados. Por ejemplo:</li>
 </ul>
-<div class="sourceCode" id="cb185"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb185-1"><a href="python.html#cb185-1" tabindex="-1"></a><span class="dv">1</span> <span class="kw">is</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb196-1"><a href="python.html#cb196-1" tabindex="-1"></a><span class="dv">1</span> <span class="kw">is</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## True</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb187-1"><a href="python.html#cb187-1" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb187-2"><a href="python.html#cb187-2" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb187-3"><a href="python.html#cb187-3" tabindex="-1"></a>a <span class="kw">is</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb198-1"><a href="python.html#cb198-1" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb198-2"><a href="python.html#cb198-2" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb198-3"><a href="python.html#cb198-3" tabindex="-1"></a>a <span class="kw">is</span> b</span></code></pre></div>
 <pre><code>## True</code></pre>
 <ul>
 <li><code>a in b</code>: Para ver si la colección <code>b</code> contiene a <code>a</code>. Por ejemplo:</li>
 </ul>
-<div class="sourceCode" id="cb189"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb189-1"><a href="python.html#cb189-1" tabindex="-1"></a>b <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb189-2"><a href="python.html#cb189-2" tabindex="-1"></a><span class="dv">2</span> <span class="kw">in</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb200-1"><a href="python.html#cb200-1" tabindex="-1"></a>b <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb200-2"><a href="python.html#cb200-2" tabindex="-1"></a><span class="dv">2</span> <span class="kw">in</span> b</span></code></pre></div>
 <pre><code>## True</code></pre>
-<div class="sourceCode" id="cb191"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb191-1"><a href="python.html#cb191-1" tabindex="-1"></a><span class="dv">5</span> <span class="kw">in</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb202-1"><a href="python.html#cb202-1" tabindex="-1"></a><span class="dv">5</span> <span class="kw">in</span> b</span></code></pre></div>
 <pre><code>## False</code></pre>
 <p>En el caso de que <code>b</code> sea un diccionario, esto nos verifica si <code>a</code> es una llave de <code>b</code>.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb193-1"><a href="python.html#cb193-1" tabindex="-1"></a><span class="co"># Diccionario de nombres y edades</span></span>
-<span id="cb193-2"><a href="python.html#cb193-2" tabindex="-1"></a>b <span class="op">=</span> {<span class="st">&#39;Juan&#39;</span>: <span class="dv">30</span>, <span class="st">&#39;María&#39;</span>: <span class="dv">25</span>, <span class="st">&#39;Pedro&#39;</span>: <span class="dv">35</span>}</span>
-<span id="cb193-3"><a href="python.html#cb193-3" tabindex="-1"></a></span>
-<span id="cb193-4"><a href="python.html#cb193-4" tabindex="-1"></a><span class="co"># Verificamos si &#39;Juan&#39; es una llave en el diccionario &#39;b&#39;</span></span>
-<span id="cb193-5"><a href="python.html#cb193-5" tabindex="-1"></a><span class="cf">if</span> <span class="st">&#39;Juan&#39;</span> <span class="kw">in</span> b:</span>
-<span id="cb193-6"><a href="python.html#cb193-6" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Juan está en el diccionario.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb204-1"><a href="python.html#cb204-1" tabindex="-1"></a><span class="co"># Diccionario de nombres y edades</span></span>
+<span id="cb204-2"><a href="python.html#cb204-2" tabindex="-1"></a>b <span class="op">=</span> {<span class="st">&#39;Juan&#39;</span>: <span class="dv">30</span>, <span class="st">&#39;María&#39;</span>: <span class="dv">25</span>, <span class="st">&#39;Pedro&#39;</span>: <span class="dv">35</span>}</span>
+<span id="cb204-3"><a href="python.html#cb204-3" tabindex="-1"></a></span>
+<span id="cb204-4"><a href="python.html#cb204-4" tabindex="-1"></a><span class="co"># Verificamos si &#39;Juan&#39; es una llave en el diccionario &#39;b&#39;</span></span>
+<span id="cb204-5"><a href="python.html#cb204-5" tabindex="-1"></a><span class="cf">if</span> <span class="st">&#39;Juan&#39;</span> <span class="kw">in</span> b:</span>
+<span id="cb204-6"><a href="python.html#cb204-6" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Juan está en el diccionario.&#39;</span>)</span></code></pre></div>
 <pre><code>## Juan está en el diccionario.</code></pre>
-<div class="sourceCode" id="cb195"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb195-1"><a href="python.html#cb195-1" tabindex="-1"></a><span class="co"># Verificamos si &#39;Ana&#39; es una llave en el diccionario &#39;b&#39;</span></span>
-<span id="cb195-2"><a href="python.html#cb195-2" tabindex="-1"></a><span class="cf">if</span> <span class="st">&#39;Ana&#39;</span> <span class="kw">in</span> b:</span>
-<span id="cb195-3"><a href="python.html#cb195-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Ana está en el diccionario.&#39;</span>)</span>
-<span id="cb195-4"><a href="python.html#cb195-4" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb195-5"><a href="python.html#cb195-5" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Ana no está en el diccionario.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb206-1"><a href="python.html#cb206-1" tabindex="-1"></a><span class="co"># Verificamos si &#39;Ana&#39; es una llave en el diccionario &#39;b&#39;</span></span>
+<span id="cb206-2"><a href="python.html#cb206-2" tabindex="-1"></a><span class="cf">if</span> <span class="st">&#39;Ana&#39;</span> <span class="kw">in</span> b:</span>
+<span id="cb206-3"><a href="python.html#cb206-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Ana está en el diccionario.&#39;</span>)</span>
+<span id="cb206-4"><a href="python.html#cb206-4" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb206-5"><a href="python.html#cb206-5" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Ana no está en el diccionario.&#39;</span>)</span></code></pre></div>
 <pre><code>## Ana no está en el diccionario.</code></pre>
 </div>
 <div id="iteraciones-sobre-secuencias" class="section level3 hasAnchor" number="4.6.5">
 <h3><span class="header-section-number">4.6.5</span> Iteraciones sobre secuencias<a href="python.html#iteraciones-sobre-secuencias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En Python, puedes iterar sobre cualquier secuencia, lo que incluye listas, tuplas, cadenas, diccionarios y conjuntos. La iteración te permite recorrer cada elemento de la secuencia uno por uno para realizar operaciones o tomar decisiones según cada elemento.</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb197-1"><a href="python.html#cb197-1" tabindex="-1"></a>vocales <span class="op">=</span> <span class="st">&#39;aeiouy&#39;</span></span>
-<span id="cb197-2"><a href="python.html#cb197-2" tabindex="-1"></a></span>
-<span id="cb197-3"><a href="python.html#cb197-3" tabindex="-1"></a><span class="cf">for</span> letra <span class="kw">in</span> <span class="st">&#39;poderoso&#39;</span>:</span>
-<span id="cb197-4"><a href="python.html#cb197-4" tabindex="-1"></a>    <span class="cf">if</span> letra <span class="kw">in</span> vocales:</span>
-<span id="cb197-5"><a href="python.html#cb197-5" tabindex="-1"></a>        <span class="bu">print</span>(letra)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb208-1"><a href="python.html#cb208-1" tabindex="-1"></a>vocales <span class="op">=</span> <span class="st">&#39;aeiouy&#39;</span></span>
+<span id="cb208-2"><a href="python.html#cb208-2" tabindex="-1"></a></span>
+<span id="cb208-3"><a href="python.html#cb208-3" tabindex="-1"></a><span class="cf">for</span> letra <span class="kw">in</span> <span class="st">&#39;poderoso&#39;</span>:</span>
+<span id="cb208-4"><a href="python.html#cb208-4" tabindex="-1"></a>    <span class="cf">if</span> letra <span class="kw">in</span> vocales:</span>
+<span id="cb208-5"><a href="python.html#cb208-5" tabindex="-1"></a>        <span class="bu">print</span>(letra)</span></code></pre></div>
 <pre><code>## o
 ## e
 ## o
 ## o</code></pre>
-<div class="sourceCode" id="cb199"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb199-1"><a href="python.html#cb199-1" tabindex="-1"></a>mensaje <span class="op">=</span> <span class="st">&quot;Hola ¿cómo estás?&quot;</span></span>
-<span id="cb199-2"><a href="python.html#cb199-2" tabindex="-1"></a>palabras <span class="op">=</span> mensaje.split()  <span class="co"># retorna una lista</span></span>
-<span id="cb199-3"><a href="python.html#cb199-3" tabindex="-1"></a></span>
-<span id="cb199-4"><a href="python.html#cb199-4" tabindex="-1"></a><span class="cf">for</span> palabra <span class="kw">in</span> palabras:</span>
-<span id="cb199-5"><a href="python.html#cb199-5" tabindex="-1"></a>    <span class="bu">print</span>(palabra)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb210-1"><a href="python.html#cb210-1" tabindex="-1"></a>mensaje <span class="op">=</span> <span class="st">&quot;Hola ¿cómo estás?&quot;</span></span>
+<span id="cb210-2"><a href="python.html#cb210-2" tabindex="-1"></a>palabras <span class="op">=</span> mensaje.split()  <span class="co"># retorna una lista</span></span>
+<span id="cb210-3"><a href="python.html#cb210-3" tabindex="-1"></a></span>
+<span id="cb210-4"><a href="python.html#cb210-4" tabindex="-1"></a><span class="cf">for</span> palabra <span class="kw">in</span> palabras:</span>
+<span id="cb210-5"><a href="python.html#cb210-5" tabindex="-1"></a>    <span class="bu">print</span>(palabra)</span></code></pre></div>
 <pre><code>## Hola
 ## ¿cómo
 ## estás?</code></pre>
 <p>A veces queremos llevar un registro sobre lo que estamos iterando, una forma de hacerlo es con un for.</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb201-1"><a href="python.html#cb201-1" tabindex="-1"></a>colores <span class="op">=</span> [<span class="st">&#39;rojo&#39;</span>, <span class="st">&#39;verde&#39;</span>, <span class="st">&#39;azul&#39;</span>, <span class="st">&#39;amarillo&#39;</span>]</span>
-<span id="cb201-2"><a href="python.html#cb201-2" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(colores)):</span>
-<span id="cb201-3"><a href="python.html#cb201-3" tabindex="-1"></a>    <span class="bu">print</span>((i, colores[i]))</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb212-1"><a href="python.html#cb212-1" tabindex="-1"></a>colores <span class="op">=</span> [<span class="st">&#39;rojo&#39;</span>, <span class="st">&#39;verde&#39;</span>, <span class="st">&#39;azul&#39;</span>, <span class="st">&#39;amarillo&#39;</span>]</span>
+<span id="cb212-2"><a href="python.html#cb212-2" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(colores)):</span>
+<span id="cb212-3"><a href="python.html#cb212-3" tabindex="-1"></a>    <span class="bu">print</span>((i, colores[i]))</span></code></pre></div>
 <pre><code>## (0, &#39;rojo&#39;)
 ## (1, &#39;verde&#39;)
 ## (2, &#39;azul&#39;)
@@ -1136,10 +1203,10 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <ul>
 <li>Utilizando <code>enumerate()</code> con una lista:</li>
 </ul>
-<div class="sourceCode" id="cb203"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb203-1"><a href="python.html#cb203-1" tabindex="-1"></a>frutas <span class="op">=</span> [<span class="st">&#39;manzana&#39;</span>, <span class="st">&#39;banana&#39;</span>, <span class="st">&#39;cereza&#39;</span>, <span class="st">&#39;dátil&#39;</span>]</span>
-<span id="cb203-2"><a href="python.html#cb203-2" tabindex="-1"></a></span>
-<span id="cb203-3"><a href="python.html#cb203-3" tabindex="-1"></a><span class="cf">for</span> indice, fruta <span class="kw">in</span> <span class="bu">enumerate</span>(frutas):</span>
-<span id="cb203-4"><a href="python.html#cb203-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Índice: </span><span class="sc">{</span>indice<span class="sc">}</span><span class="ss">, Fruta: </span><span class="sc">{</span>fruta<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb214-1"><a href="python.html#cb214-1" tabindex="-1"></a>frutas <span class="op">=</span> [<span class="st">&#39;manzana&#39;</span>, <span class="st">&#39;banana&#39;</span>, <span class="st">&#39;cereza&#39;</span>, <span class="st">&#39;dátil&#39;</span>]</span>
+<span id="cb214-2"><a href="python.html#cb214-2" tabindex="-1"></a></span>
+<span id="cb214-3"><a href="python.html#cb214-3" tabindex="-1"></a><span class="cf">for</span> indice, fruta <span class="kw">in</span> <span class="bu">enumerate</span>(frutas):</span>
+<span id="cb214-4"><a href="python.html#cb214-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Índice: </span><span class="sc">{</span>indice<span class="sc">}</span><span class="ss">, Fruta: </span><span class="sc">{</span>fruta<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
 <pre><code>## Índice: 0, Fruta: manzana
 ## Índice: 1, Fruta: banana
 ## Índice: 2, Fruta: cereza
@@ -1148,10 +1215,10 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <ul>
 <li>Utilizando <code>enumerate()</code> con una cadena:</li>
 </ul>
-<div class="sourceCode" id="cb205"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb205-1"><a href="python.html#cb205-1" tabindex="-1"></a>mensaje <span class="op">=</span> <span class="st">&quot;Python es genial&quot;</span></span>
-<span id="cb205-2"><a href="python.html#cb205-2" tabindex="-1"></a></span>
-<span id="cb205-3"><a href="python.html#cb205-3" tabindex="-1"></a><span class="cf">for</span> indice, letra <span class="kw">in</span> <span class="bu">enumerate</span>(mensaje):</span>
-<span id="cb205-4"><a href="python.html#cb205-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Índice: </span><span class="sc">{</span>indice<span class="sc">}</span><span class="ss">, Letra: </span><span class="sc">{</span>letra<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb216-1"><a href="python.html#cb216-1" tabindex="-1"></a>mensaje <span class="op">=</span> <span class="st">&quot;Python es genial&quot;</span></span>
+<span id="cb216-2"><a href="python.html#cb216-2" tabindex="-1"></a></span>
+<span id="cb216-3"><a href="python.html#cb216-3" tabindex="-1"></a><span class="cf">for</span> indice, letra <span class="kw">in</span> <span class="bu">enumerate</span>(mensaje):</span>
+<span id="cb216-4"><a href="python.html#cb216-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;Índice: </span><span class="sc">{</span>indice<span class="sc">}</span><span class="ss">, Letra: </span><span class="sc">{</span>letra<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
 <pre><code>## Índice: 0, Letra: P
 ## Índice: 1, Letra: y
 ## Índice: 2, Letra: t
@@ -1177,38 +1244,38 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <ul>
 <li>Iterar sobre claves: Puedes iterar sobre las claves de un diccionario utilizando un bucle <code>for</code>. Por ejemplo:</li>
 </ul>
-<div class="sourceCode" id="cb207"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb207-1"><a href="python.html#cb207-1" tabindex="-1"></a><span class="co"># Diccionario</span></span>
-<span id="cb207-2"><a href="python.html#cb207-2" tabindex="-1"></a>persona <span class="op">=</span> {<span class="st">&#39;nombre&#39;</span>: <span class="st">&#39;Juan&#39;</span>, <span class="st">&#39;edad&#39;</span>: <span class="dv">30</span>, <span class="st">&#39;ciudad&#39;</span>: <span class="st">&#39;Nueva York&#39;</span>}</span>
-<span id="cb207-3"><a href="python.html#cb207-3" tabindex="-1"></a></span>
-<span id="cb207-4"><a href="python.html#cb207-4" tabindex="-1"></a><span class="co"># Iterar sobre las claves</span></span>
-<span id="cb207-5"><a href="python.html#cb207-5" tabindex="-1"></a><span class="cf">for</span> clave <span class="kw">in</span> persona:</span>
-<span id="cb207-6"><a href="python.html#cb207-6" tabindex="-1"></a>    <span class="bu">print</span>(clave)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb218-1"><a href="python.html#cb218-1" tabindex="-1"></a><span class="co"># Diccionario</span></span>
+<span id="cb218-2"><a href="python.html#cb218-2" tabindex="-1"></a>persona <span class="op">=</span> {<span class="st">&#39;nombre&#39;</span>: <span class="st">&#39;Juan&#39;</span>, <span class="st">&#39;edad&#39;</span>: <span class="dv">30</span>, <span class="st">&#39;ciudad&#39;</span>: <span class="st">&#39;Nueva York&#39;</span>}</span>
+<span id="cb218-3"><a href="python.html#cb218-3" tabindex="-1"></a></span>
+<span id="cb218-4"><a href="python.html#cb218-4" tabindex="-1"></a><span class="co"># Iterar sobre las claves</span></span>
+<span id="cb218-5"><a href="python.html#cb218-5" tabindex="-1"></a><span class="cf">for</span> clave <span class="kw">in</span> persona:</span>
+<span id="cb218-6"><a href="python.html#cb218-6" tabindex="-1"></a>    <span class="bu">print</span>(clave)</span></code></pre></div>
 <pre><code>## nombre
 ## edad
 ## ciudad</code></pre>
 <ul>
 <li>Iterar sobre valores: De igual forma, puedes iterar sobre los valores de un diccionario utilizando un bucle <code>for</code>:</li>
 </ul>
-<div class="sourceCode" id="cb209"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb209-1"><a href="python.html#cb209-1" tabindex="-1"></a><span class="co"># Iterar sobre los valores</span></span>
-<span id="cb209-2"><a href="python.html#cb209-2" tabindex="-1"></a><span class="cf">for</span> valor <span class="kw">in</span> persona.values():</span>
-<span id="cb209-3"><a href="python.html#cb209-3" tabindex="-1"></a>    <span class="bu">print</span>(valor)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb220-1"><a href="python.html#cb220-1" tabindex="-1"></a><span class="co"># Iterar sobre los valores</span></span>
+<span id="cb220-2"><a href="python.html#cb220-2" tabindex="-1"></a><span class="cf">for</span> valor <span class="kw">in</span> persona.values():</span>
+<span id="cb220-3"><a href="python.html#cb220-3" tabindex="-1"></a>    <span class="bu">print</span>(valor)</span></code></pre></div>
 <pre><code>## Juan
 ## 30
 ## Nueva York</code></pre>
 <ul>
 <li>Iterar sobre pares clave-valor: Para iterar sobre las claves y valores simultáneamente, puedes usar el método <code>items()</code> del diccionario:</li>
 </ul>
-<div class="sourceCode" id="cb211"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb211-1"><a href="python.html#cb211-1" tabindex="-1"></a><span class="co"># Iterar sobre pares clave-valor</span></span>
-<span id="cb211-2"><a href="python.html#cb211-2" tabindex="-1"></a><span class="cf">for</span> clave, valor <span class="kw">in</span> persona.items():</span>
-<span id="cb211-3"><a href="python.html#cb211-3" tabindex="-1"></a>    <span class="bu">print</span>(clave, valor)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb222-1"><a href="python.html#cb222-1" tabindex="-1"></a><span class="co"># Iterar sobre pares clave-valor</span></span>
+<span id="cb222-2"><a href="python.html#cb222-2" tabindex="-1"></a><span class="cf">for</span> clave, valor <span class="kw">in</span> persona.items():</span>
+<span id="cb222-3"><a href="python.html#cb222-3" tabindex="-1"></a>    <span class="bu">print</span>(clave, valor)</span></code></pre></div>
 <pre><code>## nombre Juan
 ## edad 30
 ## ciudad Nueva York</code></pre>
 <p>Veamos otros ejemplos. Supongamos que tenemos un diccionario representando estudiantes y sus calificaciones:</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb213-1"><a href="python.html#cb213-1" tabindex="-1"></a>estudiantes <span class="op">=</span> {<span class="st">&#39;Ana&#39;</span>: <span class="dv">85</span>, <span class="st">&#39;Beto&#39;</span>: <span class="dv">90</span>, <span class="st">&#39;Carlos&#39;</span>: <span class="dv">80</span>, <span class="st">&#39;Diana&#39;</span>: <span class="dv">95</span>}</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb224-1"><a href="python.html#cb224-1" tabindex="-1"></a>estudiantes <span class="op">=</span> {<span class="st">&#39;Ana&#39;</span>: <span class="dv">85</span>, <span class="st">&#39;Beto&#39;</span>: <span class="dv">90</span>, <span class="st">&#39;Carlos&#39;</span>: <span class="dv">80</span>, <span class="st">&#39;Diana&#39;</span>: <span class="dv">95</span>}</span></code></pre></div>
 <p>Ahora, podemos iterar sobre el diccionario para imprimir el nombre de cada estudiante junto con su calificación:</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb214-1"><a href="python.html#cb214-1" tabindex="-1"></a><span class="cf">for</span> estudiante, calificacion <span class="kw">in</span> estudiantes.items():</span>
-<span id="cb214-2"><a href="python.html#cb214-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>estudiante<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>calificacion<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb225-1"><a href="python.html#cb225-1" tabindex="-1"></a><span class="cf">for</span> estudiante, calificacion <span class="kw">in</span> estudiantes.items():</span>
+<span id="cb225-2"><a href="python.html#cb225-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>estudiante<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>calificacion<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
 <pre><code>## Ana: 85
 ## Beto: 90
 ## Carlos: 80
@@ -1217,7 +1284,7 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <div id="compresiones-de-listas" class="section level3 hasAnchor" number="4.6.7">
 <h3><span class="header-section-number">4.6.7</span> Compresiones de listas<a href="python.html#compresiones-de-listas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Las comprensiones de listas son una característica poderosa de Python que te permite crear listas de forma concisa y legible utilizando una sintaxis compacta. La sintaxis general de una comprensión de lista es la siguiente:</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb216-1"><a href="python.html#cb216-1" tabindex="-1"></a>nueva_lista <span class="op">=</span> [expresion <span class="cf">for</span> elemento <span class="kw">in</span> iterable <span class="cf">if</span> condicion]</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb227-1"><a href="python.html#cb227-1" tabindex="-1"></a>nueva_lista <span class="op">=</span> [expresion <span class="cf">for</span> elemento <span class="kw">in</span> iterable <span class="cf">if</span> condicion]</span></code></pre></div>
 <ul>
 <li><p><code>expresion</code>: Es la expresión que define cómo se va a modificar o construir cada elemento de la nueva lista.</p></li>
 <li><p><code>elemento</code>: Es la variable que representa cada elemento del iterable.</p></li>
@@ -1228,29 +1295,29 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <ol style="list-style-type: decimal">
 <li>Crear una lista de los cuadrados de los primeros 10 números enteros:</li>
 </ol>
-<div class="sourceCode" id="cb217"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb217-1"><a href="python.html#cb217-1" tabindex="-1"></a>cuadrados <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]</span>
-<span id="cb217-2"><a href="python.html#cb217-2" tabindex="-1"></a><span class="bu">print</span>(cuadrados)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb228-1"><a href="python.html#cb228-1" tabindex="-1"></a>cuadrados <span class="op">=</span> [x <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]</span>
+<span id="cb228-2"><a href="python.html#cb228-2" tabindex="-1"></a><span class="bu">print</span>(cuadrados)</span></code></pre></div>
 <pre><code>## [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Filtrar los números pares de una lista:</li>
 </ol>
-<div class="sourceCode" id="cb219"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb219-1"><a href="python.html#cb219-1" tabindex="-1"></a>numeros <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
-<span id="cb219-2"><a href="python.html#cb219-2" tabindex="-1"></a>pares <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> numeros <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
-<span id="cb219-3"><a href="python.html#cb219-3" tabindex="-1"></a><span class="bu">print</span>(pares)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb230-1"><a href="python.html#cb230-1" tabindex="-1"></a>numeros <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
+<span id="cb230-2"><a href="python.html#cb230-2" tabindex="-1"></a>pares <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> numeros <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb230-3"><a href="python.html#cb230-3" tabindex="-1"></a><span class="bu">print</span>(pares)</span></code></pre></div>
 <pre><code>## [2, 4, 6, 8, 10]</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Convertir una lista de cadenas a una lista de sus longitudes:</li>
 </ol>
-<div class="sourceCode" id="cb221"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb221-1"><a href="python.html#cb221-1" tabindex="-1"></a>palabras <span class="op">=</span> [<span class="st">&#39;python&#39;</span>, <span class="st">&#39;es&#39;</span>, <span class="st">&#39;genial&#39;</span>]</span>
-<span id="cb221-2"><a href="python.html#cb221-2" tabindex="-1"></a>longitudes <span class="op">=</span> [<span class="bu">len</span>(palabra) <span class="cf">for</span> palabra <span class="kw">in</span> palabras]</span>
-<span id="cb221-3"><a href="python.html#cb221-3" tabindex="-1"></a><span class="bu">print</span>(longitudes)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb232-1"><a href="python.html#cb232-1" tabindex="-1"></a>palabras <span class="op">=</span> [<span class="st">&#39;python&#39;</span>, <span class="st">&#39;es&#39;</span>, <span class="st">&#39;genial&#39;</span>]</span>
+<span id="cb232-2"><a href="python.html#cb232-2" tabindex="-1"></a>longitudes <span class="op">=</span> [<span class="bu">len</span>(palabra) <span class="cf">for</span> palabra <span class="kw">in</span> palabras]</span>
+<span id="cb232-3"><a href="python.html#cb232-3" tabindex="-1"></a><span class="bu">print</span>(longitudes)</span></code></pre></div>
 <pre><code>## [6, 2, 6]</code></pre>
 <p>También es posible utilizar una condición <code>else</code> en una comprensión de lista. La sintaxis es la siguiente:</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb223-1"><a href="python.html#cb223-1" tabindex="-1"></a>resultado <span class="op">=</span> [valor_verdadero <span class="cf">if</span> condicion <span class="cf">else</span> valor_falso <span class="cf">for</span> elemento <span class="kw">in</span> iterable]</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb234-1"><a href="python.html#cb234-1" tabindex="-1"></a>resultado <span class="op">=</span> [valor_verdadero <span class="cf">if</span> condicion <span class="cf">else</span> valor_falso <span class="cf">for</span> elemento <span class="kw">in</span> iterable]</span></code></pre></div>
 <p>Por ejemplo:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb224-1"><a href="python.html#cb224-1" tabindex="-1"></a>numeros <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
-<span id="cb224-2"><a href="python.html#cb224-2" tabindex="-1"></a>resultado <span class="op">=</span> [<span class="st">&#39;par&#39;</span> <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&#39;impar&#39;</span> <span class="cf">for</span> x <span class="kw">in</span> numeros]</span>
-<span id="cb224-3"><a href="python.html#cb224-3" tabindex="-1"></a><span class="bu">print</span>(resultado)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb235-1"><a href="python.html#cb235-1" tabindex="-1"></a>numeros <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span>
+<span id="cb235-2"><a href="python.html#cb235-2" tabindex="-1"></a>resultado <span class="op">=</span> [<span class="st">&#39;par&#39;</span> <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&#39;impar&#39;</span> <span class="cf">for</span> x <span class="kw">in</span> numeros]</span>
+<span id="cb235-3"><a href="python.html#cb235-3" tabindex="-1"></a><span class="bu">print</span>(resultado)</span></code></pre></div>
 <pre><code>## [&#39;impar&#39;, &#39;par&#39;, &#39;impar&#39;, &#39;par&#39;, &#39;impar&#39;, &#39;par&#39;, &#39;impar&#39;, &#39;par&#39;, &#39;impar&#39;, &#39;par&#39;]</code></pre>
 <p>Las comprensiones de listas son una forma elegante y eficiente de construir listas en Python. Son fáciles de leer y escribir, y pueden ayudarte a escribir código más limpio y conciso.</p>
 <p><strong>Ejercicios:</strong></p>
@@ -1258,7 +1325,7 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <li><p>Ejercicio 1: Dada una lista de números, crea una lista que contenga los cuadrados de los números pares presentes en la lista dada.</p></li>
 <li><p>Ejercicio 2: Dada una lista de cadenas, crea una nueva lista que contenga todas las cadenas convertidas a mayúsculas. Por ejemplo, si tienes la lista siguiente:</p></li>
 </ul>
-<div class="sourceCode" id="cb226"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb226-1"><a href="python.html#cb226-1" tabindex="-1"></a>palabras <span class="op">=</span> [<span class="st">&#39;hola&#39;</span>, <span class="st">&#39;python&#39;</span>, <span class="st">&#39;mundo&#39;</span>, <span class="st">&#39;programación&#39;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb237-1"><a href="python.html#cb237-1" tabindex="-1"></a>palabras <span class="op">=</span> [<span class="st">&#39;hola&#39;</span>, <span class="st">&#39;python&#39;</span>, <span class="st">&#39;mundo&#39;</span>, <span class="st">&#39;programación&#39;</span>]</span></code></pre></div>
 <p>Lo que quieres obtener es:</p>
 <pre><code>[&#39;HOLA&#39;, &#39;PYTHON&#39;, &#39;MUNDO&#39;, &#39;PROGRAMACIÓN&#39;]</code></pre>
 <ul>

@@ -811,6 +811,85 @@ print(mi_diccionario)  # Salida: {}
 Estos métodos son muy útiles para trabajar con diccionarios en Python y permiten manipular fácilmente las claves, valores y pares clave-valor, así como agregar, eliminar y actualizar elementos en los diccionarios de manera eficiente.
 
 
+Supongamos que queremos agregar nuevas entradas a nuestro diccionario, para eso usamos el método `append`.
+
+```{python}
+mi_diccionario = {
+    'nombre': ['Roberta', 'María', 'Pedro'],
+    'edad': [30, 25, 35],
+    'ciudad': ['Madrid', 'Barcelona', 'Sevilla']
+}
+
+mi_diccionario['nombre'].append('Luis')
+```
+
+O podríamos definir las variables a agregar y usar el método `append`.
+
+```{python}
+mi_diccionario = {
+    'nombre': ['Roberta', 'María', 'Pedro'],
+    'edad': [30, 25, 35],
+    'ciudad': ['Madrid', 'Barcelona', 'Sevilla']
+}
+
+# Agregar un nuevo nombre, edad y ciudad
+nuevo_nombre = 'Luis'
+nueva_edad = 40
+nueva_ciudad = 'Valencia'
+
+mi_diccionario['nombre'].append(nuevo_nombre)
+mi_diccionario['edad'].append(nueva_edad)
+mi_diccionario['ciudad'].append(nueva_ciudad)
+
+# Imprimir el diccionario actualizado
+print(mi_diccionario)
+```
+
+
+Una forma de obtener los valores de edad y ciudad para cada nombre es la siguiente.
+
+```{python}
+mi_diccionario = {
+    'nombre': ['Roberta', 'María', 'Pedro'],
+    'edad': [30, 25, 35],
+    'ciudad': ['Madrid', 'Barcelona', 'Sevilla']
+}
+
+# Recuperar listas de nombres y edades
+nombres = mi_diccionario['nombre']
+edades = mi_diccionario['edad']
+
+# Buscar la posición de María y Pedro en la lista de nombres
+pos_maria = nombres.index('María')
+pos_pedro = nombres.index('Pedro')
+
+# Obtener las edades de María y Pedro usando las posiciones encontradas
+edad_maria = edades[pos_maria]
+edad_pedro = edades[pos_pedro]
+
+# Imprimir las edades de María y Pedro
+print("Edad de María:", edad_maria)
+print("Edad de Pedro:", edad_pedro)
+```
+
+De una forma más directa, podemos obtener los valores como sigue:
+
+```{python}
+mi_diccionario = {
+    'nombre': ['Juan', 'María', 'Pedro'],
+    'edad': [30, 25, 35],
+    'ciudad': ['Madrid', 'Barcelona', 'Sevilla']
+}
+
+# Obtener las edades de María y Pedro directamente del diccionario
+edad_maria = mi_diccionario['edad'][mi_diccionario['nombre'].index('María')]
+edad_pedro = mi_diccionario['edad'][mi_diccionario['nombre'].index('Pedro')]
+
+# Imprimir las edades de María y Pedro
+print("Edad de María:", edad_maria)
+print("Edad de Pedro:", edad_pedro)
+```
+
 Los diccionarios en Python son estructuras de datos muy versátiles y se utilizan ampliamente para mapear claves a valores y para almacenar datos de manera eficiente. Son útiles para muchas tareas, como el almacenamiento de configuraciones, el modelado de datos y la manipulación de datos estructurados.
 
 
