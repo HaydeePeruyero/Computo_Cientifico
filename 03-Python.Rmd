@@ -1430,6 +1430,19 @@ print(np.median(arr)) # Mediana
 print(np.std(arr))    # Desviación estándar
 ```
 
+**Ejercicios**
+
+**Ejercicio 1**: Crea un array unidimensional con los números del 1 al 10 e imprímelo.
+
+**Ejercicio 2**: Crea una matriz 3x3 con todos los elementos iguales a 5 e imprímela.
+
+**Ejercicio 3**: Calcula la suma de los elementos de la siguiente matriz:
+
+```python
+matriz = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+```
+
+
 ### Indexación y Rebanado
 
 Como en las listas, los elementos de un array tiene un índice. Existen varias formas para indexar un array.
@@ -1477,9 +1490,257 @@ a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 print(a[[1, 2], [1, 2]])  # Imprime [5 9]
 ```
 
+De esta forma también podemos asignar nuevos valores a nuestro array:
+
+```{python}
+a = np.arange(0, 100, 10)
+# extraemos unos valores:
+a[[2, 3, 2, 4, 2]]
+# o modificamos algunos valores
+a[[9, 7]] = -100
+a
+```
+
+![Imagen de *Scientific Python Lectures*, ver índice para la referencia.](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/fancy_index.png)
+
+Otra forma de hacer este indexado fancy es usando `boolean mask`:
+
+```{python}
+# creamos un generador de numeros aleatorios con semilla 27
+rng = np.random.default_rng(27446968)
+# creamos array con esos números aleatorios
+a1 = rng.integers(0, 21, 15)
+# Lo siguiente nos regresa un arreglo booleano
+(a1 % 3 == 0)
+# Creamos una máscara con esa condicion
+mascara = (a1 % 3 == 0)
+# extraemos usando esa máscara
+extraer_de_a1 = a1[mascara]
+extraer_de_a1
+```
+
+Se puede emplear esto de las máscaras para asignar nuevos valores:
+
+```{python}
+a1[a1 % 3 == 0] = -1
+a1
+```
+
+
+**Ejercicio 1:** Considera es siguiente array, extrae usando este tipo de indexado las letras `O,M,G` y `W, O, Z`.
+
+```{python}
+np.array(list("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234")).reshape(5,6)
+```
+
+**Ejercicio 2:** Considerea el siguiente array y extrae el array `[ 5,  6,  7,  8,  9, 10, 11]` usando una máscara boleana:
+
+```{python}
+np.arange(12).reshape(4,3)
+```
+
+Existe un argumento llamado `where` que funciona con las funciones universales como suma, media, etc.
+
+```{python}
+a = np.arange(20).reshape(5,4)
+cond = a >= 10
+suma1 = np.sum(a[cond])
+print(suma1)
+
+suma2 = np.sum(a, where = cond)
+print(suma2)
+```
+
+### Vistas y copias
+
+1. **Vista (View)**:  Una vista es una manera de acceder a los datos de un array NumPy sin copiar el buffer de datos subyacente. Esto significa que una vista comparte el mismo buffer de datos que el array original, pero puede tener una forma o una distribución de datos diferentes.
+
+**Características:**
+
+- Acceso al array sin cambiar el buffer de datos.
+
+- Indexación regular y rebanado generan vistas.
+
+- Las operaciones in-place se pueden realizar en vistas.
+
+2. **Copia (Copy)**: Una copia es una creación de un nuevo array que duplica tanto los datos como la metadata del array original. Esto significa que una copia tiene su propio buffer de datos independiente del array original.
+
+**Características:**
+
+- Se crea un nuevo array duplicando tanto los datos como la metadata del array original.
+
+- La indexación elegante siempre genera copias.
+
+- Se puede forzar una copia utilizando el método `.copy()`.
+
+
+```{python}
+a = np.arange(1, 6)
+print(a)
+
+# Crear una vista del array y imprimir su base
+v = a[2:5]  # v es una vista
+print(v)
+
+print('v.base:', v.base)  # Devuelve el array 'base'
+```
+
+
+```{python}
+a = np.arange(1, 6)
+print(a)
+
+# Crear una copia del array
+# En este caso, utilizando indexación elegante
+v = a[[1, 2]]
+print(v)
+
+# Cambiar un elemento en la copia y luego imprimir el array original
+v[0] = 99
+
+print('v:', v)
+print('a:', a)
+```
+
+Como observamos, al crear una copia real no se modifica el array original. Vamos a forzar una copia también:
+
+```{python}
+a = np.arange(1, 6)
+w = a.copy()
+
+w.base # vemos que indica None, lo que quiere decir es que no tiene como base 
+# al array origianl, son idependientes
+w.base == None
+```
+
+Si usamos una `vista`:
+
+```{python}
+a = np.arange(1, 6)
+c = a[1:3]
+c[0] = 8
+print('c:', c)
+print('a:', a)
+```
+
+Es importante entender la diferencia entre una vista y una copia cuando trabajas con arrays en NumPy. Las operaciones en vistas pueden modificar el array original, mientras que las operaciones en copias no afectarán al array original. Esto puede ser crucial, especialmente cuando se realizan operaciones in-place o se manipulan grandes conjuntos de datos.
+
+### Ordenamiento
+
+La función de ordenamiento en NumPy se implementa con la función `np.sort()`. Por defecto, se utiliza el algoritmo de ordenamiento quicksort, que es muy eficiente.
+
+**Características:**
+
+- `np.sort()` devuelve un array ordenado.
+
+- `.sort()` realiza el ordenamiento in-place en el array original.
+
+- Para ordenar en orden descendente, simplemente utiliza `.flip()` después de ordenar.
+
+Para ordenamiento de un array unidimensional:
+
+```{python}
+# Crear un array de números enteros aleatorios
+a = np.random.randint(1, 10, 5)
+print('Array original:', a)
+
+# Ordenar el array y mostrar el resultado
+s = np.sort(a)
+print('Array ordenado:', s)
+
+# Ordenar in-place (en el mismo array)
+a.sort()
+print('Array original después de ordenar in-place:', a)
+```
+
+Para ordenamiento de un array bidimensional:
+
+```{python}
+# Crear un array bidimensional de números enteros aleatorios
+a = np.random.randint(1, 15, (3,3))
+print('Array original:')
+print(a)
+
+# Ordenar por filas
+sorted_rows = np.sort(a)
+print('Array ordenado por filas:')
+print(sorted_rows)
+
+# Ordenar por columnas
+sorted_cols = np.sort(a, axis=0)
+print('Array ordenado por columnas:')
+print(sorted_cols)
+```
+
+Otra función de ordenamiento es `argsort`:
+
+```{python}
+# Crear un array de números enteros aleatorios
+a = np.random.randint(1, 15, 10)
+print('Array original:', a)
+
+# Obtener los índices que ordenarían el array
+indices_ordenados = np.argsort(a)
+print('Índices ordenados:', indices_ordenados)
+
+# Ordenar el array utilizando indexación elegante
+sorted_array = a[indices_ordenados]
+print('Array ordenado con indexación elegante:')
+print(sorted_array)
+```
+
+La función de ordenamiento en NumPy es una herramienta poderosa para ordenar arrays de manera eficiente, tanto en una como en varias dimensiones. Al entender cómo utilizar `np.sort()` y `argsort()`, puedes ordenar tus datos según tus necesidades específicas, ya sea en orden ascendente o descendente. Además, ten en cuenta que el argumento `axis` te permite ordenar por filas o columnas, según sea necesario.
+
+**Ejercicio 1:** Para el array `a=np.ones((5,5,5))`, responde lo siguiente para cada caso:
+
+- ¿Cuál es su dimensión?
+
+- ¿Es una vista o una copia?
+
+Después verifica tu respuesta.
+
+1) `v = a[1, ::2, ::2]`
+
+2) `v = a[2,:]`
+
+3) `v = a[[0, 1],:]`
+
+4) `v = a[[2,3], [2,3]]`
+
+
+**Ejercicio 2:** Recrea los siguientes plots usando lo siguiente:
+
+- Realiza un array de solo ceros que será tu base.
+
+- Cambia los valores correspondientes a 1.
+
+- Usa `plt.matshow(nombre_array)` para hacer el plot.
+
+Para importar el paquete para hacer el plot realiza lo siguiente:
+
+```python
+%matplotlib inline
+from matplotlib import pyplot as plt #libreria para hacer plots
+```
+
+![Ejercicio de ASPP Latam](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/ejercicio_index.png)
+
+**Ejercicio 3:** Comienza creando un  array 3x3:
+
+```{python}
+ej = np.array([[6,2,3], [1,7,2], [7,6,5]])
+ej
+```
+
+a) Ordena la última fila en forma ascenderte de manera `in-place`.
+
+b) Ahora, ordena la primera y segunda columna (ascendentemente) de dos formas distintas:
+
+  - Usando fancy-index
+  
+  - `in-place`, usando rebanadas o índices.
 
 ### Broadcasting
-
 
 El broadcasting es una poderosa característica de NumPy que permite realizar operaciones aritméticas entre arrays de diferentes formas sin necesidad de que tengan las mismas dimensiones. Esto significa que NumPy puede manejar automáticamente situaciones donde las dimensiones de los arrays no coinciden, pero pueden ser compatibles de alguna manera.
 
@@ -1525,20 +1786,6 @@ print(resultado)
 ```
 
 El broadcasting es una característica poderosa de NumPy que simplifica las operaciones entre arrays con diferentes formas. Al entender las reglas de broadcasting, puedes realizar operaciones aritméticas de manera eficiente y elegante en NumPy, lo que facilita el trabajo con datos multidimensionales en Python.
-
-
-### Ejercicios
-
-**Ejercicio 1**: Crea un array unidimensional con los números del 1 al 10 e imprímelo.
-
-**Ejercicio 2**: Crea una matriz 3x3 con todos los elementos iguales a 5 e imprímela.
-
-**Ejercicio 3**: Calcula la suma de los elementos de la siguiente matriz:
-
-```python
-matriz = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-```
-
 
 
 

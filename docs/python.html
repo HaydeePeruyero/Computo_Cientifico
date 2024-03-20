@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-03-19" />
+<meta name="date" content="2024-03-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -220,8 +220,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.7.1" data-path="python.html"><a href="python.html#operaciones-básicas-con-numpy"><i class="fa fa-check"></i><b>4.7.1</b> Operaciones Básicas con NumPy</a></li>
 <li class="chapter" data-level="4.7.2" data-path="python.html"><a href="python.html#indexación-y-rebanado"><i class="fa fa-check"></i><b>4.7.2</b> Indexación y Rebanado</a></li>
-<li class="chapter" data-level="4.7.3" data-path="python.html"><a href="python.html#broadcasting"><i class="fa fa-check"></i><b>4.7.3</b> Broadcasting</a></li>
-<li class="chapter" data-level="4.7.4" data-path="python.html"><a href="python.html#ejercicios-1"><i class="fa fa-check"></i><b>4.7.4</b> Ejercicios</a></li>
+<li class="chapter" data-level="4.7.3" data-path="python.html"><a href="python.html#vistas-y-copias"><i class="fa fa-check"></i><b>4.7.3</b> Vistas y copias</a></li>
+<li class="chapter" data-level="4.7.4" data-path="python.html"><a href="python.html#ordenamiento"><i class="fa fa-check"></i><b>4.7.4</b> Ordenamiento</a></li>
+<li class="chapter" data-level="4.7.5" data-path="python.html"><a href="python.html#broadcasting"><i class="fa fa-check"></i><b>4.7.5</b> Broadcasting</a></li>
 </ul></li>
 <li class="chapter" data-level="4.8" data-path="python.html"><a href="python.html#visualización-de-datos"><i class="fa fa-check"></i><b>4.8</b> Visualización de datos</a></li>
 <li class="chapter" data-level="4.9" data-path="python.html"><a href="python.html#data-frames-con-pandas"><i class="fa fa-check"></i><b>4.9</b> Data frames con pandas</a></li>
@@ -1368,7 +1369,7 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])</code></pre>
 <p>También podemos crearlos usando valores aleatorios:</p>
 <div class="sourceCode" id="cb251"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb251-1"><a href="python.html#cb251-1" tabindex="-1"></a>np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## array([3, 8, 1, 2, 2])</code></pre>
+<pre><code>## array([1, 8, 2, 3, 6])</code></pre>
 <p>Para saber la dimensión, forma o longitud de nuestro array usamos lo siguiente:</p>
 <div class="sourceCode" id="cb253"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb253-1"><a href="python.html#cb253-1" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>])</span>
 <span id="cb253-2"><a href="python.html#cb253-2" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div>
@@ -1390,8 +1391,8 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## array([[1., 1., 1., 1., 1., 1., 1., 1., 1., 1.],
 ##        [1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]])</code></pre>
 <div class="sourceCode" id="cb265"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb265-1"><a href="python.html#cb265-1" tabindex="-1"></a>np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, (<span class="dv">2</span>, <span class="dv">10</span>))</span></code></pre></div>
-<pre><code>## array([[8, 0, 8, 2, 4, 9, 4, 0, 9, 9],
-##        [9, 7, 1, 6, 0, 8, 3, 7, 5, 7]])</code></pre>
+<pre><code>## array([[3, 6, 7, 2, 7, 8, 4, 0, 4, 6],
+##        [8, 3, 0, 1, 5, 1, 2, 6, 0, 4]])</code></pre>
 <p>Otro array de dimensión dos puede ser el siguiente:</p>
 <div class="sourceCode" id="cb267"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb267-1"><a href="python.html#cb267-1" tabindex="-1"></a>arr_2d <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
 <span id="cb267-2"><a href="python.html#cb267-2" tabindex="-1"></a><span class="bu">print</span>(arr_2d)</span></code></pre></div>
@@ -1464,6 +1465,11 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## 3.0</code></pre>
 <div class="sourceCode" id="cb294"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb294-1"><a href="python.html#cb294-1" tabindex="-1"></a><span class="bu">print</span>(np.std(arr))    <span class="co"># Desviación estándar</span></span></code></pre></div>
 <pre><code>## 1.4142135623730951</code></pre>
+<p><strong>Ejercicios</strong></p>
+<p><strong>Ejercicio 1</strong>: Crea un array unidimensional con los números del 1 al 10 e imprímelo.</p>
+<p><strong>Ejercicio 2</strong>: Crea una matriz 3x3 con todos los elementos iguales a 5 e imprímela.</p>
+<p><strong>Ejercicio 3</strong>: Calcula la suma de los elementos de la siguiente matriz:</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb296-1"><a href="python.html#cb296-1" tabindex="-1"></a>matriz <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span></code></pre></div>
 </div>
 <div id="indexación-y-rebanado" class="section level3 hasAnchor" number="4.7.2">
 <h3><span class="header-section-number">4.7.2</span> Indexación y Rebanado<a href="python.html#indexación-y-rebanado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1471,45 +1477,265 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <ol style="list-style-type: decimal">
 <li><strong>Acceso a campos (field access indexing)</strong>: Esta forma de indexación implica acceder a un elemento de un array multidimensional mediante una secuencia de índices separados por corchetes. Por ejemplo, <code>a[1][2][3]</code> significa que estás accediendo al elemento en la fila 1, columna 2 y profundidad 3 del array <code>a</code>.</li>
 </ol>
-<div class="sourceCode" id="cb296"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb296-1"><a href="python.html#cb296-1" tabindex="-1"></a><span class="co"># para arreglos unidimensionales</span></span>
-<span id="cb296-2"><a href="python.html#cb296-2" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
-<span id="cb296-3"><a href="python.html#cb296-3" tabindex="-1"></a><span class="bu">print</span>(arr[<span class="dv">2</span>])   <span class="co"># Imprime el tercer elemento (índice 2)</span></span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb297-1"><a href="python.html#cb297-1" tabindex="-1"></a><span class="co"># para arreglos unidimensionales</span></span>
+<span id="cb297-2"><a href="python.html#cb297-2" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb297-3"><a href="python.html#cb297-3" tabindex="-1"></a><span class="bu">print</span>(arr[<span class="dv">2</span>])   <span class="co"># Imprime el tercer elemento (índice 2)</span></span></code></pre></div>
 <pre><code>## 3</code></pre>
-<div class="sourceCode" id="cb298"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb298-1"><a href="python.html#cb298-1" tabindex="-1"></a><span class="bu">print</span>(arr[<span class="dv">1</span>:<span class="dv">4</span>]) <span class="co"># Imprime elementos desde el índice 1 hasta el 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb299-1"><a href="python.html#cb299-1" tabindex="-1"></a><span class="bu">print</span>(arr[<span class="dv">1</span>:<span class="dv">4</span>]) <span class="co"># Imprime elementos desde el índice 1 hasta el 3</span></span></code></pre></div>
 <pre><code>## [2 3 4]</code></pre>
-<div class="sourceCode" id="cb300"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb300-1"><a href="python.html#cb300-1" tabindex="-1"></a><span class="co"># Crear un array tridimensional</span></span>
-<span id="cb300-2"><a href="python.html#cb300-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]], [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]])</span>
-<span id="cb300-3"><a href="python.html#cb300-3" tabindex="-1"></a><span class="co"># Acceder al elemento en la fila 1, columna 0, y profundidad 1</span></span>
-<span id="cb300-4"><a href="python.html#cb300-4" tabindex="-1"></a><span class="bu">print</span>(a[<span class="dv">1</span>][<span class="dv">0</span>][<span class="dv">1</span>])  <span class="co"># Imprime 8</span></span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb301-1"><a href="python.html#cb301-1" tabindex="-1"></a><span class="co"># Crear un array tridimensional</span></span>
+<span id="cb301-2"><a href="python.html#cb301-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]], [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]])</span>
+<span id="cb301-3"><a href="python.html#cb301-3" tabindex="-1"></a><span class="co"># Acceder al elemento en la fila 1, columna 0, y profundidad 1</span></span>
+<span id="cb301-4"><a href="python.html#cb301-4" tabindex="-1"></a><span class="bu">print</span>(a[<span class="dv">1</span>][<span class="dv">0</span>][<span class="dv">1</span>])  <span class="co"># Imprime 8</span></span></code></pre></div>
 <pre><code>## 8</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Indexación regular (regular indexing)</strong>: En esta forma de indexación, los índices se proporcionan como una tupla separada por comas. Por ejemplo, <code>a[1,2,3]</code> significa que estás accediendo al elemento en la fila 1, columna 2 y profundidad 3 del array <code>a</code>.</li>
 </ol>
-<div class="sourceCode" id="cb302"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb302-1"><a href="python.html#cb302-1" tabindex="-1"></a><span class="co"># Crear un array tridimensional</span></span>
-<span id="cb302-2"><a href="python.html#cb302-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]], [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]])</span>
-<span id="cb302-3"><a href="python.html#cb302-3" tabindex="-1"></a><span class="co"># Acceder al elemento en la fila 1, columna 0, y profundidad 1</span></span>
-<span id="cb302-4"><a href="python.html#cb302-4" tabindex="-1"></a><span class="bu">print</span>(a[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>])  <span class="co"># Imprime 8</span></span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb303-1"><a href="python.html#cb303-1" tabindex="-1"></a><span class="co"># Crear un array tridimensional</span></span>
+<span id="cb303-2"><a href="python.html#cb303-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]], [[<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]]])</span>
+<span id="cb303-3"><a href="python.html#cb303-3" tabindex="-1"></a><span class="co"># Acceder al elemento en la fila 1, columna 0, y profundidad 1</span></span>
+<span id="cb303-4"><a href="python.html#cb303-4" tabindex="-1"></a><span class="bu">print</span>(a[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>])  <span class="co"># Imprime 8</span></span></code></pre></div>
 <pre><code>## 8</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Rebanado (slicing)</strong>: Esta técnica implica seleccionar una parte del array utilizando rangos de índices. Por ejemplo, <code>a[1:3, 1:3]</code> significa que estás seleccionando las filas de la 1 a la 2 (exclusivo) y las columnas de la 1 a la 2 (exclusivo) del array <code>a</code>.</li>
 </ol>
-<div class="sourceCode" id="cb304"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb304-1"><a href="python.html#cb304-1" tabindex="-1"></a><span class="co"># Crear un array bidimensional</span></span>
-<span id="cb304-2"><a href="python.html#cb304-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
-<span id="cb304-3"><a href="python.html#cb304-3" tabindex="-1"></a><span class="co"># Seleccionar una parte del array</span></span>
-<span id="cb304-4"><a href="python.html#cb304-4" tabindex="-1"></a><span class="bu">print</span>(a[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>:<span class="dv">3</span>])  <span class="co"># Imprime [[5 6] [8 9]]</span></span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb305-1"><a href="python.html#cb305-1" tabindex="-1"></a><span class="co"># Crear un array bidimensional</span></span>
+<span id="cb305-2"><a href="python.html#cb305-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
+<span id="cb305-3"><a href="python.html#cb305-3" tabindex="-1"></a><span class="co"># Seleccionar una parte del array</span></span>
+<span id="cb305-4"><a href="python.html#cb305-4" tabindex="-1"></a><span class="bu">print</span>(a[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>:<span class="dv">3</span>])  <span class="co"># Imprime [[5 6] [8 9]]</span></span></code></pre></div>
 <pre><code>## [[5 6]
 ##  [8 9]]</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li><strong>Indexación extravagante (fancy indexing)</strong>: En esta forma de indexación, los índices se proporcionan como listas de índices. Por ejemplo, <code>a[[1,2], [1,2]]</code> significa que estás seleccionando los elementos con índices (1,1) y (2,2) del array <code>a</code>.</li>
 </ol>
-<div class="sourceCode" id="cb306"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb306-1"><a href="python.html#cb306-1" tabindex="-1"></a><span class="co"># Crear un array bidimensional</span></span>
-<span id="cb306-2"><a href="python.html#cb306-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
-<span id="cb306-3"><a href="python.html#cb306-3" tabindex="-1"></a><span class="co"># Seleccionar elementos con índices específicos</span></span>
-<span id="cb306-4"><a href="python.html#cb306-4" tabindex="-1"></a><span class="bu">print</span>(a[[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">2</span>]])  <span class="co"># Imprime [5 9]</span></span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb307-1"><a href="python.html#cb307-1" tabindex="-1"></a><span class="co"># Crear un array bidimensional</span></span>
+<span id="cb307-2"><a href="python.html#cb307-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
+<span id="cb307-3"><a href="python.html#cb307-3" tabindex="-1"></a><span class="co"># Seleccionar elementos con índices específicos</span></span>
+<span id="cb307-4"><a href="python.html#cb307-4" tabindex="-1"></a><span class="bu">print</span>(a[[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">2</span>]])  <span class="co"># Imprime [5 9]</span></span></code></pre></div>
 <pre><code>## [5 9]</code></pre>
+<p>De esta forma también podemos asignar nuevos valores a nuestro array:</p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb309-1"><a href="python.html#cb309-1" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>)</span>
+<span id="cb309-2"><a href="python.html#cb309-2" tabindex="-1"></a><span class="co"># extraemos unos valores:</span></span>
+<span id="cb309-3"><a href="python.html#cb309-3" tabindex="-1"></a>a[[<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>]]</span></code></pre></div>
+<pre><code>## array([20, 30, 20, 40, 20])</code></pre>
+<div class="sourceCode" id="cb311"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb311-1"><a href="python.html#cb311-1" tabindex="-1"></a><span class="co"># o modificamos algunos valores</span></span>
+<span id="cb311-2"><a href="python.html#cb311-2" tabindex="-1"></a>a[[<span class="dv">9</span>, <span class="dv">7</span>]] <span class="op">=</span> <span class="op">-</span><span class="dv">100</span></span>
+<span id="cb311-3"><a href="python.html#cb311-3" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## array([   0,   10,   20,   30,   40,   50,   60, -100,   80, -100])</code></pre>
+<div class="float">
+<img src="img/fancy_index.png" alt="Imagen de Scientific Python Lectures, ver índice para la referencia." />
+<div class="figcaption">Imagen de <em>Scientific Python Lectures</em>, ver índice para la referencia.</div>
 </div>
-<div id="broadcasting" class="section level3 hasAnchor" number="4.7.3">
-<h3><span class="header-section-number">4.7.3</span> Broadcasting<a href="python.html#broadcasting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Otra forma de hacer este indexado fancy es usando <code>boolean mask</code>:</p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb313-1"><a href="python.html#cb313-1" tabindex="-1"></a><span class="co"># creamos un generador de numeros aleatorios con semilla 27</span></span>
+<span id="cb313-2"><a href="python.html#cb313-2" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">27446968</span>)</span>
+<span id="cb313-3"><a href="python.html#cb313-3" tabindex="-1"></a><span class="co"># creamos array con esos números aleatorios</span></span>
+<span id="cb313-4"><a href="python.html#cb313-4" tabindex="-1"></a>a1 <span class="op">=</span> rng.integers(<span class="dv">0</span>, <span class="dv">21</span>, <span class="dv">15</span>)</span>
+<span id="cb313-5"><a href="python.html#cb313-5" tabindex="-1"></a><span class="co"># Lo siguiente nos regresa un arreglo booleano</span></span>
+<span id="cb313-6"><a href="python.html#cb313-6" tabindex="-1"></a>(a1 <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## array([ True, False,  True, False, False, False,  True, False, False,
+##        False,  True, False,  True, False,  True])</code></pre>
+<div class="sourceCode" id="cb315"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb315-1"><a href="python.html#cb315-1" tabindex="-1"></a><span class="co"># Creamos una máscara con esa condicion</span></span>
+<span id="cb315-2"><a href="python.html#cb315-2" tabindex="-1"></a>mascara <span class="op">=</span> (a1 <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>)</span>
+<span id="cb315-3"><a href="python.html#cb315-3" tabindex="-1"></a><span class="co"># extraemos usando esa máscara</span></span>
+<span id="cb315-4"><a href="python.html#cb315-4" tabindex="-1"></a>extraer_de_a1 <span class="op">=</span> a1[mascara]</span>
+<span id="cb315-5"><a href="python.html#cb315-5" tabindex="-1"></a>extraer_de_a1</span></code></pre></div>
+<pre><code>## array([ 3, 12, 18,  6, 12,  3], dtype=int64)</code></pre>
+<p>Se puede emplear esto de las máscaras para asignar nuevos valores:</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb317-1"><a href="python.html#cb317-1" tabindex="-1"></a>a1[a1 <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb317-2"><a href="python.html#cb317-2" tabindex="-1"></a>a1</span></code></pre></div>
+<pre><code>## array([-1, 13, -1, 10, 10, 10, -1,  4,  8,  5, -1, 11, -1, 17, -1],
+##       dtype=int64)</code></pre>
+<p><strong>Ejercicio 1:</strong> Considera es siguiente array, extrae usando este tipo de indexado las letras <code>O,M,G</code> y <code>W, O, Z</code>.</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb319-1"><a href="python.html#cb319-1" tabindex="-1"></a>np.array(<span class="bu">list</span>(<span class="st">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ1234&quot;</span>)).reshape(<span class="dv">5</span>,<span class="dv">6</span>)</span></code></pre></div>
+<pre><code>## array([[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;],
+##        [&#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;, &#39;K&#39;, &#39;L&#39;],
+##        [&#39;M&#39;, &#39;N&#39;, &#39;O&#39;, &#39;P&#39;, &#39;Q&#39;, &#39;R&#39;],
+##        [&#39;S&#39;, &#39;T&#39;, &#39;U&#39;, &#39;V&#39;, &#39;W&#39;, &#39;X&#39;],
+##        [&#39;Y&#39;, &#39;Z&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]], dtype=&#39;&lt;U1&#39;)</code></pre>
+<p><strong>Ejercicio 2:</strong> Considerea el siguiente array y extrae el array <code>[ 5,  6,  7,  8,  9, 10, 11]</code> usando una máscara boleana:</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb321-1"><a href="python.html#cb321-1" tabindex="-1"></a>np.arange(<span class="dv">12</span>).reshape(<span class="dv">4</span>,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## array([[ 0,  1,  2],
+##        [ 3,  4,  5],
+##        [ 6,  7,  8],
+##        [ 9, 10, 11]])</code></pre>
+<p>Existe un argumento llamado <code>where</code> que funciona con las funciones universales como suma, media, etc.</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb323-1"><a href="python.html#cb323-1" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="dv">20</span>).reshape(<span class="dv">5</span>,<span class="dv">4</span>)</span>
+<span id="cb323-2"><a href="python.html#cb323-2" tabindex="-1"></a>cond <span class="op">=</span> a <span class="op">&gt;=</span> <span class="dv">10</span></span>
+<span id="cb323-3"><a href="python.html#cb323-3" tabindex="-1"></a>suma1 <span class="op">=</span> np.<span class="bu">sum</span>(a[cond])</span>
+<span id="cb323-4"><a href="python.html#cb323-4" tabindex="-1"></a><span class="bu">print</span>(suma1)</span></code></pre></div>
+<pre><code>## 145</code></pre>
+<div class="sourceCode" id="cb325"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb325-1"><a href="python.html#cb325-1" tabindex="-1"></a>suma2 <span class="op">=</span> np.<span class="bu">sum</span>(a, where <span class="op">=</span> cond)</span>
+<span id="cb325-2"><a href="python.html#cb325-2" tabindex="-1"></a><span class="bu">print</span>(suma2)</span></code></pre></div>
+<pre><code>## 145</code></pre>
+</div>
+<div id="vistas-y-copias" class="section level3 hasAnchor" number="4.7.3">
+<h3><span class="header-section-number">4.7.3</span> Vistas y copias<a href="python.html#vistas-y-copias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><strong>Vista (View)</strong>: Una vista es una manera de acceder a los datos de un array NumPy sin copiar el buffer de datos subyacente. Esto significa que una vista comparte el mismo buffer de datos que el array original, pero puede tener una forma o una distribución de datos diferentes.</li>
+</ol>
+<p><strong>Características:</strong></p>
+<ul>
+<li><p>Acceso al array sin cambiar el buffer de datos.</p></li>
+<li><p>Indexación regular y rebanado generan vistas.</p></li>
+<li><p>Las operaciones in-place se pueden realizar en vistas.</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Copia (Copy)</strong>: Una copia es una creación de un nuevo array que duplica tanto los datos como la metadata del array original. Esto significa que una copia tiene su propio buffer de datos independiente del array original.</li>
+</ol>
+<p><strong>Características:</strong></p>
+<ul>
+<li><p>Se crea un nuevo array duplicando tanto los datos como la metadata del array original.</p></li>
+<li><p>La indexación elegante siempre genera copias.</p></li>
+<li><p>Se puede forzar una copia utilizando el método <code>.copy()</code>.</p></li>
+</ul>
+<div class="sourceCode" id="cb327"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb327-1"><a href="python.html#cb327-1" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>)</span>
+<span id="cb327-2"><a href="python.html#cb327-2" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div>
+<pre><code>## [1 2 3 4 5]</code></pre>
+<div class="sourceCode" id="cb329"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb329-1"><a href="python.html#cb329-1" tabindex="-1"></a><span class="co"># Crear una vista del array y imprimir su base</span></span>
+<span id="cb329-2"><a href="python.html#cb329-2" tabindex="-1"></a>v <span class="op">=</span> a[<span class="dv">2</span>:<span class="dv">5</span>]  <span class="co"># v es una vista</span></span>
+<span id="cb329-3"><a href="python.html#cb329-3" tabindex="-1"></a><span class="bu">print</span>(v)</span></code></pre></div>
+<pre><code>## [3 4 5]</code></pre>
+<div class="sourceCode" id="cb331"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb331-1"><a href="python.html#cb331-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;v.base:&#39;</span>, v.base)  <span class="co"># Devuelve el array &#39;base&#39;</span></span></code></pre></div>
+<pre><code>## v.base: [1 2 3 4 5]</code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb333-1"><a href="python.html#cb333-1" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>)</span>
+<span id="cb333-2"><a href="python.html#cb333-2" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div>
+<pre><code>## [1 2 3 4 5]</code></pre>
+<div class="sourceCode" id="cb335"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb335-1"><a href="python.html#cb335-1" tabindex="-1"></a><span class="co"># Crear una copia del array</span></span>
+<span id="cb335-2"><a href="python.html#cb335-2" tabindex="-1"></a><span class="co"># En este caso, utilizando indexación elegante</span></span>
+<span id="cb335-3"><a href="python.html#cb335-3" tabindex="-1"></a>v <span class="op">=</span> a[[<span class="dv">1</span>, <span class="dv">2</span>]]</span>
+<span id="cb335-4"><a href="python.html#cb335-4" tabindex="-1"></a><span class="bu">print</span>(v)</span></code></pre></div>
+<pre><code>## [2 3]</code></pre>
+<div class="sourceCode" id="cb337"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb337-1"><a href="python.html#cb337-1" tabindex="-1"></a><span class="co"># Cambiar un elemento en la copia y luego imprimir el array original</span></span>
+<span id="cb337-2"><a href="python.html#cb337-2" tabindex="-1"></a>v[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span></span>
+<span id="cb337-3"><a href="python.html#cb337-3" tabindex="-1"></a></span>
+<span id="cb337-4"><a href="python.html#cb337-4" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;v:&#39;</span>, v)</span></code></pre></div>
+<pre><code>## v: [99  3]</code></pre>
+<div class="sourceCode" id="cb339"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb339-1"><a href="python.html#cb339-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;a:&#39;</span>, a)</span></code></pre></div>
+<pre><code>## a: [1 2 3 4 5]</code></pre>
+<p>Como observamos, al crear una copia real no se modifica el array original. Vamos a forzar una copia también:</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb341-1"><a href="python.html#cb341-1" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>)</span>
+<span id="cb341-2"><a href="python.html#cb341-2" tabindex="-1"></a>w <span class="op">=</span> a.copy()</span>
+<span id="cb341-3"><a href="python.html#cb341-3" tabindex="-1"></a></span>
+<span id="cb341-4"><a href="python.html#cb341-4" tabindex="-1"></a>w.base <span class="co"># vemos que indica None, lo que quiere decir es que no tiene como base </span></span>
+<span id="cb341-5"><a href="python.html#cb341-5" tabindex="-1"></a><span class="co"># al array origianl, son idependientes</span></span>
+<span id="cb341-6"><a href="python.html#cb341-6" tabindex="-1"></a>w.base <span class="op">==</span> <span class="va">None</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<p>Si usamos una <code>vista</code>:</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb343-1"><a href="python.html#cb343-1" tabindex="-1"></a>a <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>)</span>
+<span id="cb343-2"><a href="python.html#cb343-2" tabindex="-1"></a>c <span class="op">=</span> a[<span class="dv">1</span>:<span class="dv">3</span>]</span>
+<span id="cb343-3"><a href="python.html#cb343-3" tabindex="-1"></a>c[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb343-4"><a href="python.html#cb343-4" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;c:&#39;</span>, c)</span></code></pre></div>
+<pre><code>## c: [8 3]</code></pre>
+<div class="sourceCode" id="cb345"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb345-1"><a href="python.html#cb345-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;a:&#39;</span>, a)</span></code></pre></div>
+<pre><code>## a: [1 8 3 4 5]</code></pre>
+<p>Es importante entender la diferencia entre una vista y una copia cuando trabajas con arrays en NumPy. Las operaciones en vistas pueden modificar el array original, mientras que las operaciones en copias no afectarán al array original. Esto puede ser crucial, especialmente cuando se realizan operaciones in-place o se manipulan grandes conjuntos de datos.</p>
+</div>
+<div id="ordenamiento" class="section level3 hasAnchor" number="4.7.4">
+<h3><span class="header-section-number">4.7.4</span> Ordenamiento<a href="python.html#ordenamiento" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La función de ordenamiento en NumPy se implementa con la función <code>np.sort()</code>. Por defecto, se utiliza el algoritmo de ordenamiento quicksort, que es muy eficiente.</p>
+<p><strong>Características:</strong></p>
+<ul>
+<li><p><code>np.sort()</code> devuelve un array ordenado.</p></li>
+<li><p><code>.sort()</code> realiza el ordenamiento in-place en el array original.</p></li>
+<li><p>Para ordenar en orden descendente, simplemente utiliza <code>.flip()</code> después de ordenar.</p></li>
+</ul>
+<p>Para ordenamiento de un array unidimensional:</p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb347-1"><a href="python.html#cb347-1" tabindex="-1"></a><span class="co"># Crear un array de números enteros aleatorios</span></span>
+<span id="cb347-2"><a href="python.html#cb347-2" tabindex="-1"></a>a <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb347-3"><a href="python.html#cb347-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array original:&#39;</span>, a)</span></code></pre></div>
+<pre><code>## Array original: [6 9 6 9 1]</code></pre>
+<div class="sourceCode" id="cb349"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb349-1"><a href="python.html#cb349-1" tabindex="-1"></a><span class="co"># Ordenar el array y mostrar el resultado</span></span>
+<span id="cb349-2"><a href="python.html#cb349-2" tabindex="-1"></a>s <span class="op">=</span> np.sort(a)</span>
+<span id="cb349-3"><a href="python.html#cb349-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array ordenado:&#39;</span>, s)</span></code></pre></div>
+<pre><code>## Array ordenado: [1 6 6 9 9]</code></pre>
+<div class="sourceCode" id="cb351"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb351-1"><a href="python.html#cb351-1" tabindex="-1"></a><span class="co"># Ordenar in-place (en el mismo array)</span></span>
+<span id="cb351-2"><a href="python.html#cb351-2" tabindex="-1"></a>a.sort()</span>
+<span id="cb351-3"><a href="python.html#cb351-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array original después de ordenar in-place:&#39;</span>, a)</span></code></pre></div>
+<pre><code>## Array original después de ordenar in-place: [1 6 6 9 9]</code></pre>
+<p>Para ordenamiento de un array bidimensional:</p>
+<div class="sourceCode" id="cb353"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb353-1"><a href="python.html#cb353-1" tabindex="-1"></a><span class="co"># Crear un array bidimensional de números enteros aleatorios</span></span>
+<span id="cb353-2"><a href="python.html#cb353-2" tabindex="-1"></a>a <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">15</span>, (<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb353-3"><a href="python.html#cb353-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array original:&#39;</span>)</span></code></pre></div>
+<pre><code>## Array original:</code></pre>
+<div class="sourceCode" id="cb355"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb355-1"><a href="python.html#cb355-1" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div>
+<pre><code>## [[ 8  1  3]
+##  [ 7 12  3]
+##  [11  4 11]]</code></pre>
+<div class="sourceCode" id="cb357"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb357-1"><a href="python.html#cb357-1" tabindex="-1"></a><span class="co"># Ordenar por filas</span></span>
+<span id="cb357-2"><a href="python.html#cb357-2" tabindex="-1"></a>sorted_rows <span class="op">=</span> np.sort(a)</span>
+<span id="cb357-3"><a href="python.html#cb357-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array ordenado por filas:&#39;</span>)</span></code></pre></div>
+<pre><code>## Array ordenado por filas:</code></pre>
+<div class="sourceCode" id="cb359"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb359-1"><a href="python.html#cb359-1" tabindex="-1"></a><span class="bu">print</span>(sorted_rows)</span></code></pre></div>
+<pre><code>## [[ 1  3  8]
+##  [ 3  7 12]
+##  [ 4 11 11]]</code></pre>
+<div class="sourceCode" id="cb361"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb361-1"><a href="python.html#cb361-1" tabindex="-1"></a><span class="co"># Ordenar por columnas</span></span>
+<span id="cb361-2"><a href="python.html#cb361-2" tabindex="-1"></a>sorted_cols <span class="op">=</span> np.sort(a, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb361-3"><a href="python.html#cb361-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array ordenado por columnas:&#39;</span>)</span></code></pre></div>
+<pre><code>## Array ordenado por columnas:</code></pre>
+<div class="sourceCode" id="cb363"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb363-1"><a href="python.html#cb363-1" tabindex="-1"></a><span class="bu">print</span>(sorted_cols)</span></code></pre></div>
+<pre><code>## [[ 7  1  3]
+##  [ 8  4  3]
+##  [11 12 11]]</code></pre>
+<p>Otra función de ordenamiento es <code>argsort</code>:</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb365-1"><a href="python.html#cb365-1" tabindex="-1"></a><span class="co"># Crear un array de números enteros aleatorios</span></span>
+<span id="cb365-2"><a href="python.html#cb365-2" tabindex="-1"></a>a <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">15</span>, <span class="dv">10</span>)</span>
+<span id="cb365-3"><a href="python.html#cb365-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array original:&#39;</span>, a)</span></code></pre></div>
+<pre><code>## Array original: [ 9 10  8  9  9  4  7  7  7  9]</code></pre>
+<div class="sourceCode" id="cb367"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb367-1"><a href="python.html#cb367-1" tabindex="-1"></a><span class="co"># Obtener los índices que ordenarían el array</span></span>
+<span id="cb367-2"><a href="python.html#cb367-2" tabindex="-1"></a>indices_ordenados <span class="op">=</span> np.argsort(a)</span>
+<span id="cb367-3"><a href="python.html#cb367-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Índices ordenados:&#39;</span>, indices_ordenados)</span></code></pre></div>
+<pre><code>## Índices ordenados: [5 6 7 8 2 0 3 4 9 1]</code></pre>
+<div class="sourceCode" id="cb369"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb369-1"><a href="python.html#cb369-1" tabindex="-1"></a><span class="co"># Ordenar el array utilizando indexación elegante</span></span>
+<span id="cb369-2"><a href="python.html#cb369-2" tabindex="-1"></a>sorted_array <span class="op">=</span> a[indices_ordenados]</span>
+<span id="cb369-3"><a href="python.html#cb369-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array ordenado con indexación elegante:&#39;</span>)</span></code></pre></div>
+<pre><code>## Array ordenado con indexación elegante:</code></pre>
+<div class="sourceCode" id="cb371"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb371-1"><a href="python.html#cb371-1" tabindex="-1"></a><span class="bu">print</span>(sorted_array)</span></code></pre></div>
+<pre><code>## [ 4  7  7  7  8  9  9  9  9 10]</code></pre>
+<p>La función de ordenamiento en NumPy es una herramienta poderosa para ordenar arrays de manera eficiente, tanto en una como en varias dimensiones. Al entender cómo utilizar <code>np.sort()</code> y <code>argsort()</code>, puedes ordenar tus datos según tus necesidades específicas, ya sea en orden ascendente o descendente. Además, ten en cuenta que el argumento <code>axis</code> te permite ordenar por filas o columnas, según sea necesario.</p>
+<p><strong>Ejercicio 1:</strong> Para el array <code>a=np.ones((5,5,5))</code>, responde lo siguiente para cada caso:</p>
+<ul>
+<li><p>¿Cuál es su dimensión?</p></li>
+<li><p>¿Es una vista o una copia?</p></li>
+</ul>
+<p>Después verifica tu respuesta.</p>
+<ol style="list-style-type: decimal">
+<li><p><code>v = a[1, ::2, ::2]</code></p></li>
+<li><p><code>v = a[2,:]</code></p></li>
+<li><p><code>v = a[[0, 1],:]</code></p></li>
+<li><p><code>v = a[[2,3], [2,3]]</code></p></li>
+</ol>
+<p><strong>Ejercicio 2:</strong> Recrea los siguientes plots usando lo siguiente:</p>
+<ul>
+<li><p>Realiza un array de solo ceros que será tu base.</p></li>
+<li><p>Cambia los valores correspondientes a 1.</p></li>
+<li><p>Usa <code>plt.matshow(nombre_array)</code> para hacer el plot.</p></li>
+</ul>
+<p>Para importar el paquete para hacer el plot realiza lo siguiente:</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb373-1"><a href="python.html#cb373-1" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb373-2"><a href="python.html#cb373-2" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt <span class="co">#libreria para hacer plots</span></span></code></pre></div>
+<div class="float">
+<img src="img/ejercicio_index.png" alt="Ejercicio de ASPP Latam" />
+<div class="figcaption">Ejercicio de ASPP Latam</div>
+</div>
+<p><strong>Ejercicio 3:</strong> Comienza creando un array 3x3:</p>
+<div class="sourceCode" id="cb374"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb374-1"><a href="python.html#cb374-1" tabindex="-1"></a>ej <span class="op">=</span> np.array([[<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">2</span>], [<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">5</span>]])</span>
+<span id="cb374-2"><a href="python.html#cb374-2" tabindex="-1"></a>ej</span></code></pre></div>
+<pre><code>## array([[6, 2, 3],
+##        [1, 7, 2],
+##        [7, 6, 5]])</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li><p>Ordena la última fila en forma ascenderte de manera <code>in-place</code>.</p></li>
+<li><p>Ahora, ordena la primera y segunda columna (ascendentemente) de dos formas distintas:</p></li>
+</ol>
+<ul>
+<li><p>Usando fancy-index</p></li>
+<li><p><code>in-place</code>, usando rebanadas o índices.</p></li>
+</ul>
+</div>
+<div id="broadcasting" class="section level3 hasAnchor" number="4.7.5">
+<h3><span class="header-section-number">4.7.5</span> Broadcasting<a href="python.html#broadcasting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El broadcasting es una poderosa característica de NumPy que permite realizar operaciones aritméticas entre arrays de diferentes formas sin necesidad de que tengan las mismas dimensiones. Esto significa que NumPy puede manejar automáticamente situaciones donde las dimensiones de los arrays no coinciden, pero pueden ser compatibles de alguna manera.</p>
 <p>Cuando se realizan operaciones aritméticas entre dos arrays, NumPy sigue un conjunto de reglas para determinar si las formas de los arrays son compatibles para la operación de broadcasting. Las reglas son las siguientes:</p>
 <ol style="list-style-type: decimal">
@@ -1518,44 +1744,37 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <li>Después de aplicar las reglas 1 y 2, los tamaños de las dimensiones de ambos arrays deben coincidir. Si alguna dimensión tiene un tamaño diferente y no es 1, se producirá un error.</li>
 </ol>
 <p><strong>Ejemplo 1:</strong> Suma de un escalar a un array</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb308-1"><a href="python.html#cb308-1" tabindex="-1"></a><span class="co"># Crear un array de forma (3, 3)</span></span>
-<span id="cb308-2"><a href="python.html#cb308-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
-<span id="cb308-3"><a href="python.html#cb308-3" tabindex="-1"></a></span>
-<span id="cb308-4"><a href="python.html#cb308-4" tabindex="-1"></a><span class="co"># Sumar un escalar (5) a cada elemento del array</span></span>
-<span id="cb308-5"><a href="python.html#cb308-5" tabindex="-1"></a>resultado <span class="op">=</span> a <span class="op">+</span> <span class="dv">5</span></span>
-<span id="cb308-6"><a href="python.html#cb308-6" tabindex="-1"></a><span class="bu">print</span>(resultado)</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb376-1"><a href="python.html#cb376-1" tabindex="-1"></a><span class="co"># Crear un array de forma (3, 3)</span></span>
+<span id="cb376-2"><a href="python.html#cb376-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
+<span id="cb376-3"><a href="python.html#cb376-3" tabindex="-1"></a></span>
+<span id="cb376-4"><a href="python.html#cb376-4" tabindex="-1"></a><span class="co"># Sumar un escalar (5) a cada elemento del array</span></span>
+<span id="cb376-5"><a href="python.html#cb376-5" tabindex="-1"></a>resultado <span class="op">=</span> a <span class="op">+</span> <span class="dv">5</span></span>
+<span id="cb376-6"><a href="python.html#cb376-6" tabindex="-1"></a><span class="bu">print</span>(resultado)</span></code></pre></div>
 <pre><code>## [[ 6  7  8]
 ##  [ 9 10 11]
 ##  [12 13 14]]</code></pre>
 <p><strong>Ejemplo 2</strong>: Suma de dos arrays con diferentes formas</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb310-1"><a href="python.html#cb310-1" tabindex="-1"></a><span class="co"># Crear dos arrays con diferentes formas</span></span>
-<span id="cb310-2"><a href="python.html#cb310-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
-<span id="cb310-3"><a href="python.html#cb310-3" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])</span>
-<span id="cb310-4"><a href="python.html#cb310-4" tabindex="-1"></a></span>
-<span id="cb310-5"><a href="python.html#cb310-5" tabindex="-1"></a><span class="co"># Sumar ambos arrays</span></span>
-<span id="cb310-6"><a href="python.html#cb310-6" tabindex="-1"></a>resultado <span class="op">=</span> a <span class="op">+</span> b</span>
-<span id="cb310-7"><a href="python.html#cb310-7" tabindex="-1"></a><span class="bu">print</span>(resultado)</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb378-1"><a href="python.html#cb378-1" tabindex="-1"></a><span class="co"># Crear dos arrays con diferentes formas</span></span>
+<span id="cb378-2"><a href="python.html#cb378-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
+<span id="cb378-3"><a href="python.html#cb378-3" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])</span>
+<span id="cb378-4"><a href="python.html#cb378-4" tabindex="-1"></a></span>
+<span id="cb378-5"><a href="python.html#cb378-5" tabindex="-1"></a><span class="co"># Sumar ambos arrays</span></span>
+<span id="cb378-6"><a href="python.html#cb378-6" tabindex="-1"></a>resultado <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="cb378-7"><a href="python.html#cb378-7" tabindex="-1"></a><span class="bu">print</span>(resultado)</span></code></pre></div>
 <pre><code>## [[11 22 33]
 ##  [14 25 36]]</code></pre>
 <p><strong>Ejemplo 3</strong>: Multiplicación de arrays con formas compatibles</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb312-1"><a href="python.html#cb312-1" tabindex="-1"></a><span class="co"># Crear dos arrays con formas compatibles</span></span>
-<span id="cb312-2"><a href="python.html#cb312-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>], [<span class="dv">2</span>], [<span class="dv">3</span>]])</span>
-<span id="cb312-3"><a href="python.html#cb312-3" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb312-4"><a href="python.html#cb312-4" tabindex="-1"></a></span>
-<span id="cb312-5"><a href="python.html#cb312-5" tabindex="-1"></a><span class="co"># Multiplicar ambos arrays</span></span>
-<span id="cb312-6"><a href="python.html#cb312-6" tabindex="-1"></a>resultado <span class="op">=</span> a <span class="op">*</span> b</span>
-<span id="cb312-7"><a href="python.html#cb312-7" tabindex="-1"></a><span class="bu">print</span>(resultado)</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb380-1"><a href="python.html#cb380-1" tabindex="-1"></a><span class="co"># Crear dos arrays con formas compatibles</span></span>
+<span id="cb380-2"><a href="python.html#cb380-2" tabindex="-1"></a>a <span class="op">=</span> np.array([[<span class="dv">1</span>], [<span class="dv">2</span>], [<span class="dv">3</span>]])</span>
+<span id="cb380-3"><a href="python.html#cb380-3" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb380-4"><a href="python.html#cb380-4" tabindex="-1"></a></span>
+<span id="cb380-5"><a href="python.html#cb380-5" tabindex="-1"></a><span class="co"># Multiplicar ambos arrays</span></span>
+<span id="cb380-6"><a href="python.html#cb380-6" tabindex="-1"></a>resultado <span class="op">=</span> a <span class="op">*</span> b</span>
+<span id="cb380-7"><a href="python.html#cb380-7" tabindex="-1"></a><span class="bu">print</span>(resultado)</span></code></pre></div>
 <pre><code>## [[1 2 3]
 ##  [2 4 6]
 ##  [3 6 9]]</code></pre>
 <p>El broadcasting es una característica poderosa de NumPy que simplifica las operaciones entre arrays con diferentes formas. Al entender las reglas de broadcasting, puedes realizar operaciones aritméticas de manera eficiente y elegante en NumPy, lo que facilita el trabajo con datos multidimensionales en Python.</p>
-</div>
-<div id="ejercicios-1" class="section level3 hasAnchor" number="4.7.4">
-<h3><span class="header-section-number">4.7.4</span> Ejercicios<a href="python.html#ejercicios-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Ejercicio 1</strong>: Crea un array unidimensional con los números del 1 al 10 e imprímelo.</p>
-<p><strong>Ejercicio 2</strong>: Crea una matriz 3x3 con todos los elementos iguales a 5 e imprímela.</p>
-<p><strong>Ejercicio 3</strong>: Calcula la suma de los elementos de la siguiente matriz:</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb314-1"><a href="python.html#cb314-1" tabindex="-1"></a>matriz <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span></code></pre></div>
 </div>
 </div>
 <div id="visualización-de-datos" class="section level2 hasAnchor" number="4.8">

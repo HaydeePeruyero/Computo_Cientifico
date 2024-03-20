@@ -97,3 +97,5 @@ indexación-y-rebanado
 ejercicios-1
 data-frames-con-pandas
 broadcasting
+vistas-y-copias
+ordenamiento
