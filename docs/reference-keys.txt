@@ -91,3 +91,9 @@ expresiones-condicionales
 iteraciones-sobre-secuencias
 iteraciones-sobre-diccionarios
 compresiones-de-listas
+numpy
+operaciones-básicas-con-numpy
+indexación-y-rebanado
+ejercicios-1
+data-frames-con-pandas
+broadcasting

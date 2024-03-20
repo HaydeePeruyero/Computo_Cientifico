@@ -60,6 +60,10 @@ Visualization and Statistics from Scratch., Springer (2020).
 
 [10] Software Carpentry, The Unix Shell, https://swcarpentry.github.io/shell-novice/
 
+[11] [Scientific Python Lectures](https://lectures.scientific-python.org/#)
+
+[12] [ASPP Latam](https://github.com/aspp-latam/2023-mexico-numpy/tree/main)
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```

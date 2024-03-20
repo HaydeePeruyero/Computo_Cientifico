@@ -1271,9 +1271,280 @@ Lo que quieres obtener es:
 - Ejercicio 3: Dada una lista de números enteros, crea una lista que contenga solo los números primos de la lista dada, sin definir una función adicional.
 
 
+## Numpy 
+
+ NumPy es una librería fundamental para la computación científica en Python. Proporciona soporte para arrays multidimensionales, junto con una amplia colección de funciones matemáticas para trabajar con estos arrays. Ayuda a usar de manera eficiente la memoria ya que contien operaciones numéricas rápidas.
+ 
+**Nota:** Basado en [Scientific Python Lectures](https://lectures.scientific-python.org/#) y [ASPP Latam](https://github.com/aspp-latam/2023-mexico-numpy/tree/main).
+
+
+Para instalar NumPy, pueden utilizar `pip`, el gestor de paquetes de Python:
+
+```python
+pip install numpy
+```
+
+Primero, importemos NumPy en nuestro entorno de trabajo. Por convención, numpy se suele importar de la siguiente forma:
+
+```{python}
+import numpy as np
+```
+
+Podemos crear arreglos unidimensionales o multidimensionales. Por ejemplo, para crear un array unidimensional:
+
+```{python}
+arr_1d = np.array([1, 2, 3, 4, 5])
+print(arr_1d)
+```
+
+Tenemos una función para crear array de ceros:
+```{python}
+np.zeros(10)
+```
+
+Y arrays de unos:
+
+```{python}
+np.ones(10)
+```
+
+Otra forma de crear array es usando secuencias con `arange`, por ejemplo:
+
+```{python}
+np.arange(10)
+```
+
+O usando una notación  similar a las rebanas: `arange(inicio, fin, salto)`:
+
+```{python}
+np.arange(9, -1, -1)
+```
+
+También podemos crearlos usando valores aleatorios:
+
+```{python}
+np.random.randint(0, 10, 5)
+```
+
+Para saber la dimensión, forma o longitud de nuestro array usamos lo siguiente:
+
+```{python}
+a = np.array([0,1,2,3,4,5])
+print(a)
+
+dimension = a.ndim
+print(dimension)
+
+forma = a.shape
+print(forma)
+
+longitud = len(a)
+print(longitud)
+```
+
+Los arreglos multidimensionales, los podemos crear igual de varias maneras indicando las entradas de cada dimensión. Por ejemplo, para crear un array 2-dimensional de puros ceros, unos o random:
+
+```{python}
+np.zeros((2,10))
+np.ones((2,10))
+np.random.randint(0, 10, (2, 10))
+```
+
+Otro array de dimensión dos puede ser el siguiente:
+
+```{python}
+arr_2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(arr_2d)
+
+dimension = arr_2d.ndim
+print(dimension)
+
+forma = arr_2d.shape
+print(forma)
+
+longitud = len(arr_2d)
+print(longitud)
+```
+
+De igual forma podemos usar `arange`:
+
+```{python}
+np.arange(2 * 10).reshape(2,10)
+```
+
+Otra forma de crear arrays es por medio de la función `linspace`, esto nos crea una colección de puntos, a esta función se le debe indicar el inicio, fin y cantidad de punto, por ejemplo:
+
+```{python}
+mi_array = np.linspace(0, 1, 6)
+print(mi_array)
+
+mi_array2 = np.linspace(0, 1, 5, endpoint = False)
+print(mi_array2)
+```
+
+
+Otros dos arrays comunes son los diagonales:
+
+```{python}
+diag_unos = np.eye(3)
+print(diag_unos)
+
+diagonal = np.diag([1,2,3,4]) 
+#diagonal = np.diag(np.array([1,2,3,4])) 
+```
+
+
+### Operaciones Básicas con NumPy
+
+1. Suma de Arrays
+
+```{python}
+arr1 = np.array([[1, 2], [3, 4]])
+arr2 = np.array([[5, 6], [7, 8]])
+
+
+sum_arr = arr1 + arr2
+print(sum_arr)
+```
+
+2. Producto de Arrays
+
+```{python}
+prod_arr = arr1 * arr2
+print(prod_arr)
+```
+
+3. Funciones Matemáticas: como calcular la raíz cuadrada
+
+```{python}
+sqrt_arr = np.sqrt(arr1)
+print(sqrt_arr)
+```
+
+4. Funciones Estadísticas:
+
+```{python}
+arr = np.array([1, 2, 3, 4, 5])
+print(np.mean(arr))   # Media
+print(np.median(arr)) # Mediana
+print(np.std(arr))    # Desviación estándar
+```
+
+### Indexación y Rebanado
+
+Como en las listas, los elementos de un array tiene un índice. Existen varias formas para indexar un array.
+
+1. **Acceso a campos (field access indexing)**: Esta forma de indexación implica acceder a un elemento de un array multidimensional mediante una secuencia de índices separados por corchetes. Por ejemplo, `a[1][2][3]` significa que estás accediendo al elemento en la fila 1, columna 2 y profundidad 3 del array `a`.
+
+```{python}
+# para arreglos unidimensionales
+arr = np.array([1, 2, 3, 4, 5])
+print(arr[2])   # Imprime el tercer elemento (índice 2)
+print(arr[1:4]) # Imprime elementos desde el índice 1 hasta el 3
+```
+
+```{python}
+# Crear un array tridimensional
+a = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+# Acceder al elemento en la fila 1, columna 0, y profundidad 1
+print(a[1][0][1])  # Imprime 8
+```
+
+2. **Indexación regular (regular indexing)**: En esta forma de indexación, los índices se proporcionan como una tupla separada por comas. Por ejemplo, `a[1,2,3]` significa que estás accediendo al elemento en la fila 1, columna 2 y profundidad 3 del array `a`.
+
+```{python}
+# Crear un array tridimensional
+a = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+# Acceder al elemento en la fila 1, columna 0, y profundidad 1
+print(a[1, 0, 1])  # Imprime 8
+```
+
+3. **Rebanado (slicing)**: Esta técnica implica seleccionar una parte del array utilizando rangos de índices. Por ejemplo, `a[1:3, 1:3]` significa que estás seleccionando las filas de la 1 a la 2 (exclusivo) y las columnas de la 1 a la 2 (exclusivo) del array `a`.
+
+```{python}
+# Crear un array bidimensional
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# Seleccionar una parte del array
+print(a[1:3, 1:3])  # Imprime [[5 6] [8 9]]
+```
+
+4. **Indexación extravagante (fancy indexing)**: En esta forma de indexación, los índices se proporcionan como listas de índices. Por ejemplo, `a[[1,2], [1,2]]` significa que estás seleccionando los elementos con índices (1,1) y (2,2) del array `a`.
+
+```{python}
+# Crear un array bidimensional
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# Seleccionar elementos con índices específicos
+print(a[[1, 2], [1, 2]])  # Imprime [5 9]
+```
+
+
+### Broadcasting
+
+
+El broadcasting es una poderosa característica de NumPy que permite realizar operaciones aritméticas entre arrays de diferentes formas sin necesidad de que tengan las mismas dimensiones. Esto significa que NumPy puede manejar automáticamente situaciones donde las dimensiones de los arrays no coinciden, pero pueden ser compatibles de alguna manera.
+
+Cuando se realizan operaciones aritméticas entre dos arrays, NumPy sigue un conjunto de reglas para determinar si las formas de los arrays son compatibles para la operación de broadcasting. Las reglas son las siguientes:
+
+1. Si los arrays tienen un número diferente de dimensiones, se les agrega una dimensión extra en el lado izquierdo hasta que ambos tengan el mismo número de dimensiones.
+2. Si las formas de los arrays no coinciden en alguna dimensión, NumPy ajustará las dimensiones de tamaño 1 para que coincidan en esa dimensión.
+3. Después de aplicar las reglas 1 y 2, los tamaños de las dimensiones de ambos arrays deben coincidir. Si alguna dimensión tiene un tamaño diferente y no es 1, se producirá un error.
+
+**Ejemplo 1:** Suma de un escalar a un array
+
+```{python}
+# Crear un array de forma (3, 3)
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# Sumar un escalar (5) a cada elemento del array
+resultado = a + 5
+print(resultado)
+```
+
+**Ejemplo 2**: Suma de dos arrays con diferentes formas
+
+```{python}
+# Crear dos arrays con diferentes formas
+a = np.array([[1, 2, 3], [4, 5, 6]])
+b = np.array([10, 20, 30])
+
+# Sumar ambos arrays
+resultado = a + b
+print(resultado)
+```
+
+**Ejemplo 3**: Multiplicación de arrays con formas compatibles
+
+```{python}
+# Crear dos arrays con formas compatibles
+a = np.array([[1], [2], [3]])
+b = np.array([1, 2, 3])
+
+# Multiplicar ambos arrays
+resultado = a * b
+print(resultado)
+```
+
+El broadcasting es una característica poderosa de NumPy que simplifica las operaciones entre arrays con diferentes formas. Al entender las reglas de broadcasting, puedes realizar operaciones aritméticas de manera eficiente y elegante en NumPy, lo que facilita el trabajo con datos multidimensionales en Python.
+
+
+### Ejercicios
+
+**Ejercicio 1**: Crea un array unidimensional con los números del 1 al 10 e imprímelo.
+
+**Ejercicio 2**: Crea una matriz 3x3 con todos los elementos iguales a 5 e imprímela.
+
+**Ejercicio 3**: Calcula la suma de los elementos de la siguiente matriz:
+
+```python
+matriz = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+```
+
+
+
+
 ## Visualización de datos
 
-
+## Data frames con pandas
 
 ## Manipulación de bases de datos
 
