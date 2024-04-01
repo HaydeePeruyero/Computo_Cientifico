@@ -99,3 +99,13 @@ data-frames-con-pandas
 broadcasting
 vistas-y-copias
 ordenamiento
+bases-de-un-plot
+colores-y-tipos-de-líneas
+configurar-los-límites-de-los-ejes
+configuración-de-ticks
+configurar-label-de-los-ticks
+mover-los-ejes
+añadir-y-configurar-legendas
+realizar-anotaciones
+más-detalles
+tipos-de-plots

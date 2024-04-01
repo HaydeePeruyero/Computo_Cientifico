@@ -1788,8 +1788,246 @@ print(resultado)
 El broadcasting es una característica poderosa de NumPy que simplifica las operaciones entre arrays con diferentes formas. Al entender las reglas de broadcasting, puedes realizar operaciones aritméticas de manera eficiente y elegante en NumPy, lo que facilita el trabajo con datos multidimensionales en Python.
 
 
-
 ## Visualización de datos
+
+Matplotlib es la biblioteca principal de visualización de datos en Python. Proporciona una amplia gama de funciones y herramientas para crear diversos tipos de gráficos, como gráficos de líneas, de dispersión, de barras, de pastel, entre otros. Matplotlib también es altamente personalizable, lo que te permite ajustar casi todos los aspectos de tus gráficos.
+
+`matplotlib.pyplot` es un módulo dentro de Matplotlib que proporciona una interfaz de estilo MATLAB para crear gráficos, proporciona una interfaz orientada a objetos. Simplifica la creación de gráficos al proporcionar una serie de funciones que permiten generar rápidamente gráficos simples.
+
+Para instalarlo podemos realizar lo siguiente:
+
+```python
+pip install matplotlib
+```
+
+Antes de comenzar, debemos importarlo. Vamos a usar los alias usuales para importarlo.
+
+```{python}
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
+Cuando se trabaja con Matplotlib, los datos se representan en lo que se llama "Figuras". Una figura puede entenderse como una ventana o un lienzo en el cual se puede dibujar un gráfico. Cada figura puede contener uno o más "Ejes" (Axes), que es el área donde se puede especificar puntos en términos de coordenadas x-y.
+
+Por ejemplo, si están trabajando en un gráfico de dispersión bidimensional, los ejes representarían el plano cartesiano donde pueden colocar sus puntos de datos. Si están haciendo un gráfico de barras, los ejes representarían los ejes x, y donde se dibujarían las barras.
+
+Una de las formas más simples de crear una figura con ejes en Matplotlib es utilizando la función `pyplot.subplots()`. Esta función crea una nueva figura y devuelve una tupla que contiene la figura y un solo conjunto de ejes. Luego, se pueden utilizar los métodos asociados con los ejes para dibujar datos en la figura.
+
+Por ejemplo, la función `Axes.plot()` se utiliza para dibujar una línea o un marcador en los ejes. Pueden pasar sus datos de x,y como argumentos a esta función y Matplotlib dibujará los puntos correspondientes en el gráfico.
+
+Una figura está formada por las siguientes partes:
+
+![Imagen del tutorial de Matplotlib](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/anatomia_matplotlib.png)
+
+
+Matplotlib espera que los datos de entrada sean de tipo `numpy.array` o `numpy.ma.masked_array`, o bien objetos que puedan convertirse en `numpy.array` utilizando la función `numpy.asarray()`. Estos tipos de datos son adecuados porque Matplotlib está integrado con NumPy y puede trabajar eficientemente con arreglos NumPy para realizar operaciones de trazado.
+
+Sin embargo, hay otros tipos de datos que son similares a los arreglos pero que Matplotlib puede no entender correctamente. Por ejemplo:
+
+1. Objetos de datos de pandas: Aunque pandas es una biblioteca popular para el análisis de datos en Python, los objetos de datos de pandas, como `Series` y `DataFrame`, no son directamente compatibles con Matplotlib. Aunque puedes trazar datos de pandas directamente, a veces puede haber problemas de compatibilidad o resultados inesperados.
+
+2. Objetos de matriz de NumPy (`numpy.matrix`): Aunque los objetos de matriz de NumPy son similares a los arreglos de NumPy, pueden tener un comportamiento ligeramente diferente en algunas operaciones, lo que puede causar problemas al trazar datos.
+
+La convención común para evitar estos problemas es convertir estos objetos de datos "similares a arreglos" en arreglos NumPy utilizando `numpy.array()` antes de trazarlos. Esto garantiza una mayor compatibilidad y evita posibles problemas de trazado. 
+
+
+### Bases de un plot
+
+Los dos enfoques principales para utilizar Matplotlib son:
+
+**1. Interfaz explícita u orientada a objetos (OO)**
+
+En este enfoque, tú creas explícitamente las figuras (`Figure`) y los ejes (`Axes`), y luego llamas a los métodos asociados con ellos para personalizar y agregar elementos a tus gráficos. Este enfoque se conoce como el "estilo orientado a objetos (OO)".
+
+Por ejemplo, puedes crear una figura y ejes usando `plt.subplots()` y luego llamar a métodos como `ax.plot()` o `ax.scatter()` para trazar tus datos en los ejes. Este enfoque es más flexible y poderoso, especialmente para gráficos más complejos o cuando deseas realizar modificaciones detalladas en tus gráficos. Por ejemplo:
+
+```{python}
+# Creamos una figura y ejes utilizando plt.subplots()
+fig, ax = plt.subplots()
+
+# Datos
+x = np.linspace(-5, 5, 100)
+
+
+# Utilizamos Axes.plot() para dibujar los datos en los ejes
+ax.plot(x, x**2, label= "$x^2$")
+ax.plot(x, -x**2+5, label= "$-x^2+5$")
+
+# Configuramos ejes, título y legendas
+ax.set_xlabel('Eje X')
+ax.set_ylabel('Eje Y')
+ax.set_title('Gráfico de funciones cuadráticas')
+ax.legend() 
+
+# Mostramos el gráfico
+plt.show()
+```
+
+
+**2. Interfaz implícita o estilo de pyplot**
+
+En este enfoque, confías en la interfaz `pyplot` para crear y gestionar implícitamente las figuras y los ejes en segundo plano. Utilizas las funciones de `pyplot` para realizar tareas como crear figuras, trazar datos y personalizar gráficos.
+
+Por ejemplo, puedes llamar a funciones como `plt.plot()` o `plt.scatter()` directamente para trazar tus datos sin necesidad de crear explícitamente una figura y ejes. Este enfoque es más conveniente para gráficos simples y rápidos, pero puede ser menos flexible cuando necesitas realizar modificaciones detalladas en tus gráficos.
+
+```{python}
+# Creamos nuestra base del plot
+x = np.linspace(-5, 5, 40)
+
+# Definimos las funciones para hacer el plot
+fx, gx = x**2, -x**2+5
+
+# Usamos la función plot de pyplot indicando eje X y eje y
+plt.plot(x, fx, label= "$x^2$")
+plt.plot(x, gx, label= "$-x^2 + 5$")
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.title('Gráfico de funciones cuadráticas')
+plt.legend()
+
+# Mostramos el plot
+plt.show()
+```
+
+#### Colores y tipos de líneas
+
+```{python}
+# Creamos nuestra base del plot
+x = np.linspace(-5, 5, 40)
+
+# Definimos las funciones para hacer el plot
+fx, gx = x**2, -x**2+5
+
+#Cambiamos tamaño de figura
+plt.figure(figsize=(10,6), dpi=80)
+
+# Configuramos color y tipo de línea
+plt.plot(x, fx, color="red", linewidth=2.5, linestyle="-", label= "$x^2$")
+plt.plot(x, gx, color="green", linewidth=2.5, linestyle="--", label= "$-x^2 + 5$")
+
+# Añadimos títulos al eje X, Y y título del plot
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.title('Gráfico de funciones cuadráticas')
+plt.legend()
+
+# Mostramos el plot
+plt.show()
+```
+
+#### Configurar los límites de los ejes
+
+```{python}
+x = np.linspace(-5, 5, 40)
+
+# Definimos las funciones para hacer el plot
+fx, gx = x**2, -x**2+5
+
+#Cambiamos tamaño de figura
+plt.figure(figsize=(10,6), dpi=80)
+
+# Configuramos color y tipo de línea
+plt.plot(x, fx, color="red", linewidth=2.5, linestyle="-", label= "$x^2$")
+plt.plot(x, gx, color="green", linewidth=2.5, linestyle="-", label= "$-x^2 + 5$")
+
+# Configuramos límites de los ejes
+plt.xlim(-6,6)
+plt.ylim(fx.min()*1.1, fx.max()*1.1)
+#plt.ylim(gx.min()*1.1, fx.max()*1.1)
+
+# Añadimos títulos al eje X, Y y título del plot
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.title('Gráfico de funciones cuadráticas')
+plt.legend()
+
+# Mostramos el plot
+plt.show()
+```
+
+#### Configuración de ticks
+
+```{python}
+x = np.linspace(-5, 5, 40)
+
+# Definimos las funciones para hacer el plot
+fx, gx = x**2, -x**2+5
+
+#Cambiamos tamaño de figura
+plt.figure(figsize=(10,10), dpi=80)
+
+# Configuramos color y tipo de línea
+plt.plot(x, fx, color="red", linewidth=2.5, linestyle="-", label= "$x^2$")
+plt.plot(x, gx, color="green", linewidth=2.5, linestyle="-", label= "$-x^2 + 5$")
+
+# Configuramos límites de los ejes
+plt.xlim(-6,6)
+plt.ylim(gx.min()*1.1, fx.max()*1.1)
+
+# Configuración de ticks
+plt.xticks(np.arange(-5,6,1))
+plt.yticks(np.arange(-20,30,5))
+
+# Añadimos títulos al eje X, Y y título del plot
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.title('Gráfico de funciones cuadráticas')
+plt.legend()
+
+# Mostramos el plot
+plt.show()
+```
+
+#### Configurar label de los ticks
+
+```{python}
+x = np.linspace(-5, 5, 40)
+
+# Definimos las funciones para hacer el plot
+fx, gx = x**2, -x**2+5
+
+#Cambiamos tamaño de figura
+plt.figure(figsize=(10,10), dpi=80)
+
+# Configuramos color y tipo de línea
+plt.plot(x, fx, color="red", linewidth=2.5, linestyle="-", label= "$x^2$")
+plt.plot(x, gx, color="green", linewidth=2.5, linestyle="-", label= "$-x^2 + 5$")
+
+# Configuramos límites de los ejes
+plt.xlim(-6,6)
+plt.ylim(gx.min()*1.1, fx.max()*1.1)
+
+# Configuración de ticks
+plt.xticks(np.arange(-5,6,1))
+plt.yticks(np.arange(-20,30,5))
+
+# Configuración del label de los ticks
+
+
+
+# Añadimos títulos al eje X, Y y título del plot
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.title('Gráfico de funciones cuadráticas')
+plt.legend()
+
+# Mostramos el plot
+plt.show()
+```
+
+#### Mover los ejes
+
+#### Añadir y configurar legendas
+
+
+#### Realizar anotaciones
+
+#### Más detalles
+
+### Tipos de plots
+
+
 
 ## Data frames con pandas
 
