@@ -109,3 +109,4 @@ añadir-y-configurar-legendas
 realizar-anotaciones
 más-detalles
 tipos-de-plots
+mover-los-spines
