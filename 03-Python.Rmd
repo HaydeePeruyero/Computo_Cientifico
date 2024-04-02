@@ -2350,10 +2350,280 @@ plt.legend(loc = 'center left')
 plt.show()
 ```
 
+#### Subplots
+
+Como vimos, una Figura en matplotlib es toda la ventana, toda la interface. Podemos crear varios subplots en una figura y configurar cada uno de ellos.
+
+```{python}
+fig = plt.figure()  # Una figura vacía
+fig, ax = plt.subplots()  # una figura con solo un axes
+fig, axs = plt.subplots(2, 2)  # un grid de figuras 2x2
+# una figura con un subplot a la izquierda y dos a la derecha
+fig, axs = plt.subplot_mosaic([['left', 'right_top'],
+                               ['left', 'right_bottom']])
+```
+
+
+Con el ejemplo de las funciones que hemos estado trabajando, podríamos separarlas en dos subplots como sigue.
+
+```{python}
+# Definimos las funciones para hacer el plot
+x = np.linspace(-5, 5, 40)
+fx, gx = x**2, -x**2 + 5
+
+# Calculamos el punto máximo y mínimo de cada función
+max_fx, min_fx = x[np.argmax(fx)], x[np.argmin(fx)]
+max_gx, min_gx = x[np.argmax(gx)], x[np.argmin(gx)]
+
+# Configuramos tamaño de figura y creamos subplots
+plt.figure(figsize=(10, 10))
+
+# Subplot para la función fx = x^2
+plt.subplot(2, 1, 1)
+plt.plot(x, fx, color="red", linewidth=2.5, linestyle="-", label="$x^2$")
+plt.xlim(-6, 6)
+plt.ylim(fx.min() * 1.1, fx.max() * 1.1)
+plt.xticks(np.arange(-2, 3, 0.5), [r'$-2$', r'$-\frac{3}{2}$', r'$-1$', r'$-\frac{1}{2}$', r'$0$', r'$\frac{1}{2}$', r'$1$', r'$\frac{3}{2}$', r'$2$', r'$\frac{5}{2}$'])
+plt.yticks([-20, -10, 10, 20], [r'$-20$', r'$-10$', r'$+10$', r'$+20$'])
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.title('Función $x^2$')
+plt.annotate('Min $(%.1f, %.1f)$' % (min_fx, min(fx)),
+             xy=(min_fx, min(fx)), xycoords='data',
+             xytext=(-120, -40), textcoords='offset points', fontsize=12,
+             arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+
+plt.legend(loc='upper left')
+
+# Subplot para la función gx = -x^2 + 5
+plt.subplot(2, 1, 2)
+plt.plot(x, gx, color="green", linewidth=2.5, linestyle="-", label="$-x^2 + 5$")
+plt.xlim(-6, 6)
+plt.ylim(gx.min() * 1.1, gx.max() * 1.1)
+plt.xticks(np.arange(-2, 3, 0.5), [r'$-2$', r'$-\frac{3}{2}$', r'$-1$', r'$-\frac{1}{2}$', r'$0$', r'$\frac{1}{2}$', r'$1$', r'$\frac{3}{2}$', r'$2$', r'$\frac{5}{2}$'])
+plt.yticks([-20, -10, 10, 20], [r'$-20$', r'$-10$', r'$+10$', r'$+20$'])
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.title('Función $-x^2 + 5$')
+
+plt.annotate('Máx $(%.1f, %.1f)$' % (max_gx, max(gx)),
+             xy=(max_gx, max(gx)), xycoords='data',
+             xytext=(+10, +30), textcoords='offset points', fontsize=12,
+             arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+plt.legend(loc='upper left')
+
+# Mostramos el plot
+plt.tight_layout()
+plt.show()
+```
+
+
+Con el método OO:
+
+```{python}
+# Definimos las funciones para hacer el plot
+x = np.linspace(-5, 5, 40)
+fx, gx = x**2, -x**2 + 5
+
+# Calculamos el punto máximo y mínimo de cada función
+max_fx, min_fx = x[np.argmax(fx)], x[np.argmin(fx)]
+max_gx, min_gx = x[np.argmax(gx)], x[np.argmin(gx)]
+
+# Cambiamos tamaño de figura
+fig, axs = plt.subplots(2, 1, figsize=(10, 10))
+
+# Configuramos color y tipo de línea para la primera función
+axs[0].plot(x, fx, color="red", linewidth=2.5, linestyle="-", label="$x^2$")
+axs[0].set_xlim(-6, 6)
+axs[0].set_ylim(fx.min() * 1.1, fx.max() * 1.1)
+axs[0].set_xticks(np.arange(-2, 3, 0.5))
+axs[0].set_yticks([-20, -10, 10, 20])
+axs[0].set_xlabel('Eje X')
+axs[0].set_ylabel('Eje Y')
+axs[0].set_title('Función $x^2$')
+
+# Anotaciones en el subplot de la primera función
+axs[0].annotate('Min $(%.1f, %.1f)$' % (min_fx, min(fx)),
+                xy=(min_fx, min(fx)), xycoords='data',
+                xytext=(-120, -40), textcoords='offset points', fontsize=12,
+                arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+
+
+# Configurar posición de la leyenda en el subplot de la primera función
+axs[0].legend(loc='upper left')
+
+# Configuramos color y tipo de línea para la segunda función
+axs[1].plot(x, gx, color="green", linewidth=2.5, linestyle="-", label="$-x^2 + 5$")
+axs[1].set_xlim(-6, 6)
+axs[1].set_ylim(gx.min() * 1.1, gx.max() * 1.1)
+axs[1].set_xticks(np.arange(-2, 3, 0.5))
+axs[1].set_yticks([-20, -10, 10, 20])
+axs[1].set_xticklabels([r'$-2$', r'$-\frac{3}{2}$', r'$-1$', r'$-\frac{1}{2}$', r'$0$', r'$\frac{1}{2}$', r'$1$', r'$\frac{3}{2}$', r'$2$', r'$\frac{5}{2}$'])
+axs[1].set_yticklabels([r'$-20$', r'$-10$', r'$+10$', r'$+20$'])
+axs[1].set_xlabel('Eje X')
+axs[1].set_ylabel('Eje Y')
+axs[1].set_title('Función $-x^2 + 5$')
+
+# Anotaciones en el subplot de la segunda función
+
+axs[1].annotate('Máx $(%.1f, %.1f)$' % (max_gx, max(gx)),
+                xy=(max_gx, max(gx)), xycoords='data',
+                xytext=(+10, +30), textcoords='offset points', fontsize=12,
+                arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+
+# Configurar posición de la leyenda en el subplot de la segunda función
+axs[1].legend(loc='upper left')
+
+# Mostramos el plot
+plt.tight_layout()
+plt.show()
+```
+
 
 ### Tipos de plots
 
+#### Áreas entre curvas
 
+La función `fill_between()` en Matplotlib se utiliza para crear áreas sombreadas entre dos curvas o entre una curva y un eje. Esto puede ser útil para resaltar ciertas regiones en un gráfico.
+
+```{python}
+# Definimos los datos
+x = np.linspace(0, 10, 100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+# Creamos el gráfico
+plt.figure(figsize=(8, 6))
+
+# Graficamos las curvas
+plt.plot(x, y1, color='blue', label='sin(x)')
+plt.plot(x, y2, color='red', label='cos(x)')
+
+# Rellenamos el área entre las curvas y=sen(x) y y=cos(x)
+plt.fill_between(x, y1, y2, where=(y1 >= y2), color='green', alpha=0.3, interpolate=True, label='Área entre curvas')
+
+# Añadimos etiquetas y título
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Área sombreada entre curvas')
+plt.legend()
+
+# Mostramos el gráfico
+plt.grid(True)
+plt.show()
+```
+
+
+#### Scatter plot o gráfico de dispersión
+
+```{python}
+# Definimos los datos
+np.random.seed(0)
+n = 100
+x = np.random.rand(n)
+y = np.random.rand(n)
+colors = np.arctan2(y, x)  # Calculamos el ángulo para determinar el color
+sizes = 1000 * np.random.rand(n)  # Tamaño de los marcadores
+
+# Creamos el gráfico
+plt.figure(figsize=(8, 6))
+
+# Graficamos los marcadores
+plt.scatter(x, y, c=colors, s=sizes, alpha=0.5, cmap='hsv')
+
+# Añadimos etiquetas y título
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('Gráfico de marcadores con color según el ángulo')
+
+# Mostramos la barra de color
+plt.colorbar(label='Ángulo')
+
+# Mostramos el gráfico
+plt.grid(True)
+plt.show()
+```
+
+#### Gráfico de barras
+
+```{python}
+# Datos
+categories = ['0-20', '21-40', '41-60', '61-80', '81+']
+women_counts = [50, 120, 80, 30, 10]
+men_counts = [40, 100, 70, 25, 5]
+color_above = 'lightcoral'
+color_below = 'lightblue'
+offset = 5  # Offset para las barras arriba del eje x
+
+# Creamos el gráfico de barras
+plt.figure(figsize=(10, 6))
+
+# Barras superiores (mujeres)
+plt.bar(categories, women_counts, color=color_above, label='Mujeres')
+
+# Barras inferiores (hombres)
+plt.bar(categories, [-count for count in men_counts], color=color_below, label='Hombres')
+
+# Añadimos etiquetas y título
+plt.xlabel('Rango de Edad')
+plt.ylabel('Cantidad')
+plt.title('Cantidad de Mujeres y Hombres por Rango de Edad en un Centro de Convenciones')
+
+# Añadimos la leyenda
+plt.legend()
+
+# Mostramos el gráfico
+plt.grid(True)
+plt.show()
+```
+
+#### Contour plot
+
+```{python}
+# Creamos datos para el Contour Plot
+x = np.linspace(-3, 3, 100)
+y = np.linspace(-3, 3, 100)
+X, Y = np.meshgrid(x, y)
+Z = np.sin(X) * np.cos(Y)
+
+# Creamos el Contour Plot
+plt.figure(figsize=(8, 6))
+contour = plt.contour(X, Y, Z, cmap='viridis')
+
+# Etiquetamos las líneas de contorno
+plt.clabel(contour, inline=True, fontsize=8)
+
+# Añadimos etiquetas y título
+plt.xlabel('Eje X')
+plt.ylabel('Eje Y')
+plt.title('Contour Plot de sin(X) * cos(Y) con Etiquetas')
+
+# Mostramos el gráfico
+plt.grid(True)
+plt.show()
+```
+
+#### Gráfico de pastel
+
+```{python}
+# Datos
+edades = ['0-20 años', '21-40 años', '41-60 años', '61-80 años', '81+ años']
+cantidad_personas = [25, 50, 40, 20, 5]  # Número de personas en cada grupo de edad
+
+# Colores para cada categoría de edad
+colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightyellow', 'lightpink']
+
+# Creamos el pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(cantidad_personas, labels=edades, autopct='%1.1f%%', startangle=140, colors=colors)
+
+# Añadimos título
+plt.title('Distribución de Grupos de Personas por Edad en una Conferencia')
+
+# Mostramos el gráfico
+plt.axis('equal')  # Para asegurar que el gráfico sea un círculo
+plt.show()
+```
 
 ## Data frames con pandas
 

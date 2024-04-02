@@ -110,3 +110,9 @@ realizar-anotaciones
 más-detalles
 tipos-de-plots
 mover-los-spines
+subplots
+áreas-entre-curvas
+scatter-plot-o-gráfico-de-dispersión
+gráfico-de-barras
+contour-plot
+gráfico-de-pastel
