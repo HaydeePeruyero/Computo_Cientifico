@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-04-02" />
+<meta name="date" content="2024-04-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1373,7 +1373,7 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])</code></pre>
 <p>También podemos crearlos usando valores aleatorios:</p>
 <div class="sourceCode" id="cb251"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb251-1"><a href="python.html#cb251-1" tabindex="-1"></a>np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## array([1, 8, 9, 7, 4])</code></pre>
+<pre><code>## array([9, 7, 8, 7, 5])</code></pre>
 <p>Para saber la dimensión, forma o longitud de nuestro array usamos lo siguiente:</p>
 <div class="sourceCode" id="cb253"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb253-1"><a href="python.html#cb253-1" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>])</span>
 <span id="cb253-2"><a href="python.html#cb253-2" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div>
@@ -1395,8 +1395,8 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## array([[1., 1., 1., 1., 1., 1., 1., 1., 1., 1.],
 ##        [1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]])</code></pre>
 <div class="sourceCode" id="cb265"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb265-1"><a href="python.html#cb265-1" tabindex="-1"></a>np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, (<span class="dv">2</span>, <span class="dv">10</span>))</span></code></pre></div>
-<pre><code>## array([[6, 0, 6, 4, 6, 8, 7, 1, 6, 1],
-##        [0, 1, 4, 2, 9, 5, 8, 6, 4, 8]])</code></pre>
+<pre><code>## array([[5, 6, 4, 0, 8, 2, 2, 7, 0, 2],
+##        [2, 5, 0, 2, 3, 5, 8, 6, 5, 0]])</code></pre>
 <p>Otro array de dimensión dos puede ser el siguiente:</p>
 <div class="sourceCode" id="cb267"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb267-1"><a href="python.html#cb267-1" tabindex="-1"></a>arr_2d <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
 <span id="cb267-2"><a href="python.html#cb267-2" tabindex="-1"></a><span class="bu">print</span>(arr_2d)</span></code></pre></div>
@@ -1648,55 +1648,55 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <div class="sourceCode" id="cb347"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb347-1"><a href="python.html#cb347-1" tabindex="-1"></a><span class="co"># Crear un array de números enteros aleatorios</span></span>
 <span id="cb347-2"><a href="python.html#cb347-2" tabindex="-1"></a>a <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
 <span id="cb347-3"><a href="python.html#cb347-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array original:&#39;</span>, a)</span></code></pre></div>
-<pre><code>## Array original: [7 3 8 3 6]</code></pre>
+<pre><code>## Array original: [3 8 9 5 9]</code></pre>
 <div class="sourceCode" id="cb349"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb349-1"><a href="python.html#cb349-1" tabindex="-1"></a><span class="co"># Ordenar el array y mostrar el resultado</span></span>
 <span id="cb349-2"><a href="python.html#cb349-2" tabindex="-1"></a>s <span class="op">=</span> np.sort(a)</span>
 <span id="cb349-3"><a href="python.html#cb349-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array ordenado:&#39;</span>, s)</span></code></pre></div>
-<pre><code>## Array ordenado: [3 3 6 7 8]</code></pre>
+<pre><code>## Array ordenado: [3 5 8 9 9]</code></pre>
 <div class="sourceCode" id="cb351"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb351-1"><a href="python.html#cb351-1" tabindex="-1"></a><span class="co"># Ordenar in-place (en el mismo array)</span></span>
 <span id="cb351-2"><a href="python.html#cb351-2" tabindex="-1"></a>a.sort()</span>
 <span id="cb351-3"><a href="python.html#cb351-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array original después de ordenar in-place:&#39;</span>, a)</span></code></pre></div>
-<pre><code>## Array original después de ordenar in-place: [3 3 6 7 8]</code></pre>
+<pre><code>## Array original después de ordenar in-place: [3 5 8 9 9]</code></pre>
 <p>Para ordenamiento de un array bidimensional:</p>
 <div class="sourceCode" id="cb353"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb353-1"><a href="python.html#cb353-1" tabindex="-1"></a><span class="co"># Crear un array bidimensional de números enteros aleatorios</span></span>
 <span id="cb353-2"><a href="python.html#cb353-2" tabindex="-1"></a>a <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">15</span>, (<span class="dv">3</span>,<span class="dv">3</span>))</span>
 <span id="cb353-3"><a href="python.html#cb353-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array original:&#39;</span>)</span></code></pre></div>
 <pre><code>## Array original:</code></pre>
 <div class="sourceCode" id="cb355"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb355-1"><a href="python.html#cb355-1" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div>
-<pre><code>## [[ 4  3  6]
-##  [11 13 12]
-##  [11 14 14]]</code></pre>
+<pre><code>## [[ 8 11  7]
+##  [11  1  1]
+##  [ 6  3 13]]</code></pre>
 <div class="sourceCode" id="cb357"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb357-1"><a href="python.html#cb357-1" tabindex="-1"></a><span class="co"># Ordenar por filas</span></span>
 <span id="cb357-2"><a href="python.html#cb357-2" tabindex="-1"></a>sorted_rows <span class="op">=</span> np.sort(a)</span>
 <span id="cb357-3"><a href="python.html#cb357-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array ordenado por filas:&#39;</span>)</span></code></pre></div>
 <pre><code>## Array ordenado por filas:</code></pre>
 <div class="sourceCode" id="cb359"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb359-1"><a href="python.html#cb359-1" tabindex="-1"></a><span class="bu">print</span>(sorted_rows)</span></code></pre></div>
-<pre><code>## [[ 3  4  6]
-##  [11 12 13]
-##  [11 14 14]]</code></pre>
+<pre><code>## [[ 7  8 11]
+##  [ 1  1 11]
+##  [ 3  6 13]]</code></pre>
 <div class="sourceCode" id="cb361"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb361-1"><a href="python.html#cb361-1" tabindex="-1"></a><span class="co"># Ordenar por columnas</span></span>
 <span id="cb361-2"><a href="python.html#cb361-2" tabindex="-1"></a>sorted_cols <span class="op">=</span> np.sort(a, axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb361-3"><a href="python.html#cb361-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array ordenado por columnas:&#39;</span>)</span></code></pre></div>
 <pre><code>## Array ordenado por columnas:</code></pre>
 <div class="sourceCode" id="cb363"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb363-1"><a href="python.html#cb363-1" tabindex="-1"></a><span class="bu">print</span>(sorted_cols)</span></code></pre></div>
-<pre><code>## [[ 4  3  6]
-##  [11 13 12]
-##  [11 14 14]]</code></pre>
+<pre><code>## [[ 6  1  1]
+##  [ 8  3  7]
+##  [11 11 13]]</code></pre>
 <p>Otra función de ordenamiento es <code>argsort</code>:</p>
 <div class="sourceCode" id="cb365"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb365-1"><a href="python.html#cb365-1" tabindex="-1"></a><span class="co"># Crear un array de números enteros aleatorios</span></span>
 <span id="cb365-2"><a href="python.html#cb365-2" tabindex="-1"></a>a <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">15</span>, <span class="dv">10</span>)</span>
 <span id="cb365-3"><a href="python.html#cb365-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array original:&#39;</span>, a)</span></code></pre></div>
-<pre><code>## Array original: [ 5 12 11  6 11  2 14  5  8  9]</code></pre>
+<pre><code>## Array original: [ 6  3  7  6 13 13  3  8  7  7]</code></pre>
 <div class="sourceCode" id="cb367"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb367-1"><a href="python.html#cb367-1" tabindex="-1"></a><span class="co"># Obtener los índices que ordenarían el array</span></span>
 <span id="cb367-2"><a href="python.html#cb367-2" tabindex="-1"></a>indices_ordenados <span class="op">=</span> np.argsort(a)</span>
 <span id="cb367-3"><a href="python.html#cb367-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Índices ordenados:&#39;</span>, indices_ordenados)</span></code></pre></div>
-<pre><code>## Índices ordenados: [5 0 7 3 8 9 2 4 1 6]</code></pre>
+<pre><code>## Índices ordenados: [1 6 0 3 2 8 9 7 4 5]</code></pre>
 <div class="sourceCode" id="cb369"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb369-1"><a href="python.html#cb369-1" tabindex="-1"></a><span class="co"># Ordenar el array utilizando indexación elegante</span></span>
 <span id="cb369-2"><a href="python.html#cb369-2" tabindex="-1"></a>sorted_array <span class="op">=</span> a[indices_ordenados]</span>
 <span id="cb369-3"><a href="python.html#cb369-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&#39;Array ordenado con indexación elegante:&#39;</span>)</span></code></pre></div>
 <pre><code>## Array ordenado con indexación elegante:</code></pre>
 <div class="sourceCode" id="cb371"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb371-1"><a href="python.html#cb371-1" tabindex="-1"></a><span class="bu">print</span>(sorted_array)</span></code></pre></div>
-<pre><code>## [ 2  5  5  6  8  9 11 11 12 14]</code></pre>
+<pre><code>## [ 3  3  6  6  7  7  7  8 13 13]</code></pre>
 <p>La función de ordenamiento en NumPy es una herramienta poderosa para ordenar arrays de manera eficiente, tanto en una como en varias dimensiones. Al entender cómo utilizar <code>np.sort()</code> y <code>argsort()</code>, puedes ordenar tus datos según tus necesidades específicas, ya sea en orden ascendente o descendente. Además, ten en cuenta que el argumento <code>axis</code> te permite ordenar por filas o columnas, según sea necesario.</p>
 <p><strong>Ejercicio 1:</strong> Para el array <code>a=np.ones((5,5,5))</code>, responde lo siguiente para cada caso:</p>
 <ul>
@@ -1855,6 +1855,10 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-138-3.png" width="672" /></p>
 <div id="colores-y-tipos-de-líneas" class="section level4 hasAnchor" number="4.8.1.1">
 <h4><span class="header-section-number">4.8.1.1</span> Colores y tipos de líneas<a href="python.html#colores-y-tipos-de-líneas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="float">
+<img src="img/lines_markers.png" alt="Tipos de líneas, imagen de la Cheatsheets de Matplotlib" />
+<div class="figcaption">Tipos de líneas, imagen de la Cheatsheets de Matplotlib</div>
+</div>
 <div class="sourceCode" id="cb386"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb386-1"><a href="python.html#cb386-1" tabindex="-1"></a><span class="co"># Creamos nuestra base del plot</span></span>
 <span id="cb386-2"><a href="python.html#cb386-2" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">40</span>)</span>
 <span id="cb386-3"><a href="python.html#cb386-3" tabindex="-1"></a></span>
@@ -1930,9 +1934,9 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## (-22.0, 27.500000000000004)</code></pre>
 <div class="sourceCode" id="cb396"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb396-1"><a href="python.html#cb396-1" tabindex="-1"></a><span class="co"># Configuración de ticks</span></span>
 <span id="cb396-2"><a href="python.html#cb396-2" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">1</span>))</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x000001FC52875990&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC523BD890&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC523E4C10&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52899250&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52422590&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5242C650&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5242D290&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5242EFD0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5241CFD0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5241F010&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51FB4F50&gt;], [Text(-5, 0, &#39;−5&#39;), Text(-4, 0, &#39;−4&#39;), Text(-3, 0, &#39;−3&#39;), Text(-2, 0, &#39;−2&#39;), Text(-1, 0, &#39;−1&#39;), Text(0, 0, &#39;0&#39;), Text(1, 0, &#39;1&#39;), Text(2, 0, &#39;2&#39;), Text(3, 0, &#39;3&#39;), Text(4, 0, &#39;4&#39;), Text(5, 0, &#39;5&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x0000025028803910&gt;, &lt;matplotlib.axis.XTick object at 0x00000250288003D0&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028675DD0&gt;, &lt;matplotlib.axis.XTick object at 0x00000250234CFED0&gt;, &lt;matplotlib.axis.XTick object at 0x000002502884E910&gt;, &lt;matplotlib.axis.XTick object at 0x000002502884FB50&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028849650&gt;, &lt;matplotlib.axis.XTick object at 0x000002502884B690&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028DB9650&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028DBB510&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028DBA050&gt;], [Text(-5, 0, &#39;−5&#39;), Text(-4, 0, &#39;−4&#39;), Text(-3, 0, &#39;−3&#39;), Text(-2, 0, &#39;−2&#39;), Text(-1, 0, &#39;−1&#39;), Text(0, 0, &#39;0&#39;), Text(1, 0, &#39;1&#39;), Text(2, 0, &#39;2&#39;), Text(3, 0, &#39;3&#39;), Text(4, 0, &#39;4&#39;), Text(5, 0, &#39;5&#39;)])</code></pre>
 <div class="sourceCode" id="cb398"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb398-1"><a href="python.html#cb398-1" tabindex="-1"></a>plt.yticks(np.arange(<span class="op">-</span><span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">5</span>))</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x000001FC4E5A6A10&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC528F0E90&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC523BDBD0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FB7C10&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FBDD10&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FBFD10&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FBE790&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FC2790&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FC8710&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FC97D0&gt;], [Text(0, -20, &#39;−20&#39;), Text(0, -15, &#39;−15&#39;), Text(0, -10, &#39;−10&#39;), Text(0, -5, &#39;−5&#39;), Text(0, 0, &#39;0&#39;), Text(0, 5, &#39;5&#39;), Text(0, 10, &#39;10&#39;), Text(0, 15, &#39;15&#39;), Text(0, 20, &#39;20&#39;), Text(0, 25, &#39;25&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x00000250287D2010&gt;, &lt;matplotlib.axis.YTick object at 0x00000250287ACD90&gt;, &lt;matplotlib.axis.YTick object at 0x00000250287AC050&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028DBFF50&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028DCE0D0&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028DD00D0&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028DD0A90&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028DD2810&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028DD8710&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028DDA610&gt;], [Text(0, -20, &#39;−20&#39;), Text(0, -15, &#39;−15&#39;), Text(0, -10, &#39;−10&#39;), Text(0, -5, &#39;−5&#39;), Text(0, 0, &#39;0&#39;), Text(0, 5, &#39;5&#39;), Text(0, 10, &#39;10&#39;), Text(0, 15, &#39;15&#39;), Text(0, 20, &#39;20&#39;), Text(0, 25, &#39;25&#39;)])</code></pre>
 <div class="sourceCode" id="cb400"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb400-1"><a href="python.html#cb400-1" tabindex="-1"></a><span class="co"># Añadimos títulos al eje X, Y y título del plot</span></span>
 <span id="cb400-2"><a href="python.html#cb400-2" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Eje X&#39;</span>)</span>
 <span id="cb400-3"><a href="python.html#cb400-3" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Eje Y&#39;</span>)</span>
@@ -1964,9 +1968,9 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## (-22.0, 27.500000000000004)</code></pre>
 <div class="sourceCode" id="cb405"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb405-1"><a href="python.html#cb405-1" tabindex="-1"></a><span class="co"># Configuración de ticks</span></span>
 <span id="cb405-2"><a href="python.html#cb405-2" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="fl">0.5</span>))</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x000001FC52332310&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52385890&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52419C10&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5206D6D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5206F890&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52078E10&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5207A950&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52068810&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5206A7D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52080610&gt;], [Text(-2.0, 0, &#39;−2.0&#39;), Text(-1.5, 0, &#39;−1.5&#39;), Text(-1.0, 0, &#39;−1.0&#39;), Text(-0.5, 0, &#39;−0.5&#39;), Text(0.0, 0, &#39;0.0&#39;), Text(0.5, 0, &#39;0.5&#39;), Text(1.0, 0, &#39;1.0&#39;), Text(1.5, 0, &#39;1.5&#39;), Text(2.0, 0, &#39;2.0&#39;), Text(2.5, 0, &#39;2.5&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x0000025028E3A150&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E16DD0&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E3CBD0&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E22850&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E7D1D0&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E7E550&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E74110&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E76090&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E8C110&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E8DF10&gt;], [Text(-2.0, 0, &#39;−2.0&#39;), Text(-1.5, 0, &#39;−1.5&#39;), Text(-1.0, 0, &#39;−1.0&#39;), Text(-0.5, 0, &#39;−0.5&#39;), Text(0.0, 0, &#39;0.0&#39;), Text(0.5, 0, &#39;0.5&#39;), Text(1.0, 0, &#39;1.0&#39;), Text(1.5, 0, &#39;1.5&#39;), Text(2.0, 0, &#39;2.0&#39;), Text(2.5, 0, &#39;2.5&#39;)])</code></pre>
 <div class="sourceCode" id="cb407"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb407-1"><a href="python.html#cb407-1" tabindex="-1"></a>plt.yticks(np.arange(<span class="op">-</span><span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">5</span>))</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x000001FC51FFCDD0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC5291E4D0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC5206B590&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52082B10&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52083590&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC5208D550&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52090AD0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC520780D0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52008CD0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC4E566D10&gt;], [Text(0, -20, &#39;−20&#39;), Text(0, -15, &#39;−15&#39;), Text(0, -10, &#39;−10&#39;), Text(0, -5, &#39;−5&#39;), Text(0, 0, &#39;0&#39;), Text(0, 5, &#39;5&#39;), Text(0, 10, &#39;10&#39;), Text(0, 15, &#39;15&#39;), Text(0, 20, &#39;20&#39;), Text(0, 25, &#39;25&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x0000025028E20E10&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E23750&gt;, &lt;matplotlib.axis.YTick object at 0x00000250284DD250&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E94850&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E96A10&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E98910&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E9A810&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E7D9D0&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E172D0&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028721710&gt;], [Text(0, -20, &#39;−20&#39;), Text(0, -15, &#39;−15&#39;), Text(0, -10, &#39;−10&#39;), Text(0, -5, &#39;−5&#39;), Text(0, 0, &#39;0&#39;), Text(0, 5, &#39;5&#39;), Text(0, 10, &#39;10&#39;), Text(0, 15, &#39;15&#39;), Text(0, 20, &#39;20&#39;), Text(0, 25, &#39;25&#39;)])</code></pre>
 <div class="sourceCode" id="cb409"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb409-1"><a href="python.html#cb409-1" tabindex="-1"></a><span class="co"># Añadimos títulos al eje X, Y y título del plot</span></span>
 <span id="cb409-2"><a href="python.html#cb409-2" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Eje X&#39;</span>)</span>
 <span id="cb409-3"><a href="python.html#cb409-3" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Eje Y&#39;</span>)</span>
@@ -1995,9 +1999,9 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## (-22.0, 27.500000000000004)</code></pre>
 <div class="sourceCode" id="cb414"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb414-1"><a href="python.html#cb414-1" tabindex="-1"></a><span class="co"># Configuración del label de los ticks</span></span>
 <span id="cb414-2"><a href="python.html#cb414-2" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="fl">0.5</span>), [<span class="vs">r&#39;$-2$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$-1$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$0$&#39;</span>,<span class="vs">r&#39;$\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$1$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$2$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{5}{2}</span><span class="vs">$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x000001FC52391010&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51FB5E10&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC523A1010&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC525D29D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52027810&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52025A50&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52078D90&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5209B0D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5204B0D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52047D50&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x0000025028E02290&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028756DD0&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028837350&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028698A10&gt;, &lt;matplotlib.axis.XTick object at 0x000002502876BA10&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028496150&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028499D50&gt;, &lt;matplotlib.axis.XTick object at 0x0000025029F65010&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E7F610&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E64410&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
 <div class="sourceCode" id="cb416"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb416-1"><a href="python.html#cb416-1" tabindex="-1"></a>plt.yticks(np.arange(<span class="op">-</span><span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">5</span>))</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x000001FC51FC91D0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FBD890&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52627450&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52053690&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC5201B0D0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FBD550&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52079210&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FBD1D0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC523FB210&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FCAF90&gt;], [Text(0, -20, &#39;−20&#39;), Text(0, -15, &#39;−15&#39;), Text(0, -10, &#39;−10&#39;), Text(0, -5, &#39;−5&#39;), Text(0, 0, &#39;0&#39;), Text(0, 5, &#39;5&#39;), Text(0, 10, &#39;10&#39;), Text(0, 15, &#39;15&#39;), Text(0, 20, &#39;20&#39;), Text(0, 25, &#39;25&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x0000025029F89C90&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028800310&gt;, &lt;matplotlib.axis.YTick object at 0x0000025029F8B550&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E75490&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E77990&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E8DF50&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E8DFD0&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E4C1D0&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E4E710&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E209D0&gt;], [Text(0, -20, &#39;−20&#39;), Text(0, -15, &#39;−15&#39;), Text(0, -10, &#39;−10&#39;), Text(0, -5, &#39;−5&#39;), Text(0, 0, &#39;0&#39;), Text(0, 5, &#39;5&#39;), Text(0, 10, &#39;10&#39;), Text(0, 15, &#39;15&#39;), Text(0, 20, &#39;20&#39;), Text(0, 25, &#39;25&#39;)])</code></pre>
 <div class="sourceCode" id="cb418"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb418-1"><a href="python.html#cb418-1" tabindex="-1"></a><span class="co"># Añadimos títulos al eje X, Y y título del plot</span></span>
 <span id="cb418-2"><a href="python.html#cb418-2" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Eje X&#39;</span>)</span>
 <span id="cb418-3"><a href="python.html#cb418-3" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Eje Y&#39;</span>)</span>
@@ -2035,9 +2039,9 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## (-22.0, 27.500000000000004)</code></pre>
 <div class="sourceCode" id="cb423"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb423-1"><a href="python.html#cb423-1" tabindex="-1"></a><span class="co"># Configuración del label de los ticks</span></span>
 <span id="cb423-2"><a href="python.html#cb423-2" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="fl">0.5</span>), [<span class="vs">r&#39;$-2$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$-1$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$0$&#39;</span>,<span class="vs">r&#39;$\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$1$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$2$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{5}{2}</span><span class="vs">$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x000001FC523F9E50&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52378C10&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52385AD0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC523554D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52391E50&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC523BD190&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC523BD2D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5236FD90&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51FBDF50&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5236DAD0&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x00000250287E0A90&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028787190&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E4D690&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028805DD0&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028835150&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287C7590&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287C6390&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287D1910&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287C4750&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287D2550&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
 <div class="sourceCode" id="cb425"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb425-1"><a href="python.html#cb425-1" tabindex="-1"></a>plt.yticks([<span class="op">-</span><span class="dv">20</span>,<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">20</span>],[<span class="vs">r&#39;$-20$&#39;</span>, <span class="vs">r&#39;$-10$&#39;</span>, <span class="vs">r&#39;$+10$&#39;</span>, <span class="vs">r&#39;$+20$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x000001FC52018190&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC5237B110&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52045F50&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52332B10&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x00000250287E20D0&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E00C90&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E0DDD0&gt;, &lt;matplotlib.axis.YTick object at 0x000002502878CFD0&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
 <div class="sourceCode" id="cb427"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb427-1"><a href="python.html#cb427-1" tabindex="-1"></a><span class="co"># Mover los spines</span></span>
 <span id="cb427-2"><a href="python.html#cb427-2" tabindex="-1"></a>ax <span class="op">=</span> plt.gca() <span class="co"># obtener los ejes actuales</span></span>
 <span id="cb427-3"><a href="python.html#cb427-3" tabindex="-1"></a>ax.spines[<span class="st">&#39;right&#39;</span>].set_color(<span class="st">&#39;none&#39;</span>) </span>
@@ -2064,6 +2068,10 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 </div>
 <div id="añadir-y-configurar-legendas" class="section level4 hasAnchor" number="4.8.1.6">
 <h4><span class="header-section-number">4.8.1.6</span> Añadir y configurar legendas<a href="python.html#añadir-y-configurar-legendas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="float">
+<img src="img/legend_placement.png" alt="Posición de legendas, imagen de las Cheatsheets de Matplotlib" />
+<div class="figcaption">Posición de legendas, imagen de las Cheatsheets de Matplotlib</div>
+</div>
 <div class="sourceCode" id="cb428"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb428-1"><a href="python.html#cb428-1" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">40</span>)</span>
 <span id="cb428-2"><a href="python.html#cb428-2" tabindex="-1"></a></span>
 <span id="cb428-3"><a href="python.html#cb428-3" tabindex="-1"></a><span class="co"># Definimos las funciones para hacer el plot</span></span>
@@ -2083,9 +2091,9 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## (-22.0, 27.500000000000004)</code></pre>
 <div class="sourceCode" id="cb432"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb432-1"><a href="python.html#cb432-1" tabindex="-1"></a><span class="co"># Configuración del label de los ticks</span></span>
 <span id="cb432-2"><a href="python.html#cb432-2" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="fl">0.5</span>), [<span class="vs">r&#39;$-2$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$-1$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$0$&#39;</span>,<span class="vs">r&#39;$\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$1$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$2$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{5}{2}</span><span class="vs">$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x000001FC5284F250&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52928C10&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC528A69D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52879B50&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5236D210&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5236DD50&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC523A2AD0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC523612D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5241EBD0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5241C1D0&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x00000250286D4AD0&gt;, &lt;matplotlib.axis.XTick object at 0x000002502874EDD0&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028DD3DD0&gt;, &lt;matplotlib.axis.XTick object at 0x00000250286EDA90&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028736A90&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028702DD0&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287BE010&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028829110&gt;, &lt;matplotlib.axis.XTick object at 0x0000025029F89950&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287833D0&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
 <div class="sourceCode" id="cb434"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb434-1"><a href="python.html#cb434-1" tabindex="-1"></a>plt.yticks([<span class="op">-</span><span class="dv">20</span>,<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">20</span>],[<span class="vs">r&#39;$-20$&#39;</span>, <span class="vs">r&#39;$-10$&#39;</span>, <span class="vs">r&#39;$+10$&#39;</span>, <span class="vs">r&#39;$+20$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x000001FC525D2550&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52045550&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52626C10&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC5242D550&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x00000250288365D0&gt;, &lt;matplotlib.axis.YTick object at 0x000002502874EBD0&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028663C50&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028823BD0&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
 <div class="sourceCode" id="cb436"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb436-1"><a href="python.html#cb436-1" tabindex="-1"></a><span class="co"># Mover los spines</span></span>
 <span id="cb436-2"><a href="python.html#cb436-2" tabindex="-1"></a>ax <span class="op">=</span> plt.gca() <span class="co"># obtener los ejes actuales</span></span>
 <span id="cb436-3"><a href="python.html#cb436-3" tabindex="-1"></a>ax.spines[<span class="st">&#39;right&#39;</span>].set_color(<span class="st">&#39;none&#39;</span>) </span>
@@ -2137,9 +2145,9 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## (-22.0, 27.500000000000004)</code></pre>
 <div class="sourceCode" id="cb441"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb441-1"><a href="python.html#cb441-1" tabindex="-1"></a><span class="co"># Configuración del label de los ticks</span></span>
 <span id="cb441-2"><a href="python.html#cb441-2" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="fl">0.5</span>), [<span class="vs">r&#39;$-2$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$-1$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$0$&#39;</span>,<span class="vs">r&#39;$\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$1$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$2$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{5}{2}</span><span class="vs">$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x000001FC51C8D850&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC525D1890&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51FBE110&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51C85C50&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC523AC990&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC528A7A50&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5288FED0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC525E2910&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52363D90&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5236F390&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x000002502884D250&gt;, &lt;matplotlib.axis.XTick object at 0x00000250284A5550&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E75CD0&gt;, &lt;matplotlib.axis.XTick object at 0x00000250234CB510&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028776810&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028821490&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287D41D0&gt;, &lt;matplotlib.axis.XTick object at 0x00000250286B41D0&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287F3710&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028769C90&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
 <div class="sourceCode" id="cb443"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb443-1"><a href="python.html#cb443-1" tabindex="-1"></a>plt.yticks([<span class="op">-</span><span class="dv">20</span>,<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">20</span>],[<span class="vs">r&#39;$-20$&#39;</span>, <span class="vs">r&#39;$-10$&#39;</span>, <span class="vs">r&#39;$+10$&#39;</span>, <span class="vs">r&#39;$+20$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x000001FC525F1990&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC5200A0D0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51C44050&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC5234AE90&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x000002502882B910&gt;, &lt;matplotlib.axis.YTick object at 0x00000250284A7210&gt;, &lt;matplotlib.axis.YTick object at 0x00000250284A23D0&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E9A5D0&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
 <div class="sourceCode" id="cb445"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb445-1"><a href="python.html#cb445-1" tabindex="-1"></a><span class="co"># Mover los spines</span></span>
 <span id="cb445-2"><a href="python.html#cb445-2" tabindex="-1"></a>ax <span class="op">=</span> plt.gca() <span class="co"># obtener los ejes actuales</span></span>
 <span id="cb445-3"><a href="python.html#cb445-3" tabindex="-1"></a>ax.spines[<span class="st">&#39;right&#39;</span>].set_color(<span class="st">&#39;none&#39;</span>)</span>
@@ -2169,6 +2177,14 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 </div>
 <div id="realizar-anotaciones" class="section level4 hasAnchor" number="4.8.1.7">
 <h4><span class="header-section-number">4.8.1.7</span> Realizar anotaciones<a href="python.html#realizar-anotaciones" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="float">
+<img src="img/annotation_connection_styles.png" alt="Tipos de flechas y estilos de anotaciones, cheatsheets de matplotlib" />
+<div class="figcaption">Tipos de flechas y estilos de anotaciones, cheatsheets de matplotlib</div>
+</div>
+<div class="float">
+<img src="img/arrow_styles.png" alt="Tipos de flechas y estilos de anotaciones, cheatsheets de matplotlib" />
+<div class="figcaption">Tipos de flechas y estilos de anotaciones, cheatsheets de matplotlib</div>
+</div>
 <div class="sourceCode" id="cb447"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb447-1"><a href="python.html#cb447-1" tabindex="-1"></a><span class="co"># Definimos las funciones para hacer el plot</span></span>
 <span id="cb447-2"><a href="python.html#cb447-2" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">40</span>)</span>
 <span id="cb447-3"><a href="python.html#cb447-3" tabindex="-1"></a>fx, gx <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span>, <span class="op">-</span>x<span class="op">**</span><span class="dv">2</span><span class="op">+</span><span class="dv">5</span></span>
@@ -2191,9 +2207,9 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## (-22.0, 27.500000000000004)</code></pre>
 <div class="sourceCode" id="cb451"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb451-1"><a href="python.html#cb451-1" tabindex="-1"></a><span class="co"># Configuración del label de los ticks</span></span>
 <span id="cb451-2"><a href="python.html#cb451-2" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="fl">0.5</span>), [<span class="vs">r&#39;$-2$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$-1$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$0$&#39;</span>,<span class="vs">r&#39;$\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$1$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$2$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{5}{2}</span><span class="vs">$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x000001FC51CA4CD0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51CCC990&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52894B50&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC528D9150&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52421B50&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5285A4D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5285A090&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51CB47D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5284FD90&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52357690&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x00000250286B7ED0&gt;, &lt;matplotlib.axis.XTick object at 0x000002502874E510&gt;, &lt;matplotlib.axis.XTick object at 0x00000250284C6B90&gt;, &lt;matplotlib.axis.XTick object at 0x00000250286633D0&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028496AD0&gt;, &lt;matplotlib.axis.XTick object at 0x00000250234CAE90&gt;, &lt;matplotlib.axis.XTick object at 0x0000025029FB9BD0&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028743A10&gt;, &lt;matplotlib.axis.XTick object at 0x00000250286D4710&gt;, &lt;matplotlib.axis.XTick object at 0x00000250286FFA90&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
 <div class="sourceCode" id="cb453"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb453-1"><a href="python.html#cb453-1" tabindex="-1"></a>plt.yticks([<span class="op">-</span><span class="dv">20</span>,<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">20</span>],[<span class="vs">r&#39;$-20$&#39;</span>, <span class="vs">r&#39;$-10$&#39;</span>, <span class="vs">r&#39;$+10$&#39;</span>, <span class="vs">r&#39;$+20$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x000001FC528DBA10&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC528E5710&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51CA44D0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51C82550&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x0000025028493490&gt;, &lt;matplotlib.axis.YTick object at 0x00000250234D76D0&gt;, &lt;matplotlib.axis.YTick object at 0x00000250250735D0&gt;, &lt;matplotlib.axis.YTick object at 0x00000250284C9190&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
 <div class="sourceCode" id="cb455"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb455-1"><a href="python.html#cb455-1" tabindex="-1"></a><span class="co"># Mover los spines</span></span>
 <span id="cb455-2"><a href="python.html#cb455-2" tabindex="-1"></a>ax <span class="op">=</span> plt.gca() <span class="co"># obtener los ejes actuales</span></span>
 <span id="cb455-3"><a href="python.html#cb455-3" tabindex="-1"></a>ax.spines[<span class="st">&#39;right&#39;</span>].set_color(<span class="st">&#39;none&#39;</span>) </span>
@@ -2259,9 +2275,9 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <pre><code>## (-20.0, 20.0)</code></pre>
 <div class="sourceCode" id="cb460"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb460-1"><a href="python.html#cb460-1" tabindex="-1"></a><span class="co"># Configuración del label de los ticks</span></span>
 <span id="cb460-2"><a href="python.html#cb460-2" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="fl">0.5</span>), [<span class="vs">r&#39;$-2$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$-1$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$0$&#39;</span>,<span class="vs">r&#39;$\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$1$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$2$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{5}{2}</span><span class="vs">$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x000001FC5284CD50&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC528DF950&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51CCDC10&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52606A10&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC4CA14990&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52624310&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC524215D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52008790&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC526251D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51FBCE90&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x0000025028726790&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028661110&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E65E90&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287D65D0&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287F2250&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028822C90&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028EA2AD0&gt;, &lt;matplotlib.axis.XTick object at 0x000002502878D850&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028820D10&gt;, &lt;matplotlib.axis.XTick object at 0x00000250286D6750&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
 <div class="sourceCode" id="cb462"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb462-1"><a href="python.html#cb462-1" tabindex="-1"></a>plt.yticks([<span class="op">-</span><span class="dv">20</span>,<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">20</span>],[<span class="vs">r&#39;$-20$&#39;</span>, <span class="vs">r&#39;$-10$&#39;</span>, <span class="vs">r&#39;$+10$&#39;</span>, <span class="vs">r&#39;$+20$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x000001FC52910F50&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC5284FAD0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC528E5F50&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC51FE6B10&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x0000025029FB8CD0&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028408310&gt;, &lt;matplotlib.axis.YTick object at 0x00000250284DCB50&gt;, &lt;matplotlib.axis.YTick object at 0x0000025029FAFB90&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
 <div class="sourceCode" id="cb464"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb464-1"><a href="python.html#cb464-1" tabindex="-1"></a><span class="co"># Mover los spines</span></span>
 <span id="cb464-2"><a href="python.html#cb464-2" tabindex="-1"></a>ax <span class="op">=</span> plt.gca() <span class="co"># obtener los ejes actuales</span></span>
 <span id="cb464-3"><a href="python.html#cb464-3" tabindex="-1"></a>ax.spines[<span class="st">&#39;right&#39;</span>].set_color(<span class="st">&#39;none&#39;</span>) </span>
@@ -2326,9 +2342,9 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <div class="sourceCode" id="cb468"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb468-1"><a href="python.html#cb468-1" tabindex="-1"></a>plt.ylim(fx.<span class="bu">min</span>() <span class="op">*</span> <span class="fl">1.1</span>, fx.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">1.1</span>)</span></code></pre></div>
 <pre><code>## (0.018080210387902567, 27.500000000000004)</code></pre>
 <div class="sourceCode" id="cb470"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb470-1"><a href="python.html#cb470-1" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="fl">0.5</span>), [<span class="vs">r&#39;$-2$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$-1$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$0$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$1$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$2$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{5}{2}</span><span class="vs">$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x000001FC4E5BCE90&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC523AC990&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC42B1C390&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51E77050&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52022990&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC520A0990&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC520A2890&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51E75650&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51FB8BD0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC51FBAAD0&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x00000250284A4650&gt;, &lt;matplotlib.axis.XTick object at 0x000002502503EDD0&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028B04BD0&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028DB7450&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E26690&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E68710&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E6A710&gt;, &lt;matplotlib.axis.XTick object at 0x00000250286CC610&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028E25610&gt;, &lt;matplotlib.axis.XTick object at 0x00000250286CEA50&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
 <div class="sourceCode" id="cb472"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb472-1"><a href="python.html#cb472-1" tabindex="-1"></a>plt.yticks([<span class="op">-</span><span class="dv">20</span>, <span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">20</span>], [<span class="vs">r&#39;$-20$&#39;</span>, <span class="vs">r&#39;$-10$&#39;</span>, <span class="vs">r&#39;$+10$&#39;</span>, <span class="vs">r&#39;$+20$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x000001FC4C6C9110&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC4E594350&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC528D8ED0&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52013110&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x0000025028754E10&gt;, &lt;matplotlib.axis.YTick object at 0x00000250287F1110&gt;, &lt;matplotlib.axis.YTick object at 0x00000250284AE490&gt;, &lt;matplotlib.axis.YTick object at 0x000002502871F1D0&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
 <div class="sourceCode" id="cb474"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb474-1"><a href="python.html#cb474-1" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Eje X&#39;</span>)</span>
 <span id="cb474-2"><a href="python.html#cb474-2" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Eje Y&#39;</span>)</span>
 <span id="cb474-3"><a href="python.html#cb474-3" tabindex="-1"></a>plt.title(<span class="st">&#39;Función $x^2$&#39;</span>)</span>
@@ -2347,9 +2363,9 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <div class="sourceCode" id="cb476"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb476-1"><a href="python.html#cb476-1" tabindex="-1"></a>plt.ylim(gx.<span class="bu">min</span>() <span class="op">*</span> <span class="fl">1.1</span>, gx.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">1.1</span>)</span></code></pre></div>
 <pre><code>## (-22.0, 5.481919789612098)</code></pre>
 <div class="sourceCode" id="cb478"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb478-1"><a href="python.html#cb478-1" tabindex="-1"></a>plt.xticks(np.arange(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="fl">0.5</span>), [<span class="vs">r&#39;$-2$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$-1$&#39;</span>, <span class="vs">r&#39;$-\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$0$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{1}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$1$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{3}{2}</span><span class="vs">$&#39;</span>, <span class="vs">r&#39;$2$&#39;</span>, <span class="vs">r&#39;$\frac</span><span class="sc">{5}{2}</span><span class="vs">$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x000001FC51BEAC90&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC528DD890&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52866110&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5268D710&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5268F6D0&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52659890&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5268ED90&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52684590&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC52686510&gt;, &lt;matplotlib.axis.XTick object at 0x000001FC5260C6D0&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.XTick object at 0x0000025028E6A490&gt;, &lt;matplotlib.axis.XTick object at 0x0000025028DB5390&gt;, &lt;matplotlib.axis.XTick object at 0x00000250287B14D0&gt;, &lt;matplotlib.axis.XTick object at 0x000002502A020A90&gt;, &lt;matplotlib.axis.XTick object at 0x000002502A017590&gt;, &lt;matplotlib.axis.XTick object at 0x0000025029FE1590&gt;, &lt;matplotlib.axis.XTick object at 0x0000025029FE3490&gt;, &lt;matplotlib.axis.XTick object at 0x000002502A0170D0&gt;, &lt;matplotlib.axis.XTick object at 0x000002502A005D10&gt;, &lt;matplotlib.axis.XTick object at 0x000002502A007C50&gt;], [Text(-2.0, 0, &#39;$-2$&#39;), Text(-1.5, 0, &#39;$-\\frac{3}{2}$&#39;), Text(-1.0, 0, &#39;$-1$&#39;), Text(-0.5, 0, &#39;$-\\frac{1}{2}$&#39;), Text(0.0, 0, &#39;$0$&#39;), Text(0.5, 0, &#39;$\\frac{1}{2}$&#39;), Text(1.0, 0, &#39;$1$&#39;), Text(1.5, 0, &#39;$\\frac{3}{2}$&#39;), Text(2.0, 0, &#39;$2$&#39;), Text(2.5, 0, &#39;$\\frac{5}{2}$&#39;)])</code></pre>
 <div class="sourceCode" id="cb480"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb480-1"><a href="python.html#cb480-1" tabindex="-1"></a>plt.yticks([<span class="op">-</span><span class="dv">20</span>, <span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">20</span>], [<span class="vs">r&#39;$-20$&#39;</span>, <span class="vs">r&#39;$-10$&#39;</span>, <span class="vs">r&#39;$+10$&#39;</span>, <span class="vs">r&#39;$+20$&#39;</span>])</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x000001FC520A2550&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52850150&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC52066C10&gt;, &lt;matplotlib.axis.YTick object at 0x000001FC5260DE90&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
+<pre><code>## ([&lt;matplotlib.axis.YTick object at 0x0000025028DB6E10&gt;, &lt;matplotlib.axis.YTick object at 0x0000025028E24790&gt;, &lt;matplotlib.axis.YTick object at 0x000002502849B850&gt;, &lt;matplotlib.axis.YTick object at 0x000002502503E250&gt;], [Text(0, -20, &#39;$-20$&#39;), Text(0, -10, &#39;$-10$&#39;), Text(0, 10, &#39;$+10$&#39;), Text(0, 20, &#39;$+20$&#39;)])</code></pre>
 <div class="sourceCode" id="cb482"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb482-1"><a href="python.html#cb482-1" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Eje X&#39;</span>)</span>
 <span id="cb482-2"><a href="python.html#cb482-2" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Eje Y&#39;</span>)</span>
 <span id="cb482-3"><a href="python.html#cb482-3" tabindex="-1"></a>plt.title(<span class="st">&#39;Función $-x^2 + 5$&#39;</span>)</span>
@@ -2427,145 +2443,311 @@ Algunas de las ventajas del empaquetado y desempaquetado de tuplas son las sigui
 <span id="cb491-21"><a href="python.html#cb491-21" tabindex="-1"></a>plt.show()</span></code></pre></div>
 <p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-152-31.png" width="960" /><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-152-32.png" width="672" /></p>
 </div>
+<div id="paletas-de-colores" class="section level4 hasAnchor" number="4.8.1.10">
+<h4><span class="header-section-number">4.8.1.10</span> Paletas de colores<a href="python.html#paletas-de-colores" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Existen varias paletas de colores que podemos usar.</p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb492-1"><a href="python.html#cb492-1" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> colormaps</span>
+<span id="cb492-2"><a href="python.html#cb492-2" tabindex="-1"></a><span class="bu">list</span>(colormaps)</span></code></pre></div>
+<pre><code>## [&#39;magma&#39;, &#39;inferno&#39;, &#39;plasma&#39;, &#39;viridis&#39;, &#39;cividis&#39;, &#39;twilight&#39;, &#39;twilight_shifted&#39;, &#39;turbo&#39;, &#39;Blues&#39;, &#39;BrBG&#39;, &#39;BuGn&#39;, &#39;BuPu&#39;, &#39;CMRmap&#39;, &#39;GnBu&#39;, &#39;Greens&#39;, &#39;Greys&#39;, &#39;OrRd&#39;, &#39;Oranges&#39;, &#39;PRGn&#39;, &#39;PiYG&#39;, &#39;PuBu&#39;, &#39;PuBuGn&#39;, &#39;PuOr&#39;, &#39;PuRd&#39;, &#39;Purples&#39;, &#39;RdBu&#39;, &#39;RdGy&#39;, &#39;RdPu&#39;, &#39;RdYlBu&#39;, &#39;RdYlGn&#39;, &#39;Reds&#39;, &#39;Spectral&#39;, &#39;Wistia&#39;, &#39;YlGn&#39;, &#39;YlGnBu&#39;, &#39;YlOrBr&#39;, &#39;YlOrRd&#39;, &#39;afmhot&#39;, &#39;autumn&#39;, &#39;binary&#39;, &#39;bone&#39;, &#39;brg&#39;, &#39;bwr&#39;, &#39;cool&#39;, &#39;coolwarm&#39;, &#39;copper&#39;, &#39;cubehelix&#39;, &#39;flag&#39;, &#39;gist_earth&#39;, &#39;gist_gray&#39;, &#39;gist_heat&#39;, &#39;gist_ncar&#39;, &#39;gist_rainbow&#39;, &#39;gist_stern&#39;, &#39;gist_yarg&#39;, &#39;gnuplot&#39;, &#39;gnuplot2&#39;, &#39;gray&#39;, &#39;hot&#39;, &#39;hsv&#39;, &#39;jet&#39;, &#39;nipy_spectral&#39;, &#39;ocean&#39;, &#39;pink&#39;, &#39;prism&#39;, &#39;rainbow&#39;, &#39;seismic&#39;, &#39;spring&#39;, &#39;summer&#39;, &#39;terrain&#39;, &#39;winter&#39;, &#39;Accent&#39;, &#39;Dark2&#39;, &#39;Paired&#39;, &#39;Pastel1&#39;, &#39;Pastel2&#39;, &#39;Set1&#39;, &#39;Set2&#39;, &#39;Set3&#39;, &#39;tab10&#39;, &#39;tab20&#39;, &#39;tab20b&#39;, &#39;tab20c&#39;, &#39;magma_r&#39;, &#39;inferno_r&#39;, &#39;plasma_r&#39;, &#39;viridis_r&#39;, &#39;cividis_r&#39;, &#39;twilight_r&#39;, &#39;twilight_shifted_r&#39;, &#39;turbo_r&#39;, &#39;Blues_r&#39;, &#39;BrBG_r&#39;, &#39;BuGn_r&#39;, &#39;BuPu_r&#39;, &#39;CMRmap_r&#39;, &#39;GnBu_r&#39;, &#39;Greens_r&#39;, &#39;Greys_r&#39;, &#39;OrRd_r&#39;, &#39;Oranges_r&#39;, &#39;PRGn_r&#39;, &#39;PiYG_r&#39;, &#39;PuBu_r&#39;, &#39;PuBuGn_r&#39;, &#39;PuOr_r&#39;, &#39;PuRd_r&#39;, &#39;Purples_r&#39;, &#39;RdBu_r&#39;, &#39;RdGy_r&#39;, &#39;RdPu_r&#39;, &#39;RdYlBu_r&#39;, &#39;RdYlGn_r&#39;, &#39;Reds_r&#39;, &#39;Spectral_r&#39;, &#39;Wistia_r&#39;, &#39;YlGn_r&#39;, &#39;YlGnBu_r&#39;, &#39;YlOrBr_r&#39;, &#39;YlOrRd_r&#39;, &#39;afmhot_r&#39;, &#39;autumn_r&#39;, &#39;binary_r&#39;, &#39;bone_r&#39;, &#39;brg_r&#39;, &#39;bwr_r&#39;, &#39;cool_r&#39;, &#39;coolwarm_r&#39;, &#39;copper_r&#39;, &#39;cubehelix_r&#39;, &#39;flag_r&#39;, &#39;gist_earth_r&#39;, &#39;gist_gray_r&#39;, &#39;gist_heat_r&#39;, &#39;gist_ncar_r&#39;, &#39;gist_rainbow_r&#39;, &#39;gist_stern_r&#39;, &#39;gist_yarg_r&#39;, &#39;gnuplot_r&#39;, &#39;gnuplot2_r&#39;, &#39;gray_r&#39;, &#39;hot_r&#39;, &#39;hsv_r&#39;, &#39;jet_r&#39;, &#39;nipy_spectral_r&#39;, &#39;ocean_r&#39;, &#39;pink_r&#39;, &#39;prism_r&#39;, &#39;rainbow_r&#39;, &#39;seismic_r&#39;, &#39;spring_r&#39;, &#39;summer_r&#39;, &#39;terrain_r&#39;, &#39;winter_r&#39;, &#39;Accent_r&#39;, &#39;Dark2_r&#39;, &#39;Paired_r&#39;, &#39;Pastel1_r&#39;, &#39;Pastel2_r&#39;, &#39;Set1_r&#39;, &#39;Set2_r&#39;, &#39;Set3_r&#39;, &#39;tab10_r&#39;, &#39;tab20_r&#39;, &#39;tab20b_r&#39;, &#39;tab20c_r&#39;]</code></pre>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-153-35.png" width="672" /></p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-155-37.png" width="614" /></p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-156-39.png" width="614" /></p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-157-41.png" width="614" /></p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-158-43.png" width="614" /></p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-159-45.png" width="614" /></p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-160-47.png" width="614" /></p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-161-49.png" width="614" /></p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-162-51.png" width="672" /><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-162-52.png" width="672" /><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-162-53.png" width="672" /><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-162-54.png" width="672" /><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-162-55.png" width="672" /><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-162-56.png" width="672" /><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-162-57.png" width="672" /></p>
+<p>Los colores los podemos indicar en diferentes formatos:</p>
+<ul>
+<li><p>RGB o RGBA: <code>(0.1, 0.2, 0.5), (0.1, 0.2, 0.5, 0.3)</code></p></li>
+<li><p>Cadena de RGB o RGBA: <code>'#0f0f0f'</code>, <code>'#0f0f0f80'</code></p></li>
+<li><p>Hex RGB o RGBA: <code>'#abc'</code> = <code>'aabbcc'</code>, <code>'#fb1'</code> = <code>'#ffbb11'</code></p></li>
+<li><p>Escala de grises en escala de [0,1]: <code>'0'</code> (negro), <code>'1'</code> (blanco), <code>'0.8'</code> (gris claro)</p></li>
+<li><p>Abreviación de colores básicos:</p>
+<ul>
+<li>‘b’ = blue</li>
+<li>‘g’ = green</li>
+<li>‘r’ = red</li>
+<li>‘c’ = cyan</li>
+<li>‘m’ = magenta</li>
+<li>‘y’ = yellow</li>
+<li>‘k’ = black</li>
+<li>‘w’ = white</li>
+</ul></li>
+<li><p>Nombre del color: <code>'aquamarine'</code>, <code>'mediumseagreen'</code></p></li>
+<li><p>Del ciclo de colores default: <code>C0</code>, <code>C1</code>, donde el ciclo es <code>['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']</code></p></li>
+<li><p>Tupla de color y valor de transparencia alfa: <code>('green',0.3)</code></p></li>
+</ul>
+<p>A los colores les podemos indicar también un nivel de transparencia que se llama alpha:</p>
+<pre><code>## (-0.2, 13.0)</code></pre>
+<pre><code>## (-1.0, 1.0)</code></pre>
+<pre><code>## (-0.2, 13.0, -1.0, 1.0)</code></pre>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-163-65.png" width="624" /></p>
+</div>
+<div id="orden-de-los-elementos" class="section level4 hasAnchor" number="4.8.1.11">
+<h4><span class="header-section-number">4.8.1.11</span> Orden de los elementos<a href="python.html#orden-de-los-elementos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>El orden de dibujo de los artistas en Matplotlib está determinado por su atributo zorder, que es un número decimal flotante. Los artistas con un zorder más alto se dibujan encima de los artistas con un zorder más bajo. Esto es útil cuando se tienen múltiples elementos en un gráfico y se desea controlar qué elementos están encima de otros.</p>
+<p>Por defecto, Matplotlib asigna un valor de zorder dependiendo del tipo de artista. Los artistas más comunes, como las líneas, los puntos y los contornos, suelen tener un valor de zorder predeterminado más alto para que se dibujen encima de otros elementos.</p>
+<p>Por ejemplo, si se tiene una línea y un marcador en un gráfico, la línea se dibujará encima del marcador si tienen el mismo color y estilo. Sin embargo, si se desea que el marcador se dibuje encima de la línea, se puede ajustar el zorder del marcador para que sea mayor que el de la línea.</p>
+<div class="float">
+<img src="img/zorder.png" alt="Z-order, del manual de matplotlib" />
+<div class="figcaption">Z-order, del manual de matplotlib</div>
+</div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb497-1"><a href="python.html#cb497-1" tabindex="-1"></a>r <span class="op">=</span> np.linspace(<span class="fl">0.3</span>, <span class="dv">1</span>, <span class="dv">30</span>)</span>
+<span id="cb497-2"><a href="python.html#cb497-2" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">4</span><span class="op">*</span>np.pi, <span class="dv">30</span>)</span>
+<span id="cb497-3"><a href="python.html#cb497-3" tabindex="-1"></a>x <span class="op">=</span> r <span class="op">*</span> np.sin(theta)</span>
+<span id="cb497-4"><a href="python.html#cb497-4" tabindex="-1"></a>y <span class="op">=</span> r <span class="op">*</span> np.cos(theta)</span>
+<span id="cb497-5"><a href="python.html#cb497-5" tabindex="-1"></a></span>
+<span id="cb497-6"><a href="python.html#cb497-6" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb497-7"><a href="python.html#cb497-7" tabindex="-1"></a></span>
+<span id="cb497-8"><a href="python.html#cb497-8" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb497-9"><a href="python.html#cb497-9" tabindex="-1"></a>plt.plot(x, y, <span class="st">&#39;C3&#39;</span>, lw<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb497-10"><a href="python.html#cb497-10" tabindex="-1"></a>plt.scatter(x, y, s<span class="op">=</span><span class="dv">120</span>)</span>
+<span id="cb497-11"><a href="python.html#cb497-11" tabindex="-1"></a>plt.title(<span class="st">&#39;Líneas sobre los puntos&#39;</span>)</span>
+<span id="cb497-12"><a href="python.html#cb497-12" tabindex="-1"></a></span>
+<span id="cb497-13"><a href="python.html#cb497-13" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb497-14"><a href="python.html#cb497-14" tabindex="-1"></a>plt.plot(x, y, <span class="st">&#39;C3&#39;</span>, lw<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb497-15"><a href="python.html#cb497-15" tabindex="-1"></a>plt.scatter(x, y, s<span class="op">=</span><span class="dv">120</span>, zorder<span class="op">=</span><span class="fl">2.5</span>)  <span class="co"># mover los puntos encima de la línea</span></span>
+<span id="cb497-16"><a href="python.html#cb497-16" tabindex="-1"></a>plt.title(<span class="st">&#39;Puntos sobre las líneas&#39;</span>)</span>
+<span id="cb497-17"><a href="python.html#cb497-17" tabindex="-1"></a></span>
+<span id="cb497-18"><a href="python.html#cb497-18" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb497-19"><a href="python.html#cb497-19" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-164-67.png" width="960" /></p>
+</div>
 </div>
 <div id="tipos-de-plots" class="section level3 hasAnchor" number="4.8.2">
 <h3><span class="header-section-number">4.8.2</span> Tipos de plots<a href="python.html#tipos-de-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="áreas-entre-curvas" class="section level4 hasAnchor" number="4.8.2.1">
 <h4><span class="header-section-number">4.8.2.1</span> Áreas entre curvas<a href="python.html#áreas-entre-curvas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>La función <code>fill_between()</code> en Matplotlib se utiliza para crear áreas sombreadas entre dos curvas o entre una curva y un eje. Esto puede ser útil para resaltar ciertas regiones en un gráfico.</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb492-1"><a href="python.html#cb492-1" tabindex="-1"></a><span class="co"># Definimos los datos</span></span>
-<span id="cb492-2"><a href="python.html#cb492-2" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
-<span id="cb492-3"><a href="python.html#cb492-3" tabindex="-1"></a>y1 <span class="op">=</span> np.sin(x)</span>
-<span id="cb492-4"><a href="python.html#cb492-4" tabindex="-1"></a>y2 <span class="op">=</span> np.cos(x)</span>
-<span id="cb492-5"><a href="python.html#cb492-5" tabindex="-1"></a></span>
-<span id="cb492-6"><a href="python.html#cb492-6" tabindex="-1"></a><span class="co"># Creamos el gráfico</span></span>
-<span id="cb492-7"><a href="python.html#cb492-7" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb492-8"><a href="python.html#cb492-8" tabindex="-1"></a></span>
-<span id="cb492-9"><a href="python.html#cb492-9" tabindex="-1"></a><span class="co"># Graficamos las curvas</span></span>
-<span id="cb492-10"><a href="python.html#cb492-10" tabindex="-1"></a>plt.plot(x, y1, color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, label<span class="op">=</span><span class="st">&#39;sin(x)&#39;</span>)</span>
-<span id="cb492-11"><a href="python.html#cb492-11" tabindex="-1"></a>plt.plot(x, y2, color<span class="op">=</span><span class="st">&#39;red&#39;</span>, label<span class="op">=</span><span class="st">&#39;cos(x)&#39;</span>)</span>
-<span id="cb492-12"><a href="python.html#cb492-12" tabindex="-1"></a></span>
-<span id="cb492-13"><a href="python.html#cb492-13" tabindex="-1"></a><span class="co"># Rellenamos el área entre las curvas y=sen(x) y y=cos(x)</span></span>
-<span id="cb492-14"><a href="python.html#cb492-14" tabindex="-1"></a>plt.fill_between(x, y1, y2, where<span class="op">=</span>(y1 <span class="op">&gt;=</span> y2), color<span class="op">=</span><span class="st">&#39;green&#39;</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, interpolate<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">&#39;Área entre curvas&#39;</span>)</span>
-<span id="cb492-15"><a href="python.html#cb492-15" tabindex="-1"></a></span>
-<span id="cb492-16"><a href="python.html#cb492-16" tabindex="-1"></a><span class="co"># Añadimos etiquetas y título</span></span>
-<span id="cb492-17"><a href="python.html#cb492-17" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;x&#39;</span>)</span>
-<span id="cb492-18"><a href="python.html#cb492-18" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;y&#39;</span>)</span>
-<span id="cb492-19"><a href="python.html#cb492-19" tabindex="-1"></a>plt.title(<span class="st">&#39;Área sombreada entre curvas&#39;</span>)</span>
-<span id="cb492-20"><a href="python.html#cb492-20" tabindex="-1"></a>plt.legend()</span>
-<span id="cb492-21"><a href="python.html#cb492-21" tabindex="-1"></a></span>
-<span id="cb492-22"><a href="python.html#cb492-22" tabindex="-1"></a><span class="co"># Mostramos el gráfico</span></span>
-<span id="cb492-23"><a href="python.html#cb492-23" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb492-24"><a href="python.html#cb492-24" tabindex="-1"></a>plt.show()</span></code></pre></div>
-<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-153-35.png" width="768" /><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-153-36.png" width="672" /></p>
+<div class="sourceCode" id="cb498"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb498-1"><a href="python.html#cb498-1" tabindex="-1"></a><span class="co"># Definimos los datos</span></span>
+<span id="cb498-2"><a href="python.html#cb498-2" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
+<span id="cb498-3"><a href="python.html#cb498-3" tabindex="-1"></a>y1 <span class="op">=</span> np.sin(x)</span>
+<span id="cb498-4"><a href="python.html#cb498-4" tabindex="-1"></a>y2 <span class="op">=</span> np.cos(x)</span>
+<span id="cb498-5"><a href="python.html#cb498-5" tabindex="-1"></a></span>
+<span id="cb498-6"><a href="python.html#cb498-6" tabindex="-1"></a><span class="co"># Creamos el gráfico</span></span>
+<span id="cb498-7"><a href="python.html#cb498-7" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb498-8"><a href="python.html#cb498-8" tabindex="-1"></a></span>
+<span id="cb498-9"><a href="python.html#cb498-9" tabindex="-1"></a><span class="co"># Graficamos las curvas</span></span>
+<span id="cb498-10"><a href="python.html#cb498-10" tabindex="-1"></a>plt.plot(x, y1, color<span class="op">=</span><span class="st">&quot;#a1dab4&quot;</span>, label<span class="op">=</span><span class="st">&#39;sin(x)&#39;</span>)</span>
+<span id="cb498-11"><a href="python.html#cb498-11" tabindex="-1"></a>plt.plot(x, y2, color<span class="op">=</span><span class="st">&quot;#253494&quot;</span>, label<span class="op">=</span><span class="st">&#39;cos(x)&#39;</span>)</span>
+<span id="cb498-12"><a href="python.html#cb498-12" tabindex="-1"></a></span>
+<span id="cb498-13"><a href="python.html#cb498-13" tabindex="-1"></a><span class="co"># Rellenamos el área entre las curvas y=sen(x) y y=cos(x)</span></span>
+<span id="cb498-14"><a href="python.html#cb498-14" tabindex="-1"></a>plt.fill_between(x, y1, y2, where<span class="op">=</span>(y1 <span class="op">&gt;=</span> y2), color<span class="op">=</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.5</span>), alpha<span class="op">=</span><span class="fl">0.3</span>, interpolate<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">&#39;Área entre curvas&#39;</span>)</span>
+<span id="cb498-15"><a href="python.html#cb498-15" tabindex="-1"></a></span>
+<span id="cb498-16"><a href="python.html#cb498-16" tabindex="-1"></a><span class="co"># Añadimos etiquetas y título</span></span>
+<span id="cb498-17"><a href="python.html#cb498-17" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;x&#39;</span>)</span>
+<span id="cb498-18"><a href="python.html#cb498-18" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;y&#39;</span>)</span>
+<span id="cb498-19"><a href="python.html#cb498-19" tabindex="-1"></a>plt.title(<span class="st">&#39;Área sombreada entre curvas&#39;</span>)</span>
+<span id="cb498-20"><a href="python.html#cb498-20" tabindex="-1"></a></span>
+<span id="cb498-21"><a href="python.html#cb498-21" tabindex="-1"></a><span class="co"># Mover la leyenda fuera del gráfico</span></span>
+<span id="cb498-22"><a href="python.html#cb498-22" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">&#39;upper left&#39;</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb498-23"><a href="python.html#cb498-23" tabindex="-1"></a></span>
+<span id="cb498-24"><a href="python.html#cb498-24" tabindex="-1"></a><span class="co"># Mostramos el gráfico</span></span>
+<span id="cb498-25"><a href="python.html#cb498-25" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb498-26"><a href="python.html#cb498-26" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-165-69.png" width="768" /></p>
+<p>El parámetro interpolate en la función <code>fill_between()</code> de Matplotlib controla si se debe interpolar entre los puntos de datos al rellenar el área entre las curvas.</p>
+<p>Cuando interpolate está establecido en True, Matplotlib interpolará suavemente entre los puntos de datos para crear un área sombreada más suave entre las curvas. Esto puede ser útil cuando los datos están espaciados de manera irregular o cuando se desea una representación visualmente más atractiva del área sombreada.</p>
 </div>
 <div id="scatter-plot-o-gráfico-de-dispersión" class="section level4 hasAnchor" number="4.8.2.2">
 <h4><span class="header-section-number">4.8.2.2</span> Scatter plot o gráfico de dispersión<a href="python.html#scatter-plot-o-gráfico-de-dispersión" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb493"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb493-1"><a href="python.html#cb493-1" tabindex="-1"></a><span class="co"># Definimos los datos</span></span>
-<span id="cb493-2"><a href="python.html#cb493-2" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb493-3"><a href="python.html#cb493-3" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb493-4"><a href="python.html#cb493-4" tabindex="-1"></a>x <span class="op">=</span> np.random.rand(n)</span>
-<span id="cb493-5"><a href="python.html#cb493-5" tabindex="-1"></a>y <span class="op">=</span> np.random.rand(n)</span>
-<span id="cb493-6"><a href="python.html#cb493-6" tabindex="-1"></a>colors <span class="op">=</span> np.arctan2(y, x)  <span class="co"># Calculamos el ángulo para determinar el color</span></span>
-<span id="cb493-7"><a href="python.html#cb493-7" tabindex="-1"></a>sizes <span class="op">=</span> <span class="dv">1000</span> <span class="op">*</span> np.random.rand(n)  <span class="co"># Tamaño de los marcadores</span></span>
-<span id="cb493-8"><a href="python.html#cb493-8" tabindex="-1"></a></span>
-<span id="cb493-9"><a href="python.html#cb493-9" tabindex="-1"></a><span class="co"># Creamos el gráfico</span></span>
-<span id="cb493-10"><a href="python.html#cb493-10" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb493-11"><a href="python.html#cb493-11" tabindex="-1"></a></span>
-<span id="cb493-12"><a href="python.html#cb493-12" tabindex="-1"></a><span class="co"># Graficamos los marcadores</span></span>
-<span id="cb493-13"><a href="python.html#cb493-13" tabindex="-1"></a>plt.scatter(x, y, c<span class="op">=</span>colors, s<span class="op">=</span>sizes, alpha<span class="op">=</span><span class="fl">0.5</span>, cmap<span class="op">=</span><span class="st">&#39;hsv&#39;</span>)</span>
-<span id="cb493-14"><a href="python.html#cb493-14" tabindex="-1"></a></span>
-<span id="cb493-15"><a href="python.html#cb493-15" tabindex="-1"></a><span class="co"># Añadimos etiquetas y título</span></span>
-<span id="cb493-16"><a href="python.html#cb493-16" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;X&#39;</span>)</span>
-<span id="cb493-17"><a href="python.html#cb493-17" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Y&#39;</span>)</span>
-<span id="cb493-18"><a href="python.html#cb493-18" tabindex="-1"></a>plt.title(<span class="st">&#39;Gráfico de marcadores con color según el ángulo&#39;</span>)</span>
-<span id="cb493-19"><a href="python.html#cb493-19" tabindex="-1"></a></span>
-<span id="cb493-20"><a href="python.html#cb493-20" tabindex="-1"></a><span class="co"># Mostramos la barra de color</span></span>
-<span id="cb493-21"><a href="python.html#cb493-21" tabindex="-1"></a>plt.colorbar(label<span class="op">=</span><span class="st">&#39;Ángulo&#39;</span>)</span></code></pre></div>
-<pre><code>## &lt;matplotlib.colorbar.Colorbar object at 0x000001FC51EB0250&gt;</code></pre>
-<div class="sourceCode" id="cb495"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb495-1"><a href="python.html#cb495-1" tabindex="-1"></a><span class="co"># Mostramos el gráfico</span></span>
-<span id="cb495-2"><a href="python.html#cb495-2" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb495-3"><a href="python.html#cb495-3" tabindex="-1"></a>plt.show()</span></code></pre></div>
-<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-154-39.png" width="768" /></p>
+<div class="sourceCode" id="cb499"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb499-1"><a href="python.html#cb499-1" tabindex="-1"></a><span class="co"># Definimos los datos</span></span>
+<span id="cb499-2"><a href="python.html#cb499-2" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb499-3"><a href="python.html#cb499-3" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb499-4"><a href="python.html#cb499-4" tabindex="-1"></a>x <span class="op">=</span> np.random.rand(n)</span>
+<span id="cb499-5"><a href="python.html#cb499-5" tabindex="-1"></a>y <span class="op">=</span> np.random.rand(n)</span>
+<span id="cb499-6"><a href="python.html#cb499-6" tabindex="-1"></a>colors <span class="op">=</span> np.arctan2(y, x)  <span class="co"># Calculamos el ángulo para determinar el color</span></span>
+<span id="cb499-7"><a href="python.html#cb499-7" tabindex="-1"></a>sizes <span class="op">=</span> <span class="dv">1000</span> <span class="op">*</span> np.random.rand(n)  <span class="co"># Tamaño de los marcadores</span></span>
+<span id="cb499-8"><a href="python.html#cb499-8" tabindex="-1"></a></span>
+<span id="cb499-9"><a href="python.html#cb499-9" tabindex="-1"></a><span class="co"># Creamos el gráfico</span></span>
+<span id="cb499-10"><a href="python.html#cb499-10" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb499-11"><a href="python.html#cb499-11" tabindex="-1"></a></span>
+<span id="cb499-12"><a href="python.html#cb499-12" tabindex="-1"></a><span class="co"># Graficamos los marcadores</span></span>
+<span id="cb499-13"><a href="python.html#cb499-13" tabindex="-1"></a>plt.scatter(x, y, c<span class="op">=</span>colors, s<span class="op">=</span>sizes, alpha<span class="op">=</span><span class="fl">0.5</span>, cmap<span class="op">=</span><span class="st">&#39;hsv&#39;</span>)</span>
+<span id="cb499-14"><a href="python.html#cb499-14" tabindex="-1"></a></span>
+<span id="cb499-15"><a href="python.html#cb499-15" tabindex="-1"></a><span class="co"># Añadimos etiquetas y título</span></span>
+<span id="cb499-16"><a href="python.html#cb499-16" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;X&#39;</span>)</span>
+<span id="cb499-17"><a href="python.html#cb499-17" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Y&#39;</span>)</span>
+<span id="cb499-18"><a href="python.html#cb499-18" tabindex="-1"></a>plt.title(<span class="st">&#39;Gráfico de marcadores con color según el ángulo&#39;</span>)</span>
+<span id="cb499-19"><a href="python.html#cb499-19" tabindex="-1"></a></span>
+<span id="cb499-20"><a href="python.html#cb499-20" tabindex="-1"></a><span class="co"># Mostramos la barra de color</span></span>
+<span id="cb499-21"><a href="python.html#cb499-21" tabindex="-1"></a>plt.colorbar(label<span class="op">=</span><span class="st">&#39;Ángulo&#39;</span>)</span></code></pre></div>
+<pre><code>## &lt;matplotlib.colorbar.Colorbar object at 0x000002502B133A90&gt;</code></pre>
+<div class="sourceCode" id="cb501"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb501-1"><a href="python.html#cb501-1" tabindex="-1"></a><span class="co"># Mostramos el gráfico</span></span>
+<span id="cb501-2"><a href="python.html#cb501-2" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb501-3"><a href="python.html#cb501-3" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-166-71.png" width="768" /></p>
+<p><strong>Ejercicio 1: </strong> Usando <code>seaborn</code>, carga la base de datos <code>iris</code> y crea un gráfico de dispersión de la longitud del sepalo vs la anchura del sepalo.</p>
+<div class="sourceCode" id="cb502"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb502-1"><a href="python.html#cb502-1" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb502-2"><a href="python.html#cb502-2" tabindex="-1"></a></span>
+<span id="cb502-3"><a href="python.html#cb502-3" tabindex="-1"></a><span class="co"># Cargar el conjunto de datos de iris</span></span>
+<span id="cb502-4"><a href="python.html#cb502-4" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">&#39;iris&#39;</span>)</span></code></pre></div>
+<p><strong>Ejercicio 2:</strong> Usando la base de datos <code>penguins</code> de <code>seaborn</code> crea el siguiente gráfico de dispersión.</p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-168-73.png" width="768" /></p>
 </div>
 <div id="gráfico-de-barras" class="section level4 hasAnchor" number="4.8.2.3">
 <h4><span class="header-section-number">4.8.2.3</span> Gráfico de barras<a href="python.html#gráfico-de-barras" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb496"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb496-1"><a href="python.html#cb496-1" tabindex="-1"></a><span class="co"># Datos</span></span>
-<span id="cb496-2"><a href="python.html#cb496-2" tabindex="-1"></a>categories <span class="op">=</span> [<span class="st">&#39;0-20&#39;</span>, <span class="st">&#39;21-40&#39;</span>, <span class="st">&#39;41-60&#39;</span>, <span class="st">&#39;61-80&#39;</span>, <span class="st">&#39;81+&#39;</span>]</span>
-<span id="cb496-3"><a href="python.html#cb496-3" tabindex="-1"></a>women_counts <span class="op">=</span> [<span class="dv">50</span>, <span class="dv">120</span>, <span class="dv">80</span>, <span class="dv">30</span>, <span class="dv">10</span>]</span>
-<span id="cb496-4"><a href="python.html#cb496-4" tabindex="-1"></a>men_counts <span class="op">=</span> [<span class="dv">40</span>, <span class="dv">100</span>, <span class="dv">70</span>, <span class="dv">25</span>, <span class="dv">5</span>]</span>
-<span id="cb496-5"><a href="python.html#cb496-5" tabindex="-1"></a>color_above <span class="op">=</span> <span class="st">&#39;lightcoral&#39;</span></span>
-<span id="cb496-6"><a href="python.html#cb496-6" tabindex="-1"></a>color_below <span class="op">=</span> <span class="st">&#39;lightblue&#39;</span></span>
-<span id="cb496-7"><a href="python.html#cb496-7" tabindex="-1"></a>offset <span class="op">=</span> <span class="dv">5</span>  <span class="co"># Offset para las barras arriba del eje x</span></span>
-<span id="cb496-8"><a href="python.html#cb496-8" tabindex="-1"></a></span>
-<span id="cb496-9"><a href="python.html#cb496-9" tabindex="-1"></a><span class="co"># Creamos el gráfico de barras</span></span>
-<span id="cb496-10"><a href="python.html#cb496-10" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb496-11"><a href="python.html#cb496-11" tabindex="-1"></a></span>
-<span id="cb496-12"><a href="python.html#cb496-12" tabindex="-1"></a><span class="co"># Barras superiores (mujeres)</span></span>
-<span id="cb496-13"><a href="python.html#cb496-13" tabindex="-1"></a>plt.bar(categories, women_counts, color<span class="op">=</span>color_above, label<span class="op">=</span><span class="st">&#39;Mujeres&#39;</span>)</span>
-<span id="cb496-14"><a href="python.html#cb496-14" tabindex="-1"></a></span>
-<span id="cb496-15"><a href="python.html#cb496-15" tabindex="-1"></a><span class="co"># Barras inferiores (hombres)</span></span>
-<span id="cb496-16"><a href="python.html#cb496-16" tabindex="-1"></a>plt.bar(categories, [<span class="op">-</span>count <span class="cf">for</span> count <span class="kw">in</span> men_counts], color<span class="op">=</span>color_below, label<span class="op">=</span><span class="st">&#39;Hombres&#39;</span>)</span>
-<span id="cb496-17"><a href="python.html#cb496-17" tabindex="-1"></a></span>
-<span id="cb496-18"><a href="python.html#cb496-18" tabindex="-1"></a><span class="co"># Añadimos etiquetas y título</span></span>
-<span id="cb496-19"><a href="python.html#cb496-19" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Rango de Edad&#39;</span>)</span>
-<span id="cb496-20"><a href="python.html#cb496-20" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Cantidad&#39;</span>)</span>
-<span id="cb496-21"><a href="python.html#cb496-21" tabindex="-1"></a>plt.title(<span class="st">&#39;Cantidad de Mujeres y Hombres por Rango de Edad en un Centro de Convenciones&#39;</span>)</span>
-<span id="cb496-22"><a href="python.html#cb496-22" tabindex="-1"></a></span>
-<span id="cb496-23"><a href="python.html#cb496-23" tabindex="-1"></a><span class="co"># Añadimos la leyenda</span></span>
-<span id="cb496-24"><a href="python.html#cb496-24" tabindex="-1"></a>plt.legend()</span>
-<span id="cb496-25"><a href="python.html#cb496-25" tabindex="-1"></a></span>
-<span id="cb496-26"><a href="python.html#cb496-26" tabindex="-1"></a><span class="co"># Mostramos el gráfico</span></span>
-<span id="cb496-27"><a href="python.html#cb496-27" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb496-28"><a href="python.html#cb496-28" tabindex="-1"></a>plt.show()</span></code></pre></div>
-<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-155-41.png" width="960" /></p>
+<div class="sourceCode" id="cb503"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb503-1"><a href="python.html#cb503-1" tabindex="-1"></a><span class="co"># Datos</span></span>
+<span id="cb503-2"><a href="python.html#cb503-2" tabindex="-1"></a>categories <span class="op">=</span> [<span class="st">&#39;0-20&#39;</span>, <span class="st">&#39;21-40&#39;</span>, <span class="st">&#39;41-60&#39;</span>, <span class="st">&#39;61-80&#39;</span>, <span class="st">&#39;81+&#39;</span>]</span>
+<span id="cb503-3"><a href="python.html#cb503-3" tabindex="-1"></a>women_counts <span class="op">=</span> [<span class="dv">50</span>, <span class="dv">120</span>, <span class="dv">80</span>, <span class="dv">30</span>, <span class="dv">10</span>]</span>
+<span id="cb503-4"><a href="python.html#cb503-4" tabindex="-1"></a>men_counts <span class="op">=</span> [<span class="dv">40</span>, <span class="dv">100</span>, <span class="dv">70</span>, <span class="dv">25</span>, <span class="dv">5</span>]</span>
+<span id="cb503-5"><a href="python.html#cb503-5" tabindex="-1"></a>color_above <span class="op">=</span> <span class="st">&#39;lightcoral&#39;</span></span>
+<span id="cb503-6"><a href="python.html#cb503-6" tabindex="-1"></a>color_below <span class="op">=</span> <span class="st">&#39;lightblue&#39;</span></span>
+<span id="cb503-7"><a href="python.html#cb503-7" tabindex="-1"></a>offset <span class="op">=</span> <span class="dv">5</span>  <span class="co"># Offset para las barras arriba del eje x</span></span>
+<span id="cb503-8"><a href="python.html#cb503-8" tabindex="-1"></a></span>
+<span id="cb503-9"><a href="python.html#cb503-9" tabindex="-1"></a><span class="co"># Creamos el gráfico de barras</span></span>
+<span id="cb503-10"><a href="python.html#cb503-10" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb503-11"><a href="python.html#cb503-11" tabindex="-1"></a></span>
+<span id="cb503-12"><a href="python.html#cb503-12" tabindex="-1"></a><span class="co"># Barras superiores (mujeres)</span></span>
+<span id="cb503-13"><a href="python.html#cb503-13" tabindex="-1"></a>plt.bar(categories, women_counts, color<span class="op">=</span>color_above, label<span class="op">=</span><span class="st">&#39;Mujeres&#39;</span>)</span>
+<span id="cb503-14"><a href="python.html#cb503-14" tabindex="-1"></a></span>
+<span id="cb503-15"><a href="python.html#cb503-15" tabindex="-1"></a><span class="co"># Barras inferiores (hombres)</span></span>
+<span id="cb503-16"><a href="python.html#cb503-16" tabindex="-1"></a>plt.bar(categories, [<span class="op">-</span>count <span class="cf">for</span> count <span class="kw">in</span> men_counts], color<span class="op">=</span>color_below, label<span class="op">=</span><span class="st">&#39;Hombres&#39;</span>)</span>
+<span id="cb503-17"><a href="python.html#cb503-17" tabindex="-1"></a></span>
+<span id="cb503-18"><a href="python.html#cb503-18" tabindex="-1"></a><span class="co"># Añadimos etiquetas y título</span></span>
+<span id="cb503-19"><a href="python.html#cb503-19" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Rango de Edad&#39;</span>)</span>
+<span id="cb503-20"><a href="python.html#cb503-20" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Cantidad&#39;</span>)</span>
+<span id="cb503-21"><a href="python.html#cb503-21" tabindex="-1"></a>plt.title(<span class="st">&#39;Cantidad de Mujeres y Hombres por Rango de Edad en un Centro de Convenciones&#39;</span>)</span>
+<span id="cb503-22"><a href="python.html#cb503-22" tabindex="-1"></a></span>
+<span id="cb503-23"><a href="python.html#cb503-23" tabindex="-1"></a><span class="co"># Añadimos la leyenda</span></span>
+<span id="cb503-24"><a href="python.html#cb503-24" tabindex="-1"></a>plt.legend()</span>
+<span id="cb503-25"><a href="python.html#cb503-25" tabindex="-1"></a></span>
+<span id="cb503-26"><a href="python.html#cb503-26" tabindex="-1"></a><span class="co"># Mostramos el gráfico</span></span>
+<span id="cb503-27"><a href="python.html#cb503-27" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb503-28"><a href="python.html#cb503-28" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-169-75.png" width="960" /></p>
+<p><strong>Ejercicio:</strong> Usando la base de datos <code>penguins</code> de seaborn, crea un gráfico de barras que muestre la cantidad promedio de pingüinos de cada especie en la base de datos.</p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-170-77.png" width="768" /></p>
 </div>
-<div id="contour-plot" class="section level4 hasAnchor" number="4.8.2.4">
-<h4><span class="header-section-number">4.8.2.4</span> Contour plot<a href="python.html#contour-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb497"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb497-1"><a href="python.html#cb497-1" tabindex="-1"></a><span class="co"># Creamos datos para el Contour Plot</span></span>
-<span id="cb497-2"><a href="python.html#cb497-2" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
-<span id="cb497-3"><a href="python.html#cb497-3" tabindex="-1"></a>y <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
-<span id="cb497-4"><a href="python.html#cb497-4" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(x, y)</span>
-<span id="cb497-5"><a href="python.html#cb497-5" tabindex="-1"></a>Z <span class="op">=</span> np.sin(X) <span class="op">*</span> np.cos(Y)</span>
-<span id="cb497-6"><a href="python.html#cb497-6" tabindex="-1"></a></span>
-<span id="cb497-7"><a href="python.html#cb497-7" tabindex="-1"></a><span class="co"># Creamos el Contour Plot</span></span>
-<span id="cb497-8"><a href="python.html#cb497-8" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb497-9"><a href="python.html#cb497-9" tabindex="-1"></a>contour <span class="op">=</span> plt.contour(X, Y, Z, cmap<span class="op">=</span><span class="st">&#39;viridis&#39;</span>)</span>
-<span id="cb497-10"><a href="python.html#cb497-10" tabindex="-1"></a></span>
-<span id="cb497-11"><a href="python.html#cb497-11" tabindex="-1"></a><span class="co"># Etiquetamos las líneas de contorno</span></span>
-<span id="cb497-12"><a href="python.html#cb497-12" tabindex="-1"></a>plt.clabel(contour, inline<span class="op">=</span><span class="va">True</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb497-13"><a href="python.html#cb497-13" tabindex="-1"></a></span>
-<span id="cb497-14"><a href="python.html#cb497-14" tabindex="-1"></a><span class="co"># Añadimos etiquetas y título</span></span>
-<span id="cb497-15"><a href="python.html#cb497-15" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Eje X&#39;</span>)</span>
-<span id="cb497-16"><a href="python.html#cb497-16" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Eje Y&#39;</span>)</span>
-<span id="cb497-17"><a href="python.html#cb497-17" tabindex="-1"></a>plt.title(<span class="st">&#39;Contour Plot de sin(X) * cos(Y) con Etiquetas&#39;</span>)</span>
-<span id="cb497-18"><a href="python.html#cb497-18" tabindex="-1"></a></span>
-<span id="cb497-19"><a href="python.html#cb497-19" tabindex="-1"></a><span class="co"># Mostramos el gráfico</span></span>
-<span id="cb497-20"><a href="python.html#cb497-20" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb497-21"><a href="python.html#cb497-21" tabindex="-1"></a>plt.show()</span></code></pre></div>
-<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-156-43.png" width="768" /></p>
-</div>
-<div id="gráfico-de-pastel" class="section level4 hasAnchor" number="4.8.2.5">
-<h4><span class="header-section-number">4.8.2.5</span> Gráfico de pastel<a href="python.html#gráfico-de-pastel" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb498"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb498-1"><a href="python.html#cb498-1" tabindex="-1"></a><span class="co"># Datos</span></span>
-<span id="cb498-2"><a href="python.html#cb498-2" tabindex="-1"></a>edades <span class="op">=</span> [<span class="st">&#39;0-20 años&#39;</span>, <span class="st">&#39;21-40 años&#39;</span>, <span class="st">&#39;41-60 años&#39;</span>, <span class="st">&#39;61-80 años&#39;</span>, <span class="st">&#39;81+ años&#39;</span>]</span>
-<span id="cb498-3"><a href="python.html#cb498-3" tabindex="-1"></a>cantidad_personas <span class="op">=</span> [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">40</span>, <span class="dv">20</span>, <span class="dv">5</span>]  <span class="co"># Número de personas en cada grupo de edad</span></span>
-<span id="cb498-4"><a href="python.html#cb498-4" tabindex="-1"></a></span>
-<span id="cb498-5"><a href="python.html#cb498-5" tabindex="-1"></a><span class="co"># Colores para cada categoría de edad</span></span>
-<span id="cb498-6"><a href="python.html#cb498-6" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">&#39;lightblue&#39;</span>, <span class="st">&#39;lightgreen&#39;</span>, <span class="st">&#39;lightcoral&#39;</span>, <span class="st">&#39;lightyellow&#39;</span>, <span class="st">&#39;lightpink&#39;</span>]</span>
-<span id="cb498-7"><a href="python.html#cb498-7" tabindex="-1"></a></span>
-<span id="cb498-8"><a href="python.html#cb498-8" tabindex="-1"></a><span class="co"># Creamos el pie chart</span></span>
-<span id="cb498-9"><a href="python.html#cb498-9" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
-<span id="cb498-10"><a href="python.html#cb498-10" tabindex="-1"></a>plt.pie(cantidad_personas, labels<span class="op">=</span>edades, autopct<span class="op">=</span><span class="st">&#39;</span><span class="sc">%1.1f%%</span><span class="st">&#39;</span>, startangle<span class="op">=</span><span class="dv">140</span>, colors<span class="op">=</span>colors)</span></code></pre></div>
-<pre><code>## ([&lt;matplotlib.patches.Wedge object at 0x000001FC5236F6D0&gt;, &lt;matplotlib.patches.Wedge object at 0x000001FC52080A10&gt;, &lt;matplotlib.patches.Wedge object at 0x000001FC52081A10&gt;, &lt;matplotlib.patches.Wedge object at 0x000001FC52083090&gt;, &lt;matplotlib.patches.Wedge object at 0x000001FC525E1490&gt;], [Text(-1.0896731958656476, 0.1503739545664288, &#39;0-20 años&#39;), Text(-0.027423702079068427, -1.099658101668095, &#39;21-40 años&#39;), Text(1.0026563830822577, 0.452415934140703, &#39;41-60 años&#39;), Text(-0.21796095220362108, 1.078189697277103, &#39;61-80 años&#39;), Text(-0.7581843362242401, 0.7969670710287902, &#39;81+ años&#39;)], [Text(-0.5943671977448985, 0.08202215703623389, &#39;17.9%&#39;), Text(-0.01495838295221914, -0.5998135100007791, &#39;35.7%&#39;), Text(0.5469034816812314, 0.24677232771311072, &#39;28.6%&#39;), Text(-0.11888779211106602, 0.5881034712420561, &#39;14.3%&#39;), Text(-0.41355509248594907, 0.4347093114702491, &#39;3.6%&#39;)])</code></pre>
-<div class="sourceCode" id="cb500"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb500-1"><a href="python.html#cb500-1" tabindex="-1"></a><span class="co"># Añadimos título</span></span>
-<span id="cb500-2"><a href="python.html#cb500-2" tabindex="-1"></a>plt.title(<span class="st">&#39;Distribución de Grupos de Personas por Edad en una Conferencia&#39;</span>)</span>
-<span id="cb500-3"><a href="python.html#cb500-3" tabindex="-1"></a></span>
-<span id="cb500-4"><a href="python.html#cb500-4" tabindex="-1"></a><span class="co"># Mostramos el gráfico</span></span>
-<span id="cb500-5"><a href="python.html#cb500-5" tabindex="-1"></a>plt.axis(<span class="st">&#39;equal&#39;</span>)  <span class="co"># Para asegurar que el gráfico sea un círculo</span></span></code></pre></div>
+<div id="gráfico-de-pastel" class="section level4 hasAnchor" number="4.8.2.4">
+<h4><span class="header-section-number">4.8.2.4</span> Gráfico de pastel<a href="python.html#gráfico-de-pastel" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb504"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb504-1"><a href="python.html#cb504-1" tabindex="-1"></a><span class="co"># Datos</span></span>
+<span id="cb504-2"><a href="python.html#cb504-2" tabindex="-1"></a>edades <span class="op">=</span> [<span class="st">&#39;0-20 años&#39;</span>, <span class="st">&#39;21-40 años&#39;</span>, <span class="st">&#39;41-60 años&#39;</span>, <span class="st">&#39;61-80 años&#39;</span>, <span class="st">&#39;81+ años&#39;</span>]</span>
+<span id="cb504-3"><a href="python.html#cb504-3" tabindex="-1"></a>cantidad_personas <span class="op">=</span> [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">40</span>, <span class="dv">20</span>, <span class="dv">5</span>]  <span class="co"># Número de personas en cada grupo de edad</span></span>
+<span id="cb504-4"><a href="python.html#cb504-4" tabindex="-1"></a></span>
+<span id="cb504-5"><a href="python.html#cb504-5" tabindex="-1"></a><span class="co"># Colores para cada categoría de edad</span></span>
+<span id="cb504-6"><a href="python.html#cb504-6" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">&#39;lightblue&#39;</span>, <span class="st">&#39;lightgreen&#39;</span>, <span class="st">&#39;lightcoral&#39;</span>, <span class="st">&#39;lightyellow&#39;</span>, <span class="st">&#39;lightpink&#39;</span>]</span>
+<span id="cb504-7"><a href="python.html#cb504-7" tabindex="-1"></a></span>
+<span id="cb504-8"><a href="python.html#cb504-8" tabindex="-1"></a><span class="co"># Creamos el pie chart</span></span>
+<span id="cb504-9"><a href="python.html#cb504-9" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
+<span id="cb504-10"><a href="python.html#cb504-10" tabindex="-1"></a>plt.pie(cantidad_personas, labels<span class="op">=</span>edades, autopct<span class="op">=</span><span class="st">&#39;</span><span class="sc">%1.1f%%</span><span class="st">&#39;</span>, startangle<span class="op">=</span><span class="dv">140</span>, colors<span class="op">=</span>colors)</span></code></pre></div>
+<pre><code>## ([&lt;matplotlib.patches.Wedge object at 0x000002502BBCC650&gt;, &lt;matplotlib.patches.Wedge object at 0x000002502BBFDC10&gt;, &lt;matplotlib.patches.Wedge object at 0x0000025029947590&gt;, &lt;matplotlib.patches.Wedge object at 0x0000025029946C50&gt;, &lt;matplotlib.patches.Wedge object at 0x000002502995B1D0&gt;], [Text(-1.0896731958656476, 0.1503739545664288, &#39;0-20 años&#39;), Text(-0.027423702079068427, -1.099658101668095, &#39;21-40 años&#39;), Text(1.0026563830822577, 0.452415934140703, &#39;41-60 años&#39;), Text(-0.21796095220362108, 1.078189697277103, &#39;61-80 años&#39;), Text(-0.7581843362242401, 0.7969670710287902, &#39;81+ años&#39;)], [Text(-0.5943671977448985, 0.08202215703623389, &#39;17.9%&#39;), Text(-0.01495838295221914, -0.5998135100007791, &#39;35.7%&#39;), Text(0.5469034816812314, 0.24677232771311072, &#39;28.6%&#39;), Text(-0.11888779211106602, 0.5881034712420561, &#39;14.3%&#39;), Text(-0.41355509248594907, 0.4347093114702491, &#39;3.6%&#39;)])</code></pre>
+<div class="sourceCode" id="cb506"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb506-1"><a href="python.html#cb506-1" tabindex="-1"></a><span class="co"># Añadimos título</span></span>
+<span id="cb506-2"><a href="python.html#cb506-2" tabindex="-1"></a>plt.title(<span class="st">&#39;Distribución de Grupos de Personas por Edad en una Conferencia&#39;</span>)</span>
+<span id="cb506-3"><a href="python.html#cb506-3" tabindex="-1"></a></span>
+<span id="cb506-4"><a href="python.html#cb506-4" tabindex="-1"></a><span class="co"># Mostramos el gráfico</span></span>
+<span id="cb506-5"><a href="python.html#cb506-5" tabindex="-1"></a>plt.axis(<span class="st">&#39;equal&#39;</span>)  <span class="co"># Para asegurar que el gráfico sea un círculo</span></span></code></pre></div>
 <pre><code>## (-1.0999983812882443, 1.0999999132932203, -1.0999999321961162, 1.0999989838375972)</code></pre>
-<div class="sourceCode" id="cb502"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb502-1"><a href="python.html#cb502-1" tabindex="-1"></a>plt.show()</span></code></pre></div>
-<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-157-45.png" width="768" /></p>
+<div class="sourceCode" id="cb508"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb508-1"><a href="python.html#cb508-1" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-171-79.png" width="768" /></p>
+<p><strong>Ejercicio:</strong> Usando la base de datos <code>penguins</code> de seaborn, crea un gráfico de pastel que muestre la proporción de cada especie de pingüino en la base de datos.</p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-172-81.png" width="768" /></p>
+</div>
+<div id="boxplot" class="section level4 hasAnchor" number="4.8.2.5">
+<h4><span class="header-section-number">4.8.2.5</span> Boxplot<a href="python.html#boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb509"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb509-1"><a href="python.html#cb509-1" tabindex="-1"></a><span class="co"># Cargamos los datos Iris</span></span>
+<span id="cb509-2"><a href="python.html#cb509-2" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">&#39;iris&#39;</span>)</span>
+<span id="cb509-3"><a href="python.html#cb509-3" tabindex="-1"></a></span>
+<span id="cb509-4"><a href="python.html#cb509-4" tabindex="-1"></a><span class="co"># Creamos el boxplot</span></span>
+<span id="cb509-5"><a href="python.html#cb509-5" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb509-6"><a href="python.html#cb509-6" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">&#39;species&#39;</span>, y<span class="op">=</span><span class="st">&#39;sepal_length&#39;</span>, data<span class="op">=</span>iris)</span>
+<span id="cb509-7"><a href="python.html#cb509-7" tabindex="-1"></a></span>
+<span id="cb509-8"><a href="python.html#cb509-8" tabindex="-1"></a><span class="co"># Añadimos etiquetas y título</span></span>
+<span id="cb509-9"><a href="python.html#cb509-9" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Especies&#39;</span>)</span>
+<span id="cb509-10"><a href="python.html#cb509-10" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Longitud del Sépalo&#39;</span>)</span>
+<span id="cb509-11"><a href="python.html#cb509-11" tabindex="-1"></a>plt.title(<span class="st">&#39;Boxplot de la longitud del Sépalo para cada especie&#39;</span>)</span>
+<span id="cb509-12"><a href="python.html#cb509-12" tabindex="-1"></a></span>
+<span id="cb509-13"><a href="python.html#cb509-13" tabindex="-1"></a><span class="co"># Mostramos el boxplot</span></span>
+<span id="cb509-14"><a href="python.html#cb509-14" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-173-83.png" width="768" /></p>
+<p><strong>Ejercicio:</strong> Usando la base de datos <code>penguins</code> de seaborn, crea un boxplot que compare las longitudes del pico para cada especie de pingüino en la base de datos.</p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-174-85.png" width="768" /></p>
+</div>
+<div id="histograma" class="section level4 hasAnchor" number="4.8.2.6">
+<h4><span class="header-section-number">4.8.2.6</span> Histograma<a href="python.html#histograma" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb510"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb510-1"><a href="python.html#cb510-1" tabindex="-1"></a><span class="co"># Cargar el conjunto de datos Iris</span></span>
+<span id="cb510-2"><a href="python.html#cb510-2" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">&#39;iris&#39;</span>)</span>
+<span id="cb510-3"><a href="python.html#cb510-3" tabindex="-1"></a></span>
+<span id="cb510-4"><a href="python.html#cb510-4" tabindex="-1"></a><span class="co"># Especie específica para la que queremos crear el histograma</span></span>
+<span id="cb510-5"><a href="python.html#cb510-5" tabindex="-1"></a>especie <span class="op">=</span> <span class="st">&#39;setosa&#39;</span></span>
+<span id="cb510-6"><a href="python.html#cb510-6" tabindex="-1"></a></span>
+<span id="cb510-7"><a href="python.html#cb510-7" tabindex="-1"></a><span class="co"># Filtrar los datos para la especie específica</span></span>
+<span id="cb510-8"><a href="python.html#cb510-8" tabindex="-1"></a>datos_especie <span class="op">=</span> iris[iris[<span class="st">&#39;species&#39;</span>] <span class="op">==</span> especie][<span class="st">&#39;sepal_length&#39;</span>]</span>
+<span id="cb510-9"><a href="python.html#cb510-9" tabindex="-1"></a></span>
+<span id="cb510-10"><a href="python.html#cb510-10" tabindex="-1"></a><span class="co"># Crear el histograma</span></span>
+<span id="cb510-11"><a href="python.html#cb510-11" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb510-12"><a href="python.html#cb510-12" tabindex="-1"></a>plt.hist(datos_especie, bins<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">&#39;skyblue&#39;</span>, edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb510-13"><a href="python.html#cb510-13" tabindex="-1"></a></span>
+<span id="cb510-14"><a href="python.html#cb510-14" tabindex="-1"></a><span class="co"># Añadir etiquetas y título</span></span>
+<span id="cb510-15"><a href="python.html#cb510-15" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Longitud del Sépalo&#39;</span>)</span>
+<span id="cb510-16"><a href="python.html#cb510-16" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Frecuencia&#39;</span>)</span>
+<span id="cb510-17"><a href="python.html#cb510-17" tabindex="-1"></a>plt.title(<span class="ss">f&#39;Histograma de Longitud del Sépalo para la Especie </span><span class="sc">{</span>especie<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb510-18"><a href="python.html#cb510-18" tabindex="-1"></a></span>
+<span id="cb510-19"><a href="python.html#cb510-19" tabindex="-1"></a><span class="co"># Mostrar el histograma</span></span>
+<span id="cb510-20"><a href="python.html#cb510-20" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-175-87.png" width="768" /></p>
+<p><strong>Ejercicio:</strong> Usando la base de datos <code>penguins</code> de seaborn, crea un histograma que muestre la distribución de las longitudes del pico para todas las especies de pingüinos.</p>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-176-89.png" width="768" /></p>
+</div>
+<div id="contour-plot" class="section level4 hasAnchor" number="4.8.2.7">
+<h4><span class="header-section-number">4.8.2.7</span> Contour plot<a href="python.html#contour-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb511"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb511-1"><a href="python.html#cb511-1" tabindex="-1"></a><span class="co"># Creamos datos para el Contour Plot</span></span>
+<span id="cb511-2"><a href="python.html#cb511-2" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
+<span id="cb511-3"><a href="python.html#cb511-3" tabindex="-1"></a>y <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
+<span id="cb511-4"><a href="python.html#cb511-4" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(x, y)</span>
+<span id="cb511-5"><a href="python.html#cb511-5" tabindex="-1"></a>Z <span class="op">=</span> np.sin(X) <span class="op">*</span> np.cos(Y)</span>
+<span id="cb511-6"><a href="python.html#cb511-6" tabindex="-1"></a></span>
+<span id="cb511-7"><a href="python.html#cb511-7" tabindex="-1"></a><span class="co"># Creamos el Contour Plot</span></span>
+<span id="cb511-8"><a href="python.html#cb511-8" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb511-9"><a href="python.html#cb511-9" tabindex="-1"></a>contour <span class="op">=</span> plt.contour(X, Y, Z, cmap<span class="op">=</span><span class="st">&#39;viridis&#39;</span>)</span>
+<span id="cb511-10"><a href="python.html#cb511-10" tabindex="-1"></a></span>
+<span id="cb511-11"><a href="python.html#cb511-11" tabindex="-1"></a><span class="co"># Etiquetamos las líneas de contorno</span></span>
+<span id="cb511-12"><a href="python.html#cb511-12" tabindex="-1"></a>plt.clabel(contour, inline<span class="op">=</span><span class="va">True</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb511-13"><a href="python.html#cb511-13" tabindex="-1"></a></span>
+<span id="cb511-14"><a href="python.html#cb511-14" tabindex="-1"></a><span class="co"># Añadimos etiquetas y título</span></span>
+<span id="cb511-15"><a href="python.html#cb511-15" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Eje X&#39;</span>)</span>
+<span id="cb511-16"><a href="python.html#cb511-16" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Eje Y&#39;</span>)</span>
+<span id="cb511-17"><a href="python.html#cb511-17" tabindex="-1"></a>plt.title(<span class="st">&#39;Contour Plot de sin(X) * cos(Y) con Etiquetas&#39;</span>)</span>
+<span id="cb511-18"><a href="python.html#cb511-18" tabindex="-1"></a></span>
+<span id="cb511-19"><a href="python.html#cb511-19" tabindex="-1"></a><span class="co"># Mostramos el gráfico</span></span>
+<span id="cb511-20"><a href="python.html#cb511-20" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb511-21"><a href="python.html#cb511-21" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-177-91.png" width="768" /></p>
+</div>
+<div id="imshow" class="section level4 hasAnchor" number="4.8.2.8">
+<h4><span class="header-section-number">4.8.2.8</span> Imshow<a href="python.html#imshow" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>En Matplotlib, <code>imshow()</code> se utiliza para mostrar una imagen (2D o 3D) representada como una matriz. Toma como entrada una matriz 2D o 3D donde los valores representan intensidades de píxeles o valores de color.</p>
+<div class="sourceCode" id="cb512"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb512-1"><a href="python.html#cb512-1" tabindex="-1"></a><span class="co"># Creamos una matriz de ejemplo</span></span>
+<span id="cb512-2"><a href="python.html#cb512-2" tabindex="-1"></a>data <span class="op">=</span> np.random.rand(<span class="dv">10</span>, <span class="dv">10</span>)</span>
+<span id="cb512-3"><a href="python.html#cb512-3" tabindex="-1"></a></span>
+<span id="cb512-4"><a href="python.html#cb512-4" tabindex="-1"></a><span class="co"># Mostramos la matriz como una imagen utilizando imshow</span></span>
+<span id="cb512-5"><a href="python.html#cb512-5" tabindex="-1"></a>plt.imshow(data, cmap<span class="op">=</span><span class="st">&#39;viridis&#39;</span>)</span>
+<span id="cb512-6"><a href="python.html#cb512-6" tabindex="-1"></a></span>
+<span id="cb512-7"><a href="python.html#cb512-7" tabindex="-1"></a><span class="co"># Añadimos una barra de color para mostrar la correspondencia entre valores y colores</span></span>
+<span id="cb512-8"><a href="python.html#cb512-8" tabindex="-1"></a>plt.colorbar()</span></code></pre></div>
+<pre><code>## &lt;matplotlib.colorbar.Colorbar object at 0x000002502C6D1DD0&gt;</code></pre>
+<div class="sourceCode" id="cb514"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb514-1"><a href="python.html#cb514-1" tabindex="-1"></a><span class="co"># Añadimos etiquetas y título</span></span>
+<span id="cb514-2"><a href="python.html#cb514-2" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;X&#39;</span>)</span>
+<span id="cb514-3"><a href="python.html#cb514-3" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Y&#39;</span>)</span>
+<span id="cb514-4"><a href="python.html#cb514-4" tabindex="-1"></a>plt.title(<span class="st">&#39;Imshow()&#39;</span>)</span>
+<span id="cb514-5"><a href="python.html#cb514-5" tabindex="-1"></a></span>
+<span id="cb514-6"><a href="python.html#cb514-6" tabindex="-1"></a><span class="co"># Mostramos la gráfica</span></span>
+<span id="cb514-7"><a href="python.html#cb514-7" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-178-93.png" width="672" /></p>
+<p>Se puede ocupar para hacer mapas de calor.</p>
+<p><strong>Ejercicio: </strong> Supongamos que tenemos la siguiente función:</p>
+<p><span class="math display">\[ f(x, y) = \sin(x) \cdot \cos(y) \]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Generar una cuadrícula de valores para <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> en el rango de <span class="math inline">\([-2\pi, 2\pi]\)</span>.</p></li>
+<li><p>Calcular los valores de la función <span class="math inline">\(f(x, y)\)</span> para cada par de puntos <span class="math inline">\((x, y)\)</span>.</p></li>
+<li><p>Visualizar la función utilizando <code>imshow</code> para mostrar la función como una imagen y <code>contour</code> para mostrar las curvas de nivel.</p></li>
+<li><p>Tu resultado debe ser similar al siguiente:</p></li>
+</ol>
+<pre><code>## &lt;matplotlib.colorbar.Colorbar object at 0x0000025031826D10&gt;</code></pre>
+<pre><code>## &lt;matplotlib.colorbar.Colorbar object at 0x000002503193ED10&gt;</code></pre>
+<p><img src="Computo_Cientifico_files/figure-html/unnamed-chunk-179-95.png" width="960" /></p>
 </div>
 </div>
 </div>
@@ -2652,6 +2834,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

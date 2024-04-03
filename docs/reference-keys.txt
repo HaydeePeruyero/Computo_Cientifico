@@ -116,3 +116,8 @@ scatter-plot-o-gráfico-de-dispersión
 gráfico-de-barras
 contour-plot
 gráfico-de-pastel
+paletas-de-colores
+orden-de-los-elementos
+boxplot
+histograma
+imshow

@@ -1892,6 +1892,8 @@ plt.show()
 
 #### Colores y tipos de líneas
 
+![Tipos de líneas, imagen de la Cheatsheets de Matplotlib](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/lines_markers.png)
+
 ```{python}
 # Creamos nuestra base del plot
 x = np.linspace(-5, 5, 40)
@@ -2103,6 +2105,9 @@ plt.show()
 
 #### Añadir y configurar legendas
 
+
+![Posición de legendas, imagen de las Cheatsheets de Matplotlib](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/legend_placement.png)
+
 ```{python}
 x = np.linspace(-5, 5, 40)
 
@@ -2216,6 +2221,10 @@ Para ver ayuda sobre como usar las posiciones de las leyendas:
 
 #### Realizar anotaciones
 
+![Tipos de flechas y estilos de anotaciones, cheatsheets de matplotlib](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/annotation_connection_styles.png)
+
+
+![Tipos de flechas y estilos de anotaciones, cheatsheets de matplotlib](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/arrow_styles.png)
 
 ```{python}
 # Definimos las funciones para hacer el plot
@@ -2479,6 +2488,230 @@ plt.tight_layout()
 plt.show()
 ```
 
+#### Paletas de colores
+
+Existen varias paletas de colores que podemos usar.
+
+```{python}
+from matplotlib import colormaps
+list(colormaps)
+```
+
+```{python, echo = FALSE}
+from colorspacious import cspace_converter
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+import matplotlib as mpl
+
+cmaps = {}
+
+gradient = np.linspace(0, 1, 256)
+gradient = np.vstack((gradient, gradient))
+
+
+def plot_color_gradients(category, cmap_list):
+    # Create figure and adjust figure height to number of colormaps
+    nrows = len(cmap_list)
+    figh = 0.35 + 0.15 + (nrows + (nrows - 1) * 0.1) * 0.22
+    fig, axs = plt.subplots(nrows=nrows + 1, figsize=(6.4, figh))
+    fig.subplots_adjust(top=1 - 0.35 / figh, bottom=0.15 / figh,
+                        left=0.2, right=0.99)
+    axs[0].set_title(f'{category} colormaps', fontsize=14)
+
+    for ax, name in zip(axs, cmap_list):
+        ax.imshow(gradient, aspect='auto', cmap=mpl.colormaps[name])
+        ax.text(-0.01, 0.5, name, va='center', ha='right', fontsize=10,
+                transform=ax.transAxes)
+
+    # Turn off *all* ticks & spines, not just the ones with colormaps.
+    for ax in axs:
+        ax.set_axis_off()
+
+    # Save colormap list for later.
+    cmaps[category] = cmap_list
+```
+
+```{python, echo = FALSE}
+plot_color_gradients('Perceptually Uniform Sequential',
+                     ['viridis', 'plasma', 'inferno', 'magma', 'cividis'])
+```
+
+
+```{python, echo=FALSE}
+plot_color_gradients('Sequential',
+                     ['Greys', 'Purples', 'Blues', 'Greens', 'Oranges', 'Reds',
+                      'YlOrBr', 'YlOrRd', 'OrRd', 'PuRd', 'RdPu', 'BuPu',
+                      'GnBu', 'PuBu', 'YlGnBu', 'PuBuGn', 'BuGn', 'YlGn'])
+```
+
+
+```{python, echo=FALSE}
+plot_color_gradients('Sequential (2)',
+                     ['binary', 'gist_yarg', 'gist_gray', 'gray', 'bone',
+                      'pink', 'spring', 'summer', 'autumn', 'winter', 'cool',
+                      'Wistia', 'hot', 'afmhot', 'gist_heat', 'copper'])
+```
+
+```{python, echo=FALSE}
+plot_color_gradients('Diverging',
+                     ['PiYG', 'PRGn', 'BrBG', 'PuOr', 'RdGy', 'RdBu', 'RdYlBu',
+                      'RdYlGn', 'Spectral', 'coolwarm', 'bwr', 'seismic'])
+```
+
+```{python, echo=FALSE}
+plot_color_gradients('Cyclic', ['twilight', 'twilight_shifted', 'hsv'])
+```
+
+```{python, echo=FALSE}
+plot_color_gradients('Qualitative',
+                     ['Pastel1', 'Pastel2', 'Paired', 'Accent', 'Dark2',
+                      'Set1', 'Set2', 'Set3', 'tab10', 'tab20', 'tab20b',
+                      'tab20c'])
+```
+
+
+```{python, echo=FALSE}
+plot_color_gradients('Miscellaneous',
+                     ['flag', 'prism', 'ocean', 'gist_earth', 'terrain',
+                      'gist_stern', 'gnuplot', 'gnuplot2', 'CMRmap',
+                      'cubehelix', 'brg', 'gist_rainbow', 'rainbow', 'jet',
+                      'turbo', 'nipy_spectral', 'gist_ncar'])
+
+plt.show()
+```
+
+
+
+```{python, echo = FALSE}
+mpl.rcParams.update({'font.size': 14})
+
+# Indices to step through colormap.
+x = np.linspace(0.0, 1.0, 100)
+
+gradient = np.linspace(0, 1, 256)
+gradient = np.vstack((gradient, gradient))
+
+
+def plot_color_gradients(cmap_category, cmap_list):
+    fig, axs = plt.subplots(nrows=len(cmap_list), ncols=2)
+    fig.subplots_adjust(top=0.95, bottom=0.01, left=0.2, right=0.99,
+                        wspace=0.05)
+    fig.suptitle(cmap_category + ' colormaps', fontsize=14, y=1.0, x=0.6)
+
+    for ax, name in zip(axs, cmap_list):
+
+        # Get RGB values for colormap.
+        rgb = mpl.colormaps[name](x)[np.newaxis, :, :3]
+
+        # Get colormap in CAM02-UCS colorspace. We want the lightness.
+        lab = cspace_converter("sRGB1", "CAM02-UCS")(rgb)
+        L = lab[0, :, 0]
+        L = np.float32(np.vstack((L, L, L)))
+
+        ax[0].imshow(gradient, aspect='auto', cmap=mpl.colormaps[name])
+        ax[1].imshow(L, aspect='auto', cmap='binary_r', vmin=0., vmax=100.)
+        pos = list(ax[0].get_position().bounds)
+        x_text = pos[0] - 0.01
+        y_text = pos[1] + pos[3]/2.
+        fig.text(x_text, y_text, name, va='center', ha='right', fontsize=10)
+
+    # Turn off *all* ticks & spines, not just the ones with colormaps.
+    for ax in axs.flat:
+        ax.set_axis_off()
+
+    plt.show()
+
+
+for cmap_category, cmap_list in cmaps.items():
+
+    plot_color_gradients(cmap_category, cmap_list)
+```
+
+
+Los colores los podemos indicar en diferentes formatos:
+
+- RGB o RGBA: `(0.1, 0.2, 0.5), (0.1, 0.2, 0.5, 0.3)`
+
+- Cadena de RGB o RGBA: `'#0f0f0f'`, `'#0f0f0f80'`
+
+- Hex RGB o RGBA: `'#abc'` = `'aabbcc'`, `'#fb1'` = `'#ffbb11'`
+
+- Escala de grises en escala de [0,1]: `'0'` (negro), `'1'` (blanco), `'0.8'` (gris claro)
+
+- Abreviación de colores básicos: 
+    - 'b' = blue 
+    - 'g' = green
+    - 'r' = red
+    - 'c' = cyan
+    - 'm' = magenta
+    - 'y' = yellow
+    - 'k' = black
+    - 'w' = white
+
+- Nombre del color: `'aquamarine'`, `'mediumseagreen'`
+
+- Del ciclo de colores default: `C0`, `C1`, donde el ciclo es `['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']`
+
+- Tupla de color y valor de transparencia alfa: `('green',0.3)`
+
+A los colores les podemos indicar también un nivel de transparencia que se llama alpha:
+
+```{python, echo = FALSE}
+import matplotlib.pyplot as plt
+import numpy as np
+
+from matplotlib.patches import Rectangle
+
+fig, ax = plt.subplots(figsize=(6.5, 1.65), layout='constrained')
+ax.add_patch(Rectangle((-0.2, -0.35), 11.2, 0.7, color='C1', alpha=0.8))
+for i, alpha in enumerate(np.linspace(0, 1, 11)):
+    ax.add_patch(Rectangle((i, 0.05), 0.8, 0.6, alpha=alpha, zorder=0))
+    ax.text(i+0.4, 0.85, f"{alpha:.1f}", ha='center')
+    ax.add_patch(Rectangle((i, -0.05), 0.8, -0.6, alpha=alpha, zorder=2))
+ax.set_xlim(-0.2, 13)
+ax.set_ylim(-1, 1)
+ax.set_title('alpha values')
+ax.text(11.3, 0.6, 'zorder=1', va='center', color='C0')
+ax.text(11.3, 0, 'zorder=2\nalpha=0.8', va='center', color='C1')
+ax.text(11.3, -0.6, 'zorder=3', va='center', color='C0')
+ax.axis('off')
+```
+
+#### Orden de los elementos
+
+El orden de dibujo de los artistas en Matplotlib está determinado por su atributo zorder, que es un número decimal flotante. Los artistas con un zorder más alto se dibujan encima de los artistas con un zorder más bajo. Esto es útil cuando se tienen múltiples elementos en un gráfico y se desea controlar qué elementos están encima de otros.
+
+Por defecto, Matplotlib asigna un valor de zorder dependiendo del tipo de artista. Los artistas más comunes, como las líneas, los puntos y los contornos, suelen tener un valor de zorder predeterminado más alto para que se dibujen encima de otros elementos.
+
+Por ejemplo, si se tiene una línea y un marcador en un gráfico, la línea se dibujará encima del marcador si tienen el mismo color y estilo. Sin embargo, si se desea que el marcador se dibuje encima de la línea, se puede ajustar el zorder del marcador para que sea mayor que el de la línea.
+
+![Z-order, del manual de matplotlib](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/zorder.png)
+
+```{python}
+r = np.linspace(0.3, 1, 30)
+theta = np.linspace(0, 4*np.pi, 30)
+x = r * np.sin(theta)
+y = r * np.cos(theta)
+
+plt.figure(figsize=(10, 5))
+
+plt.subplot(1, 2, 1)
+plt.plot(x, y, 'C3', lw=3)
+plt.scatter(x, y, s=120)
+plt.title('Líneas sobre los puntos')
+
+plt.subplot(1, 2, 2)
+plt.plot(x, y, 'C3', lw=3)
+plt.scatter(x, y, s=120, zorder=2.5)  # mover los puntos encima de la línea
+plt.title('Puntos sobre las líneas')
+
+plt.tight_layout()
+plt.show()
+
+```
+
 
 ### Tipos de plots
 
@@ -2496,22 +2729,30 @@ y2 = np.cos(x)
 plt.figure(figsize=(8, 6))
 
 # Graficamos las curvas
-plt.plot(x, y1, color='blue', label='sin(x)')
-plt.plot(x, y2, color='red', label='cos(x)')
+plt.plot(x, y1, color="#a1dab4", label='sin(x)')
+plt.plot(x, y2, color="#253494", label='cos(x)')
 
 # Rellenamos el área entre las curvas y=sen(x) y y=cos(x)
-plt.fill_between(x, y1, y2, where=(y1 >= y2), color='green', alpha=0.3, interpolate=True, label='Área entre curvas')
+plt.fill_between(x, y1, y2, where=(y1 >= y2), color=(0.1, 0.2, 0.5), alpha=0.3, interpolate=True, label='Área entre curvas')
 
 # Añadimos etiquetas y título
 plt.xlabel('x')
 plt.ylabel('y')
 plt.title('Área sombreada entre curvas')
-plt.legend()
+
+# Mover la leyenda fuera del gráfico
+plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
 
 # Mostramos el gráfico
 plt.grid(True)
 plt.show()
 ```
+
+
+El parámetro interpolate en la función `fill_between()` de Matplotlib controla si se debe interpolar entre los puntos de datos al rellenar el área entre las curvas.
+
+Cuando interpolate está establecido en True, Matplotlib interpolará suavemente entre los puntos de datos para crear un área sombreada más suave entre las curvas. Esto puede ser útil cuando los datos están espaciados de manera irregular o cuando se desea una representación visualmente más atractiva del área sombreada.
+
 
 
 #### Scatter plot o gráfico de dispersión
@@ -2543,6 +2784,32 @@ plt.colorbar(label='Ángulo')
 plt.grid(True)
 plt.show()
 ```
+
+**Ejercicio 1: ** Usando `seaborn`, carga la base de datos `iris` y crea un gráfico de dispersión de la longitud del sepalo vs la anchura del sepalo. 
+
+```{python}
+import seaborn as sns
+
+# Cargar el conjunto de datos de iris
+iris = sns.load_dataset('iris')
+
+```
+
+
+**Ejercicio 2:** Usando la base de datos `penguins` de `seaborn` crea el siguiente gráfico de dispersión.
+
+```{python, echo = FALSE}
+penguins = sns.load_dataset('penguins')
+
+# Ejercicio 2: Scatter Plot
+plt.figure(figsize=(8, 6))
+sns.scatterplot(data=penguins, x='bill_length_mm', y='bill_depth_mm', hue='species')
+plt.title('Relación entre Longitud y Profundidad del Pico')
+plt.xlabel('Longitud del Pico (mm)')
+plt.ylabel('Profundidad del Pico (mm)')
+plt.show()
+```
+
 
 #### Gráfico de barras
 
@@ -2577,6 +2844,123 @@ plt.grid(True)
 plt.show()
 ```
 
+
+**Ejercicio:** Usando la base de datos `penguins` de seaborn, crea un gráfico de barras que muestre la cantidad promedio de pingüinos de cada especie en la base de datos.
+
+```{python, echo = FALSE}
+penguins = sns.load_dataset('penguins')
+
+# Ejercicio 1: Barplot
+plt.figure(figsize=(8, 6))
+sns.barplot(data=penguins, x='species', y='bill_length_mm', ci=None)
+plt.title('Promedio de Longitud del Pico por Especie')
+plt.xlabel('Especie')
+plt.ylabel('Longitud del Pico (mm)')
+plt.show()
+```
+
+#### Gráfico de pastel
+
+```{python}
+# Datos
+edades = ['0-20 años', '21-40 años', '41-60 años', '61-80 años', '81+ años']
+cantidad_personas = [25, 50, 40, 20, 5]  # Número de personas en cada grupo de edad
+
+# Colores para cada categoría de edad
+colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightyellow', 'lightpink']
+
+# Creamos el pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(cantidad_personas, labels=edades, autopct='%1.1f%%', startangle=140, colors=colors)
+
+# Añadimos título
+plt.title('Distribución de Grupos de Personas por Edad en una Conferencia')
+
+# Mostramos el gráfico
+plt.axis('equal')  # Para asegurar que el gráfico sea un círculo
+plt.show()
+```
+
+**Ejercicio:** Usando la base de datos `penguins` de seaborn, crea un gráfico de pastel que muestre la proporción de cada especie de pingüino en la base de datos.
+
+```{python, echo = FALSE}
+# Ejercicio 4: Pie Plot
+plt.figure(figsize=(8, 6))
+penguins['species'].value_counts().plot(kind='pie', autopct='%1.1f%%')
+plt.title('Proporción de Especies de Pingüinos')
+plt.ylabel('')
+plt.show()
+```
+
+#### Boxplot
+
+```{python}
+# Cargamos los datos Iris
+iris = sns.load_dataset('iris')
+
+# Creamos el boxplot
+plt.figure(figsize=(8, 6))
+sns.boxplot(x='species', y='sepal_length', data=iris)
+
+# Añadimos etiquetas y título
+plt.xlabel('Especies')
+plt.ylabel('Longitud del Sépalo')
+plt.title('Boxplot de la longitud del Sépalo para cada especie')
+
+# Mostramos el boxplot
+plt.show()
+```
+
+**Ejercicio:** Usando la base de datos `penguins` de seaborn, crea un boxplot que compare las longitudes del pico para cada especie de pingüino en la base de datos.
+
+```{python, echo = FALSE}
+# Ejercicio 5: Boxplot
+plt.figure(figsize=(8, 6))
+sns.boxplot(data=penguins, x='species', y='bill_length_mm')
+plt.title('Comparación de Longitud del Pico por Especie')
+plt.xlabel('Especie')
+plt.ylabel('Longitud del Pico (mm)')
+plt.show()
+```
+
+#### Histograma
+
+```{python}
+# Cargar el conjunto de datos Iris
+iris = sns.load_dataset('iris')
+
+# Especie específica para la que queremos crear el histograma
+especie = 'setosa'
+
+# Filtrar los datos para la especie específica
+datos_especie = iris[iris['species'] == especie]['sepal_length']
+
+# Crear el histograma
+plt.figure(figsize=(8, 6))
+plt.hist(datos_especie, bins=10, color='skyblue', edgecolor='black', alpha=0.7)
+
+# Añadir etiquetas y título
+plt.xlabel('Longitud del Sépalo')
+plt.ylabel('Frecuencia')
+plt.title(f'Histograma de Longitud del Sépalo para la Especie {especie.capitalize()}')
+
+# Mostrar el histograma
+plt.show()
+```
+
+**Ejercicio:** Usando la base de datos `penguins` de seaborn, crea un histograma que muestre la distribución de las longitudes del pico para todas las especies de pingüinos.
+
+```{python, echo=FALSE}
+# Ejercicio 3: Histogram
+plt.figure(figsize=(8, 6))
+sns.histplot(data=penguins, x='bill_length_mm', bins=20, kde=True)
+plt.title('Distribución de Longitud del Pico')
+plt.xlabel('Longitud del Pico (mm)')
+plt.ylabel('Frecuencia')
+plt.show()
+```
+
+
 #### Contour plot
 
 ```{python}
@@ -2603,27 +2987,77 @@ plt.grid(True)
 plt.show()
 ```
 
-#### Gráfico de pastel
+
+#### Imshow
+
+En Matplotlib, `imshow()` se utiliza para mostrar una imagen (2D o 3D) representada como una matriz. Toma como entrada una matriz 2D o 3D donde los valores representan intensidades de píxeles o valores de color.
 
 ```{python}
-# Datos
-edades = ['0-20 años', '21-40 años', '41-60 años', '61-80 años', '81+ años']
-cantidad_personas = [25, 50, 40, 20, 5]  # Número de personas en cada grupo de edad
+# Creamos una matriz de ejemplo
+data = np.random.rand(10, 10)
 
-# Colores para cada categoría de edad
-colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightyellow', 'lightpink']
+# Mostramos la matriz como una imagen utilizando imshow
+plt.imshow(data, cmap='viridis')
 
-# Creamos el pie chart
-plt.figure(figsize=(8, 8))
-plt.pie(cantidad_personas, labels=edades, autopct='%1.1f%%', startangle=140, colors=colors)
+# Añadimos una barra de color para mostrar la correspondencia entre valores y colores
+plt.colorbar()
 
-# Añadimos título
-plt.title('Distribución de Grupos de Personas por Edad en una Conferencia')
+# Añadimos etiquetas y título
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('Imshow()')
 
-# Mostramos el gráfico
-plt.axis('equal')  # Para asegurar que el gráfico sea un círculo
+# Mostramos la gráfica
 plt.show()
 ```
+
+Se puede ocupar para hacer mapas de calor.
+
+**Ejercicio: ** Supongamos que tenemos la siguiente función:
+
+\[ f(x, y) = \sin(x) \cdot \cos(y) \]
+
+1. Generar una cuadrícula de valores para \( x \) y \( y \) en el rango de \([-2\pi, 2\pi]\).
+
+2. Calcular los valores de la función \( f(x, y) \) para cada par de puntos \( (x, y) \).
+
+3. Visualizar la función utilizando `imshow` para mostrar la función como una imagen y `contour` para mostrar las curvas de nivel.
+
+4. Tu resultado debe ser similar al siguiente:
+
+```{python, echo = FALSE}
+
+# Paso 1: Generar una cuadrícula de valores para x y y
+x = np.linspace(-2*np.pi, 2*np.pi, 100)
+y = np.linspace(-2*np.pi, 2*np.pi, 100)
+X, Y = np.meshgrid(x, y)
+
+# Paso 2: Calcular los valores de la función f(x, y)
+Z = np.sin(X) * np.cos(Y)
+
+# Paso 3: Visualizar la función utilizando imshow y contour
+plt.figure(figsize=(10, 5))
+
+# Imshow
+plt.subplot(1, 2, 1)
+plt.imshow(Z, extent=[-2*np.pi, 2*np.pi, -2*np.pi, 2*np.pi], cmap='viridis')
+plt.colorbar(label='f(x, y)')
+plt.title('Imagen de f(x, y)')
+plt.xlabel('x')
+plt.ylabel('y')
+
+# Contour
+plt.subplot(1, 2, 2)
+contour_plot = plt.contour(X, Y, Z, cmap='viridis')
+plt.colorbar(contour_plot, label='f(x, y)')
+plt.title('Curvas de Nivel de f(x, y)')
+plt.xlabel('x')
+plt.ylabel('y')
+
+plt.tight_layout()
+plt.show()
+```
+
 
 ## Data frames con pandas
 
