@@ -2785,7 +2785,29 @@ plt.grid(True)
 plt.show()
 ```
 
-**Ejercicio 1: ** Usando `seaborn`, carga la base de datos `iris` y crea un gráfico de dispersión de la longitud del sepalo vs la anchura del sepalo. 
+
+La función `sns.scatterplot()` es una herramienta de Seaborn para crear gráficos de dispersión. Este tipo de gráfico se utiliza comúnmente para visualizar la relación entre dos variables continuas.
+
+Los argumentos principales de `sns.scatterplot()`:
+
+1. **x**: Este es el primer argumento y representa los datos para el eje x del gráfico de dispersión. Puede ser una serie de pandas, un array de NumPy, una lista o cualquier otra estructura de datos similar que contenga los valores de la variable para el eje x.
+
+2. **y**: Este es el segundo argumento y representa los datos para el eje y del gráfico de dispersión. Al igual que el argumento `x`, puede ser una serie de pandas, un array de NumPy, una lista u otra estructura de datos similar que contenga los valores de la variable para el eje y.
+
+3. **hue**: Este argumento es opcional y se utiliza para asignar un color diferente a cada categoría de una variable categórica. Puede ser una serie de pandas, un array de NumPy, una lista u otra estructura de datos similar que contenga los valores de la variable categórica.
+
+4. **size**: Otro argumento opcional que se utiliza para controlar el tamaño de los puntos en el gráfico de dispersión. Puede ser una serie de pandas, un array de NumPy, una lista u otra estructura de datos similar que contenga los valores del tamaño de los puntos.
+
+5. **sizes**: Este argumento opcional permite especificar el rango de tamaños de los puntos en el gráfico de dispersión. Puede ser una tupla que contenga el tamaño mínimo y máximo que se asignará a los puntos en el gráfico.
+
+6. **alpha**: Este argumento opcional controla la transparencia de los puntos en el gráfico de dispersión. Un valor de 0 significa completamente transparente, mientras que un valor de 1 significa completamente opaco.
+
+7. **palette**: Este argumento opcional se utiliza para especificar la paleta de colores que se utilizará para mapear los valores de la variable categórica en el argumento `hue` a colores en el gráfico de dispersión.
+
+La función tiene más opciones para personalizar aún más el aspecto del gráfico, como `style`, `markers`, `edgecolor`, `linewidth`, entre otros.
+
+
+**Ejercicio 1: ** Usando `seaborn`, carga la base de datos `iris` y crea un gráfico de dispersión con matplotlib (sin dividir por color la especie) de la longitud del sepalo vs la anchura del sepalo. 
 
 ```{python}
 import seaborn as sns
@@ -2795,6 +2817,87 @@ iris = sns.load_dataset('iris')
 
 ```
 
+
+Si usamos la siguiente opción de seaborn, podríamos crear un gráfico de dispersión de la longitud del pétalo vs su anchura de la base de datos iris donde estén coloreados por especie.
+
+```{python}
+# Cargar la base de datos Iris
+iris = sns.load_dataset('iris')
+
+# Crear el gráfico de dispersión con Seaborn
+plt.figure(figsize=(8, 6))
+sns.scatterplot(data=iris, x='petal_length', y='petal_width', hue='species')
+plt.xlabel('Longitud del Pétalo (cm)')
+plt.ylabel('Anchura del Pétalo (cm)')
+plt.title('Gráfico de dispersión de longitud vs anchura del pétalo por especie')
+plt.grid(True)
+plt.show()
+```
+
+
+Con matplotlib una estrategía para hacer un plot similar es la siguiente:
+
+```{python}
+# Cargar la base de datos Iris
+
+
+# Creamos el scatter plot
+plt.figure(figsize=(8, 6))
+
+# Scatter plot para la especie 'setosa'
+setosa = plt.scatter(iris[iris['species'] == 'setosa']['sepal_length'], iris[iris['species'] == 'setosa']['sepal_width'], c='C0', cmap='viridis', s=50, alpha=0.7, edgecolors='w', label='setosa')
+
+# Scatter plot para la especie 'virginica'
+virginica = plt.scatter(iris[iris['species'] == 'virginica']['sepal_length'], iris[iris['species'] == 'virginica']['sepal_width'], c='C1', cmap='viridis', s=50, alpha=0.7, edgecolors='w', label='virginica')
+
+# Scatter plot para la especie 'versicolor'
+versicolor = plt.scatter(iris[iris['species'] == 'versicolor']['sepal_length'], iris[iris['species'] == 'versicolor']['sepal_width'], c='C2', cmap='viridis', s=50, alpha=0.7, edgecolors='w', label='versicolor')
+
+# Añadimos etiquetas y título
+plt.xlabel('Longitud del Sépalo')
+plt.ylabel('Ancho del Sépalo')
+plt.title('Longitud y Ancho del Sépalo')
+
+# Mostrar leyenda
+plt.legend(loc='lower right', title='Especies')
+
+# Mostrar el gráfico
+plt.show()
+```
+
+y la segunda sería creando una variable adicional:
+
+```{python}
+# Cargamos los datos Iris
+
+# Mapeamos los nombres de especies a números para la coloración
+species_mapping = {'setosa': 0, 'versicolor': 1, 'virginica': 2}
+iris['species_encoded'] = iris['species'].map(species_mapping)
+
+# Creamos el scatter plot
+plt.figure(figsize=(8, 6))
+scatter = plt.scatter(iris['sepal_length'], iris['sepal_width'], c=iris['species_encoded'], cmap='viridis', s=50, alpha=0.7, edgecolors='w')
+
+# Añadimos etiquetas y título
+plt.xlabel('Longitud del Sépalo')
+plt.ylabel('Ancho del Sépalo')
+plt.title('Longitud y Ancho del Sépalo')
+
+# Obtenemos los colores de la leyenda
+colors = [scatter.cmap(scatter.norm(value)) for value in range(len(species_mapping))]
+
+# Creamos la leyenda
+legend = plt.legend(handles=scatter.legend_elements()[0], labels=species_mapping.keys(), loc='lower right', title='Especies')
+
+# Asignamos los colores a los puntos de la leyenda
+for handle, color in zip(legend.legendHandles, colors):
+    handle.set_color(color)
+
+# Mostramos el gráfico
+plt.grid(True)
+plt.show()
+
+```
 
 **Ejercicio 2:** Usando la base de datos `penguins` de `seaborn` crea el siguiente gráfico de dispersión.
 
@@ -2859,6 +2962,17 @@ plt.ylabel('Longitud del Pico (mm)')
 plt.show()
 ```
 
+**Nota:** Si queremos usar la función de matplotlib, para lograr el mismo resultado debemos primero calcular el promedio de las longitudes de los picos y realizar el plot de esos datos. Una opción para hacer esto es la siguiente:
+
+```{python}
+# Calcular el promedio de la longitud del pico por especie
+average_bill_length = penguins.groupby('species')['bill_length_mm'].mean()
+
+# Extraer las especies y las longitudes promedio del pico
+species = average_bill_length.index
+average_lengths = average_bill_length.values
+```
+
 #### Gráfico de pastel
 
 ```{python}
@@ -2892,6 +3006,8 @@ plt.ylabel('')
 plt.show()
 ```
 
+**Nota:** En este caso, seaborn no tiene una función para hacer gráficos de pastel, por lo tanto para hacerlo con matplotlib deben manipular la base de datos para obtener el recuento de cuantos pinguinos hay por especie, obtener los labels y los tamaños de estos subconjuntos. Una opción es usar la opción `penguins['species'].value_counts()` y después extraer los labels y tamaños.
+
 #### Boxplot
 
 ```{python}
@@ -2921,6 +3037,30 @@ plt.title('Comparación de Longitud del Pico por Especie')
 plt.xlabel('Especie')
 plt.ylabel('Longitud del Pico (mm)')
 plt.show()
+```
+
+**Nota:** `matplotib` no tiene la funcionalidad de eliminar los datos faltantes de una base de datos, si intentan hacer el plot directo con matplolib, para dos especies no va a salir el plot debido a que cuenta con datos faltantes. En seaborn se puede crear el plot usando `sns.boxplot(data=, x=, y=)`. Para hacer el plot con matplotlib, primero se deben eliminar los NA, una forma es con: 
+
+```{python, eval=FALSE}
+penguins_clean = penguins.dropna(subset=['bill_length_mm'])
+species = penguins_clean['species']
+bill_length = penguins_clean['bill_length_mm']
+
+# Paleta de colores 
+colors = sns.color_palette("colorblind")
+
+# Crear el boxplot
+plt.figure(figsize=(8, 6))
+box = plt.boxplot([bill_length[species == 'Adelie'],
+                   bill_length[species == 'Chinstrap'],
+                   bill_length[species == 'Gentoo']],
+                  labels=['Adelie', 'Chinstrap', 'Gentoo'],
+                  patch_artist=True)  # Para que los boxes sean de colores
+
+# Iterar sobre cada caja y establecer el color
+for patch, color in zip(box['boxes'], colors):
+    patch.set_facecolor(color)
+    
 ```
 
 #### Histograma
@@ -2953,13 +3093,15 @@ plt.show()
 ```{python, echo=FALSE}
 # Ejercicio 3: Histogram
 plt.figure(figsize=(8, 6))
-sns.histplot(data=penguins, x='bill_length_mm', bins=20, kde=True)
+plt.hist(penguins['bill_length_mm'], bins=20, density=False, color='skyblue', edgecolor='black')
 plt.title('Distribución de Longitud del Pico')
 plt.xlabel('Longitud del Pico (mm)')
 plt.ylabel('Frecuencia')
+plt.grid(True)
 plt.show()
 ```
 
+**Nota: ** En seaborn el comando para realizar un histograma es `sns.histplot(data=, x=, bins=n, kde=False, color=, edgecolor=).`
 
 #### Contour plot
 
@@ -3061,9 +3203,274 @@ plt.show()
 
 ## Data frames con pandas
 
-## Manipulación de bases de datos
+Pandas es una de las bibliotecas más utilizadas en Python para la manipulación y análisis de datos. Uno de sus objetos principales es el DataFrame, que es una estructura de datos tabular similar a una hoja de cálculo de Excel.
+
+Para instalarlo realizamos lo siguiente:
+
+```python
+pip install pandas
+```
+
+Luego, para importarlo
+
+```{python}
+import pandas as pd
+```
+
+Un DataFrame se puede crear de varias formas. Aquí hay algunas de las más comunes:
+
+1) Desde un diccionario:
+
+```{python}
+data = {'Nombre': ['Laura', 'Ximena', 'Cesar', 'David'],
+        'Edad': [25, 30, 35, 40],
+        'Ciudad': ['Morelia', 'CDMX', 'Xalapa', 'Toluca']}
+
+df = pd.DataFrame(data)
+print(df)
+```
+
+2) Desde una lista de listas:
+
+```{python}
+data = [['Laura', 25, 'Morelia'],
+        ['Ximena', 30, 'CDMX'],
+        ['Cesar', 35, 'Xalapa'],
+        ['David', 40, 'Toluca']]
+
+df = pd.DataFrame(data, columns=['Nombre', 'Edad', 'Ciudad'])
+print(df)
+```
+
+3) Desde un archivo CSV: Supongamos que tenemos un DataFrame llamado 'data', vamos a guardarlo como sigue:
+
+```{python}
+# index=False evita que se escriba el índice del DataFrame en el archivo
+df = pd.DataFrame(data, index = ['C1', 'C2', 'C3', 'C4'])
+```
+
+```python
+df.to_csv('diccionario.csv', index=False)  
+```
+
+Entonces, para leerlo:
+
+
+```python
+df = pd.read_csv('archivo_prueba.csv')
+print(df)
+```
+
+Una vez que tenemos un DataFrame, podemos explorar los datos utilizando varias funciones y atributos:
+
+```{python, eval=FALSE}
+# Obtener las primeras filas
+print(df.head())
+
+# Obtener las últimas filas
+print(df.tail())
+
+# Obtener información sobre el DataFrame
+print(df.info())
+
+# Obtener estadísticas descriptivas
+print(df.describe())
+```
+
+Para acceder y manipular los datos en un DataFrame, tenemos varias formas.
+
+- Acceder a columnas:
+
+```{python, eval=FALSE}
+data = {'Nombre': ['Laura', 'Ximena', 'Cesar', 'David'],
+        'Edad': [25, 30, 35, 40],
+        'Ciudad': ['Morelia', 'CDMX', 'Xalapa', 'Toluca']}
+
+df = pd.DataFrame(data, index = ['C1', 'C2', 'C3', 'C4'])
+
+# Acceder a una columna
+print(df['Nombre'])
+# Acceder a una columna
+print(df['Nombre'])
+
+# Acceder a múltiples columnas
+print(df[['Nombre', 'Edad']])
+```
+
+- Acceder a filas:
+
+```{python}
+# Acceder a una fila por índice
+print(df.iloc[0])
+
+# Acceder a varias filas
+print(df.iloc[1:3])
+```
+
+En el caso de que nuestras filas tengan índice podemos realizar lo siguiente también:
+
+```{python}
+# Acceder a una fila por su índice especifico
+
+print(df.loc['C1'])
+
+# Si no tiene nombre de índice entonces sería:
+# df.loc[1]
+```
+
+- Seleccionar subconjuntos (filas y columnas):
+
+```{python}
+print(df.iloc[0:2, 0:2])
+```
+
+- Para añadir columnas:
+
+```{python}
+# Añadir una nueva columna
+df['Género'] = ['F', 'M', 'M', 'M']
+print(df)
+```
+
+
+- Filtrar datos:
+
+```{python, eval = FALSE}
+# Filtrar filas basadas en una condición
+print(df[df['Edad'] > 30])
+
+# Filtrar filas basadas en múltiples condiciones
+print(df[(df['Edad'] > 30) & (df['Ciudad'] == 'CDMX')])
+```
+
+- Ordenar datos:
+
+```{python, eval = FALSE}
+# Ordenar DataFrame por una columna
+print(df.sort_values(by='Edad'))
+
+# Ordenar DataFrame en orden descendente
+print(df.sort_values(by='Edad', ascending=False))
+```
+
+**Ejercicios:**
+
+1. Crea un DataFrame con información sobre empleados, incluyendo Nombre, Edad y Salario. Muestra las primeras 5 filas.
+2. Añade una nueva columna llamada 'Departamento' al DataFrame de empleados.
+3. Encuentra el empleado más joven en el DataFrame.
+4. Filtra los empleados que tienen un salario mayor a $50000.
+5. Ordena los empleados por salario en orden descendente.
+
+Vamos a trabajar lo siguiente con la base de datos de pinguinos.
+
+Primero, cargamos la base de datos 'penguins' de Seaborn:
+
+```{python}
+penguins = sns.load_dataset('penguins')
+```
+
+1) Agrupar por una columna y calcular la suma de otra columna:
+
+```{python}
+suma_por_especie = penguins.groupby('species')['bill_length_mm'].sum()
+suma_por_especie
+```
+
+Aquí, estamos agrupando los datos por la columna 'species' y luego calculando la suma de los valores en la columna 'bill_length_mm' para cada grupo de especie. El resultado es una Serie que contiene la suma de las longitudes del pico para cada especie.
+
+Podemos agrupar también por múltiples columnas en Pandas y luego aplicar funciones de agregación para obtener información sobre cada grupo. Para obtener el conteo de cada sexo por especie en la base de datos 'penguins':
+
+```{python}
+# Agrupar por especie y sexo y contar el número de registros en cada grupo
+conteos = penguins.groupby(['species', 'sex']).size()
+
+conteos = penguins.groupby(['species', 'sex']).size().reset_index(name='conteo')
+
+conteos
+```
+
+`reset_index(name='conteo')` se utiliza para renombrar la columna que contiene los conteos como 'conteo'. La función size() en Pandas devuelve una Serie que contiene el tamaño de cada grupo en el objeto agrupado. Cuando se aplica a un DataFrame agrupado por una o más columnas, como en penguins.groupby(['species', 'sex']), size() cuenta el número de filas en cada grupo resultante.
+
+2) Agrupar por múltiples columnas y calcular la media de otra columna:
+
+```{python}
+promedio_por_especie_island = penguins.groupby(['species', 'island'])['bill_length_mm'].mean()
+```
+
+Esta línea agrupa los datos por las columnas 'species' y 'island' y luego calcula la media de los valores en la columna 'bill_length_mm' para cada combinación de especie e isla. El resultado es una Serie que contiene el promedio de las longitudes del pico para cada especie en cada isla.
+
+3) Calcular el máximo de una columna:
+
+```python
+maximo_longitud_pico = penguins['bill_length_mm'].max()
+maximo_longitud_pico
+```
+
+4) Calcular el mínimo de una columna:
+
+```{python}
+minimo_longitud_pico = penguins['bill_length_mm'].min()
+minimo_longitud_pico
+```
+
+
+5) Calcular el valor máximo de cada columna:
+
+```{python}
+# seleccionamos solo las columnas numericas
+maximos_por_columna = penguins[['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']].max()
+maximos_por_columna
+```
+
+
+6) Calcular el valor mínimo de cada columna:
+
+```{python}
+minimos_por_columna = penguins[['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']].min()
+minimos_por_columna
+```
+
+
+7) Calcular la media de una columna:
+
+```{python}
+media_longitud_pico = penguins['bill_length_mm'].mean()
+media_longitud_pico
+```
+
+
+8) Calcular la mediana de una columna:
+
+```{python}
+mediana_longitud_pico = penguins['bill_length_mm'].median()
+mediana_longitud_pico
+```
+
+
+9) Calcular la desviación estándar de una columna:
+```{python}
+desviacion_estandar_longitud_pico = penguins['bill_length_mm'].std()
+desviacion_estandar_longitud_pico
+```
+
+10) Calcular el conteo de valores no nulos en una columna:
+
+```{python}
+conteo_valores_no_nulos_longitud_pico = penguins['bill_length_mm'].count()
+conteo_valores_no_nulos_longitud_pico
+```
+
+Estamos contando el número de valores no nulos en la columna 'bill_length_mm', que representa el número de registros en el DataFrame 'penguins' donde la longitud del pico está registrada.
+
+11) Obtener la forma del data frame:
+
+```{python}
+penguins.shape
+```
+
 
 ## Análisis exploratorio de bases de datos
+
 
 ## Funciones y scripts
 
