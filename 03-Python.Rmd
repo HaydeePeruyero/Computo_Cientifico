@@ -2995,6 +2995,12 @@ plt.axis('equal')  # Para asegurar que el gráfico sea un círculo
 plt.show()
 ```
 
+Para cambiar la paleta de colores se puede agregar la instrucción `colors=plt.cm.Accent.colors`, por ejemplo:
+
+```python
+plt.pie(cantidad_personas, labels=edades, autopct='%1.1f%%', startangle=140, colors=plt.cm.Accent.colors)
+```
+
 **Ejercicio:** Usando la base de datos `penguins` de seaborn, crea un gráfico de pastel que muestre la proporción de cada especie de pingüino en la base de datos.
 
 ```{python, echo = FALSE}
@@ -3279,7 +3285,7 @@ print(df.describe())
 
 Para acceder y manipular los datos en un DataFrame, tenemos varias formas.
 
-- Acceder a columnas:
+1) Acceder a columnas:
 
 ```{python, eval=FALSE}
 data = {'Nombre': ['Laura', 'Ximena', 'Cesar', 'David'],
@@ -3297,7 +3303,7 @@ print(df['Nombre'])
 print(df[['Nombre', 'Edad']])
 ```
 
-- Acceder a filas:
+2) Acceder a filas:
 
 ```{python}
 # Acceder a una fila por índice
@@ -3318,13 +3324,13 @@ print(df.loc['C1'])
 # df.loc[1]
 ```
 
-- Seleccionar subconjuntos (filas y columnas):
+3) Seleccionar subconjuntos (filas y columnas):
 
 ```{python}
 print(df.iloc[0:2, 0:2])
 ```
 
-- Para añadir columnas:
+4) Para añadir columnas:
 
 ```{python}
 # Añadir una nueva columna
@@ -3333,7 +3339,7 @@ print(df)
 ```
 
 
-- Filtrar datos:
+5) Filtrar datos:
 
 ```{python, eval = FALSE}
 # Filtrar filas basadas en una condición
@@ -3343,7 +3349,7 @@ print(df[df['Edad'] > 30])
 print(df[(df['Edad'] > 30) & (df['Ciudad'] == 'CDMX')])
 ```
 
-- Ordenar datos:
+6) Ordenar datos:
 
 ```{python, eval = FALSE}
 # Ordenar DataFrame por una columna
@@ -3360,6 +3366,9 @@ print(df.sort_values(by='Edad', ascending=False))
 3. Encuentra el empleado más joven en el DataFrame.
 4. Filtra los empleados que tienen un salario mayor a $50000.
 5. Ordena los empleados por salario en orden descendente.
+
+
+### Funciones para manipular dataframes
 
 Vamos a trabajar lo siguiente con la base de datos de pinguinos.
 
@@ -3401,7 +3410,7 @@ Esta línea agrupa los datos por las columnas 'species' y 'island' y luego calcu
 
 3) Calcular el máximo de una columna:
 
-```python
+```{python}
 maximo_longitud_pico = penguins['bill_length_mm'].max()
 maximo_longitud_pico
 ```
@@ -3466,6 +3475,192 @@ Estamos contando el número de valores no nulos en la columna 'bill_length_mm', 
 
 ```{python}
 penguins.shape
+```
+
+
+12) Crear una nueva columna calculada a partir de columnas existentes: Supongamos que queremos calcular el índice de masa corporal (IMC) para cada pingüino en función de su peso (en kg) y su altura (en metros). Podemos agregar una nueva columna llamada 'bmi' que contenga el IMC calculado utilizando la fórmula IMC = peso / (altura$^2$).
+
+```{python}
+# Calcular el índice de masa corporal (IMC)
+penguins['bmi'] = penguins['body_mass_g'] / ((penguins['bill_length_mm'] / 100) ** 2)
+```
+
+13) Crear una nueva columna basada en condiciones: Podemos agregar una nueva columna llamada 'is_adult' que indique si un pingüino es adulto o no, basado en si su edad es mayor o igual a 2 años.
+
+```{python, eval=FALSE}
+# Crear una nueva columna 'is_adult'
+penguins['is_adult'] = penguins['age'] >= 2
+```
+
+
+14) Crear una nueva columna combinando valores de otras columnas: Podemos combinar el nombre de la especie y el sexo para crear una nueva columna llamada 'species_sex'.
+
+```{python, eval = FALSE}
+# Crear una nueva columna 'species_sex'
+penguins['species_sex'] = penguins['species'] + '_' + penguins['sex']
+```
+
+15) Crear una nueva columna utilizando el método `assign`: Podemos usar el método `assign` para agregar múltiples columnas de una vez, calculadas a partir de columnas existentes.
+
+```python
+# Agregar nuevas columnas usando el método 'assign'
+penguins = penguins.assign(
+  bill_ratio = penguins['bill_length_mm'] / penguins['bill_depth_mm'],
+  flipper_ratio = penguins['flipper_length_mm'] / penguins['bill_length_mm']
+)
+```
+
+
+Extra) Crear una nueva columna utilizando una función personalizada: Podemos definir una función personalizada para asignar una categoría de tamaño de pingüino (pequeño, mediano, grande) en función de su peso y usarla para crear una nueva columna llamada 'size_category'.
+
+```python
+# Función para asignar la categoría de tamaño del pingüino
+def size_category(weight):
+  if weight < 3000:
+    return 'small'
+  elif weight < 5000:
+    return 'medium'
+  else:
+    return 'large'
+
+# Crear una nueva columna 'size_category'
+penguins['size_category'] = penguins['body_mass_g'].apply(size_category)
+```
+
+###  `pivot` y `pivot_table`
+
+`pivot` y `pivot_table` son dos métodos en Pandas que te permiten reorganizar y resumir datos en un DataFrame. Estos métodos son útiles para transformar la estructura de tus datos para un análisis más conveniente y presentación visual.
+
+1)`pivot`: El método `pivot` te permite reorganizar datos en función de los valores de las columnas. 
+
+```{python}
+# Crear un DataFrame de ejemplo
+data = {
+    'fecha': ['2022-01-01', '2022-01-01', '2022-01-02', '2022-01-02'],
+    'ciudad': ['A', 'B', 'A', 'B'],
+    'temperatura': [25, 28, 23, 26]
+}
+df = pd.DataFrame(data)
+print(df)
+```
+
+```{python}
+# Usar pivot para reorganizar los datos
+pivot_df = df.pivot(index='fecha', columns='ciudad', values='temperatura')
+print(pivot_df)
+```
+
+2). `pivot_table`: El método `pivot_table` es similar a `pivot`, pero te permite agregar y resumir datos. 
+
+```{python}
+# Usar pivot_table para calcular el promedio de temperatura por ciudad
+pivot_table_df = df.pivot_table(index='fecha', columns='ciudad', values='temperatura', aggfunc='mean')
+print(pivot_table_df)
+```
+
+En este ejemplo, además de reorganizar los datos, estamos calculando el promedio de la temperatura para cada ciudad en cada fecha.
+
+**Ejercicio 1:**
+Carga el conjunto de datos 'titanic' de Seaborn y utiliza `pivot` para reorganizar los datos de manera que las filas representen la clase de pasajeros y las columnas representen el sexo de los pasajeros, con los valores siendo la tarifa media pagada por cada grupo.
+
+**Ejercicio 2:**
+Utiliza `pivot_table` para calcular la cantidad total de sobrevivientes agrupados por clase y género en el conjunto de datos 'titanic'.
+
+
+### Plots en pandas
+
+
+```{python}
+# Crear un DataFrame de ejemplo
+data = pd.DataFrame({
+    'A': np.random.randn(100),
+    'B': np.random.rand(100) * 100,
+    'C': np.random.randint(1, 5, size=100),
+    'D': np.random.choice(['X', 'Y', 'Z'], size=100)
+})
+```
+
+```{python}
+# Gráfico de línea
+data.plot(kind='line', figsize=(10, 6))
+plt.title('Gráfico de Línea')
+plt.xlabel('Índice')
+plt.ylabel('Valores')
+plt.show()
+```
+
+```{python}
+# Gráfico de barras verticales
+data['C'].value_counts().sort_index().plot(kind='bar', figsize=(10, 6))
+plt.title('Gráfico de Barras Verticales')
+plt.xlabel('Valores')
+plt.ylabel('Frecuencia')
+plt.show()
+```
+
+```{python}
+# Gráfico de barras horizontales
+data['D'].value_counts().plot(kind='barh', figsize=(10, 6))
+plt.title('Gráfico de Barras Horizontales')
+plt.xlabel('Frecuencia')
+plt.ylabel('Valores')
+plt.show()
+```
+
+```{python}
+# Histograma
+data['A'].plot(kind='hist', bins=20, figsize=(10, 6))
+plt.title('Histograma')
+plt.xlabel('Valores')
+plt.ylabel('Frecuencia')
+plt.show()
+```
+
+```{python}
+# Diagrama de caja (boxplot)
+data[['A', 'B']].plot(kind='box', figsize=(10, 6))
+plt.title('Diagrama de Caja')
+plt.ylabel('Valores')
+plt.show()
+```
+
+```{python}
+# Estimación de densidad de kernel (KDE)
+data['B'].plot(kind='kde', figsize=(10, 6))
+plt.title('Estimación de Densidad de Kernel (KDE)')
+plt.xlabel('Valores')
+plt.ylabel('Densidad')
+plt.show()
+```
+
+```{python}
+# Histograma de densidad
+data['B'].plot(kind='density', figsize=(10, 6))
+plt.title('Histograma de Densidad')
+plt.xlabel('Valores')
+plt.ylabel('Densidad')
+plt.show()
+```
+
+```{python}
+# Asegurarnos de que los valores sean no negativos
+data_non_negative = data[['A', 'B']].clip(lower=0)
+
+# Gráfico de área
+data_non_negative.plot(kind='area', stacked=False, figsize=(10, 6))
+plt.title('Gráfico de Área')
+plt.xlabel('Índice')
+plt.ylabel('Valores')
+plt.show()
+```
+
+```{python}
+# Gráfico de dispersión
+data.plot(kind='scatter', x='A', y='B', figsize=(10, 6))
+plt.title('Gráfico de Dispersión')
+plt.xlabel('A')
+plt.ylabel('B')
+plt.show()
 ```
 
 
