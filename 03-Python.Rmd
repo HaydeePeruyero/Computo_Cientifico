@@ -3552,13 +3552,25 @@ print(pivot_df)
 
 2). `pivot_table`: El método `pivot_table` es similar a `pivot`, pero te permite agregar y resumir datos. 
 
-```{python}
+```{python, eval= FALSE}
+df2 = pd.DataFrame({"A": ["foo", "foo", "foo", "foo", "foo",
+                         "bar", "bar", "bar", "bar"],
+                    "B": ["one", "one", "one", "two", "two",
+                          "one", "one", "two", "two"],
+                    "C": ["small", "large", "large", "small",
+                          "small", "large", "small", "small",
+                          "large"],
+                    "D": [1, 2, 2, 3, 3, 4, 5, 6, 7],
+                    "E": [2, 4, 5, 5, 6, 6, 8, 9, 9]})
+print(df2)
+
 # Usar pivot_table para calcular el promedio de temperatura por ciudad
-pivot_table_df = df.pivot_table(index='fecha', columns='ciudad', values='temperatura', aggfunc='mean')
+pivot_table_df = df2.pivot_table(df2, values='D', index=['A', 'B'],
+                       columns=['C'], aggfunc="sum")
 print(pivot_table_df)
 ```
 
-En este ejemplo, además de reorganizar los datos, estamos calculando el promedio de la temperatura para cada ciudad en cada fecha.
+En este ejemplo, además de reorganizar los datos, estamos calculando la suma.
 
 **Ejercicio 1:**
 Carga el conjunto de datos 'titanic' de Seaborn y utiliza `pivot` para reorganizar los datos de manera que las filas representen la clase de pasajeros y las columnas representen el sexo de los pasajeros, con los valores siendo la tarifa media pagada por cada grupo.
@@ -3666,10 +3678,357 @@ plt.show()
 
 ## Análisis exploratorio de bases de datos
 
+![Link a diapositivas](https://haydeeperuyero.github.io/Presentaciones_SE/est_desc/est_desc.html#1)
 
 ## Funciones y scripts
 
+### Funciones
+
+Las funciones son bloques de código que realizan una tarea específica y pueden ser reutilizadas en múltiples partes de un programa. En Python, las funciones se definen utilizando la palabra clave `def`.
+
+```{python}
+def saludar(nombre):
+    print("Hola,", nombre)
+
+saludar("Roberta")
+```
+
+
+Las funciones pueden aceptar parámetros, que son valores que la función espera recibir cuando es llamada. Los valores pasados a una función se llaman argumentos. Existen argumentos que se pueden dejar por default u opcionales.
+
+```{python}
+def sumar(a,b):
+  return a + b
+
+resultado = sumar(189,278)
+
+print("La suma es:", resultado)
+```
+
+
+Se pueden definir valores predeterminados para los argumentos de una función en Python. Estos valores se utilizarán si el usuario no proporciona un valor específico para el argumento al llamar a la función. Sin embargo, el usuario puede sobrescribir el valor predeterminado proporcionando un valor diferente al llamar a la función.
+
+```{python}
+def saludar(nombre="usuario"):
+    print("Hola,", nombre)
+
+# Llamada a la función sin argumentos
+saludar()  # Salida: Hola, usuario
+
+# Llamada a la función con un argumento
+saludar("Roberta")  # Salida: Hola, Roberta
+```
+
+
+También se pueden definir argumentos opcionales en Python utilizando el valor `None` como un valor predeterminado para el argumento. Luego, dentro de la función, puedes verificar si se ha proporcionado un valor para ese argumento y actuar en consecuencia.
+
+```{python}
+def saludar(nombre=None):
+    if nombre is None:
+        print("Hola, ¿cómo estás?")
+    else:
+        print("Hola,", nombre)
+
+# Llamada a la función sin argumentos
+saludar()  # Salida: Hola, ¿cómo estás?
+
+# Llamada a la función con un argumento
+saludar("Roberta")  # Salida: Hola, Roberta
+
+```
+
+Un punto a tener en cuenta cuando se escriben funciones es que las variables que se definen dentro de una función solo se conocen dentro de la función. Por ejemplo:
+
+```{python, eval=FALSE}
+def imprimir_mensaje():
+    mensaje = "Hola, Roberta!"
+    print(mensaje)
+
+imprimir_mensaje()
+print(mensaje)
+```
+
+Otro punto importante a la hora de realizar funciones es la documentación.
+
+```{python}
+def boxplot_especie(data, especie, variable):
+    """
+    Crea un boxplot para una especie específica en un conjunto de datos,
+    utilizando una variable específica.
+
+    Parámetros:
+    - data: DataFrame, el conjunto de datos que contiene la información.
+    - especie: str, la especie para la cual se desea generar el boxplot.
+    - variable: str, la variable numérica para la cual se desea generar el boxplot.
+
+    Si la columna 'species' está presente en el DataFrame 'data', la función
+    genera un boxplot para la especie especificada utilizando la variable numérica
+    especificada. De lo contrario, imprime un mensaje indicando que no se pudo
+    determinar el tipo de base de datos.
+
+    Si la especie o la variable no se encuentran en los datos, la función imprime
+    un mensaje indicando que no se pudo encontrar la especie o la variable.
+
+    Ejemplos de uso:
+    - boxplot_especie(iris_data, 'setosa', 'petal_length')
+    - boxplot_especie(penguins_data, 'Adelie', 'flipper_length_mm')
+    """
+    # Verificar si existe la columna 'species'
+    if 'species' in data.columns:
+        especies_disponibles = data['species'].unique()
+        if especie not in especies_disponibles:
+            print(f"Especie '{especie}' no encontrada en la base de datos.")
+            return
+        # Verificar si la variable especificada está disponible
+        if variable not in data.columns:
+            print(f"Variable '{variable}' no encontrada en la base de datos.")
+            return
+        # Crear el boxplot
+        sns.boxplot(x='species', y=variable, data=data[data['species'] == especie])
+        plt.xlabel('Especie')
+        plt.ylabel(f'{variable}')
+        plt.title(f'Boxplot de la variable {variable} para la especie {especie}')
+    else:
+        print("No se pudo determinar el tipo de base de datos.")
+        return
+    plt.show()
+
+```
+
+```{python}
+# Ejemplo de uso con la base de datos Iris
+iris_data = sns.load_dataset('iris')
+boxplot_especie(iris_data, 'setosa', 'petal_lengt')
+```
+
+
+```{python}
+# Ejemplo de uso con la base de datos Penguins
+penguins_data = sns.load_dataset('penguins')
+boxplot_especie(penguins_data, 'Adele', 'flipper_length_mm')
+```
+
+Una vez que tenemos funciones, podemos automatizar procesos. De esta forma hacemos que nuestro código sea más eficiente y menos propenso a errores. Esto es especialmente útil cuando tenemos un gran número de especies o cuando trabajamos con conjuntos de datos más grandes en los que escribir llamadas individuales a funciones para cada observación sería tedioso y propenso a errores.
+
+```{python}
+# Cargar la base de datos Iris
+iris_data = sns.load_dataset('iris')
+
+# Obtener las especies únicas en la base de datos
+especies_unicas = iris_data['species'].unique()
+
+# Generar boxplots para cada especie en un bucle for
+for especie in especies_unicas:
+    boxplot_especie(iris_data, especie, 'petal_length')
+
+```
+
+
+Una vez que tenemos funciones, también queremos realizar tests para ver si están realizando correctamente lo que queremos las funciones. Una opción es la siguiente:
+
+```{python}
+def sumar(a, b):
+    return a + b
+```
+
+```{python}
+# Test para verificar la función sumar
+def test_sumar():
+    # Verificar suma de números positivos
+    resultado = sumar(3, 5)
+    assert resultado == 8, f"La suma de 3 y 5 debería ser 8, pero obtuvimos {resultado}"
+
+    # Verificar suma de números negativos
+    resultado = sumar(-3, -5)
+    assert resultado == -8, f"La suma de -3 y -5 debería ser -8, pero obtuvimos {resultado}"
+
+    # Verificar suma de un número positivo y otro negativo
+    resultado = sumar(3, -5)
+    assert resultado == -2, f"La suma de 3 y -5 debería ser -2, pero obtuvimos {resultado}"
+
+# Ejecutar el test
+test_sumar()
+```
+
+
+```{python, eval = FALSE}
+# Test para verificar la función sumar
+def test_sumar_incorrecto():
+    # Verificar suma de números positivos
+    resultado = sumar(3, 5)
+    assert resultado == 7, f"La suma de 3 y 5 debería ser 8, pero obtuvimos {resultado}"
+
+    # Verificar suma de números negativos
+    resultado = sumar(-3, -5)
+    assert resultado == -8, f"La suma de -3 y -5 debería ser -8, pero obtuvimos {resultado}"
+
+    # Verificar suma de un número positivo y otro negativo
+    resultado = sumar(3, -5)
+    assert resultado == -2, f"La suma de 3 y -5 debería ser -2, pero obtuvimos {resultado}"
+
+# Ejecutar el test
+test_sumar_incorrecto()
+```
+
+
+Como no obtenemos ningún error quiere decir que se cumplieron todos los test. Modifiquemos uno de los resultados para ver que sucede cuando no se cumple el test.
+
+
+Cuando estamos realizando funciones, es importante que sean funciones legibles, usar nombres descriptivos, documentarlas, etc.
+Por ejemplo:
+
+```{python}
+import math
+
+def desv(val):
+    me = sum(val) / len(val)
+    s = sum((x - me) ** 2 for x in val)
+    v = s / len(val)
+    d = math.sqrt(v)
+    return d
+
+# Ejemplo de uso
+v = [2, 4, 4, 4, 5, 5, 7, 9]
+print("Desviación estándar:", desv(v))
+```
+
+Esa misma función pero legible:
+
+```{python}
+import math
+
+def calcular_desviacion_estandar(valores):
+    """
+    Calcula la desviación estándar de una lista de valores.
+
+    Parámetros:
+    - valores: list[float], una lista de valores numéricos.
+
+    Retorna:
+    - float, la desviación estándar de los valores.
+
+    """
+    # Calcular la media de los valores
+    media = sum(valores) / len(valores)
+    
+    # Calcular la suma de los cuadrados de las diferencias entre cada valor y la media
+    suma_cuadrados_diferencias = sum((x - media) ** 2 for x in valores)
+    
+    # Calcular la varianza
+    varianza = suma_cuadrados_diferencias / len(valores)
+    
+    # Calcular la desviación estándar como la raíz cuadrada de la varianza
+    desviacion_estandar = math.sqrt(varianza)
+    
+    return desviacion_estandar
+
+# Ejemplo de uso
+valores = [2, 4, 4, 4, 5, 5, 7, 9]
+print("Desviación estándar:", calcular_desviacion_estandar(valores))
+
+```
+
+
+Existen diferentes formas de obtener resultados de una función.
+
+- `print`: es una función incorporada en Python que se utiliza para mostrar información en la consola o en la salida estándar. Cuando llamas a `print` dentro de una función, la información se imprime en la consola pero no se devuelve al código que llamó a la función. `print` es útil para la depuración y la visualización de datos, pero no proporciona un valor específico que pueda ser utilizado por otras partes del programa. Por ejemplo:
+
+```{python}
+def saludar(nombre):
+    print("Hola,", nombre)
+
+saludar("Roberta")
+```
+
+En este ejemplo, la función `saludar` imprime un saludo utilizando `print`, pero no devuelve ningún valor. La salida se muestra en la consola, pero no se asigna a ninguna variable ni se utiliza más adelante en el programa.
+
+- `return`: es una palabra clave en Python que se utiliza para devolver un valor específico desde una función al código que la llamó. Cuando una función utiliza `return`, termina la ejecución de la función y devuelve el valor especificado al lugar donde se llamó la función. Esto permite utilizar el resultado de la función en otras partes del programa. Por ejemplo:
+
+```{python}
+def sumar(a, b):
+    return a + b
+
+resultado = sumar(3, 5)
+print(resultado)
+```
+
+En este ejemplo, la función `sumar` devuelve la suma de dos números utilizando `return`. El valor devuelto (la suma de los números) se asigna a la variable `resultado` y luego se imprime en la consola.
+
+La diferencia principal entre `print` y `return` es que `print` muestra información en la consola pero no devuelve ningún valor, mientras que `return` devuelve un valor específico desde una función para que pueda ser utilizado por otras partes del programa.
+
+**Ejercicios:**
+
+
+### Scripts
+
+Un script en Python es un archivo que contiene código Python que puede ser ejecutado. Los scripts nos permiten organizar nuestro código en archivos separados y reutilizables.
+
+Supongamos que queremos crear un script que salude a un usuario con su nombre. Podemos escribir el siguiente código en un archivo llamado saludo.py:
+
+```python
+# Contenido del archivo saludo.py
+def saludar(nombre):
+    print("Hola,", nombre)
+
+nombre_usuario = input("Por favor, ingresa tu nombre: ")
+saludar(nombre_usuario)
+```
+
+Para ejecutar este script, podemos abrir una terminal, navegar hasta la ubicación del archivo saludo.py y ejecutar el siguiente comando:
+
+```python
+python saludo.py
+```
+
 ## Buenas practicas
+
+
+1. Sigue las convenciones de estilo de código:
+
+- Utiliza PEP 8 como guía para escribir código Python limpio y legible.
+- Usa nombres de variables descriptivos y significativos.
+- Usa espacios en blanco de manera consistente para mejorar la legibilidad.
+
+2. Comenta tu código:
+
+- Utiliza comentarios para explicar el propósito y la funcionalidad de tu código.
+- Documenta tus funciones utilizando cadenas de documentación (docstrings) para describir lo que hacen, los parámetros que reciben y lo que devuelven.
+
+3. Escribir funciones y módulos reutilizables:
+
+- Divide tu código en funciones y módulos pequeños y reutilizables.
+- Evita la repetición de código escribiendo funciones para realizar tareas comunes.
+
+4. Manejo adecuado de excepciones:
+
+- Utiliza bloques try-except para manejar excepciones de manera adecuada y evitar que tu programa se bloquee.
+- Especifica claramente qué excepciones estás capturando y maneja las excepciones de manera apropiada.
+
+5. Optimiza tu código:
+
+- Utiliza la biblioteca estándar de Python y módulos externos cuando sea posible en lugar de reinventar la rueda.
+- Aprende y utiliza algoritmos y estructuras de datos eficientes para optimizar el rendimiento de tu código.
+
+6. Escribe pruebas unitarias:
+
+- Escribe pruebas unitarias para verificar que tu código funcione correctamente en diferentes casos de uso.
+- Utiliza marcos de prueba como `unittest` o `pytest` para escribir y ejecutar tus pruebas.
+
+7. Mantén tu código limpio:
+
+- Elimina el código muerto y no utilizado para mantener tu código limpio y fácil de entender.
+- Refactoriza tu código cuando sea necesario para mejorar su estructura y claridad.
+
+8. Usa control de versiones:
+
+- Utiliza un sistema de control de versiones como Git para gestionar y realizar un seguimiento de los cambios en tu código.
+- Utiliza ramas y etiquetas para organizar tu trabajo y colaborar con otros desarrolladores de manera efectiva.
+
+9. Aprende continuamente:
+
+- Mantente al tanto de las mejores prácticas y las novedades en el mundo de Python.
+- Aprende de otros desarrolladores y contribuye a la comunidad de código abierto.
+
 
 ## Procesamiento de alto rendimiento
 

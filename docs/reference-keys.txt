@@ -159,3 +159,5 @@ medidas-de-tendencia-central
 medidas-de-variabilidad
 otras-funciones
 ejercicios-5
+funciones
+scripts-2
