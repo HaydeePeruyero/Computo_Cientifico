@@ -3824,56 +3824,6 @@ for especie in especies_unicas:
 ```
 
 
-Una vez que tenemos funciones, también queremos realizar tests para ver si están realizando correctamente lo que queremos las funciones. Una opción es la siguiente:
-
-```{python}
-def sumar(a, b):
-    return a + b
-```
-
-```{python}
-# Test para verificar la función sumar
-def test_sumar():
-    # Verificar suma de números positivos
-    resultado = sumar(3, 5)
-    assert resultado == 8, f"La suma de 3 y 5 debería ser 8, pero obtuvimos {resultado}"
-
-    # Verificar suma de números negativos
-    resultado = sumar(-3, -5)
-    assert resultado == -8, f"La suma de -3 y -5 debería ser -8, pero obtuvimos {resultado}"
-
-    # Verificar suma de un número positivo y otro negativo
-    resultado = sumar(3, -5)
-    assert resultado == -2, f"La suma de 3 y -5 debería ser -2, pero obtuvimos {resultado}"
-
-# Ejecutar el test
-test_sumar()
-```
-
-
-```{python, eval = FALSE}
-# Test para verificar la función sumar
-def test_sumar_incorrecto():
-    # Verificar suma de números positivos
-    resultado = sumar(3, 5)
-    assert resultado == 7, f"La suma de 3 y 5 debería ser 8, pero obtuvimos {resultado}"
-
-    # Verificar suma de números negativos
-    resultado = sumar(-3, -5)
-    assert resultado == -8, f"La suma de -3 y -5 debería ser -8, pero obtuvimos {resultado}"
-
-    # Verificar suma de un número positivo y otro negativo
-    resultado = sumar(3, -5)
-    assert resultado == -2, f"La suma de 3 y -5 debería ser -2, pero obtuvimos {resultado}"
-
-# Ejecutar el test
-test_sumar_incorrecto()
-```
-
-
-Como no obtenemos ningún error quiere decir que se cumplieron todos los test. Modifiquemos uno de los resultados para ver que sucede cuando no se cumple el test.
-
-
 Cuando estamos realizando funciones, es importante que sean funciones legibles, usar nombres descriptivos, documentarlas, etc.
 Por ejemplo:
 
@@ -3980,6 +3930,124 @@ Para ejecutar este script, podemos abrir una terminal, navegar hasta la ubicaci�
 python saludo.py
 ```
 
+### Test
+
+Una vez que tenemos funciones, también queremos realizar tests para ver si están realizando correctamente lo que queremos las funciones. Una opción es la siguiente:
+
+```python
+def sumar(a, b):
+    return a + b
+```
+
+```python
+# Test para verificar la función sumar
+def test_sumar():
+    # Verificar suma de números positivos
+    resultado = sumar(3, 5)
+    assert resultado == 8, f"La suma de 3 y 5 debería ser 8, pero obtuvimos {resultado}"
+
+    # Verificar suma de números negativos
+    resultado = sumar(-3, -5)
+    assert resultado == -8, f"La suma de -3 y -5 debería ser -8, pero obtuvimos {resultado}"
+
+    # Verificar suma de un número positivo y otro negativo
+    resultado = sumar(3, -5)
+    assert resultado == -2, f"La suma de 3 y -5 debería ser -2, pero obtuvimos {resultado}"
+
+# Ejecutar el test
+test_sumar()
+```
+
+
+```python
+# Test para verificar la función sumar
+def test_sumar_incorrecto():
+    # Verificar suma de números positivos
+    resultado = sumar(3, 5)
+    assert resultado == 7, f"La suma de 3 y 5 debería ser 8, pero obtuvimos {resultado}"
+
+    # Verificar suma de números negativos
+    resultado = sumar(-3, -5)
+    assert resultado == -8, f"La suma de -3 y -5 debería ser -8, pero obtuvimos {resultado}"
+
+    # Verificar suma de un número positivo y otro negativo
+    resultado = sumar(3, -5)
+    assert resultado == -2, f"La suma de 3 y -5 debería ser -2, pero obtuvimos {resultado}"
+
+# Ejecutar el test
+test_sumar_incorrecto()
+```
+
+
+Como no obtenemos ningún error quiere decir que se cumplieron todos los test. Modifiquemos uno de los resultados para ver que sucede cuando no se cumple el test.
+
+
+Dos paquetes que nos ayudan a realizar test son  `unittest` y `pytest`. En `pytest`, cada función a realizarle un test debe llevar el nombre `test_funcion`. Cada test verifica **una** solo característica de nuestro código y revisa usando `assert`. 
+
+Vamos a crear un script en python llamado `test_suma.py`, en el vamos a escribir la función suma que teníamos y los test que escribimos anteriormente:
+
+```python
+# Script.py
+def sumar(a, b):
+    return a + b
+
+def test_sumar():
+    # Verificar suma de números positivos
+    resultado = sumar(3, 5)
+    assert resultado == 8, f"La suma de 3 y 5 debería ser 8, pero obtuvimos {resultado}"
+
+    # Verificar suma de números negativos
+    resultado = sumar(-3, -5)
+    assert resultado == -8, f"La suma de -3 y -5 debería ser -8, pero obtuvimos {resultado}"
+
+    # Verificar suma de un número positivo y otro negativo
+    resultado = sumar(3, -5)
+    assert resultado == -2, f"La suma de 3 y -5 debería ser -2, pero obtuvimos {resultado}"
+```
+
+Para correrlo, vamos a abrir una terminal y vamos a ejecutar:
+
+```python
+pytest test_suma.py
+```
+
+**Ejercicio 1:** Crea un test que verifique dos funciones, una de aritmética básica (igualdad entre dos números y multiplicación entre dos números) y la otra función la longitud de elementos de una lista. Realiza el test de ambas funciones con `pytest`.
+
+**Ejercicio 2:** Crea un archivo nuevo para hacer test llamado `test_prueba`. Realiza una función prueba que verifique que `1+2` es `3`. Realiza el test. Ahora prueba con `1.1+2.2` es `3.3`, usa pytest.
+
+Con los números flotantes debemos tener cuidado al realizar los test. Una forma de corregir el error que tuvimos es la siguiente.
+
+```python
+from math import isclose
+
+def test_floating_point_math():
+    assert isclose(1.1+2.2, 3.3)
+```
+
+Otra forma es controlando la tolerancia absoluta:
+
+```python
+# pass
+assert isclose(1.21, 1.2, abs_tol=0.1)
+
+#fail
+assert isclose(1.21, 1.2, abs_tol=0.01)
+```
+
+Y la relativa:
+
+
+```python
+# pass
+assert isclose(1.21, 1.2, rel_tol=0.1)
+
+#fail
+assert isclose(1.21, 1.2, rel_tol=0.01)
+```
+
+En el siguiente repositorio, se encuentra un muy buen manual de como realizar test con diferentes opciones [link](https://github.com/aspp-latam/2023-mexico-testing-and-debugging/tree/master).
+
+
 ## Buenas practicas
 
 
@@ -4031,5 +4099,117 @@ python saludo.py
 
 
 ## Procesamiento de alto rendimiento
+
+
+Numba es una biblioteca de Python que te permite acelerar el rendimiento de tu código mediante la compilación de funciones de Python en código máquina optimizado para CPU o GPU. 
+
+Numba proporciona varios decoradores que puedes usar para optimizar tus funciones de Python. Dos de los más comunes son `@jit` y `@njit`. `@jit` (Just-In-Time) compila la función justo antes de ejecutarla, mientras que `@njit` (Numba JIT) compila la función antes de su primera llamada y la reutiliza en llamadas posteriores.
+
+**Nota:** Basado en [link](https://github.com/aspp-latam/2023-mexico-profiling/tree/main)
+
+Para usar numba, solo se necesita agregar los decoradores. Por ejemplo, supongamos que tenemos la siguiente función que integra.
+```python
+import numpy as np
+import numba
+
+def integrate(a, b, n):
+    s = 0.0
+    dx = (b - a) / n
+    for i in range(n):
+        x = a + (i + 0.5) * dx
+        y = x ** 4 - 3 * x
+        s += y * dx
+    return s
+```
+
+Si la ejecutamos: 
+
+```python
+a = 0
+b = 2
+n = 1_000_000
+
+plaintime = %timeit -o integrate(a, b, n)
+```
+Vemos el tiempo que se lleva en compilarla.
+
+Ahora, hagamos una prueba con numba.
+
+```python
+@numba.njit 
+def numba_integrate(a, b, n):
+    s = 0.0
+    dx = (b - a) / n
+    for i in range(n):
+        x = a + (i + 0.5) * dx
+        y = x ** 4 - 3 * x
+        s += y * dx
+    return s
+```
+
+El decorador hará que la función corra sin necesidad del interprete. Verifiquemos el tiempo de ejecución.
+
+```python
+jittedtime = %timeit -o -n 10 numba_integrate(a, b, n)
+```
+
+Realizamos una aserción para verificar que ambos resultados son casi iguales:
+
+```python
+np.testing.assert_almost_equal(numba_integrate(a, b, n), integrate(a, b, n))
+```
+
+Calculamos la relación de aceleración comparando los mejores tiempos de ejecución entre la versión original y la versión compilada con Numba:
+
+```python
+plaintime.best/jittedtime.best
+```
+
+Cuando decoras una función con `@numba.njit`, Numba compila la función justo antes de su ejecución. Durante esta compilación, Numba analiza el código de la función y genera un código máquina optimizado para los tipos de datos de los argumentos que se le pasan en esa llamada específica. Esta compilación puede llevar tiempo, especialmente para funciones complejas o con tipos de datos complicados. 
+
+Una vez que la función ha sido compilada para un conjunto particular de tipos de datos, Numba almacena en caché el código máquina generado. Esto significa que si la función se llama nuevamente con los mismos tipos de datos, Numba puede reutilizar el código máquina en lugar de tener que compilar la función nuevamente. Esto generalmente resulta en una ejecución mucho más rápida, ya que no se requiere el tiempo de compilación en ese punto.
+
+```python
+@numba.njit
+def numba_integrate(a, b, n):
+    s = 0.0
+    dx = (b - a) / n
+    for i in range(n):
+        x = a + (i + 0.5) * dx
+        y = x ** 4 - 3 * x
+        s += y * dx
+    return s          
+
+# Tiempo de compilación!
+start = time.perf_counter()
+numba_integrate(a, b, n)
+end = time.perf_counter()
+print("Tiempo (con compilación) = %0.5fs" %(end - start))
+
+# Re-ejecutar con la versión ya compilada
+start = time.perf_counter()
+numba_integrate(a, b, n)
+end = time.perf_counter()
+print("Tiempo (después de compilación) = %0.5fs" %(end - start))
+
+# FUnción original
+start = time.perf_counter()
+integrate(a, b, n)
+end = time.perf_counter()
+print("Tiempo (sin numba) = %0.5fs" %(end - start))
+```
+
+¿Cuándo usar Numba?
+
+1. **Funciones con bucles**: Numba es especialmente efectivo para optimizar funciones que contienen bucles, ya que puede compilar estos bucles en código de bajo nivel que se ejecuta rápidamente en la CPU o en la GPU.
+
+2. **Funciones con operaciones matemáticas**: Si tu código realiza muchas operaciones matemáticas, como sumas, multiplicaciones, exponenciaciones, etc., Numba puede mejorar significativamente su rendimiento al compilar estas operaciones en código máquina optimizado.
+
+3. **Funciones que utilizan NumPy**: Numba se integra bien con NumPy y puede mejorar el rendimiento de las funciones que utilizan arrays NumPy. Puede optimizar las operaciones vectorizadas y las funciones de NumPy para que se ejecuten más rápido.
+
+4. **Adecuado para: tuplas, cadenas de texto**: Numba puede ser utilizado de manera efectiva en funciones que operan con tuplas y cadenas de texto, ya que puede optimizar las operaciones sobre estos tipos de datos.
+
+5. **No tan adecuado para: objetos, listas de Python, diccionarios de Python**: Numba no es tan efectivo en optimizar el rendimiento de funciones que operan con objetos de Python, listas de Python y diccionarios de Python. Esto se debe a que estos tipos de datos son dinámicos y pueden cambiar de tipo durante la ejecución, lo que hace más difícil para Numba aplicar optimizaciones.
+
 
 ## Programación en paralelo
