@@ -4213,3 +4213,197 @@ print("Tiempo (sin numba) = %0.5fs" %(end - start))
 
 
 ## Programación en paralelo
+
+Paralelizar en Python significa ejecutar múltiples tareas simultáneamente, aprovechando así los recursos de hardware, como múltiples núcleos de CPU, para acelerar el procesamiento. Esto se logra dividiendo una tarea en partes más pequeñas y ejecutándolas de forma concurrente en varios procesos o hilos.
+
+Imagina que estás organizando una cena en tu casa y tienes que cocinar varios platos al mismo tiempo para satisfacer los gustos de todos tus invitados. En este contexto, la cocina y la computadora están relacionadas a través de analogías con conceptos clave de la informática:
+
+1. **Proceso**: Un proceso es una instancia de un programa que se está ejecutando en la computadora. En el contexto de la cocina, podríamos pensar en un proceso como una receta específica que se está preparando en la cocina. Cada receta (proceso) tiene sus propios ingredientes y pasos de preparación. Así como en la cocina, donde puedes tener varias recetas siendo preparadas al mismo tiempo en diferentes estaciones, en la computadora puedes tener varios procesos ejecutándose simultáneamente.
+
+2. **Hilo**: Un hilo es una unidad de computación que se envía a la CPU para su ejecución. En el contexto de la cocina, podríamos comparar un hilo con un chef o un ayudante que realiza una tarea específica dentro de un proceso (receta). Al igual que en una cocina ocupada donde varios chefs y ayudantes trabajan en diferentes tareas al mismo tiempo para preparar una comida completa, en una computadora, varios hilos pueden ejecutarse simultáneamente para completar diferentes partes de un proceso.
+
+3. **Número de núcleos**: El número de núcleos en una CPU representa la cantidad de unidades independientes que pueden ejecutar hilos simultáneamente. En el contexto de la cocina, podríamos comparar los núcleos con las estaciones de trabajo en una cocina profesional. Cuantos más núcleos tenga una CPU, más hilos podrán ejecutarse simultáneamente, lo que permite una mayor paralelización y un rendimiento general más rápido.
+
+4. **Memoria**: La memoria de la computadora es donde se almacenan y actualizan los datos y variables durante la ejecución de un programa. En la cocina, podríamos pensar en la memoria como el espacio de trabajo donde se colocan los ingredientes, utensilios y platos durante la preparación de una receta. Al igual que una cocina bien organizada facilita el acceso rápido a los ingredientes y utensilios necesarios para preparar una receta, una gestión eficiente de la memoria en la computadora asegura un acceso rápido y eficiente a los datos necesarios para ejecutar un programa.
+
+En este ejemplo de cocina, los "workstations" (cores) representan los núcleos de la CPU, y los "sous chefs" (threads) representan los hilos de ejecución. La tarea de "hacer salsa" implica realizar sub-tareas, una de las cuales es contar todos los tomates en la despensa, tomar $n$ tomates para la salsa y comunicarle al Chef cuántos tomates quedan en la despensa.
+
+Ahora, supongamos que dos "sous chefs" están haciendo salsa y ejecutan sus tareas al mismo tiempo. Ambos necesitan contar los tomates en la despensa, tomar algunos para la salsa y actualizar la cantidad restante de tomates en la despensa. Aquí es donde surge el problema debido al GIL (Global Interpreter Lock).
+
+El GIL es un mecanismo de protección en el intérprete de Python que evita que múltiples hilos ejecuten código de Python simultáneamente. Esto significa que, aunque tengamos múltiples hilos, solo uno puede ejecutar código Python a la vez. En el ejemplo de la cocina, esto se traduce en que, incluso si tenemos múltiples "sous chefs" (hilos) trabajando simultáneamente, solo uno puede contar los tomates a la vez debido al GIL.
+
+Si dos "sous chefs" ejecutan sus tareas de contar tomates al mismo tiempo, pueden ocurrir problemas. Por ejemplo, si un "sous chef" cuenta 10 tomates y luego otro "sous chef" cuenta los mismos 10 tomates, ambos toman 10 tomates para la salsa, pero ambos informan al Chef que solo quedan 9 tomates en la despensa, lo que es incorrecto.
+
+En resumen, en este ejemplo, el GIL en Python puede causar problemas de concurrencia al permitir que múltiples hilos accedan a recursos compartidos al mismo tiempo, lo que puede llevar a resultados incorrectos o inesperados.
+
+
+Estos conceptos se traducen en el multiprocesamiento y el GIL en Python:
+
+1. **Multiprocesamiento**:
+   - El multiprocesamiento sería como tener varias estufas y hornos en tu cocina. Puedes cocinar diferentes platos simultáneamente en cada uno de ellos sin interferir entre sí. Por ejemplo, puedes cocinar la carne en una estufa, las verduras en otra y el postre en el horno, todo al mismo tiempo.
+   - Cada estufa u horno representa un proceso independiente en el sistema, y como están separados, no se afectan entre sí. Del mismo modo, cada proceso en Python tiene su propio espacio de memoria y puede ejecutarse de forma independiente de otros procesos.
+
+2. **Global Interpreter Lock (GIL)**:
+   - El GIL sería como tener un solo juego de utensilios de cocina que todos los cocineros tienen que compartir. Solo un cocinero puede usar los utensilios en un momento dado, por lo que aunque tengas múltiples estufas y hornos, solo puedes trabajar en una tarea a la vez.
+   - Esto significa que, incluso si tienes múltiples procesos (o cocineros) ejecutándose, solo uno puede ejecutar código Python en un momento dado debido al GIL. Al igual que con los utensilios de cocina, los hilos (o procesos) deben competir por el acceso al GIL para ejecutar su código Python, lo que puede ralentizar el progreso general de las tareas.
+
+En resumen, el multiprocesamiento te permite ejecutar múltiples tareas simultáneamente, cada una en su propio "espacio de cocina", mientras que el GIL actúa como un conjunto compartido de utensilios de cocina que limita la capacidad de ejecución paralela en Python, aunque tengas múltiples procesos o hilos.
+
+Una función de orden superior de Python es `map()`, que pertenece al conjunto de funciones de programación funcional. No es específicamente parte de un paquete, sino una función integrada en el lenguaje Python.
+
+La función `map()` toma una función y un iterable (como una lista) como argumentos y aplica la función a cada elemento del iterable, devolviendo un objeto `map` que contiene los resultados. 
+
+Un ejemplo básico de cómo se usa `map()`:
+
+```python
+import time
+
+# Definimos una función que toma un número y devuelve su cuadrado
+def cuadrado(x):
+    return x ** 2
+
+# Creamos una lista de números
+numeros = [1, 2, 3, 4, 5]
+#numeros = np.arange(1, 1001)
+# Ejemplo con map()
+inicio_map = time.time()  # Tiempo de inicio
+resultados_map = map(cuadrado, numeros)
+print("Resultados con map:", list(resultados_map))  # Imprimimos los resultados
+fin_map = time.time()  # Tiempo de finalización
+tiempo_map = fin_map - inicio_map  # Calculamos el tiempo transcurrido
+print("Tiempo con map:", tiempo_map, "segundos")  # Imprimimos el tiempo transcurrido
+
+# Ejemplo con for
+inicio_for = time.time()  # Tiempo de inicio
+resultados_for = [cuadrado(x) for x in numeros]
+print("Resultados con for:", resultados_for)  # Imprimimos los resultados
+fin_for = time.time()  # Tiempo de finalización
+tiempo_for = fin_for - inicio_for  # Calculamos el tiempo transcurrido
+print("Tiempo con for:", tiempo_for, "segundos")  # Imprimimos el tiempo transcurrido
+
+```
+
+En este ejemplo, `map()` aplica la función `cuadrado` a cada elemento de la lista `numeros` y devuelve un objeto `map` que contiene los resultados. Luego, convertimos este objeto `map` en una lista para imprimir los resultados.
+
+`map()` es especialmente útil cuando se quiere aplicar una función simple a todos los elementos de una lista o cualquier otro iterable, ya que proporciona una forma más concisa y legible de realizar esta operación en comparación con el uso de un bucle `for`. El tiempo de ejecución puede variar según el contexto y las condiciones de la ejecución. En teoría, `map()` podría ser más rápido que un bucle `for` debido a su optimización interna y su capacidad para realizar operaciones en paralelo. Sin embargo, en la práctica, puede haber varios factores que afecten al rendimiento y que podrían hacer que un enfoque sea más rápido que el otro en determinadas circunstancias.
+
+El tiempo de ejecución puede variar según el contexto y las condiciones de la ejecución. En teoría, `map()` podría ser más rápido que un bucle `for` debido a su optimización interna y su capacidad para realizar operaciones en paralelo. Sin embargo, en la práctica, puede haber varios factores que afecten al rendimiento y que podrían hacer que un enfoque sea más rápido que el otro en determinadas circunstancias.
+
+Aquí hay algunos factores a considerar:
+
+1. **Tamaño de los datos**: Para conjuntos de datos pequeños, la diferencia de rendimiento entre `map()` y un bucle `for` puede ser insignificante y podría depender más del overhead de la función `map()` y la creación del objeto `map`.
+
+2. **Naturaleza de la función aplicada**: El rendimiento de `map()` puede verse afectado por la complejidad de la función aplicada. Si la función es muy simple, es posible que el overhead de `map()` sea mayor en comparación con el bucle `for`, lo que podría hacer que el bucle `for` sea más rápido.
+
+3. **Paralelismo**: Aunque `map()` puede realizar operaciones en paralelo internamente, esto puede depender de la implementación subyacente y de la capacidad del sistema para manejar múltiples hilos o procesos. En algunas situaciones, el paralelismo de `map()` puede no ser aprovechado completamente o puede introducir cierto overhead que ralentiza la ejecución.
+
+4. **Tipo de datos**: Algunos tipos de datos pueden ser más eficientemente procesados por `map()` que por un bucle `for`. Por ejemplo, `map()` puede ser más adecuado para operar con listas, mientras que para otros tipos de datos como generadores, el bucle `for` puede ser más eficiente.
+
+En resumen, aunque `map()` tiene el potencial de ser más rápido que un bucle `for`, el rendimiento puede variar según varios factores. Es importante evaluar y comparar el rendimiento de diferentes enfoques en función de las características específicas del problema y del entorno de ejecución.
+
+Ahora, vamos a ver como funciona el paquete `multiprocessing`.
+
+1. Importa el módulo `multiprocessing`, que proporciona funcionalidades para la creación y administración de procesos en paralelo:
+
+```python
+import multiprocessing
+```
+
+2. Esta función devuelve el número de núcleos de la CPU en el sistema actual. Es útil para determinar cuántos procesos se pueden ejecutar simultáneamente en paralelo.
+
+```python
+multiprocessing.cpu_count()
+```
+
+3. Importa la clase `Pool` del módulo `multiprocessing.pool` y la renombra como `ProcessPool`. La clase `Pool` se utiliza para crear grupos de procesos que pueden ejecutar funciones de manera paralela.
+
+```python
+from multiprocessing.pool import Pool as ProcessPool
+```
+
+4. Define una función llamada `sum_numbers` que calcula la suma de los números del 0 al `n-1` mediante un bucle `for`.
+
+```python
+def sum_numbers(n):
+    r = 0
+    for i in range(n):
+        r += i
+    return r
+```
+
+5. Crea una lista de números que se utilizarán como entrada para la función `sum_numbers`.
+
+```python
+inputs = [60_000_000, 80_000_000, 50_000_000, 70_000_000]
+```
+
+6. Esta es una "cell magic" de Jupyter Notebook que mide el tiempo de ejecución de la celda de código que sigue. En este caso, se utiliza para medir el tiempo que tarda la ejecución de la celda en calcular la suma de los números utilizando la función `map()`. Utiliza la función `map()` para aplicar la función `sum_numbers` a cada elemento de la lista `inputs`. Luego, convierte el objeto `map` resultante en una lista y lo asigna a la variable `results`.
+
+```python
+%%time
+results = list(map(sum_numbers, inputs))
+results
+```
+
+7. Crea un contexto de administración de procesos (`ProcessPool`) con un total de 8 procesos. Esto significa que se crearán hasta 8 procesos que ejecutarán las llamadas a `sum_numbers` en paralelo. Utiliza el método `map()` del objeto `pool` para aplicar la función `sum_numbers` a cada elemento de la lista `inputs` en paralelo. El resultado se asigna a la variable `result`.
+
+```python
+%%time
+with ProcessPool(processes=8) as pool:  # context manager providing a `Pool` instance
+    result = pool.map(sum_numbers, inputs)
+print(result)
+```
+
+En resumen, este código calcula la suma de los números del 0 al `n-1` para cada valor en la lista `inputs`, primero utilizando `map()` para calcularlo secuencialmente y luego utilizando un `ProcessPool` para calcularlo en paralelo. Luego, muestra los resultados de ambos en el tiempo que tardan en ejecutarse.
+
+**Ejercicio:** Crea una función para calcular el cuadrado de una lista de números. Ejecutala con `%%time` para comparar tiempo de ejecución y recursos de las dos maneras, usando paralelización y sin esto.
+
+
+Veamos un ejemplo más. Este código investiga cómo aumenta la velocidad de ejecución del código al aumentar el número de procesos utilizados para la ejecución en paralelo.  Primero crearemos una lista llamada `inputs` que contiene el valor 10,000,000 repetido 16 veces. Esto significa que la función `sum_numbers` se aplicará a una lista de 16 elementos, cada uno de longitud 10,000,000.
+Vamos a inicializar una lista vacía llamada `times` donde se almacenarán los tiempos de ejecución.
+
+ - **`n_processes = np.arange(1, multiprocessing.cpu_count() + 4)`**: Crea un array NumPy que contiene números enteros desde 1 hasta el número de núcleos de CPU en el sistema más 3. Esto proporciona un rango de números que representan el número de procesos que se utilizarán para la ejecución en paralelo. Y vamos a iterar sobre cada número en el array `n_processes`.
+
+
+```python
+import time
+import multiprocessing
+import numpy as np
+
+
+inputs = [10_000_000] * 16
+times = []
+n_processes = np.arange(1, multiprocessing.cpu_count() + 4)
+for n in n_processes:
+    t0 = time.time()
+    with ProcessPool(processes=n) as pool:
+        result = pool.map(sum_numbers, inputs)
+    times.append(time.time() - t0)
+
+times
+```
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+times = np.array(times)
+fig, axes = plt.subplots()
+axes.plot(n_processes, 1.0 * n_processes, color='k', linestyle='--', label='ideal')
+axes.plot(n_processes, times[0] / times, marker='o', label='measured')
+axes.set_xlabel(r'$n$ processes')
+axes.set_ylabel('relative speedup')
+fig.legend()
+```
+
+Links útiles:
+
+- DataCamp tutorial: [link](https://www.datacamp.com/tutorial/python-multiprocessing-tutorial)
+
+- DataCamp course: [link](https://campus.datacamp.com/courses/introduction-to-data-engineering/data-engineering-toolbox?ex=6)
+[link2 ](https://campus.datacamp.com/pdf/web/viewer.html?file=https://projector-video-pdf-converter.datacamp.com/19930/chapter2.pdf#page=15)
+
+- ASPP tutorial: [link](https://github.com/aspp-latam/2023-mexico-parallel-python)
+
+- Python tutorial: [link](https://docs.python.org/3/library/multiprocessing.html)
+
