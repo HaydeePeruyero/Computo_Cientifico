@@ -163,3 +163,5 @@ funciones
 scripts-2
 test
 instalación
+seleccionar-datos
+ordenar-y-remover-duplicados

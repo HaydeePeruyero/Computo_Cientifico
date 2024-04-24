@@ -249,7 +249,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>5</b> SQL</a>
 <ul>
 <li class="chapter" data-level="5.0.1" data-path="sql.html"><a href="sql.html#instalación"><i class="fa fa-check"></i><b>5.0.1</b> Instalación</a></li>
-<li class="chapter" data-level="5.1" data-path="sql.html"><a href="sql.html#bases-de-datos-y-manipulación"><i class="fa fa-check"></i><b>5.1</b> Bases de datos y manipulación</a></li>
+<li class="chapter" data-level="5.1" data-path="sql.html"><a href="sql.html#bases-de-datos-y-manipulación"><i class="fa fa-check"></i><b>5.1</b> Bases de datos y manipulación</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="sql.html"><a href="sql.html#seleccionar-datos"><i class="fa fa-check"></i><b>5.1.1</b> Seleccionar datos</a></li>
+<li class="chapter" data-level="5.1.2" data-path="sql.html"><a href="sql.html#ordenar-y-remover-duplicados"><i class="fa fa-check"></i><b>5.1.2</b> Ordenar y remover duplicados</a></li>
+</ul></li>
 <li class="chapter" data-level="5.2" data-path="sql.html"><a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado"><i class="fa fa-check"></i><b>5.2</b> Explorar datos categóricos y texto no estructurado</a></li>
 <li class="chapter" data-level="5.3" data-path="sql.html"><a href="sql.html#comparación-con-los-otros-programas"><i class="fa fa-check"></i><b>5.3</b> Comparación con los otros programas</a></li>
 <li class="chapter" data-level="5.4" data-path="sql.html"><a href="sql.html#valores-faltantes"><i class="fa fa-check"></i><b>5.4</b> Valores faltantes</a></li>
@@ -354,14 +358,17 @@ Durante la instalación, si el instalador pregunta si deseas agregar la ruta del
 </div>
 <div id="bases-de-datos-y-manipulación" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Bases de datos y manipulación<a href="sql.html#bases-de-datos-y-manipulación" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="seleccionar-datos" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Seleccionar datos<a href="sql.html#seleccionar-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Primero, abriremos una terminal en tu sistema operativo. Y vamos a descargar la siguiente base de datos:</p>
 <p><a href="https://swcarpentry.github.io/sql-novice-survey/files/survey.db">survey.db</a></p>
 <p>Utiliza el comando <code>cd</code> para cambiar el directorio de trabajo de la terminal al directorio que contiene tu archivo de base de datos SQLite. Por ejemplo:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="sql.html#cb4-1" tabindex="-1"></a><span class="bu">cd</span> ~/SQL_course/data/</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="sql.html#cb4-1" tabindex="-1"></a><span class="bu">cd</span> /files2/SQL_course24/data/</span></code></pre></div>
 <p>Una vez en el directorio correcto, utilizamos el comando <code>sqlite3</code> seguido del nombre del archivo de la base de datos para abrir la consola de SQLite. Por ejemplo:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="sql.html#cb5-1" tabindex="-1"></a><span class="ex">sqlite3</span> survey.db</span></code></pre></div>
-<p>Esto abrirá la base de datos <code>survey.db</code> en la consola de SQLite, lo que nos permitirá ejecutar comandos SQL y realizar operaciones en la base de datos.
-Una vez dentro de la consola de SQLite, puedes ejecutar comandos SQL como <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, etc., para interactuar con la base de datos.
+<p>Esto abrirá la base de datos <code>survey.db</code> en la consola de SQLite, lo que nos permitirá ejecutar comandos SQL y realizar operaciones en la base de datos.</p>
+<p><strong>NOTA:</strong> ¿Qué contien esta base de datos? Tiene información en la que se han descubierto expediciones lideradas por William Dyer, Frank Pabodie y Valentina Roerich a fines de la década de 1920 y principios de la década de 1930. Estas expediciones llevaron al Polo de Inaccesibilidad en el Pacífico Sur y luego hacia la Antártida. Los datos de estas expediciones se encontraron recientemente en un casillero de almacenamiento en la Universidad de Miskatonic. Se han digitalizado y procesado mediante reconocimiento óptico de caracteres (OCR).</p>
+<p>Una vez dentro de la consola de SQLite, puedes ejecutar comandos SQL como <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, etc., para interactuar con la base de datos.
 Para salir de la consola de SQLite y volver a la terminal, puedes usar uno de los siguientes métodos:</p>
 <ul>
 <li>Escribe <code>.exit</code> o <code>.quit</code> seguido de Enter en la consola de SQLite.</li>
@@ -370,20 +377,20 @@ Para salir de la consola de SQLite y volver a la terminal, puedes usar uno de lo
 <p>Para pedir ayuda en SQlite usamos <code>.help</code> en la consola de SQLite y presiona Enter. Esto mostrará una lista de comandos disponibles y una breve descripción de cada uno.</p>
 <p><strong>Nota:</strong> Los comandos en SQLite comienzan con <code>.</code> para diferenciarlos de los propios de <code>SQL</code>. Otro punto importante es que los comando no son sesitivos a mayúsculas o minúsculas y los comandos deben terminar con <code>;</code>.</p>
 <p>Para saber que tablas tenemos en nuestra base de datos usamos <code>.table</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="sql.html#cb6-1" tabindex="-1"></a><span class="ex">.tables</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="sql.html#cb6-1" tabindex="-1"></a>.<span class="kw">tables</span></span></code></pre></div>
 <pre class="output"><code>sqlite&gt; .tables
 Person   Site     Survey   Visited</code></pre>
 <p>Para optener más información sobre que está almacenado en cada tabla usamos <code>.schema</code>, esto nos dará un descripción de las columnas y su tipo.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="sql.html#cb8-1" tabindex="-1"></a><span class="ex">.schema</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb8-1"><a href="sql.html#cb8-1" tabindex="-1"></a>.<span class="kw">schema</span></span></code></pre></div>
 <pre class="output"><code>CREATE TABLE Person (id text, personal text, family text);
 CREATE TABLE Site (name text, lat real, long real);
 CREATE TABLE Survey (taken integer, person text, quant text, reading real);
 CREATE TABLE Visited (id integer, site text, dated text);</code></pre>
 <p>Para cambiar la forma en que SQLite nos muestra la información:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="sql.html#cb10-1" tabindex="-1"></a><span class="ex">.mode</span> column</span>
-<span id="cb10-2"><a href="sql.html#cb10-2" tabindex="-1"></a><span class="ex">.header</span> on</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb10-1"><a href="sql.html#cb10-1" tabindex="-1"></a>.<span class="kw">mode</span> <span class="kw">column</span></span>
+<span id="cb10-2"><a href="sql.html#cb10-2" tabindex="-1"></a>.<span class="kw">header</span> <span class="kw">on</span></span></code></pre></div>
 <p>Una vez con esta configuración, si queremos ver la información que hay en cada tabla podemos usar:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="sql.html#cb11-1" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> SELECT <span class="pp">*</span> FROM Person</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb11-1"><a href="sql.html#cb11-1" tabindex="-1"></a>sqlite<span class="op">&gt;</span> <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Person</span></code></pre></div>
 <pre class="output"><code>id        personal   family
 --------  ---------  --------
 dyer      William    Dyer
@@ -392,7 +399,7 @@ lake      Anderson   Lake
 roe       Valentina  Roerich
 danforth  Frank      Danforth</code></pre>
 <p>En esta instrucción ya estamos usando la palabra clave <code>SELECT</code>, la cual nos sirve para seleccionar columnas del data base. Por ejemplo si quisieramos seleccionar solo <code>family</code> y <code>personal</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="sql.html#cb13-1" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> SELECT family, personal FROM Person<span class="kw">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb13-1"><a href="sql.html#cb13-1" tabindex="-1"></a>sqlite<span class="op">&gt;</span> <span class="kw">SELECT</span> family, personal <span class="kw">FROM</span> Person;</span></code></pre></div>
 <pre class="output"><code>Dyer|William
 Pabodie|Frank
 Lake|Anderson
@@ -405,6 +412,49 @@ Danforth|Frank</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb17-1"><a href="sql.html#cb17-1" tabindex="-1"></a><span class="kw">SeLeCt</span> <span class="op">*</span> <span class="kw">FrOm</span> PeRSoN;</span></code></pre></div>
 <p>Todas estas consultas realizan la misma acción: seleccionar todas las columnas de la tabla <code>Person</code>. SQL ignora completamente las diferencias de mayúsculas y minúsculas en los comandos y los nombres de tablas y columnas.</p>
 <p>Esto significa que puedes escribir tus comandos SQL utilizando mayúsculas, minúsculas o una combinación de ambas, según tu preferencia o estilo de codificación. Sin embargo, se recomienda mantener una convención de nomenclatura consistente para mejorar la legibilidad y mantenibilidad del código.</p>
+<p>En SQL, es importante terminar cada comando con un punto y coma (<code>;</code>). Si olvidas incluir el punto y coma al final de un comando y presionas Enter, SQL interpretará que el comando no ha finalizado y mostrará un prompt adicional (<code>...&gt;</code>). Esto puede ser confuso para principiantes y expertos por igual.</p>
+<p>Por ejemplo, si ejecutas un comando como:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb18-1"><a href="sql.html#cb18-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">id</span> <span class="kw">FROM</span> Person</span></code></pre></div>
+<p>Sin agregar el punto y coma al final, SQL mostrará un prompt adicional:</p>
+<pre class="output"><code>...&gt;</code></pre>
+<p>Para corregir esto, simplemente agrega el punto y coma al final del comando y presiona Enter:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb20-1"><a href="sql.html#cb20-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">id</span> <span class="kw">FROM</span> Person;</span></code></pre></div>
+<p>Es importante comprender que las filas y columnas en una tabla de base de datos no se almacenan en un orden específico. Siempre se mostrarán en algún orden, pero podemos controlarlo de varias maneras.</p>
+<p>Por ejemplo, podemos intercambiar las columnas en la salida de la consulta:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb21-1"><a href="sql.html#cb21-1" tabindex="-1"></a><span class="kw">SELECT</span> personal, family <span class="kw">FROM</span> Person;</span></code></pre></div>
+<p>También podemos repetir las columnas:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb22-1"><a href="sql.html#cb22-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">id</span>, <span class="kw">id</span>, <span class="kw">id</span> <span class="kw">FROM</span> Person;</span></code></pre></div>
+<p>Como atajo, podemos seleccionar todas las columnas en una tabla usando <code>*</code>:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb23-1"><a href="sql.html#cb23-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Person;</span></code></pre></div>
+<p>El estilo de escritura de consultas puede variar entre usuarios. Algunos prefieren escribir en minúsculas, otros en mayúsculas, y algunos utilizan una combinación de ambos. SQL es insensible a mayúsculas y minúsculas, lo que significa que <code>SELECT</code> y <code>select</code> son equivalentes.</p>
+<p>Por ejemplo:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb24-1"><a href="sql.html#cb24-1" tabindex="-1"></a><span class="kw">SELECT</span> personal, family <span class="kw">FROM</span> person;</span></code></pre></div>
+<p>O:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb25-1"><a href="sql.html#cb25-1" tabindex="-1"></a><span class="kw">select</span> Personal, Family <span class="kw">from</span> PERSON;</span></code></pre></div>
+<p><strong>Ejercicio 1:</strong> ¿Qué columnas de la base de datos son enteros? ¿Cómo realizas esa consulta en SQL?</p>
+<p><strong>Ejercicio 2:</strong> Realiza un query de la columna <code>name</code> de lde la tabla <code>Site</code>.</p>
+</div>
+<div id="ordenar-y-remover-duplicados" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Ordenar y remover duplicados<a href="sql.html#ordenar-y-remover-duplicados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vamos a usar SQL para responder dos preguntas específicas sobre los datos antárticos:</p>
+<ol style="list-style-type: decimal">
+<li><strong>¿Qué tipos de mediciones de cantidad se tomaron en cada sitio?</strong></li>
+<li><strong>¿Qué científicos tomaron mediciones en la expedición?</strong></li>
+</ol>
+<p>Para responder a la primera pregunta, vamos a examinar la tabla <code>Survey</code>. Dado que los datos pueden ser redundantes, la consulta inicial para seleccionar los tipos de mediciones (<code>quant</code>) muestra múltiples entradas para los mismos tipos, lo que puede ser difícil de interpretar. Por lo tanto, se utiliza la palabra clave <code>DISTINCT</code> para eliminar las entradas duplicadas y hacer que la salida sea más legible. La consulta final devuelve una lista única de los tipos de mediciones tomadas en cada sitio.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb26-1"><a href="sql.html#cb26-1" tabindex="-1"></a><span class="kw">SELECT</span> quant <span class="kw">FROM</span> Survey;</span></code></pre></div>
+<p>Para eliminar los duplicados usamos <code>DISTINCT</code></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb27-1"><a href="sql.html#cb27-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> quant <span class="kw">FROM</span> Survey;</span></code></pre></div>
+<p>Si queremos saber en que visita (<code>taken</code>) se realizo cierta medición <code>quant</code>, podemos aplicar la misma estructura de <code>DISTINCT</code> con dos columnas.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb28-1"><a href="sql.html#cb28-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> taken, quant <span class="kw">FROM</span> Survey;</span></code></pre></div>
+<p>Para responder a la segunda pregunta, se examina la tabla <code>Person</code>. Dado que los registros de la base de datos no se almacenan en un orden particular, los resultados de la consulta pueden no estar ordenados como se desee. Por lo tanto, se utiliza la cláusula <code>ORDER BY</code> para ordenar los resultados en función de la columna <code>id</code>. La consulta final devuelve la información de los científicos en orden ascendente según su identificador (<code>id</code>).</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb29-1"><a href="sql.html#cb29-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Person <span class="kw">ORDER</span> <span class="kw">BY</span> <span class="kw">id</span>;</span></code></pre></div>
+<p>Por default se ordenan en orden ascendente, pero se puede ordenar en orden descendente usando <code>DESC</code> después de <code>ORDER BY</code>.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb30-1"><a href="sql.html#cb30-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> person <span class="kw">ORDER</span> <span class="kw">BY</span> <span class="kw">id</span> <span class="kw">DESC</span>;</span></code></pre></div>
+<p>Para determinar qué científico midió las cantidades durante cada visita, se debe examinar nuevamente la tabla <code>Survey</code>.
+La consulta específica ordena los resultados primero en orden ascendente según la columna <code>taken</code>, que representa el número de visita o una marca de tiempo de la medición. Luego, dentro de cada grupo de valores iguales en la columna <code>taken</code>, los resultados se ordenan en orden descendente por la columna <code>person</code>, que contiene los nombres de los científicos.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb31-1"><a href="sql.html#cb31-1" tabindex="-1"></a><span class="kw">SELECT</span> taken, person, quant <span class="kw">FROM</span> Survey <span class="kw">ORDER</span> <span class="kw">BY</span> taken <span class="kw">ASC</span>, person <span class="kw">DESC</span>;</span></code></pre></div>
+</div>
 </div>
 <div id="explorar-datos-categóricos-y-texto-no-estructurado" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Explorar datos categóricos y texto no estructurado<a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado" class="anchor-section" aria-label="Anchor link to header"></a></h2>

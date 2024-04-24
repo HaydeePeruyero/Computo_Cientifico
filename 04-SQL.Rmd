@@ -55,6 +55,8 @@ Después de instalar SQLite3 y configurar las rutas adecuadamente, es importante
 
 ## Bases de datos y manipulación
 
+### Seleccionar datos
+
 Primero, abriremos una terminal en tu sistema operativo. Y vamos a descargar la siguiente base de datos:
 
 [survey.db](https://swcarpentry.github.io/sql-novice-survey/files/survey.db)
@@ -62,7 +64,7 @@ Primero, abriremos una terminal en tu sistema operativo. Y vamos a descargar la 
 Utiliza el comando `cd` para cambiar el directorio de trabajo de la terminal al directorio que contiene tu archivo de base de datos SQLite. Por ejemplo:
 
 ```bash
-cd ~/SQL_course/data/
+cd /files2/SQL_course24/data/
 ```
 
 Una vez en el directorio correcto, utilizamos el comando `sqlite3` seguido del nombre del archivo de la base de datos para abrir la consola de SQLite. Por ejemplo:
@@ -72,6 +74,9 @@ sqlite3 survey.db
 ```
 
 Esto abrirá la base de datos `survey.db` en la consola de SQLite, lo que nos permitirá ejecutar comandos SQL y realizar operaciones en la base de datos.
+
+**NOTA:** ¿Qué contien esta base de datos? Tiene información en la que se han descubierto expediciones lideradas por William Dyer, Frank Pabodie y Valentina Roerich a fines de la década de 1920 y principios de la década de 1930. Estas expediciones llevaron al Polo de Inaccesibilidad en el Pacífico Sur y luego hacia la Antártida. Los datos de estas expediciones se encontraron recientemente en un casillero de almacenamiento en la Universidad de Miskatonic. Se han digitalizado y procesado mediante reconocimiento óptico de caracteres (OCR).
+
 Una vez dentro de la consola de SQLite, puedes ejecutar comandos SQL como `SELECT`, `INSERT`, `UPDATE`, `DELETE`, etc., para interactuar con la base de datos.
 Para salir de la consola de SQLite y volver a la terminal, puedes usar uno de los siguientes métodos:
    
@@ -84,7 +89,7 @@ Para pedir ayuda en SQlite usamos `.help` en la consola de SQLite y presiona Ent
 
 Para saber que tablas tenemos en nuestra base de datos usamos `.table`.
 
-```bash
+```sql
 .tables
 ```
 
@@ -96,7 +101,7 @@ Person   Site     Survey   Visited
 
 Para optener más información sobre que está almacenado en cada tabla usamos `.schema`, esto nos dará un descripción de las columnas y su tipo.
 
-```bash
+```sql
 .schema
 ```
 
@@ -109,14 +114,14 @@ CREATE TABLE Visited (id integer, site text, dated text);
 
 Para cambiar la forma en que SQLite nos muestra la información:
 
-```bash
+```sql
 .mode column
 .header on
 ```
 
 Una vez con esta configuración, si queremos ver la información que hay en cada tabla podemos usar:
 
-```bash
+```sql
 sqlite> SELECT * FROM Person
 ```
 
@@ -132,7 +137,7 @@ danforth  Frank      Danforth
 
 En esta instrucción ya estamos usando la palabra clave `SELECT`, la cual nos sirve para seleccionar columnas del data base. Por ejemplo si quisieramos seleccionar solo `family` y `personal`:
 
-```bash
+```sql
 sqlite> SELECT family, personal FROM Person;
 ```
 
@@ -165,6 +170,109 @@ Todas estas consultas realizan la misma acción: seleccionar todas las columnas 
 Esto significa que puedes escribir tus comandos SQL utilizando mayúsculas, minúsculas o una combinación de ambas, según tu preferencia o estilo de codificación. Sin embargo, se recomienda mantener una convención de nomenclatura consistente para mejorar la legibilidad y mantenibilidad del código.
 
 
+En SQL, es importante terminar cada comando con un punto y coma (`;`). Si olvidas incluir el punto y coma al final de un comando y presionas Enter, SQL interpretará que el comando no ha finalizado y mostrará un prompt adicional (`...>`). Esto puede ser confuso para principiantes y expertos por igual.
+
+Por ejemplo, si ejecutas un comando como:
+
+```sql
+SELECT id FROM Person
+```
+
+Sin agregar el punto y coma al final, SQL mostrará un prompt adicional:
+
+```output
+...>
+```
+
+Para corregir esto, simplemente agrega el punto y coma al final del comando y presiona Enter:
+
+```sql
+SELECT id FROM Person;
+```
+
+Es importante comprender que las filas y columnas en una tabla de base de datos no se almacenan en un orden específico. Siempre se mostrarán en algún orden, pero podemos controlarlo de varias maneras.
+
+Por ejemplo, podemos intercambiar las columnas en la salida de la consulta:
+
+```sql
+SELECT personal, family FROM Person;
+```
+
+También podemos repetir las columnas:
+
+```sql
+SELECT id, id, id FROM Person;
+```
+
+Como atajo, podemos seleccionar todas las columnas en una tabla usando `*`:
+
+```sql
+SELECT * FROM Person;
+```
+
+El estilo de escritura de consultas puede variar entre usuarios. Algunos prefieren escribir en minúsculas, otros en mayúsculas, y algunos utilizan una combinación de ambos. SQL es insensible a mayúsculas y minúsculas, lo que significa que `SELECT` y `select` son equivalentes.
+
+Por ejemplo:
+
+```sql
+SELECT personal, family FROM person;
+```
+
+O:
+
+```sql
+select Personal, Family from PERSON;
+```
+
+**Ejercicio 1:** ¿Qué columnas de la base de datos son enteros? ¿Cómo realizas esa consulta en SQL?
+
+
+**Ejercicio 2:** Realiza un query de la columna `name` de lde la tabla `Site`.
+
+### Ordenar y remover duplicados
+
+Vamos a usar SQL para responder dos preguntas específicas sobre los datos antárticos: 
+
+1. **¿Qué tipos de mediciones de cantidad se tomaron en cada sitio?**
+2. **¿Qué científicos tomaron mediciones en la expedición?**
+
+Para responder a la primera pregunta, vamos a examinar la tabla `Survey`. Dado que los datos pueden ser redundantes, la consulta inicial para seleccionar los tipos de mediciones (`quant`) muestra múltiples entradas para los mismos tipos, lo que puede ser difícil de interpretar. Por lo tanto, se utiliza la palabra clave `DISTINCT` para eliminar las entradas duplicadas y hacer que la salida sea más legible. La consulta final devuelve una lista única de los tipos de mediciones tomadas en cada sitio.
+
+```sql
+SELECT quant FROM Survey;
+```
+
+Para eliminar los duplicados usamos `DISTINCT`
+
+```sql
+SELECT DISTINCT quant FROM Survey;
+```
+
+Si queremos saber en que visita (`taken`) se realizo cierta medición `quant`, podemos aplicar la misma estructura de `DISTINCT` con dos columnas.
+
+```sql
+SELECT DISTINCT taken, quant FROM Survey;
+```
+
+Para responder a la segunda pregunta, se examina la tabla `Person`. Dado que los registros de la base de datos no se almacenan en un orden particular, los resultados de la consulta pueden no estar ordenados como se desee. Por lo tanto, se utiliza la cláusula `ORDER BY` para ordenar los resultados en función de la columna `id`. La consulta final devuelve la información de los científicos en orden ascendente según su identificador (`id`).
+
+```sql
+SELECT * FROM Person ORDER BY id;
+```
+
+
+Por default se ordenan en orden ascendente, pero se puede ordenar en orden descendente usando `DESC` después de `ORDER BY`.
+
+```sql
+SELECT * FROM person ORDER BY id DESC;
+```
+
+Para determinar qué científico midió las cantidades durante cada visita, se debe examinar nuevamente la tabla `Survey`.
+La consulta específica ordena los resultados primero en orden ascendente según la columna `taken`, que representa el número de visita o una marca de tiempo de la medición. Luego, dentro de cada grupo de valores iguales en la columna `taken`, los resultados se ordenan en orden descendente por la columna `person`, que contiene los nombres de los científicos.
+
+```sql
+SELECT taken, person, quant FROM Survey ORDER BY taken ASC, person DESC;
+```
 
 
 ## Explorar datos categóricos y texto no estructurado
