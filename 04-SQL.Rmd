@@ -10,8 +10,162 @@ setwd(workingDir)
 ```
 
 
+SQL (Structured Query Language) es un lenguaje estándar utilizado para interactuar con bases de datos relacionales. Con SQL, puedes realizar diversas operaciones, como crear, modificar y eliminar bases de datos, tablas y registros, así como recuperar y manipular datos almacenados en ellas.
+
+Cuando usamos una hoja de calculo, por lo general colocamos fórmulas para calcular nuevos valores basados en los ya existentes. Cuando usamos una base de datos relacional, enviamos comandos (queries) al manejador de la base de datos y el programa los manipula por nosotros y nos regresa los resultados en un formato tabular que podemos usar como punto de partida de otros queries.
+
+Aunque muchos sistemas de gestión de bases de datos (DBMS) entienden SQL, cada uno de ellos tiene su propia forma de almacenar los datos. Esto significa que si creas una base de datos en un sistema, como Oracle, no podrás usarla directamente en otro sistema, como MySQL, sin realizar ciertas adaptaciones.
+
+Cada DBMS tiene su propio conjunto de reglas, estructuras de datos y optimizaciones internas que afectan cómo se almacenan y manipulan los datos. Por lo tanto, las bases de datos creadas en uno de estos sistemas no son directamente compatibles con los otros.
+
+Sin embargo, la mayoría de los sistemas de gestión de bases de datos ofrecen opciones para importar y exportar datos en diferentes formatos, como CSV (valores separados por comas) y SQL. Esto significa que puedes extraer los datos de una base de datos en un sistema y luego importarlos en otro sistema usando uno de estos formatos comunes.
+
+Por ejemplo, podrías exportar los datos de una base de datos PostgreSQL a un archivo CSV y luego importar ese archivo CSV en una base de datos MySQL. Del mismo modo, podrías exportar una base de datos Oracle en formato SQL y luego ejecutar ese script SQL en una base de datos MySQL para recrear la estructura y los datos en el nuevo sistema.
+
+### Instalación
+
+Vamos a usar [SQLite](https://www.sqlite.org/).
+
+- macOS: es probable que ya tengas SQLite instalado. Para confirmarlo, puedes ejecutar el siguiente comando en una terminal:
+
+```bash
+sqlite3 --version
+```
+
+Esto te mostrará la versión de SQLite instalada en tu sistema. Si necesitas una interfaz gráfica para trabajar con bases de datos SQLite, puedes descargar "[DB Browser for SQLite](https://sqlitebrowser.org/)" desde su sitio web oficial.
+
+- Linux: En sistemas Linux, es posible que SQLite3 ya esté instalado. Para verificar si está instalado y ver la ruta del programa, puedes usar el comando:
+
+```bash
+which sqlite3
+```
+
+Si SQLite3 no está instalado, puedes instalarlo fácilmente desde el gestor de paquetes de tu distribución. Por ejemplo, en Debian/Ubuntu, puedes usar el siguiente comando:
+
+```bash
+sudo apt install sqlite3
+```
+
+- Windows: Para usuarios de Windows, se recomienda ejecutar los instaladores como administrador. Asegúrate de seleccionar la versión del instalador adecuada para tu sistema operativo. Se recomienda utilizar git para Windows, ya que proporciona una terminal que es compatible con muchos comandos UNIX, incluido SQLite3.
+Durante la instalación, si el instalador pregunta si deseas agregar la ruta del ejecutable a las variables de entorno (environment variables), selecciona "sí". De lo contrario, tendrás que agregar manualmente la ruta del ejecutable a las variables de entorno PATH. Esto le dice al sistema dónde encontrar el programa ejecutable.
+
+- Configuración de Anaconda: Si están utilizando Anaconda, puedes consultar la documentación específica de Anaconda sobre [SQLite](https://anaconda.org/anaconda/sqlite) para obtener instrucciones sobre cómo instalarlo y configurarlo correctamente.
+
+Después de instalar SQLite3 y configurar las rutas adecuadamente, es importante cerrar la terminal y abrir una nueva. Esto garantiza que las rutas y configuraciones se carguen correctamente en la nueva sesión de terminal.
 
 ## Bases de datos y manipulación
+
+Primero, abriremos una terminal en tu sistema operativo. Y vamos a descargar la siguiente base de datos:
+
+[survey.db](https://swcarpentry.github.io/sql-novice-survey/files/survey.db)
+
+Utiliza el comando `cd` para cambiar el directorio de trabajo de la terminal al directorio que contiene tu archivo de base de datos SQLite. Por ejemplo:
+
+```bash
+cd ~/SQL_course/data/
+```
+
+Una vez en el directorio correcto, utilizamos el comando `sqlite3` seguido del nombre del archivo de la base de datos para abrir la consola de SQLite. Por ejemplo:
+
+```bash
+sqlite3 survey.db
+```
+
+Esto abrirá la base de datos `survey.db` en la consola de SQLite, lo que nos permitirá ejecutar comandos SQL y realizar operaciones en la base de datos.
+Una vez dentro de la consola de SQLite, puedes ejecutar comandos SQL como `SELECT`, `INSERT`, `UPDATE`, `DELETE`, etc., para interactuar con la base de datos.
+Para salir de la consola de SQLite y volver a la terminal, puedes usar uno de los siguientes métodos:
+   
+   - Escribe `.exit` o `.quit` seguido de Enter en la consola de SQLite.
+   - En algunas terminales, puedes presionar Ctrl-D para salir de SQLite.
+   
+Para pedir ayuda en SQlite usamos `.help` en la consola de SQLite y presiona Enter. Esto mostrará una lista de comandos disponibles y una breve descripción de cada uno.
+
+**Nota:** Los comandos en SQLite comienzan con `.` para diferenciarlos de los propios de `SQL`. Otro punto importante es que los comando no son sesitivos a mayúsculas o minúsculas y los comandos deben terminar con `;`.
+
+Para saber que tablas tenemos en nuestra base de datos usamos `.table`.
+
+```bash
+.tables
+```
+
+
+```output
+sqlite> .tables
+Person   Site     Survey   Visited
+```
+
+Para optener más información sobre que está almacenado en cada tabla usamos `.schema`, esto nos dará un descripción de las columnas y su tipo.
+
+```bash
+.schema
+```
+
+```output
+CREATE TABLE Person (id text, personal text, family text);
+CREATE TABLE Site (name text, lat real, long real);
+CREATE TABLE Survey (taken integer, person text, quant text, reading real);
+CREATE TABLE Visited (id integer, site text, dated text);
+```
+
+Para cambiar la forma en que SQLite nos muestra la información:
+
+```bash
+.mode column
+.header on
+```
+
+Una vez con esta configuración, si queremos ver la información que hay en cada tabla podemos usar:
+
+```bash
+sqlite> SELECT * FROM Person
+```
+
+```output
+id        personal   family
+--------  ---------  --------
+dyer      William    Dyer
+pb        Frank      Pabodie
+lake      Anderson   Lake
+roe       Valentina  Roerich
+danforth  Frank      Danforth
+```
+
+En esta instrucción ya estamos usando la palabra clave `SELECT`, la cual nos sirve para seleccionar columnas del data base. Por ejemplo si quisieramos seleccionar solo `family` y `personal`:
+
+```bash
+sqlite> SELECT family, personal FROM Person;
+```
+
+```output
+Dyer|William
+Pabodie|Frank
+Lake|Anderson
+Roerich|Valentina
+Danforth|Frank
+```
+
+**Nota:** SQL no distingue entre mayúsculas y minúsculas. Esto se aplica tanto a las palabras clave de SQL (como SELECT, FROM, WHERE, etc.) como a los nombres de las tablas, columnas y cualquier otro identificador que puedas usar en tus consultas SQL.
+
+Por ejemplo, las siguientes consultas son equivalentes en SQL:
+
+```sql
+SELECT * FROM Person;
+```
+
+```sql
+select * from PERSON;
+```
+
+```sql
+SeLeCt * FrOm PeRSoN;
+```
+
+Todas estas consultas realizan la misma acción: seleccionar todas las columnas de la tabla `Person`. SQL ignora completamente las diferencias de mayúsculas y minúsculas en los comandos y los nombres de tablas y columnas.
+
+Esto significa que puedes escribir tus comandos SQL utilizando mayúsculas, minúsculas o una combinación de ambas, según tu preferencia o estilo de codificación. Sin embargo, se recomienda mantener una convención de nomenclatura consistente para mejorar la legibilidad y mantenibilidad del código.
+
+
+
 
 ## Explorar datos categóricos y texto no estructurado
 

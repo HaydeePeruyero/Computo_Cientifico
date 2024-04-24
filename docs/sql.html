@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-03-04" />
+<meta name="date" content="2024-04-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -128,18 +192,63 @@
 </ul></li>
 <li class="chapter" data-level="4" data-path="python.html"><a href="python.html"><i class="fa fa-check"></i><b>4</b> Python</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="python.html"><a href="python.html#tipos-de-datos"><i class="fa fa-check"></i><b>4.1</b> Tipos de datos</a></li>
-<li class="chapter" data-level="4.2" data-path="python.html"><a href="python.html#flujo-de-control"><i class="fa fa-check"></i><b>4.2</b> Flujo de control</a></li>
-<li class="chapter" data-level="4.3" data-path="python.html"><a href="python.html#visualización-de-datos"><i class="fa fa-check"></i><b>4.3</b> Visualización de datos</a></li>
-<li class="chapter" data-level="4.4" data-path="python.html"><a href="python.html#manipulación-de-bases-de-datos"><i class="fa fa-check"></i><b>4.4</b> Manipulación de bases de datos</a></li>
-<li class="chapter" data-level="4.5" data-path="python.html"><a href="python.html#análisis-exploratorio-de-bases-de-datos"><i class="fa fa-check"></i><b>4.5</b> Análisis exploratorio de bases de datos</a></li>
-<li class="chapter" data-level="4.6" data-path="python.html"><a href="python.html#funciones-y-scripts"><i class="fa fa-check"></i><b>4.6</b> Funciones y scripts</a></li>
-<li class="chapter" data-level="4.7" data-path="python.html"><a href="python.html#buenas-practicas"><i class="fa fa-check"></i><b>4.7</b> Buenas practicas</a></li>
-<li class="chapter" data-level="4.8" data-path="python.html"><a href="python.html#procesamiento-de-alto-rendimiento"><i class="fa fa-check"></i><b>4.8</b> Procesamiento de alto rendimiento</a></li>
-<li class="chapter" data-level="4.9" data-path="python.html"><a href="python.html#programación-en-paralelo"><i class="fa fa-check"></i><b>4.9</b> Programación en paralelo</a></li>
+<li class="chapter" data-level="4.1" data-path="python.html"><a href="python.html#breve-introducción-a-los-lenguajes-de-programación."><i class="fa fa-check"></i><b>4.1</b> Breve introducción a los lenguajes de programación.</a></li>
+<li class="chapter" data-level="4.2" data-path="python.html"><a href="python.html#entornos-interactivos"><i class="fa fa-check"></i><b>4.2</b> Entornos interactivos</a></li>
+<li class="chapter" data-level="4.3" data-path="python.html"><a href="python.html#palabras-reservadas-de-python."><i class="fa fa-check"></i><b>4.3</b> Palabras reservadas de Python.</a></li>
+<li class="chapter" data-level="4.4" data-path="python.html"><a href="python.html#sintaxis-de-nombres-en-python"><i class="fa fa-check"></i><b>4.4</b> Sintaxis de nombres en Python</a></li>
+<li class="chapter" data-level="4.5" data-path="python.html"><a href="python.html#tipos-de-datos"><i class="fa fa-check"></i><b>4.5</b> Tipos de datos</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="python.html"><a href="python.html#números"><i class="fa fa-check"></i><b>4.5.1</b> Números</a></li>
+<li class="chapter" data-level="4.5.2" data-path="python.html"><a href="python.html#cadenas-de-caracteres"><i class="fa fa-check"></i><b>4.5.2</b> Cadenas de Caracteres</a></li>
+<li class="chapter" data-level="4.5.3" data-path="python.html"><a href="python.html#listas"><i class="fa fa-check"></i><b>4.5.3</b> Listas</a></li>
+<li class="chapter" data-level="4.5.4" data-path="python.html"><a href="python.html#tuplas"><i class="fa fa-check"></i><b>4.5.4</b> Tuplas</a></li>
+<li class="chapter" data-level="4.5.5" data-path="python.html"><a href="python.html#conjuntos"><i class="fa fa-check"></i><b>4.5.5</b> Conjuntos</a></li>
+<li class="chapter" data-level="4.5.6" data-path="python.html"><a href="python.html#diccionarios"><i class="fa fa-check"></i><b>4.5.6</b> Diccionarios</a></li>
+<li class="chapter" data-level="4.5.7" data-path="python.html"><a href="python.html#ejercicios"><i class="fa fa-check"></i><b>4.5.7</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="python.html"><a href="python.html#flujo-de-control"><i class="fa fa-check"></i><b>4.6</b> Flujo de control</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="python.html"><a href="python.html#estructuras-de-control-condicionales"><i class="fa fa-check"></i><b>4.6.1</b> Estructuras de Control Condicionales</a></li>
+<li class="chapter" data-level="4.6.2" data-path="python.html"><a href="python.html#estructuras-de-control-de-bucles"><i class="fa fa-check"></i><b>4.6.2</b> Estructuras de Control de Bucles</a></li>
+<li class="chapter" data-level="4.6.3" data-path="python.html"><a href="python.html#estructuras-de-control-de-interrupción"><i class="fa fa-check"></i><b>4.6.3</b> Estructuras de Control de Interrupción</a></li>
+<li class="chapter" data-level="4.6.4" data-path="python.html"><a href="python.html#expresiones-condicionales"><i class="fa fa-check"></i><b>4.6.4</b> Expresiones condicionales</a></li>
+<li class="chapter" data-level="4.6.5" data-path="python.html"><a href="python.html#iteraciones-sobre-secuencias"><i class="fa fa-check"></i><b>4.6.5</b> Iteraciones sobre secuencias</a></li>
+<li class="chapter" data-level="4.6.6" data-path="python.html"><a href="python.html#iteraciones-sobre-diccionarios"><i class="fa fa-check"></i><b>4.6.6</b> Iteraciones sobre diccionarios</a></li>
+<li class="chapter" data-level="4.6.7" data-path="python.html"><a href="python.html#compresiones-de-listas"><i class="fa fa-check"></i><b>4.6.7</b> Compresiones de listas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="python.html"><a href="python.html#numpy"><i class="fa fa-check"></i><b>4.7</b> Numpy</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="python.html"><a href="python.html#operaciones-básicas-con-numpy"><i class="fa fa-check"></i><b>4.7.1</b> Operaciones Básicas con NumPy</a></li>
+<li class="chapter" data-level="4.7.2" data-path="python.html"><a href="python.html#indexación-y-rebanado"><i class="fa fa-check"></i><b>4.7.2</b> Indexación y Rebanado</a></li>
+<li class="chapter" data-level="4.7.3" data-path="python.html"><a href="python.html#vistas-y-copias"><i class="fa fa-check"></i><b>4.7.3</b> Vistas y copias</a></li>
+<li class="chapter" data-level="4.7.4" data-path="python.html"><a href="python.html#ordenamiento"><i class="fa fa-check"></i><b>4.7.4</b> Ordenamiento</a></li>
+<li class="chapter" data-level="4.7.5" data-path="python.html"><a href="python.html#broadcasting"><i class="fa fa-check"></i><b>4.7.5</b> Broadcasting</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="python.html"><a href="python.html#visualización-de-datos"><i class="fa fa-check"></i><b>4.8</b> Visualización de datos</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="python.html"><a href="python.html#bases-de-un-plot"><i class="fa fa-check"></i><b>4.8.1</b> Bases de un plot</a></li>
+<li class="chapter" data-level="4.8.2" data-path="python.html"><a href="python.html#tipos-de-plots"><i class="fa fa-check"></i><b>4.8.2</b> Tipos de plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="python.html"><a href="python.html#data-frames-con-pandas"><i class="fa fa-check"></i><b>4.9</b> Data frames con pandas</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="python.html"><a href="python.html#funciones-para-manipular-dataframes"><i class="fa fa-check"></i><b>4.9.1</b> Funciones para manipular dataframes</a></li>
+<li class="chapter" data-level="4.9.2" data-path="python.html"><a href="python.html#pivot-y-pivot_table"><i class="fa fa-check"></i><b>4.9.2</b> <code>pivot</code> y <code>pivot_table</code></a></li>
+<li class="chapter" data-level="4.9.3" data-path="python.html"><a href="python.html#plots-en-pandas"><i class="fa fa-check"></i><b>4.9.3</b> Plots en pandas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="python.html"><a href="python.html#análisis-exploratorio-de-bases-de-datos"><i class="fa fa-check"></i><b>4.10</b> Análisis exploratorio de bases de datos</a></li>
+<li class="chapter" data-level="4.11" data-path="python.html"><a href="python.html#funciones-y-scripts"><i class="fa fa-check"></i><b>4.11</b> Funciones y scripts</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="python.html"><a href="python.html#funciones"><i class="fa fa-check"></i><b>4.11.1</b> Funciones</a></li>
+<li class="chapter" data-level="4.11.2" data-path="python.html"><a href="python.html#scripts-1"><i class="fa fa-check"></i><b>4.11.2</b> Scripts</a></li>
+<li class="chapter" data-level="4.11.3" data-path="python.html"><a href="python.html#test"><i class="fa fa-check"></i><b>4.11.3</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="python.html"><a href="python.html#buenas-practicas"><i class="fa fa-check"></i><b>4.12</b> Buenas practicas</a></li>
+<li class="chapter" data-level="4.13" data-path="python.html"><a href="python.html#procesamiento-de-alto-rendimiento"><i class="fa fa-check"></i><b>4.13</b> Procesamiento de alto rendimiento</a></li>
+<li class="chapter" data-level="4.14" data-path="python.html"><a href="python.html#programación-en-paralelo"><i class="fa fa-check"></i><b>4.14</b> Programación en paralelo</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>5</b> SQL</a>
 <ul>
+<li class="chapter" data-level="5.0.1" data-path="sql.html"><a href="sql.html#instalación"><i class="fa fa-check"></i><b>5.0.1</b> Instalación</a></li>
 <li class="chapter" data-level="5.1" data-path="sql.html"><a href="sql.html#bases-de-datos-y-manipulación"><i class="fa fa-check"></i><b>5.1</b> Bases de datos y manipulación</a></li>
 <li class="chapter" data-level="5.2" data-path="sql.html"><a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado"><i class="fa fa-check"></i><b>5.2</b> Explorar datos categóricos y texto no estructurado</a></li>
 <li class="chapter" data-level="5.3" data-path="sql.html"><a href="sql.html#comparación-con-los-otros-programas"><i class="fa fa-check"></i><b>5.3</b> Comparación con los otros programas</a></li>
@@ -150,17 +259,49 @@
 <ul>
 <li class="chapter" data-level="6.1" data-path="power-bi.html"><a href="power-bi.html#introducción-a-power-bi"><i class="fa fa-check"></i><b>6.1</b> Introducción a Power BI</a></li>
 <li class="chapter" data-level="6.2" data-path="power-bi.html"><a href="power-bi.html#transformando-y-visualizando-datos"><i class="fa fa-check"></i><b>6.2</b> Transformando y visualizando datos</a></li>
-<li class="chapter" data-level="6.3" data-path="power-bi.html"><a href="power-bi.html#manipulación-de-bases-de-datos-1"><i class="fa fa-check"></i><b>6.3</b> Manipulación de bases de datos</a></li>
+<li class="chapter" data-level="6.3" data-path="power-bi.html"><a href="power-bi.html#manipulación-de-bases-de-datos"><i class="fa fa-check"></i><b>6.3</b> Manipulación de bases de datos</a></li>
 <li class="chapter" data-level="6.4" data-path="power-bi.html"><a href="power-bi.html#análisis-exploratorio-de-bases-de-datos-1"><i class="fa fa-check"></i><b>6.4</b> Análisis exploratorio de bases de datos</a></li>
 <li class="chapter" data-level="6.5" data-path="power-bi.html"><a href="power-bi.html#variables-categóricas-y-continuas"><i class="fa fa-check"></i><b>6.5</b> Variables categóricas y continuas</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>7</b> R</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="r.html"><a href="r.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>7.1</b> Tipos de datos</a></li>
-<li class="chapter" data-level="7.2" data-path="r.html"><a href="r.html#manipulación-de-bases-de-datos-2"><i class="fa fa-check"></i><b>7.2</b> Manipulación de bases de datos</a></li>
-<li class="chapter" data-level="7.3" data-path="r.html"><a href="r.html#análisis-exploratorio-de-bases-de-datos-2"><i class="fa fa-check"></i><b>7.3</b> Análisis exploratorio de bases de datos</a></li>
-<li class="chapter" data-level="7.4" data-path="r.html"><a href="r.html#reportes-con-rmarkdown"><i class="fa fa-check"></i><b>7.4</b> Reportes con RMarkdown</a></li>
-<li class="chapter" data-level="7.5" data-path="r.html"><a href="r.html#páginas-web"><i class="fa fa-check"></i><b>7.5</b> Páginas web</a></li>
+<li class="chapter" data-level="7.1" data-path="r.html"><a href="r.html#tipos-de-datos-1"><i class="fa fa-check"></i><b>7.1</b> Tipos de datos</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="r.html"><a href="r.html#vectores-en-r"><i class="fa fa-check"></i><b>7.1.1</b> Vectores en R</a></li>
+<li class="chapter" data-level="7.1.2" data-path="r.html"><a href="r.html#arreglos"><i class="fa fa-check"></i><b>7.1.2</b> Arreglos</a></li>
+<li class="chapter" data-level="7.1.3" data-path="r.html"><a href="r.html#matrices"><i class="fa fa-check"></i><b>7.1.3</b> Matrices</a></li>
+<li class="chapter" data-level="7.1.4" data-path="r.html"><a href="r.html#dataframes"><i class="fa fa-check"></i><b>7.1.4</b> Dataframes</a></li>
+<li class="chapter" data-level="7.1.5" data-path="r.html"><a href="r.html#listas-1"><i class="fa fa-check"></i><b>7.1.5</b> Listas</a></li>
+<li class="chapter" data-level="7.1.6" data-path="r.html"><a href="r.html#factores"><i class="fa fa-check"></i><b>7.1.6</b> Factores</a></li>
+<li class="chapter" data-level="7.1.7" data-path="r.html"><a href="r.html#atributos-de-objetos"><i class="fa fa-check"></i><b>7.1.7</b> Atributos de objetos</a></li>
+<li class="chapter" data-level="7.1.8" data-path="r.html"><a href="r.html#ejercicios-1"><i class="fa fa-check"></i><b>7.1.8</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="r.html"><a href="r.html#estructuras-de-control"><i class="fa fa-check"></i><b>7.2</b> Estructuras de control</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="r.html"><a href="r.html#condicional-if"><i class="fa fa-check"></i><b>7.2.1</b> Condicional <code>if</code></a></li>
+<li class="chapter" data-level="7.2.2" data-path="r.html"><a href="r.html#ciclo-for"><i class="fa fa-check"></i><b>7.2.2</b> Ciclo <code>for</code></a></li>
+<li class="chapter" data-level="7.2.3" data-path="r.html"><a href="r.html#ciclo-while"><i class="fa fa-check"></i><b>7.2.3</b> Ciclo <code>while</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="r.html"><a href="r.html#funciones-y-operadores"><i class="fa fa-check"></i><b>7.3</b> Funciones y Operadores</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="r.html"><a href="r.html#ejercicios-2"><i class="fa fa-check"></i><b>7.3.1</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="r.html"><a href="r.html#scripts-2"><i class="fa fa-check"></i><b>7.4</b> Scripts</a></li>
+<li class="chapter" data-level="7.5" data-path="r.html"><a href="r.html#manipulación-de-bases-de-datos-1"><i class="fa fa-check"></i><b>7.5</b> Manipulación de bases de datos</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="r.html"><a href="r.html#tibbles"><i class="fa fa-check"></i><b>7.5.1</b> <code>tibbles</code></a></li>
+<li class="chapter" data-level="7.5.2" data-path="r.html"><a href="r.html#paquete-plyr"><i class="fa fa-check"></i><b>7.5.2</b> Paquete <code>plyr</code></a></li>
+<li class="chapter" data-level="7.5.3" data-path="r.html"><a href="r.html#paquete-dplyr"><i class="fa fa-check"></i><b>7.5.3</b> Paquete <code>dplyr</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="r.html"><a href="r.html#análisis-exploratorio-de-bases-de-datos-2"><i class="fa fa-check"></i><b>7.6</b> Análisis exploratorio de bases de datos</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="r.html"><a href="r.html#medidas-de-tendencia-central"><i class="fa fa-check"></i><b>7.6.1</b> Medidas de Tendencia central</a></li>
+<li class="chapter" data-level="7.6.2" data-path="r.html"><a href="r.html#medidas-de-variabilidad"><i class="fa fa-check"></i><b>7.6.2</b> Medidas de variabilidad</a></li>
+<li class="chapter" data-level="7.6.3" data-path="r.html"><a href="r.html#otras-funciones"><i class="fa fa-check"></i><b>7.6.3</b> Otras funciones</a></li>
+<li class="chapter" data-level="7.6.4" data-path="r.html"><a href="r.html#ejercicios-5"><i class="fa fa-check"></i><b>7.6.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="r.html"><a href="r.html#reportes-con-rmarkdown"><i class="fa fa-check"></i><b>7.7</b> Reportes con RMarkdown</a></li>
+<li class="chapter" data-level="7.8" data-path="r.html"><a href="r.html#páginas-web"><i class="fa fa-check"></i><b>7.8</b> Páginas web</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/HaydeePeruyero/Computo_Cientifico/" target="blank">Published with bookdown</a></li>
@@ -184,8 +325,86 @@
             <section class="normal" id="section-">
 <div id="sql" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Sección 5</span> SQL<a href="sql.html#sql" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>SQL (Structured Query Language) es un lenguaje estándar utilizado para interactuar con bases de datos relacionales. Con SQL, puedes realizar diversas operaciones, como crear, modificar y eliminar bases de datos, tablas y registros, así como recuperar y manipular datos almacenados en ellas.</p>
+<p>Cuando usamos una hoja de calculo, por lo general colocamos fórmulas para calcular nuevos valores basados en los ya existentes. Cuando usamos una base de datos relacional, enviamos comandos (queries) al manejador de la base de datos y el programa los manipula por nosotros y nos regresa los resultados en un formato tabular que podemos usar como punto de partida de otros queries.</p>
+<p>Aunque muchos sistemas de gestión de bases de datos (DBMS) entienden SQL, cada uno de ellos tiene su propia forma de almacenar los datos. Esto significa que si creas una base de datos en un sistema, como Oracle, no podrás usarla directamente en otro sistema, como MySQL, sin realizar ciertas adaptaciones.</p>
+<p>Cada DBMS tiene su propio conjunto de reglas, estructuras de datos y optimizaciones internas que afectan cómo se almacenan y manipulan los datos. Por lo tanto, las bases de datos creadas en uno de estos sistemas no son directamente compatibles con los otros.</p>
+<p>Sin embargo, la mayoría de los sistemas de gestión de bases de datos ofrecen opciones para importar y exportar datos en diferentes formatos, como CSV (valores separados por comas) y SQL. Esto significa que puedes extraer los datos de una base de datos en un sistema y luego importarlos en otro sistema usando uno de estos formatos comunes.</p>
+<p>Por ejemplo, podrías exportar los datos de una base de datos PostgreSQL a un archivo CSV y luego importar ese archivo CSV en una base de datos MySQL. Del mismo modo, podrías exportar una base de datos Oracle en formato SQL y luego ejecutar ese script SQL en una base de datos MySQL para recrear la estructura y los datos en el nuevo sistema.</p>
+<div id="instalación" class="section level3 hasAnchor" number="5.0.1">
+<h3><span class="header-section-number">5.0.1</span> Instalación<a href="sql.html#instalación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vamos a usar <a href="https://www.sqlite.org/">SQLite</a>.</p>
+<ul>
+<li>macOS: es probable que ya tengas SQLite instalado. Para confirmarlo, puedes ejecutar el siguiente comando en una terminal:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="sql.html#cb1-1" tabindex="-1"></a><span class="ex">sqlite3</span> <span class="at">--version</span></span></code></pre></div>
+<p>Esto te mostrará la versión de SQLite instalada en tu sistema. Si necesitas una interfaz gráfica para trabajar con bases de datos SQLite, puedes descargar “<a href="https://sqlitebrowser.org/">DB Browser for SQLite</a>” desde su sitio web oficial.</p>
+<ul>
+<li>Linux: En sistemas Linux, es posible que SQLite3 ya esté instalado. Para verificar si está instalado y ver la ruta del programa, puedes usar el comando:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="sql.html#cb2-1" tabindex="-1"></a><span class="fu">which</span> sqlite3</span></code></pre></div>
+<p>Si SQLite3 no está instalado, puedes instalarlo fácilmente desde el gestor de paquetes de tu distribución. Por ejemplo, en Debian/Ubuntu, puedes usar el siguiente comando:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="sql.html#cb3-1" tabindex="-1"></a><span class="fu">sudo</span> apt install sqlite3</span></code></pre></div>
+<ul>
+<li><p>Windows: Para usuarios de Windows, se recomienda ejecutar los instaladores como administrador. Asegúrate de seleccionar la versión del instalador adecuada para tu sistema operativo. Se recomienda utilizar git para Windows, ya que proporciona una terminal que es compatible con muchos comandos UNIX, incluido SQLite3.
+Durante la instalación, si el instalador pregunta si deseas agregar la ruta del ejecutable a las variables de entorno (environment variables), selecciona “sí”. De lo contrario, tendrás que agregar manualmente la ruta del ejecutable a las variables de entorno PATH. Esto le dice al sistema dónde encontrar el programa ejecutable.</p></li>
+<li><p>Configuración de Anaconda: Si están utilizando Anaconda, puedes consultar la documentación específica de Anaconda sobre <a href="https://anaconda.org/anaconda/sqlite">SQLite</a> para obtener instrucciones sobre cómo instalarlo y configurarlo correctamente.</p></li>
+</ul>
+<p>Después de instalar SQLite3 y configurar las rutas adecuadamente, es importante cerrar la terminal y abrir una nueva. Esto garantiza que las rutas y configuraciones se carguen correctamente en la nueva sesión de terminal.</p>
+</div>
 <div id="bases-de-datos-y-manipulación" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Bases de datos y manipulación<a href="sql.html#bases-de-datos-y-manipulación" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Primero, abriremos una terminal en tu sistema operativo. Y vamos a descargar la siguiente base de datos:</p>
+<p><a href="https://swcarpentry.github.io/sql-novice-survey/files/survey.db">survey.db</a></p>
+<p>Utiliza el comando <code>cd</code> para cambiar el directorio de trabajo de la terminal al directorio que contiene tu archivo de base de datos SQLite. Por ejemplo:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="sql.html#cb4-1" tabindex="-1"></a><span class="bu">cd</span> ~/SQL_course/data/</span></code></pre></div>
+<p>Una vez en el directorio correcto, utilizamos el comando <code>sqlite3</code> seguido del nombre del archivo de la base de datos para abrir la consola de SQLite. Por ejemplo:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="sql.html#cb5-1" tabindex="-1"></a><span class="ex">sqlite3</span> survey.db</span></code></pre></div>
+<p>Esto abrirá la base de datos <code>survey.db</code> en la consola de SQLite, lo que nos permitirá ejecutar comandos SQL y realizar operaciones en la base de datos.
+Una vez dentro de la consola de SQLite, puedes ejecutar comandos SQL como <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, etc., para interactuar con la base de datos.
+Para salir de la consola de SQLite y volver a la terminal, puedes usar uno de los siguientes métodos:</p>
+<ul>
+<li>Escribe <code>.exit</code> o <code>.quit</code> seguido de Enter en la consola de SQLite.</li>
+<li>En algunas terminales, puedes presionar Ctrl-D para salir de SQLite.</li>
+</ul>
+<p>Para pedir ayuda en SQlite usamos <code>.help</code> en la consola de SQLite y presiona Enter. Esto mostrará una lista de comandos disponibles y una breve descripción de cada uno.</p>
+<p><strong>Nota:</strong> Los comandos en SQLite comienzan con <code>.</code> para diferenciarlos de los propios de <code>SQL</code>. Otro punto importante es que los comando no son sesitivos a mayúsculas o minúsculas y los comandos deben terminar con <code>;</code>.</p>
+<p>Para saber que tablas tenemos en nuestra base de datos usamos <code>.table</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="sql.html#cb6-1" tabindex="-1"></a><span class="ex">.tables</span></span></code></pre></div>
+<pre class="output"><code>sqlite&gt; .tables
+Person   Site     Survey   Visited</code></pre>
+<p>Para optener más información sobre que está almacenado en cada tabla usamos <code>.schema</code>, esto nos dará un descripción de las columnas y su tipo.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="sql.html#cb8-1" tabindex="-1"></a><span class="ex">.schema</span></span></code></pre></div>
+<pre class="output"><code>CREATE TABLE Person (id text, personal text, family text);
+CREATE TABLE Site (name text, lat real, long real);
+CREATE TABLE Survey (taken integer, person text, quant text, reading real);
+CREATE TABLE Visited (id integer, site text, dated text);</code></pre>
+<p>Para cambiar la forma en que SQLite nos muestra la información:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="sql.html#cb10-1" tabindex="-1"></a><span class="ex">.mode</span> column</span>
+<span id="cb10-2"><a href="sql.html#cb10-2" tabindex="-1"></a><span class="ex">.header</span> on</span></code></pre></div>
+<p>Una vez con esta configuración, si queremos ver la información que hay en cada tabla podemos usar:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="sql.html#cb11-1" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> SELECT <span class="pp">*</span> FROM Person</span></code></pre></div>
+<pre class="output"><code>id        personal   family
+--------  ---------  --------
+dyer      William    Dyer
+pb        Frank      Pabodie
+lake      Anderson   Lake
+roe       Valentina  Roerich
+danforth  Frank      Danforth</code></pre>
+<p>En esta instrucción ya estamos usando la palabra clave <code>SELECT</code>, la cual nos sirve para seleccionar columnas del data base. Por ejemplo si quisieramos seleccionar solo <code>family</code> y <code>personal</code>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="sql.html#cb13-1" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> SELECT family, personal FROM Person<span class="kw">;</span></span></code></pre></div>
+<pre class="output"><code>Dyer|William
+Pabodie|Frank
+Lake|Anderson
+Roerich|Valentina
+Danforth|Frank</code></pre>
+<p><strong>Nota:</strong> SQL no distingue entre mayúsculas y minúsculas. Esto se aplica tanto a las palabras clave de SQL (como SELECT, FROM, WHERE, etc.) como a los nombres de las tablas, columnas y cualquier otro identificador que puedas usar en tus consultas SQL.</p>
+<p>Por ejemplo, las siguientes consultas son equivalentes en SQL:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb15-1"><a href="sql.html#cb15-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Person;</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb16-1"><a href="sql.html#cb16-1" tabindex="-1"></a><span class="kw">select</span> <span class="op">*</span> <span class="kw">from</span> PERSON;</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb17-1"><a href="sql.html#cb17-1" tabindex="-1"></a><span class="kw">SeLeCt</span> <span class="op">*</span> <span class="kw">FrOm</span> PeRSoN;</span></code></pre></div>
+<p>Todas estas consultas realizan la misma acción: seleccionar todas las columnas de la tabla <code>Person</code>. SQL ignora completamente las diferencias de mayúsculas y minúsculas en los comandos y los nombres de tablas y columnas.</p>
+<p>Esto significa que puedes escribir tus comandos SQL utilizando mayúsculas, minúsculas o una combinación de ambas, según tu preferencia o estilo de codificación. Sin embargo, se recomienda mantener una convención de nomenclatura consistente para mejorar la legibilidad y mantenibilidad del código.</p>
 </div>
 <div id="explorar-datos-categóricos-y-texto-no-estructurado" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Explorar datos categóricos y texto no estructurado<a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado" class="anchor-section" aria-label="Anchor link to header"></a></h2>
