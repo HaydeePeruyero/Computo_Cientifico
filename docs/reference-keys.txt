@@ -165,3 +165,14 @@ test
 instalación
 seleccionar-datos
 ordenar-y-remover-duplicados
+filtrar
+calcular-nuevos-valores
+funciones-de-agregación
+combinando-datos
+como-presentar-datos
+crear-bases-de-datos
+paso-1-crear-una-base-de-datos-y-conectarla
+paso-2-crear-tablas
+paso-3-insertar-datos
+paso-4-consultas
+usar-sql-con-otros-programas

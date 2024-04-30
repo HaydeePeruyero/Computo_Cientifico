@@ -274,11 +274,688 @@ La consulta específica ordena los resultados primero en orden ascendente según
 SELECT taken, person, quant FROM Survey ORDER BY taken ASC, person DESC;
 ```
 
+La consulta nos da una buena idea de qué científico estuvo involucrado en qué visita y qué mediciones realizaron durante la misma.
+
+Al observar la tabla, parece que algunos científicos se especializaron en ciertos tipos de mediciones. Podemos examinar qué científicos realizaron qué mediciones seleccionando las columnas apropiadas y eliminando duplicados.
+
+```sql
+SELECT DISTINCT quant, person FROM Survey ORDER BY quant ASC;
+```
+
+Podemos consultar las distintas fechas de visita de la tabla `Visitated`.
+
+```sql
+SELECT DISTINCT dated FROM Visited;
+```
+
+
+**Ejercicio: ** Escribir un query que regrese el nombre completo de los científicos de la tabla `Person` ordenado por apellido.
+
+### Filtrar
+
+Una de las características más potentes de una base de datos es la capacidad de filtrar datos, es decir, seleccionar solo aquellos registros que cumplan ciertos criterios. Por ejemplo, supongamos que queremos ver cuándo se visitó un sitio en particular. Podemos seleccionar estos registros de la tabla Visitado utilizando una cláusula WHERE en nuestra consulta:
+
+```sql
+SELECT * FROM Visited WHERE site = 'DR-1';
+```
+
+El administrador de la base de datos ejecuta esta consulta en dos etapas. Primero, verifica en cada fila de la tabla Visitado cuáles satisfacen la condición WHERE. Luego, utiliza los nombres de columnas que siguen a la palabra clave SELECT para determinar qué columnas mostrar.
+
+Este orden de procesamiento significa que podemos filtrar registros usando WHERE según los valores en columnas que luego no se muestran.
+
+```sql
+SELECT id FROM Visited WHERE site = 'DR-1';
+```
+
+Podemos usar varios operadores para filtrar nuestros datos. Por ejemplo, podríamos buscar toda la información del sitio `DR-1` colectada antes de 1930:
+
+```sql
+SELECT * FROM Visited WHERE site = 'DR-1' AND dated < '1930-01-01';
+```
+
+**Nota:** La mayoría de los gestores de bases de datos tienen un tipo de dato especial para las fechas. De hecho, muchos tienen dos: uno para fechas, como "31 de mayo de 1971", y otro para duraciones, como "31 días". SQLite no lo tiene: en su lugar, almacena las fechas como texto (en el formato estándar ISO-8601 "AAAA-MM-DD HH:MM:SS.SSSS"), números reales (días julianos, el número de días desde el 24 de noviembre de 4714 a.C.) o enteros (tiempo Unix, el número de segundos desde la medianoche del 1 de enero de 1970). 
+
+Si queremos saber cuales medidas fueron tomadas por Lake o Roerich, podemos combinar sus nombres usando un `OR`:
+
+```sql
+SELECT * FROM Survey WHERE person = 'lake' OR person = 'roe';
+```
+
+O podemos usar el conector `IN` con un conjunto de valores específico:
+
+```sql
+SELECT * FROM Survey WHERE person IN ('lake', 'roe');
+```
+
+Otra opción que podemos realizar es combinar más de uno de estos conectores, sin embargo debemos ser cuidadosos en el orden de ejecución:
+
+```sql
+SELECT * FROM Survey WHERE quant = 'sal' AND person = 'lake' OR person = 'roe';
+```
+
+Al no usar paréntesis opera los dos primeros conectores independientes del último OR.
+
+```sql
+SELECT * FROM Survey WHERE quant = 'sal' AND (person = 'lake' OR person = 'roe');
+```
+
+También podemos filtrar por coincidencias parciales como en bash. Por ejemplo, si queremos saber algo sobre los nombres de sitios que comienzan con "DR", podemos usar la palabra clave LIKE. El símbolo de porcentaje actúa como un comodín, coincidiendo con cualquier carácter en ese lugar. Puede usarse al principio, en medio o al final de la cadena:
+
+```sql
+SELECT * FROM Visited WHERE site LIKE 'DR%';
+```
+
+Podemos igual usar `DISTINCT` y `WHERE` juntos:
+
+```sql
+SELECT DISTINCT person, quant FROM Survey WHERE person = 'lake' OR person = 'roe';
+```
+
+**NOTA**: DISTINCT se aplica a los valores mostrados en las columnas seleccionadas, no a las filas completas mientras se están procesando.
+
+**Ejercicio 1:** Selecciona todos los sitios que están a lo más a 48 grados del ecuador.
+
+**Ejercicio 2:** La salinidad normal de las lecturas debería ser entre 0.0 y 1.0. Escribe un query que seleccione todos los registros de `Survey` con valores de salinidad ('sal') fuera de este rango.
+
+
+### Calcular nuevos valores
+
+
+Supongamos que nos dimos cuenta que debemos de hacer una correción a los datos en la medición de radiación por `5%`, en lugar de alterar la base de datos, podemos realizar esto en un query:
+
+```sql
+SELECT 1.05 * reading FROM Survey WHERE quant = 'rad';
+```
+
+Cuando ejecutamos la consulta, la expresión 1.05 * lectura se evalúa para cada fila. Las expresiones pueden usar cualquiera de los campos, todos los operadores aritméticos habituales y una variedad de funciones comunes. (Exactamente cuáles dependen del gestor de base de datos que se esté utilizando). Por ejemplo, podemos convertir lecturas de temperatura de Fahrenheit a Celsius y redondear a dos decimales:
+
+```sql
+SELECT taken, round(5 * (reading - 32) / 9, 2) FROM Survey WHERE quant = 'temp';
+```
+
+Podemos renombrar estas columnas donde estamos realizando una operación agregando la instrucción `as`:
+
+```sql
+SELECT taken, round(5 * (reading - 32) / 9, 2) as Celsius FROM Survey WHERE quant = 'temp';
+```
+
+Usando el operador `||` podemos concatenar varios valores:
+
+```sql
+SELECT personal || ' ' || family FROM Person;
+```
+
+**Ejercicio:** Después de explorar los datos, nos damos cuenta que Valentina Roerich reporto la salinidad como porcentajes. Escribe un query que regrese todas sus mediciones de la tabla `Survey` con los valores divididos por 100.
+
+El operador `UNION` combina los resultados de dos quieries:
+
+```sql
+SELECT * FROM Person WHERE id = 'dyer' UNION SELECT * FROM Person WHERE id = 'roe';
+```
+
+
+El comando UNION ALL es equivalente al operador UNION, excepto que UNION ALL seleccionará todos los valores. La diferencia es que UNION ALL no eliminará filas duplicadas. En su lugar, UNION ALL extrae todas las filas de las consultas específicas y las combina en una tabla. El comando UNION realiza un SELECT DISTINCT en el conjunto de resultados. Si todos los registros que se van a devolver son únicos en su unión, utilice UNION ALL en su lugar, ya que proporciona resultados más rápidos al omitir el paso DISTINCT. 
+
+**Ejercicio:** Utiliza UNION para crear una lista consolidada de mediciones de salinidad en la que solo las de Valentina Roerich hayan sido corregidas según el ejercicio anterior. La salida debería ser algo como:
+
+```output
+taken  reading
+-----  -------
+619    0.13
+622    0.09
+734    0.05
+751    0.1
+752    0.09
+752    0.416
+837    0.21
+837    0.225
+```
+
+**Ejercicio 2:** Los sitios de la tabla `Visited` tienen los códigos `DR-1`, `DR-3`, `MSK-4`. 
+Las funciones `instr(X, Y)` y `substr(X, I, [L])` nos ayudan para obtener una lista de identificadores principales de sitios únicos. 
+- La función `instr(X, Y)` devuelve el índice basado en 1 de la primera aparición de la cadena Y en la cadena X, o 0 si Y no existe en X.
+- La función `substr(X, I, [L])` devuelve la subcadena de X que comienza en el índice I, con una longitud opcional L.
+
+Entonces, para encontrar los identificadores principales únicos, podemos buscar los primeros dos caracteres en cada identificador de sitio. Si el identificador es de tres caracteres, solo consideraremos los dos primeros. Luego, eliminaremos duplicados de esta lista resultante. En este caso específico, la lista final debería contener solo "DR" y "MSK".
+
+Por ejemplo, la siguiente instrucción nos regresaría que la primera vez que aparece el `-` en las fechas es la posición 5.
+
+```sql
+SELECT instr(dated, '-') FROM Visited;
+```
+
+y los siguiente nos seleccionaría el año (posición 1 a la 4):
+
+```sql
+SELECT substr(dated,1,4 ) FROM Visited;
+```
+
+### Valores faltantes
+
+Los datos del mundo real nunca están completos; siempre hay información perdida. Las bases de datos representan estas lagunas utilizando un valor especial llamado nulo (null). Null no es cero, Falso o la cadena vacía; es un valor único que significa "nada aquí". Trabajar con nulos requiere saber el origen de estos y un pensamiento cuidadoso.
+
+Por defecto, SQLite no muestra los valores NULL en su salida. El comando .nullvalue hace que SQLite muestre el valor que especifiques para los nulos. Utilizaremos el valor -null- para hacer que los nulos sean más fáciles de ver:
+
+
+```sql
+.nullvalue -null-
+```
+
+Ahora por ejemplo, al consultar todas las columnas de la tabla `Visitated` vemos que el registro 752 tiene un valor nulo en fecha:
+
+```sql
+SELECT * FROM Visited;
+```
+
+Los valores nulos no son como otros valores, por ejemplo tanto si seleccionamos fechas antes de 1930 o después, no valor a lograr obtener algo para el id 752:
+
+```sql
+SELECT * FROM Visited WHERE dated < '1930-01-01';
+```
+
+```sql
+SELECT * FROM Visited WHERE dated >= '1930-01-01';
+```
+
+Las comparaciones no son las únicas operaciones que se comportan de esta manera con nulos. 1+null es null, 5*null es null, log(null) es null, y así sucesivamente. En particular, al comparar cosas con null usando = y !=, se produce null:
+
+
+```sql
+SELECT * FROM Visited WHERE dated = NULL;
+```
+
+no produce ningun output ni:
+
+```sql
+SELECT * FROM Visited WHERE dated != NULL;
+```
+Para verificar si algún valor es `null` o no, como en otros programas se usa una sentencia especial `IS NULL`:
+
+```sql
+SELECT * FROM Visited WHERE dated IS NULL;
+```
+
+O su inverso:
+
+```sql
+SELECT * FROM Visited WHERE dated IS NOT NULL;
+```
+
+Los valores nulos pueden causar dolores de cabeza dondequiera que aparezcan. Por ejemplo, supongamos que queremos encontrar todas las mediciones de salinidad que no fueron tomadas por Lake. Es natural escribir la consulta de la siguiente manera:
+
+```sql
+SELECT * FROM Survey WHERE quant = 'sal' AND person != 'lake';
+```
+
+Sin embargo, esta consulta omite los registros donde no sabemos quién tomó la medida. Una vez más, la razón es que cuando la persona es nula, la comparación != produce nulo, por lo que el registro no se conserva en nuestros resultados. Si queremos mantener estos registros, necesitamos agregar una verificación explícita:
+
+
+```sql
+SELECT * FROM Survey WHERE quant = 'sal' AND (person != 'lake' OR person IS NULL);
+```
+
+Todavía tenemos que decidir si esto es lo correcto o no. Si queremos estar absolutamente seguros de que no estamos incluyendo ninguna medida de Lake en nuestros resultados, necesitamos excluir todos los registros para los cuales no sabemos quién hizo el trabajo.
+
+A diferencia de los operadores aritméticos o booleanos, las funciones de agregación que combinan múltiples valores, como min, max o avg, ignoran los valores nulos. En la mayoría de los casos, este es un resultado deseable: por ejemplo, los valores desconocidos no afectan nuestros datos cuando los estamos promediando.
+
+
+**Ejercicio: ** Escribe un query que ordene los registros en `Visited` por fecha, omitiendo las entradas para las cuales no se tiene este valor.
+
+Si para filtrar usando `IN` con `NULL` nos encontramos un problema similar a los anteriores:
+
+```sql
+SELECT * FROM Visited WHERE dated IN ('1927-02-08', NULL);
+```
+
+Podrías esperar que la consulta anterior devolviera filas donde la fecha sea '1927-02-08' o NULL. En cambio, solo devuelve filas donde la fecha es '1927-02-08', lo mismo que obtendrías de esta consulta más simple:
+
+```sql
+SELECT * FROM Visited WHERE dated IN ('1927-02-08');
+```
+
+
+La razón es que el operador IN funciona con un conjunto de valores, pero NULL, por definición, no es un valor y, por lo tanto, simplemente se ignora.
+
+Si quisiéramos incluir realmente NULL, tendríamos que reescribir la consulta para usar la condición IS NULL:
+
+```sql
+SELECT * FROM Visited WHERE dated = '1927-02-08' OR dated IS NULL;
+```
+
+### Funciones de agregación
+
+
+Las funciones de agregación en SQL son funciones que operan sobre conjuntos de valores y devuelven un solo resultado. Se utilizan comúnmente con cláusulas como GROUP BY para resumir datos en una tabla. Algunas de las funciones de agregación más comunes en SQL:
+
+1. **MIN**: Encuentra el valor mínimo en una columna.
+ 
+```sql
+SELECT min(dated) FROM Visited;
+```
+
+2. **MAX**: Encuentra el valor máximo en una columna.
+   
+```sql
+SELECT max(dated) FROM Visited;
+```
+
+3. **AVG**: Calcula el promedio de los valores en una columna.
+   
+```sql
+SELECT avg(reading) FROM Survey WHERE quant = 'sal';
+```
+
+
+4. **COUNT**: Cuenta el número de filas en un conjunto de resultados.
+   
+```sql
+SELECT count(reading) FROM Survey WHERE quant = 'sal';
+```
+
+5. **SUM**: Calcula la suma de los valores en una columna.
+   
+```sql
+SELECT sum(reading) FROM Survey WHERE quant = 'sal';
+```
+
+
+SQL nos permite usar varias de estas funciones a la vez:
+
+```sql
+SELECT min(reading), max(reading) FROM Survey WHERE quant = 'sal' AND reading <= 1.0;
+```
+
+Estas funciones se utilizan típicamente junto con la cláusula GROUP BY para realizar operaciones de agregación en grupos específicos de datos. Por ejemplo:
+
+```sql
+SELECT columna_grupal, COUNT(*)
+FROM tabla
+GROUP BY columna_grupal;
+```
+
+Esto devolvería el número de filas para cada valor único en la columna_grupal. Las funciones de agregación son fundamentales para resumir grandes conjuntos de datos y obtener información útil de ellos.
+
+
+Veamos un ejemplo de cómo las bases de datos pueden comportarse cuando se combinan resultados agregados con resultados "en bruto".
+
+```sql
+SELECT person, count(*) FROM Survey WHERE quant = 'sal' AND reading <= 1.0;
+```
+En este caso, estás contando el número de registros donde la columna 'quant' es 'sal' y la columna 'reading' es menor o igual a 1.0. La salida muestra que Lake tiene 7 registros que cumplen con estas condiciones.
+
+La razón por la que aparece el nombre de Lake en lugar de los de Roerich o Dyer es que, cuando la base de datos tiene que agregar un campo pero no se le dice cómo hacerlo, el gestor de la base de datos elige un valor real del conjunto de entrada. Puede usar el primero procesado, el último o cualquier otro método.
+
+Otro hecho importante es que cuando no hay valores para agregar, por ejemplo, cuando no hay filas que satisfagan la cláusula WHERE, el resultado de la agregación es "no se sabe" en lugar de cero o algún otro valor arbitrario. Esto significa que la base de datos no puede determinar el resultado de la agregación y devuelve un resultado indicando esa incertidumbre.
+
+```sql
+SELECT person, max(reading), sum(reading) FROM Survey WHERE quant = 'missing';
+```
+
+
+Una característica final importante de las funciones de agregación es que son inconsistentes con el resto de SQL de una manera muy útil. Si sumamos dos valores y uno de ellos es nulo, el resultado es nulo. Por extensión, si usamos sum para sumar todos los valores en un conjunto y alguno de esos valores es nulo, el resultado también debería ser nulo. Sin embargo, es mucho más útil que las funciones de agregación ignoren los valores nulos y solo combinen aquellos que no son nulos. Este comportamiento nos permite escribir nuestras consultas de la siguiente manera:
+
+```sql
+SELECT min(dated) FROM Visited;
+```
+
+en lugar de filtrar explicitamente:
+
+```sql
+SELECT min(dated) FROM Visited WHERE dated IS NOT NULL;
+```
+
+Agrupar todos los registros a la vez no siempre tiene sentido. Por ejemplo, supongamos que sospechamos que hay un sesgo sistemático en nuestros datos y que las lecturas de radiación de algunos científicos son más altas que las de otros. Sabemos que esto no funciona:
+
+
+```sql
+SELECT person, count(reading), round(avg(reading), 2)
+FROM  Survey
+WHERE quant = 'rad';
+```
+
+debido a que el administrador de la base de datos selecciona un solo nombre arbitrario de científico en lugar de agregar por separado para cada científico. Dado que solo hay cinco científicos, podríamos escribir cinco consultas del siguiente tipo:
+
+```sql
+SELECT person, count(reading), round(avg(reading), 2)
+FROM  Survey
+WHERE quant = 'rad'
+AND   person = 'dyer';
+```
+
+Pero esto sería tedioso, y si alguna vez tuviéramos un conjunto de datos con cincuenta o quinientos científicos, las probabilidades de que hagamos todas esas consultas correctamente son pequeñas.
+
+Lo que necesitamos hacer es decirle al administrador de la base de datos que agregue las horas para cada científico por separado utilizando una cláusula GROUP BY:
+
+```sql
+SELECT   person, count(reading), round(avg(reading), 2)
+FROM     Survey
+WHERE    quant = 'rad'
+GROUP BY person;
+```
+
+GROUP BY hace exactamente lo que su nombre implica: agrupa todos los registros con el mismo valor para el campo especificado para que la agregación pueda procesar cada conjunto por separado. Dado que todos los registros en cada conjunto tienen el mismo valor para la persona, ya no importa que el administrador de la base de datos esté seleccionando uno arbitrario para mostrar junto a los valores de lectura agregados.
+
+Así como podemos ordenar por múltiples criterios a la vez, también podemos agrupar por múltiples criterios. Para obtener la lectura promedio por científico y cantidad medida, por ejemplo, simplemente agregamos otro campo a la cláusula GROUP BY:
+
+
+```sql
+SELECT   person, quant, count(reading), round(avg(reading), 2)
+FROM     Survey
+GROUP BY person, quant;
+```
+
+Hemos añadido "quant" a la lista de campos mostrados, ya que los resultados de lo contrario no tendrían mucho sentido.
+
+Vamos un paso más allá y eliminemos todas las entradas donde no sabemos quién tomó la medida:
+
+
+```sql
+SELECT   person, quant, count(reading), round(avg(reading), 2)
+FROM     Survey
+WHERE    person IS NOT NULL
+GROUP BY person, quant
+ORDER BY person, quant;
+```
+
+
+Mirando más detenidamente, esta consulta:
+
+1) Se seleccionó registros de la tabla Survey donde el campo person no era nulo;
+
+2) Se grupó esos registros en subconjuntos para que los valores de person y quant en cada subconjunto fueran iguales;
+
+3) Se ordenó esos subconjuntos primero por person y luego dentro de cada subgrupo por quant; y
+
+4) Se contó el número de registros en cada subconjunto, calculó la lectura promedio en cada uno y eligió un valor de person y quant de cada uno (no importa cuál, ya que todos son iguales).
+
+
+**Ejercicio 1:** ¿Cuántas lecturas de temperatura registró Frank Pabodie y cuál fue su valor promedio?
+ 
+**Ejercicio 2:** La media de un conjunto de valores es la suma de los valores dividida por el número de valores. ¿Significa esto que la función avg devuelve 2.0 o 3.0 cuando se le dan los valores 1.0, null y 5.0?
+
+```sql
+SELECT AVG(a) FROM (
+    SELECT 1 AS a
+    UNION ALL SELECT NULL
+    UNION ALL SELECT 5);
+```
+
+**Ejercicio 3:** Calcula la diferencia entre cada lectura individual de radiación y el promedio de todas las lecturas de radiación.
+
+
+**Ejercicio 4:** a) La función group_concat(field, separator) concatena todos los valores en un campo utilizando el carácter separador especificado (o ',' si el separador no está especificado). Utilízalo para producir una lista de una sola línea con los nombres de los científicos, como:
+
+```output
+William Dyer, Frank Pabodie, Anderson Lake, Valentina Roerich, Frank Danforth
+```
+
+b) ¿Pueden encontrar una manera de listar todos los apellidos de los científicos separados por una coma? ¿Pueden encontrar una manera de listar todos los nombres personales y apellidos de los científicos separados por una coma?
+
+
+### Combinando datos
+
+
+Para enviar nuestros datos a un sitio web que agrega datos meteorológicos históricos, es posible que necesitemos darles formato como latitud, longitud, fecha, cantidad y lectura. Sin embargo, nuestras latitudes y longitudes están en la tabla Site, mientras que las fechas de las mediciones están en la tabla Visited y las lecturas mismas están en la tabla Survey. Necesitamos combinar estas tablas de alguna manera.
+
+Nosotros tenemos las siguientes relaciones:
+
+![Datos relacionales](D:/Users/hayde/Documents/R_sites/Computo_Cientifico/img/sql-join-structure.svg)
+
+
+El comando SQL para hacer esto es JOIN. Para ver cómo funciona, comencemos uniendo las tablas Site y Visited:
+
+```sql
+SELECT * FROM Site JOIN Visited;
+```
+
+JOIN crea el producto cruzado de dos tablas, es decir, une cada registro de una tabla con cada registro de la otra tabla para dar todas las combinaciones posibles. Dado que hay tres registros en Site y ocho en Visited, la salida del join tiene 24 registros (3 * 8 = 24). Y como cada tabla tiene tres campos, la salida tiene seis campos (3 + 3 = 6).
+
+Lo que el join no ha hecho es averiguar si los registros que se están uniendo tienen algo que ver entre sí. No tiene forma de saber si lo hacen o no hasta que le digamos cómo. Para hacer eso, agregamos una cláusula que especifique que solo estamos interesados en combinaciones que tengan el mismo nombre de sitio, por lo tanto, necesitamos usar un filtro:
+
+```sql
+SELECT * FROM Site JOIN Visited ON Site.name = Visited.site;
+```
+
+ON es muy similar a WHERE, y para todas las consultas en esta lección se pueden usar de forma intercambiable. Sin embargo si hay diferencias en cómo afectan a las uniones externas. Una vez que agregamos esto a nuestra consulta, el administrador de la base de datos elimina los registros que combinaban información sobre dos sitios diferentes, dejándonos solo los que queremos.
+
+Estamos usando `Tabla.campo` para especificar los nombres de los campos en la salida del join. Hacemos esto porque las tablas pueden tener campos con el mismo nombre, y necesitamos ser específicos sobre cuáles estamos hablando. Por ejemplo, si unimos las tablas Person y Visited, el resultado heredaría un campo llamado id de cada una de las tablas originales.
+
+Ahora podemos usar la misma notación de puntos para seleccionar los tres columnas que realmente queremos de nuestro join:
+
+```sql
+SELECT Site.lat, Site.long, Visited.dated FROM Site JOIN Visited ON Site.name = Visited.site;
+```
+
+Si unir dos tablas es bueno, unir muchas tablas debe ser mejor. De hecho, podemos unir cualquier cantidad de tablas simplemente agregando más cláusulas JOIN a nuestra consulta, y más pruebas ON para filtrar las combinaciones de registros que no tienen sentido.
+
+```sql
+SELECT Site.lat, Site.long, Visited.dated, Survey.quant, Survey.reading
+FROM Site JOIN Visited JOIN Survey 
+ON Site.name = Visited.site AND Visited.id = Survey.taken AND Visited.dated IS NOT NULL;
+```
+
+Podemos decir qué registros de Site, Visited y Survey corresponden entre sí porque esas tablas contienen claves principales y claves foráneas. Una clave principal es un valor, o combinación de valores, que identifica de manera única cada registro en una tabla. Una clave foránea es un valor (o combinación de valores) de una tabla que identifica un registro único en otra tabla. Otra forma de decir esto es que una clave foránea es la clave principal de una tabla que aparece en alguna otra tabla. En nuestra base de datos, Person.id es la clave principal en la tabla Person, mientras que Survey.person es una clave foránea que relaciona las entradas de la tabla Survey con entradas en Person.
+
+La mayoría de los diseñadores de bases de datos creen que cada tabla debe tener una clave principal bien definida. También creen que esta clave debe ser independiente de los datos en sí, de modo que si alguna vez necesitamos cambiar los datos, solo necesitemos hacer un cambio en un solo lugar. Una forma fácil de hacer esto es crear un ID arbitrario y único para cada registro a medida que lo agregamos a la base de datos. Esto en realidad es muy común: esos IDs tienen nombres como "números de estudiantes" y "números de pacientes", y casi siempre resultan haber sido originalmente un identificador de registro único en algún sistema de base de datos u otro. Como demuestra la consulta a continuación, SQLite numera automáticamente los registros a medida que se agregan a las tablas, y
+
+
+```sql
+SELECT rowid, * FROM Person;
+```
+
+**Ejercicio 1:** Escribe u query que liste todos las lecturas de radiaciones del sitio `DR-1`.
+
+
+**Ejercicio 2:** Escribe un query que liste todos los sitios visitados por una persona llamada `Frank`.
+
+**Ejercicio 3:** Escribe una consulta que muestre cada sitio con su ubicación exacta (latitud, longitud) ordenada por fecha de visita, seguida del nombre personal y apellido de la persona que visitó el sitio, y el tipo de medición realizada junto con su lectura. Por favor, evita todos los valores nulos. Consejo: deberías obtener 15 registros con 8 campos.
+
+
+### Como presentar datos
+
+Ahora que hemos visto cómo funcionan las uniones, podemos entender por qué el modelo relacional es tan útil y cómo usarlo mejor. La primera regla es que cada valor debe ser atómico, es decir, no debe contener partes que podríamos querer trabajar por separado. Almacenamos los nombres personales y familiares en columnas separadas en lugar de poner el nombre completo en una sola columna para que no tengamos que usar operaciones de subcadena para obtener los componentes del nombre. Más importante aún, almacenamos las dos partes del nombre por separado porque dividir por espacios no es confiable: solo piensa en un nombre como "Eloise St. Cyr" o "Jan Mikkel Steubart".
+
+La segunda regla es que cada registro debe tener una clave primaria única. Esto puede ser un número de serie que no tiene un significado intrínseco, uno de los valores en el registro (como el campo id en la tabla Person), o incluso una combinación de valores: el triple (tomado, persona, cantidad) de la tabla Survey identifica de manera única cada medición.
+
+La tercera regla es que no debe haber información redundante. Por ejemplo, podríamos deshacernos de la tabla Site y reescribir la tabla Visited así:
+
+
+```output
+id	 lat	   long	  dated
+619	-49.85	-128.57	1927-02-08
+622	-49.85	-128.57	1927-02-10
+734	-47.15	-126.72	1930-01-07
+735	-47.15	-126.72	1930-01-12
+751	-47.15	-126.72	1930-02-26
+752	-47.15	-126.72	-null-
+837	-48.87	-123.40	1932-01-14
+844	-49.85	-128.57	1932-03-22
+```
+
+De hecho, podríamos usar una sola tabla que registrara toda la información sobre cada lectura en cada fila, tal como lo haría una hoja de cálculo. El problema es que es muy difícil mantener organizados y consistentes los datos de esta manera: si nos damos cuenta de que la fecha de una visita particular a un sitio específico es incorrecta, tenemos que cambiar múltiples registros en la base de datos. Lo que es peor, puede que tengamos que adivinar qué registros cambiar, ya que es posible que también se hayan visitado otros sitios en esa fecha.
+
+La cuarta regla es que las unidades para cada valor deben almacenarse explícitamente. Nuestra base de datos no hace esto, y eso es un problema: las mediciones de salinidad de Roerich son varias órdenes de magnitud mayores que las de cualquier otra persona, pero no sabemos si eso significa que estaba usando partes por millón en lugar de partes por mil, o si realmente hubo una anomalía salina en ese sitio en 1932.
+
+Al retroceder, los datos y las herramientas utilizadas para almacenarlos tienen una relación simbiótica: usamos tablas y uniones porque es eficiente, siempre y cuando nuestros datos estén organizados de cierta manera, pero organizamos nuestros datos de esa manera porque tenemos herramientas para manipularlos eficientemente. 
+
+
+## Crear bases de datos
+
+### Paso 1: Crear una base de datos y conectarla
+
+Iniciamos SQLite3 y creamos una nueva base de datos:
+
+```bash
+sqlite3 mi_basededatos.db
+```
+
+Esto abrirá SQLite3 y creará una nueva base de datos llamada `mi_basededatos.db`.
+
+Configuramos nuestros encabezados:
+
+```sql
+.mode column
+.header on
+```
+
+### Paso 2: Crear tablas
+
+Dentro de SQLite3, puedes crear tablas utilizando SQL. Por ejemplo, podríamos crear una tabla para almacenar información de estudiantes y otra para almacenar información de cursos. Ejecuta los siguientes comandos dentro de SQLite3:
+
+```sql
+CREATE TABLE Estudiantes (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT,
+    edad INTEGER,
+    promedio REAL
+);
+
+CREATE TABLE Cursos (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT,
+    profesor TEXT
+);
+
+CREATE TABLE Lugar(name text, lat real, long real);
+```
+
+Esto creará tres tablas: `Estudiantes`, `Cursos` y `Lugar`. La tabla `Estudiantes` tiene columnas para `id`, `nombre`, `edad` y `promedio`. La tabla `Cursos` tiene columnas para `id`, `nombre` y `profesor`.
+
+Podemos borrar la tabla `Lugar` con:
+
+```sql
+DROP TABLE Lugar;
+```
+
+Mucho cuidado con esto último, si no se cuenta con un respaldo ya se afecto definitivamente una tabla.
+
+Para agregar una nueva tabla con especificaciones proporcionadas a la base de datos existente, primero necesitamos definir la estructura de la tabla y luego ejecutar el comando `CREATE TABLE` en SQLite3.
+
+La nueva tabla con las especificaciones dadas:
+
+```sql
+CREATE TABLE NuevaTabla (
+    id INTEGER PRIMARY KEY,  -- Clave primaria, identificador único de cada registro
+    columna1 TEXT NOT NULL,  -- Restricción: No puede ser nulo
+    columna2 REAL NOT NULL,  -- Restricción: No puede ser nulo
+    columna3 TEXT NOT NULL,  -- Restricción: No puede ser nulo
+    columna4 INTEGER,        -- Podría permitirse ser nulo
+    FOREIGN KEY(columna1) REFERENCES OtraTabla(id),  -- Clave foránea que hace referencia a otra tabla
+    FOREIGN KEY(columna3) REFERENCES OtraTabla(id)   -- Clave foránea que hace referencia a otra tabla
+);
+```
+
+En este ejemplo:
+
+- Hemos creado una nueva tabla llamada `NuevaTabla`.
+- La columna `id` se ha definido como un entero y se ha marcado como clave primaria para garantizar que cada registro tenga un identificador único.
+- Las columnas `columna1`, `columna2` y `columna3` son de tipo texto, real y texto respectivamente. Se ha aplicado la restricción `NOT NULL` a estas columnas para asegurarnos de que no puedan contener valores nulos.
+- La columna `columna4` es de tipo entero y no se ha aplicado la restricción `NOT NULL`, lo que significa que puede contener valores nulos.
+- Se han agregado dos restricciones de clave foránea (`FOREIGN KEY`) que hacen referencia a las columnas `id` de otra tabla llamada `OtraTabla`.
+
+Una vez que hayas definido la estructura de la nueva tabla, puedes ejecutar el comando `CREATE TABLE` en SQLite3 para crear la tabla en tu base de datos existente.
+
+
+Después de haber creado las tablas en una base de datos, necesitamos manipular los datos dentro de esas tablas. Para hacerlo, utilizamos tres comandos principales en SQL: INSERT, UPDATE y DELETE. Estos comandos nos permiten agregar nuevos registros, actualizar registros existentes y eliminar registros, respectivamente.
+
+1. INSERT: Este comando se utiliza para agregar nuevos registros a una tabla existente.
+
+```sql
+-- Ejemplo de INSERT
+INSERT INTO Tabla (columna1, columna2, columna3)
+VALUES ('valor1', 'valor2', 'valor3');
+```
+
+En este ejemplo, estamos insertando un nuevo registro en la tabla llamada `Tabla`. Estamos especificando los valores para las columnas `columna1`, `columna2` y `columna3` usando el comando `VALUES`.
+
+2. UPDATE: Este comando se utiliza para actualizar registros existentes en una tabla.
+
+```sql
+-- Ejemplo de UPDATE
+UPDATE Tabla
+SET columna1 = 'nuevo_valor'
+WHERE condicion;
+```
+
+En este ejemplo, estamos actualizando la columna `columna1` en la tabla `Tabla` con un nuevo valor. La cláusula `WHERE` se utiliza para especificar qué registros se deben actualizar.
+
+3. DELETE: Este comando se utiliza para eliminar registros de una tabla.
+
+```sql
+-- Ejemplo de DELETE
+DELETE FROM Tabla
+WHERE condicion;
+```
+
+En este ejemplo, estamos eliminando registros de la tabla `Tabla` que cumplen con cierta condición especificada en la cláusula `WHERE`.
+
+Es importante tener cuidado al utilizar estos comandos, ya que pueden afectar a múltiples registros o incluso a toda la tabla si no se usan con precaución. Siempre es recomendable hacer una copia de seguridad de los datos antes de realizar cambios importantes en una base de datos.
+
+### Paso 3: Insertar datos
+
+Ahora, insertemos algunos datos en estas tablas. Ejecuta los siguientes comandos dentro de SQLite3:
+
+```sql
+INSERT INTO Estudiantes (nombre, edad, promedio) VALUES ('Roberta', 20, 9.5);
+INSERT INTO Estudiantes (nombre, edad, promedio) VALUES ('Diego', 22, 8.9);
+
+INSERT INTO Cursos (nombre, profesor) VALUES ('Matemáticas', 'Profesor A');
+INSERT INTO Cursos (nombre, profesor) VALUES ('Historia', 'Profesor B');
+```
+
+Esto insertará dos registros en la tabla `Estudiantes` y dos registros en la tabla `Cursos`.
+
+### Paso 4: Consultas
+
+Ahora que tenemos algunos datos en nuestras tablas, podemos hacer consultas para recuperar información. Algunos ejemplos de consultas:
+
+1. Seleccionar todos los estudiantes:
+
+```sql
+SELECT * FROM Estudiantes;
+```
+
+2. Seleccionar los cursos y sus profesores:
+
+```sql
+SELECT nombre, profesor FROM Cursos;
+```
+
+3. Seleccionar estudiantes mayores de 21 años:
+
+```sql
+SELECT * FROM Estudiantes WHERE edad > 21;
+```
+
+4. Seleccionar estudiantes cuyo promedio sea mayor o igual a 8.0:
+
+```sql
+SELECT * FROM Estudiantes WHERE promedio >= 8.0;
+```
+
+**NOTA: ** Respaldo 
+
+Al respaldar una base de datos con SQL, es importante considerar los pros y los contras de cada método. Aquí están algunos de los pros y los contras de almacena dump files en control de versiones:
+
+Pros:
+
+1. **Historial de cambios**: Almacenar archivos dump en control de versiones permite rastrear y gestionar cambios en la base de datos a lo largo del tiempo. Esto puede ser útil para auditorías y para entender cómo ha evolucionado la base de datos.
+
+2. **Portabilidad**: Los archivos de dump son archivos de texto que contienen los comandos SQL necesarios para recrear la base de datos. Esto significa que la base de datos puede ser fácilmente restaurada en diferentes entornos o por diferentes usuarios.
+
+3. **Respaldo adicional**: Los archivos de dump proporcionan una capa adicional de respaldo para la base de datos. Si algo sale mal con la base de datos, se puede utilizar el archivo dump para restaurarla a un estado anterior.
+
+Contras:
+
+1. **Complejidad**: El proceso de crear y gestionar archivos dump puede ser más complejo que simplemente realizar respaldos regulares de la base de datos. Los usuarios deben asegurarse de que los archivos dump sean consistentes y estén actualizados con la base de datos en todo momento.
+
+2. **Ineficiencia**: Los archivos dump pueden ser grandes y consumir mucho espacio en el control de versiones, especialmente para bases de datos grandes. Esto puede ralentizar las operaciones de clonación y sincronización.
+
+3. **Orden de los registros**: Los archivos dump no garantizan un orden específico para los registros en la base de datos. Esto puede dificultar la comparación entre diferentes versiones de la base de datos y la identificación de cambios específicos.
+
+
+## Usar SQL con otros programas
+
 
 ## Explorar datos categóricos y texto no estructurado
 
-## Comparación con los otros programas
-
-## Valores faltantes
-
-## Combinar bases de datos

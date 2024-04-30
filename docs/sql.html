@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-04-24" />
+<meta name="date" content="2024-04-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -253,11 +253,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1.1" data-path="sql.html"><a href="sql.html#seleccionar-datos"><i class="fa fa-check"></i><b>5.1.1</b> Seleccionar datos</a></li>
 <li class="chapter" data-level="5.1.2" data-path="sql.html"><a href="sql.html#ordenar-y-remover-duplicados"><i class="fa fa-check"></i><b>5.1.2</b> Ordenar y remover duplicados</a></li>
+<li class="chapter" data-level="5.1.3" data-path="sql.html"><a href="sql.html#filtrar"><i class="fa fa-check"></i><b>5.1.3</b> Filtrar</a></li>
+<li class="chapter" data-level="5.1.4" data-path="sql.html"><a href="sql.html#calcular-nuevos-valores"><i class="fa fa-check"></i><b>5.1.4</b> Calcular nuevos valores</a></li>
+<li class="chapter" data-level="5.1.5" data-path="sql.html"><a href="sql.html#valores-faltantes"><i class="fa fa-check"></i><b>5.1.5</b> Valores faltantes</a></li>
+<li class="chapter" data-level="5.1.6" data-path="sql.html"><a href="sql.html#funciones-de-agregación"><i class="fa fa-check"></i><b>5.1.6</b> Funciones de agregación</a></li>
+<li class="chapter" data-level="5.1.7" data-path="sql.html"><a href="sql.html#combinando-datos"><i class="fa fa-check"></i><b>5.1.7</b> Combinando datos</a></li>
+<li class="chapter" data-level="5.1.8" data-path="sql.html"><a href="sql.html#como-presentar-datos"><i class="fa fa-check"></i><b>5.1.8</b> Como presentar datos</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="sql.html"><a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado"><i class="fa fa-check"></i><b>5.2</b> Explorar datos categóricos y texto no estructurado</a></li>
-<li class="chapter" data-level="5.3" data-path="sql.html"><a href="sql.html#comparación-con-los-otros-programas"><i class="fa fa-check"></i><b>5.3</b> Comparación con los otros programas</a></li>
-<li class="chapter" data-level="5.4" data-path="sql.html"><a href="sql.html#valores-faltantes"><i class="fa fa-check"></i><b>5.4</b> Valores faltantes</a></li>
-<li class="chapter" data-level="5.5" data-path="sql.html"><a href="sql.html#combinar-bases-de-datos"><i class="fa fa-check"></i><b>5.5</b> Combinar bases de datos</a></li>
+<li class="chapter" data-level="5.2" data-path="sql.html"><a href="sql.html#crear-bases-de-datos"><i class="fa fa-check"></i><b>5.2</b> Crear bases de datos</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="sql.html"><a href="sql.html#paso-1-crear-una-base-de-datos-y-conectarla"><i class="fa fa-check"></i><b>5.2.1</b> Paso 1: Crear una base de datos y conectarla</a></li>
+<li class="chapter" data-level="5.2.2" data-path="sql.html"><a href="sql.html#paso-2-crear-tablas"><i class="fa fa-check"></i><b>5.2.2</b> Paso 2: Crear tablas</a></li>
+<li class="chapter" data-level="5.2.3" data-path="sql.html"><a href="sql.html#paso-3-insertar-datos"><i class="fa fa-check"></i><b>5.2.3</b> Paso 3: Insertar datos</a></li>
+<li class="chapter" data-level="5.2.4" data-path="sql.html"><a href="sql.html#paso-4-consultas"><i class="fa fa-check"></i><b>5.2.4</b> Paso 4: Consultas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="sql.html"><a href="sql.html#usar-sql-con-otros-programas"><i class="fa fa-check"></i><b>5.3</b> Usar SQL con otros programas</a></li>
+<li class="chapter" data-level="5.4" data-path="sql.html"><a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado"><i class="fa fa-check"></i><b>5.4</b> Explorar datos categóricos y texto no estructurado</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="power-bi.html"><a href="power-bi.html"><i class="fa fa-check"></i><b>6</b> Power BI</a>
 <ul>
@@ -454,19 +465,368 @@ Danforth|Frank</code></pre>
 <p>Para determinar qué científico midió las cantidades durante cada visita, se debe examinar nuevamente la tabla <code>Survey</code>.
 La consulta específica ordena los resultados primero en orden ascendente según la columna <code>taken</code>, que representa el número de visita o una marca de tiempo de la medición. Luego, dentro de cada grupo de valores iguales en la columna <code>taken</code>, los resultados se ordenan en orden descendente por la columna <code>person</code>, que contiene los nombres de los científicos.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb31-1"><a href="sql.html#cb31-1" tabindex="-1"></a><span class="kw">SELECT</span> taken, person, quant <span class="kw">FROM</span> Survey <span class="kw">ORDER</span> <span class="kw">BY</span> taken <span class="kw">ASC</span>, person <span class="kw">DESC</span>;</span></code></pre></div>
+<p>La consulta nos da una buena idea de qué científico estuvo involucrado en qué visita y qué mediciones realizaron durante la misma.</p>
+<p>Al observar la tabla, parece que algunos científicos se especializaron en ciertos tipos de mediciones. Podemos examinar qué científicos realizaron qué mediciones seleccionando las columnas apropiadas y eliminando duplicados.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb32-1"><a href="sql.html#cb32-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> quant, person <span class="kw">FROM</span> Survey <span class="kw">ORDER</span> <span class="kw">BY</span> quant <span class="kw">ASC</span>;</span></code></pre></div>
+<p>Podemos consultar las distintas fechas de visita de la tabla <code>Visitated</code>.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb33-1"><a href="sql.html#cb33-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> dated <span class="kw">FROM</span> Visited;</span></code></pre></div>
+<p><strong>Ejercicio: </strong> Escribir un query que regrese el nombre completo de los científicos de la tabla <code>Person</code> ordenado por apellido.</p>
+</div>
+<div id="filtrar" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Filtrar<a href="sql.html#filtrar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una de las características más potentes de una base de datos es la capacidad de filtrar datos, es decir, seleccionar solo aquellos registros que cumplan ciertos criterios. Por ejemplo, supongamos que queremos ver cuándo se visitó un sitio en particular. Podemos seleccionar estos registros de la tabla Visitado utilizando una cláusula WHERE en nuestra consulta:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb34-1"><a href="sql.html#cb34-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> site <span class="op">=</span> <span class="st">&#39;DR-1&#39;</span>;</span></code></pre></div>
+<p>El administrador de la base de datos ejecuta esta consulta en dos etapas. Primero, verifica en cada fila de la tabla Visitado cuáles satisfacen la condición WHERE. Luego, utiliza los nombres de columnas que siguen a la palabra clave SELECT para determinar qué columnas mostrar.</p>
+<p>Este orden de procesamiento significa que podemos filtrar registros usando WHERE según los valores en columnas que luego no se muestran.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb35-1"><a href="sql.html#cb35-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">id</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> site <span class="op">=</span> <span class="st">&#39;DR-1&#39;</span>;</span></code></pre></div>
+<p>Podemos usar varios operadores para filtrar nuestros datos. Por ejemplo, podríamos buscar toda la información del sitio <code>DR-1</code> colectada antes de 1930:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb36-1"><a href="sql.html#cb36-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> site <span class="op">=</span> <span class="st">&#39;DR-1&#39;</span> <span class="kw">AND</span> dated <span class="op">&lt;</span> <span class="st">&#39;1930-01-01&#39;</span>;</span></code></pre></div>
+<p><strong>Nota:</strong> La mayoría de los gestores de bases de datos tienen un tipo de dato especial para las fechas. De hecho, muchos tienen dos: uno para fechas, como “31 de mayo de 1971”, y otro para duraciones, como “31 días”. SQLite no lo tiene: en su lugar, almacena las fechas como texto (en el formato estándar ISO-8601 “AAAA-MM-DD HH:MM:SS.SSSS”), números reales (días julianos, el número de días desde el 24 de noviembre de 4714 a.C.) o enteros (tiempo Unix, el número de segundos desde la medianoche del 1 de enero de 1970).</p>
+<p>Si queremos saber cuales medidas fueron tomadas por Lake o Roerich, podemos combinar sus nombres usando un <code>OR</code>:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb37-1"><a href="sql.html#cb37-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> person <span class="op">=</span> <span class="st">&#39;lake&#39;</span> <span class="kw">OR</span> person <span class="op">=</span> <span class="st">&#39;roe&#39;</span>;</span></code></pre></div>
+<p>O podemos usar el conector <code>IN</code> con un conjunto de valores específico:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb38-1"><a href="sql.html#cb38-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> person <span class="kw">IN</span> (<span class="st">&#39;lake&#39;</span>, <span class="st">&#39;roe&#39;</span>);</span></code></pre></div>
+<p>Otra opción que podemos realizar es combinar más de uno de estos conectores, sin embargo debemos ser cuidadosos en el orden de ejecución:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb39-1"><a href="sql.html#cb39-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;sal&#39;</span> <span class="kw">AND</span> person <span class="op">=</span> <span class="st">&#39;lake&#39;</span> <span class="kw">OR</span> person <span class="op">=</span> <span class="st">&#39;roe&#39;</span>;</span></code></pre></div>
+<p>Al no usar paréntesis opera los dos primeros conectores independientes del último OR.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb40-1"><a href="sql.html#cb40-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;sal&#39;</span> <span class="kw">AND</span> (person <span class="op">=</span> <span class="st">&#39;lake&#39;</span> <span class="kw">OR</span> person <span class="op">=</span> <span class="st">&#39;roe&#39;</span>);</span></code></pre></div>
+<p>También podemos filtrar por coincidencias parciales como en bash. Por ejemplo, si queremos saber algo sobre los nombres de sitios que comienzan con “DR”, podemos usar la palabra clave LIKE. El símbolo de porcentaje actúa como un comodín, coincidiendo con cualquier carácter en ese lugar. Puede usarse al principio, en medio o al final de la cadena:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb41-1"><a href="sql.html#cb41-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> site <span class="kw">LIKE</span> <span class="st">&#39;DR%&#39;</span>;</span></code></pre></div>
+<p>Podemos igual usar <code>DISTINCT</code> y <code>WHERE</code> juntos:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb42-1"><a href="sql.html#cb42-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> person, quant <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> person <span class="op">=</span> <span class="st">&#39;lake&#39;</span> <span class="kw">OR</span> person <span class="op">=</span> <span class="st">&#39;roe&#39;</span>;</span></code></pre></div>
+<p><strong>NOTA</strong>: DISTINCT se aplica a los valores mostrados en las columnas seleccionadas, no a las filas completas mientras se están procesando.</p>
+<p><strong>Ejercicio 1:</strong> Selecciona todos los sitios que están a lo más a 48 grados del ecuador.</p>
+<p><strong>Ejercicio 2:</strong> La salinidad normal de las lecturas debería ser entre 0.0 y 1.0. Escribe un query que seleccione todos los registros de <code>Survey</code> con valores de salinidad (‘sal’) fuera de este rango.</p>
+</div>
+<div id="calcular-nuevos-valores" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Calcular nuevos valores<a href="sql.html#calcular-nuevos-valores" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Supongamos que nos dimos cuenta que debemos de hacer una correción a los datos en la medición de radiación por <code>5%</code>, en lugar de alterar la base de datos, podemos realizar esto en un query:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb43-1"><a href="sql.html#cb43-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fl">1.05</span> <span class="op">*</span> reading <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;rad&#39;</span>;</span></code></pre></div>
+<p>Cuando ejecutamos la consulta, la expresión 1.05 * lectura se evalúa para cada fila. Las expresiones pueden usar cualquiera de los campos, todos los operadores aritméticos habituales y una variedad de funciones comunes. (Exactamente cuáles dependen del gestor de base de datos que se esté utilizando). Por ejemplo, podemos convertir lecturas de temperatura de Fahrenheit a Celsius y redondear a dos decimales:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb44-1"><a href="sql.html#cb44-1" tabindex="-1"></a><span class="kw">SELECT</span> taken, <span class="fu">round</span>(<span class="dv">5</span> <span class="op">*</span> (reading <span class="op">-</span> <span class="dv">32</span>) <span class="op">/</span> <span class="dv">9</span>, <span class="dv">2</span>) <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;temp&#39;</span>;</span></code></pre></div>
+<p>Podemos renombrar estas columnas donde estamos realizando una operación agregando la instrucción <code>as</code>:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb45-1"><a href="sql.html#cb45-1" tabindex="-1"></a><span class="kw">SELECT</span> taken, <span class="fu">round</span>(<span class="dv">5</span> <span class="op">*</span> (reading <span class="op">-</span> <span class="dv">32</span>) <span class="op">/</span> <span class="dv">9</span>, <span class="dv">2</span>) <span class="kw">as</span> Celsius <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;temp&#39;</span>;</span></code></pre></div>
+<p>Usando el operador <code>||</code> podemos concatenar varios valores:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb46-1"><a href="sql.html#cb46-1" tabindex="-1"></a><span class="kw">SELECT</span> personal <span class="op">||</span> <span class="st">&#39; &#39;</span> <span class="op">||</span> family <span class="kw">FROM</span> Person;</span></code></pre></div>
+<p><strong>Ejercicio:</strong> Después de explorar los datos, nos damos cuenta que Valentina Roerich reporto la salinidad como porcentajes. Escribe un query que regrese todas sus mediciones de la tabla <code>Survey</code> con los valores divididos por 100.</p>
+<p>El operador <code>UNION</code> combina los resultados de dos quieries:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb47-1"><a href="sql.html#cb47-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="st">&#39;dyer&#39;</span> <span class="kw">UNION</span> <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="st">&#39;roe&#39;</span>;</span></code></pre></div>
+<p>El comando UNION ALL es equivalente al operador UNION, excepto que UNION ALL seleccionará todos los valores. La diferencia es que UNION ALL no eliminará filas duplicadas. En su lugar, UNION ALL extrae todas las filas de las consultas específicas y las combina en una tabla. El comando UNION realiza un SELECT DISTINCT en el conjunto de resultados. Si todos los registros que se van a devolver son únicos en su unión, utilice UNION ALL en su lugar, ya que proporciona resultados más rápidos al omitir el paso DISTINCT.</p>
+<p><strong>Ejercicio:</strong> Utiliza UNION para crear una lista consolidada de mediciones de salinidad en la que solo las de Valentina Roerich hayan sido corregidas según el ejercicio anterior. La salida debería ser algo como:</p>
+<pre class="output"><code>taken  reading
+-----  -------
+619    0.13
+622    0.09
+734    0.05
+751    0.1
+752    0.09
+752    0.416
+837    0.21
+837    0.225</code></pre>
+<p><strong>Ejercicio 2:</strong> Los sitios de la tabla <code>Visited</code> tienen los códigos <code>DR-1</code>, <code>DR-3</code>, <code>MSK-4</code>.
+Las funciones <code>instr(X, Y)</code> y <code>substr(X, I, [L])</code> nos ayudan para obtener una lista de identificadores principales de sitios únicos.
+- La función <code>instr(X, Y)</code> devuelve el índice basado en 1 de la primera aparición de la cadena Y en la cadena X, o 0 si Y no existe en X.
+- La función <code>substr(X, I, [L])</code> devuelve la subcadena de X que comienza en el índice I, con una longitud opcional L.</p>
+<p>Entonces, para encontrar los identificadores principales únicos, podemos buscar los primeros dos caracteres en cada identificador de sitio. Si el identificador es de tres caracteres, solo consideraremos los dos primeros. Luego, eliminaremos duplicados de esta lista resultante. En este caso específico, la lista final debería contener solo “DR” y “MSK”.</p>
+<p>Por ejemplo, la siguiente instrucción nos regresaría que la primera vez que aparece el <code>-</code> en las fechas es la posición 5.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb49-1"><a href="sql.html#cb49-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">instr</span>(dated, <span class="st">&#39;-&#39;</span>) <span class="kw">FROM</span> Visited;</span></code></pre></div>
+<p>y los siguiente nos seleccionaría el año (posición 1 a la 4):</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb50-1"><a href="sql.html#cb50-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">substr</span>(dated,<span class="dv">1</span>,<span class="dv">4</span> ) <span class="kw">FROM</span> Visited;</span></code></pre></div>
+</div>
+<div id="valores-faltantes" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Valores faltantes<a href="sql.html#valores-faltantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los datos del mundo real nunca están completos; siempre hay información perdida. Las bases de datos representan estas lagunas utilizando un valor especial llamado nulo (null). Null no es cero, Falso o la cadena vacía; es un valor único que significa “nada aquí”. Trabajar con nulos requiere saber el origen de estos y un pensamiento cuidadoso.</p>
+<p>Por defecto, SQLite no muestra los valores NULL en su salida. El comando .nullvalue hace que SQLite muestre el valor que especifiques para los nulos. Utilizaremos el valor -null- para hacer que los nulos sean más fáciles de ver:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb51-1"><a href="sql.html#cb51-1" tabindex="-1"></a>.nullvalue <span class="op">-</span><span class="kw">null</span><span class="op">-</span></span></code></pre></div>
+<p>Ahora por ejemplo, al consultar todas las columnas de la tabla <code>Visitated</code> vemos que el registro 752 tiene un valor nulo en fecha:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb52-1"><a href="sql.html#cb52-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited;</span></code></pre></div>
+<p>Los valores nulos no son como otros valores, por ejemplo tanto si seleccionamos fechas antes de 1930 o después, no valor a lograr obtener algo para el id 752:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb53-1"><a href="sql.html#cb53-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">&lt;</span> <span class="st">&#39;1930-01-01&#39;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb54-1"><a href="sql.html#cb54-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">&gt;=</span> <span class="st">&#39;1930-01-01&#39;</span>;</span></code></pre></div>
+<p>Las comparaciones no son las únicas operaciones que se comportan de esta manera con nulos. 1+null es null, 5*null es null, log(null) es null, y así sucesivamente. En particular, al comparar cosas con null usando = y !=, se produce null:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb55-1"><a href="sql.html#cb55-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">=</span> <span class="kw">NULL</span>;</span></code></pre></div>
+<p>no produce ningun output ni:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb56-1"><a href="sql.html#cb56-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">!=</span> <span class="kw">NULL</span>;</span></code></pre></div>
+<p>Para verificar si algún valor es <code>null</code> o no, como en otros programas se usa una sentencia especial <code>IS NULL</code>:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb57-1"><a href="sql.html#cb57-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code></pre></div>
+<p>O su inverso:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb58-1"><a href="sql.html#cb58-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span></code></pre></div>
+<p>Los valores nulos pueden causar dolores de cabeza dondequiera que aparezcan. Por ejemplo, supongamos que queremos encontrar todas las mediciones de salinidad que no fueron tomadas por Lake. Es natural escribir la consulta de la siguiente manera:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb59-1"><a href="sql.html#cb59-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;sal&#39;</span> <span class="kw">AND</span> person <span class="op">!=</span> <span class="st">&#39;lake&#39;</span>;</span></code></pre></div>
+<p>Sin embargo, esta consulta omite los registros donde no sabemos quién tomó la medida. Una vez más, la razón es que cuando la persona es nula, la comparación != produce nulo, por lo que el registro no se conserva en nuestros resultados. Si queremos mantener estos registros, necesitamos agregar una verificación explícita:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb60-1"><a href="sql.html#cb60-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;sal&#39;</span> <span class="kw">AND</span> (person <span class="op">!=</span> <span class="st">&#39;lake&#39;</span> <span class="kw">OR</span> person <span class="kw">IS</span> <span class="kw">NULL</span>);</span></code></pre></div>
+<p>Todavía tenemos que decidir si esto es lo correcto o no. Si queremos estar absolutamente seguros de que no estamos incluyendo ninguna medida de Lake en nuestros resultados, necesitamos excluir todos los registros para los cuales no sabemos quién hizo el trabajo.</p>
+<p>A diferencia de los operadores aritméticos o booleanos, las funciones de agregación que combinan múltiples valores, como min, max o avg, ignoran los valores nulos. En la mayoría de los casos, este es un resultado deseable: por ejemplo, los valores desconocidos no afectan nuestros datos cuando los estamos promediando.</p>
+<p><strong>Ejercicio: </strong> Escribe un query que ordene los registros en <code>Visited</code> por fecha, omitiendo las entradas para las cuales no se tiene este valor.</p>
+<p>Si para filtrar usando <code>IN</code> con <code>NULL</code> nos encontramos un problema similar a los anteriores:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb61-1"><a href="sql.html#cb61-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IN</span> (<span class="st">&#39;1927-02-08&#39;</span>, <span class="kw">NULL</span>);</span></code></pre></div>
+<p>Podrías esperar que la consulta anterior devolviera filas donde la fecha sea ‘1927-02-08’ o NULL. En cambio, solo devuelve filas donde la fecha es ‘1927-02-08’, lo mismo que obtendrías de esta consulta más simple:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb62-1"><a href="sql.html#cb62-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IN</span> (<span class="st">&#39;1927-02-08&#39;</span>);</span></code></pre></div>
+<p>La razón es que el operador IN funciona con un conjunto de valores, pero NULL, por definición, no es un valor y, por lo tanto, simplemente se ignora.</p>
+<p>Si quisiéramos incluir realmente NULL, tendríamos que reescribir la consulta para usar la condición IS NULL:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb63-1"><a href="sql.html#cb63-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">=</span> <span class="st">&#39;1927-02-08&#39;</span> <span class="kw">OR</span> dated <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code></pre></div>
+</div>
+<div id="funciones-de-agregación" class="section level3 hasAnchor" number="5.1.6">
+<h3><span class="header-section-number">5.1.6</span> Funciones de agregación<a href="sql.html#funciones-de-agregación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las funciones de agregación en SQL son funciones que operan sobre conjuntos de valores y devuelven un solo resultado. Se utilizan comúnmente con cláusulas como GROUP BY para resumir datos en una tabla. Algunas de las funciones de agregación más comunes en SQL:</p>
+<ol style="list-style-type: decimal">
+<li><strong>MIN</strong>: Encuentra el valor mínimo en una columna.</li>
+</ol>
+<div class="sourceCode" id="cb64"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb64-1"><a href="sql.html#cb64-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">min</span>(dated) <span class="kw">FROM</span> Visited;</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>MAX</strong>: Encuentra el valor máximo en una columna.</li>
+</ol>
+<div class="sourceCode" id="cb65"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb65-1"><a href="sql.html#cb65-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">max</span>(dated) <span class="kw">FROM</span> Visited;</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>AVG</strong>: Calcula el promedio de los valores en una columna.</li>
+</ol>
+<div class="sourceCode" id="cb66"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb66-1"><a href="sql.html#cb66-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">avg</span>(reading) <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;sal&#39;</span>;</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>COUNT</strong>: Cuenta el número de filas en un conjunto de resultados.</li>
+</ol>
+<div class="sourceCode" id="cb67"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb67-1"><a href="sql.html#cb67-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">count</span>(reading) <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;sal&#39;</span>;</span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>SUM</strong>: Calcula la suma de los valores en una columna.</li>
+</ol>
+<div class="sourceCode" id="cb68"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb68-1"><a href="sql.html#cb68-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">sum</span>(reading) <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;sal&#39;</span>;</span></code></pre></div>
+<p>SQL nos permite usar varias de estas funciones a la vez:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb69-1"><a href="sql.html#cb69-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">min</span>(reading), <span class="fu">max</span>(reading) <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;sal&#39;</span> <span class="kw">AND</span> reading <span class="op">&lt;=</span> <span class="fl">1.0</span>;</span></code></pre></div>
+<p>Estas funciones se utilizan típicamente junto con la cláusula GROUP BY para realizar operaciones de agregación en grupos específicos de datos. Por ejemplo:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb70-1"><a href="sql.html#cb70-1" tabindex="-1"></a><span class="kw">SELECT</span> columna_grupal, <span class="fu">COUNT</span>(<span class="op">*</span>)</span>
+<span id="cb70-2"><a href="sql.html#cb70-2" tabindex="-1"></a><span class="kw">FROM</span> tabla</span>
+<span id="cb70-3"><a href="sql.html#cb70-3" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> columna_grupal;</span></code></pre></div>
+<p>Esto devolvería el número de filas para cada valor único en la columna_grupal. Las funciones de agregación son fundamentales para resumir grandes conjuntos de datos y obtener información útil de ellos.</p>
+<p>Veamos un ejemplo de cómo las bases de datos pueden comportarse cuando se combinan resultados agregados con resultados “en bruto”.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb71-1"><a href="sql.html#cb71-1" tabindex="-1"></a><span class="kw">SELECT</span> person, <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;sal&#39;</span> <span class="kw">AND</span> reading <span class="op">&lt;=</span> <span class="fl">1.0</span>;</span></code></pre></div>
+<p>En este caso, estás contando el número de registros donde la columna ‘quant’ es ‘sal’ y la columna ‘reading’ es menor o igual a 1.0. La salida muestra que Lake tiene 7 registros que cumplen con estas condiciones.</p>
+<p>La razón por la que aparece el nombre de Lake en lugar de los de Roerich o Dyer es que, cuando la base de datos tiene que agregar un campo pero no se le dice cómo hacerlo, el gestor de la base de datos elige un valor real del conjunto de entrada. Puede usar el primero procesado, el último o cualquier otro método.</p>
+<p>Otro hecho importante es que cuando no hay valores para agregar, por ejemplo, cuando no hay filas que satisfagan la cláusula WHERE, el resultado de la agregación es “no se sabe” en lugar de cero o algún otro valor arbitrario. Esto significa que la base de datos no puede determinar el resultado de la agregación y devuelve un resultado indicando esa incertidumbre.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb72-1"><a href="sql.html#cb72-1" tabindex="-1"></a><span class="kw">SELECT</span> person, <span class="fu">max</span>(reading), <span class="fu">sum</span>(reading) <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;missing&#39;</span>;</span></code></pre></div>
+<p>Una característica final importante de las funciones de agregación es que son inconsistentes con el resto de SQL de una manera muy útil. Si sumamos dos valores y uno de ellos es nulo, el resultado es nulo. Por extensión, si usamos sum para sumar todos los valores en un conjunto y alguno de esos valores es nulo, el resultado también debería ser nulo. Sin embargo, es mucho más útil que las funciones de agregación ignoren los valores nulos y solo combinen aquellos que no son nulos. Este comportamiento nos permite escribir nuestras consultas de la siguiente manera:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb73-1"><a href="sql.html#cb73-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">min</span>(dated) <span class="kw">FROM</span> Visited;</span></code></pre></div>
+<p>en lugar de filtrar explicitamente:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb74-1"><a href="sql.html#cb74-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">min</span>(dated) <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span></code></pre></div>
+<p>Agrupar todos los registros a la vez no siempre tiene sentido. Por ejemplo, supongamos que sospechamos que hay un sesgo sistemático en nuestros datos y que las lecturas de radiación de algunos científicos son más altas que las de otros. Sabemos que esto no funciona:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb75-1"><a href="sql.html#cb75-1" tabindex="-1"></a><span class="kw">SELECT</span> person, <span class="fu">count</span>(reading), <span class="fu">round</span>(<span class="fu">avg</span>(reading), <span class="dv">2</span>)</span>
+<span id="cb75-2"><a href="sql.html#cb75-2" tabindex="-1"></a><span class="kw">FROM</span>  Survey</span>
+<span id="cb75-3"><a href="sql.html#cb75-3" tabindex="-1"></a><span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;rad&#39;</span>;</span></code></pre></div>
+<p>debido a que el administrador de la base de datos selecciona un solo nombre arbitrario de científico en lugar de agregar por separado para cada científico. Dado que solo hay cinco científicos, podríamos escribir cinco consultas del siguiente tipo:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb76-1"><a href="sql.html#cb76-1" tabindex="-1"></a><span class="kw">SELECT</span> person, <span class="fu">count</span>(reading), <span class="fu">round</span>(<span class="fu">avg</span>(reading), <span class="dv">2</span>)</span>
+<span id="cb76-2"><a href="sql.html#cb76-2" tabindex="-1"></a><span class="kw">FROM</span>  Survey</span>
+<span id="cb76-3"><a href="sql.html#cb76-3" tabindex="-1"></a><span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">&#39;rad&#39;</span></span>
+<span id="cb76-4"><a href="sql.html#cb76-4" tabindex="-1"></a><span class="kw">AND</span>   person <span class="op">=</span> <span class="st">&#39;dyer&#39;</span>;</span></code></pre></div>
+<p>Pero esto sería tedioso, y si alguna vez tuviéramos un conjunto de datos con cincuenta o quinientos científicos, las probabilidades de que hagamos todas esas consultas correctamente son pequeñas.</p>
+<p>Lo que necesitamos hacer es decirle al administrador de la base de datos que agregue las horas para cada científico por separado utilizando una cláusula GROUP BY:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb77-1"><a href="sql.html#cb77-1" tabindex="-1"></a><span class="kw">SELECT</span>   person, <span class="fu">count</span>(reading), <span class="fu">round</span>(<span class="fu">avg</span>(reading), <span class="dv">2</span>)</span>
+<span id="cb77-2"><a href="sql.html#cb77-2" tabindex="-1"></a><span class="kw">FROM</span>     Survey</span>
+<span id="cb77-3"><a href="sql.html#cb77-3" tabindex="-1"></a><span class="kw">WHERE</span>    quant <span class="op">=</span> <span class="st">&#39;rad&#39;</span></span>
+<span id="cb77-4"><a href="sql.html#cb77-4" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> person;</span></code></pre></div>
+<p>GROUP BY hace exactamente lo que su nombre implica: agrupa todos los registros con el mismo valor para el campo especificado para que la agregación pueda procesar cada conjunto por separado. Dado que todos los registros en cada conjunto tienen el mismo valor para la persona, ya no importa que el administrador de la base de datos esté seleccionando uno arbitrario para mostrar junto a los valores de lectura agregados.</p>
+<p>Así como podemos ordenar por múltiples criterios a la vez, también podemos agrupar por múltiples criterios. Para obtener la lectura promedio por científico y cantidad medida, por ejemplo, simplemente agregamos otro campo a la cláusula GROUP BY:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb78-1"><a href="sql.html#cb78-1" tabindex="-1"></a><span class="kw">SELECT</span>   person, quant, <span class="fu">count</span>(reading), <span class="fu">round</span>(<span class="fu">avg</span>(reading), <span class="dv">2</span>)</span>
+<span id="cb78-2"><a href="sql.html#cb78-2" tabindex="-1"></a><span class="kw">FROM</span>     Survey</span>
+<span id="cb78-3"><a href="sql.html#cb78-3" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> person, quant;</span></code></pre></div>
+<p>Hemos añadido “quant” a la lista de campos mostrados, ya que los resultados de lo contrario no tendrían mucho sentido.</p>
+<p>Vamos un paso más allá y eliminemos todas las entradas donde no sabemos quién tomó la medida:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb79-1"><a href="sql.html#cb79-1" tabindex="-1"></a><span class="kw">SELECT</span>   person, quant, <span class="fu">count</span>(reading), <span class="fu">round</span>(<span class="fu">avg</span>(reading), <span class="dv">2</span>)</span>
+<span id="cb79-2"><a href="sql.html#cb79-2" tabindex="-1"></a><span class="kw">FROM</span>     Survey</span>
+<span id="cb79-3"><a href="sql.html#cb79-3" tabindex="-1"></a><span class="kw">WHERE</span>    person <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></span>
+<span id="cb79-4"><a href="sql.html#cb79-4" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> person, quant</span>
+<span id="cb79-5"><a href="sql.html#cb79-5" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> person, quant;</span></code></pre></div>
+<p>Mirando más detenidamente, esta consulta:</p>
+<ol style="list-style-type: decimal">
+<li><p>Se seleccionó registros de la tabla Survey donde el campo person no era nulo;</p></li>
+<li><p>Se grupó esos registros en subconjuntos para que los valores de person y quant en cada subconjunto fueran iguales;</p></li>
+<li><p>Se ordenó esos subconjuntos primero por person y luego dentro de cada subgrupo por quant; y</p></li>
+<li><p>Se contó el número de registros en cada subconjunto, calculó la lectura promedio en cada uno y eligió un valor de person y quant de cada uno (no importa cuál, ya que todos son iguales).</p></li>
+</ol>
+<p><strong>Ejercicio 1:</strong> ¿Cuántas lecturas de temperatura registró Frank Pabodie y cuál fue su valor promedio?</p>
+<p><strong>Ejercicio 2:</strong> La media de un conjunto de valores es la suma de los valores dividida por el número de valores. ¿Significa esto que la función avg devuelve 2.0 o 3.0 cuando se le dan los valores 1.0, null y 5.0?</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb80-1"><a href="sql.html#cb80-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(a) <span class="kw">FROM</span> (</span>
+<span id="cb80-2"><a href="sql.html#cb80-2" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="dv">1</span> <span class="kw">AS</span> a</span>
+<span id="cb80-3"><a href="sql.html#cb80-3" tabindex="-1"></a>    <span class="kw">UNION</span> <span class="kw">ALL</span> <span class="kw">SELECT</span> <span class="kw">NULL</span></span>
+<span id="cb80-4"><a href="sql.html#cb80-4" tabindex="-1"></a>    <span class="kw">UNION</span> <span class="kw">ALL</span> <span class="kw">SELECT</span> <span class="dv">5</span>);</span></code></pre></div>
+<p><strong>Ejercicio 3:</strong> Calcula la diferencia entre cada lectura individual de radiación y el promedio de todas las lecturas de radiación.</p>
+<p><strong>Ejercicio 4:</strong> a) La función group_concat(field, separator) concatena todos los valores en un campo utilizando el carácter separador especificado (o ‘,’ si el separador no está especificado). Utilízalo para producir una lista de una sola línea con los nombres de los científicos, como:</p>
+<pre class="output"><code>William Dyer, Frank Pabodie, Anderson Lake, Valentina Roerich, Frank Danforth</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>¿Pueden encontrar una manera de listar todos los apellidos de los científicos separados por una coma? ¿Pueden encontrar una manera de listar todos los nombres personales y apellidos de los científicos separados por una coma?</li>
+</ol>
+</div>
+<div id="combinando-datos" class="section level3 hasAnchor" number="5.1.7">
+<h3><span class="header-section-number">5.1.7</span> Combinando datos<a href="sql.html#combinando-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para enviar nuestros datos a un sitio web que agrega datos meteorológicos históricos, es posible que necesitemos darles formato como latitud, longitud, fecha, cantidad y lectura. Sin embargo, nuestras latitudes y longitudes están en la tabla Site, mientras que las fechas de las mediciones están en la tabla Visited y las lecturas mismas están en la tabla Survey. Necesitamos combinar estas tablas de alguna manera.</p>
+<p>Nosotros tenemos las siguientes relaciones:</p>
+<div class="float">
+<img src="img/sql-join-structure.svg" alt="Datos relacionales" />
+<div class="figcaption">Datos relacionales</div>
+</div>
+<p>El comando SQL para hacer esto es JOIN. Para ver cómo funciona, comencemos uniendo las tablas Site y Visited:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb82-1"><a href="sql.html#cb82-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Site <span class="kw">JOIN</span> Visited;</span></code></pre></div>
+<p>JOIN crea el producto cruzado de dos tablas, es decir, une cada registro de una tabla con cada registro de la otra tabla para dar todas las combinaciones posibles. Dado que hay tres registros en Site y ocho en Visited, la salida del join tiene 24 registros (3 * 8 = 24). Y como cada tabla tiene tres campos, la salida tiene seis campos (3 + 3 = 6).</p>
+<p>Lo que el join no ha hecho es averiguar si los registros que se están uniendo tienen algo que ver entre sí. No tiene forma de saber si lo hacen o no hasta que le digamos cómo. Para hacer eso, agregamos una cláusula que especifique que solo estamos interesados en combinaciones que tengan el mismo nombre de sitio, por lo tanto, necesitamos usar un filtro:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb83-1"><a href="sql.html#cb83-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Site <span class="kw">JOIN</span> Visited <span class="kw">ON</span> Site.name <span class="op">=</span> Visited.site;</span></code></pre></div>
+<p>ON es muy similar a WHERE, y para todas las consultas en esta lección se pueden usar de forma intercambiable. Sin embargo si hay diferencias en cómo afectan a las uniones externas. Una vez que agregamos esto a nuestra consulta, el administrador de la base de datos elimina los registros que combinaban información sobre dos sitios diferentes, dejándonos solo los que queremos.</p>
+<p>Estamos usando <code>Tabla.campo</code> para especificar los nombres de los campos en la salida del join. Hacemos esto porque las tablas pueden tener campos con el mismo nombre, y necesitamos ser específicos sobre cuáles estamos hablando. Por ejemplo, si unimos las tablas Person y Visited, el resultado heredaría un campo llamado id de cada una de las tablas originales.</p>
+<p>Ahora podemos usar la misma notación de puntos para seleccionar los tres columnas que realmente queremos de nuestro join:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb84-1"><a href="sql.html#cb84-1" tabindex="-1"></a><span class="kw">SELECT</span> Site.lat, Site.<span class="dt">long</span>, Visited.dated <span class="kw">FROM</span> Site <span class="kw">JOIN</span> Visited <span class="kw">ON</span> Site.name <span class="op">=</span> Visited.site;</span></code></pre></div>
+<p>Si unir dos tablas es bueno, unir muchas tablas debe ser mejor. De hecho, podemos unir cualquier cantidad de tablas simplemente agregando más cláusulas JOIN a nuestra consulta, y más pruebas ON para filtrar las combinaciones de registros que no tienen sentido.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb85-1"><a href="sql.html#cb85-1" tabindex="-1"></a><span class="kw">SELECT</span> Site.lat, Site.<span class="dt">long</span>, Visited.dated, Survey.quant, Survey.reading</span>
+<span id="cb85-2"><a href="sql.html#cb85-2" tabindex="-1"></a><span class="kw">FROM</span> Site <span class="kw">JOIN</span> Visited <span class="kw">JOIN</span> Survey </span>
+<span id="cb85-3"><a href="sql.html#cb85-3" tabindex="-1"></a><span class="kw">ON</span> Site.name <span class="op">=</span> Visited.site <span class="kw">AND</span> Visited.<span class="kw">id</span> <span class="op">=</span> Survey.taken <span class="kw">AND</span> Visited.dated <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span></code></pre></div>
+<p>Podemos decir qué registros de Site, Visited y Survey corresponden entre sí porque esas tablas contienen claves principales y claves foráneas. Una clave principal es un valor, o combinación de valores, que identifica de manera única cada registro en una tabla. Una clave foránea es un valor (o combinación de valores) de una tabla que identifica un registro único en otra tabla. Otra forma de decir esto es que una clave foránea es la clave principal de una tabla que aparece en alguna otra tabla. En nuestra base de datos, Person.id es la clave principal en la tabla Person, mientras que Survey.person es una clave foránea que relaciona las entradas de la tabla Survey con entradas en Person.</p>
+<p>La mayoría de los diseñadores de bases de datos creen que cada tabla debe tener una clave principal bien definida. También creen que esta clave debe ser independiente de los datos en sí, de modo que si alguna vez necesitamos cambiar los datos, solo necesitemos hacer un cambio en un solo lugar. Una forma fácil de hacer esto es crear un ID arbitrario y único para cada registro a medida que lo agregamos a la base de datos. Esto en realidad es muy común: esos IDs tienen nombres como “números de estudiantes” y “números de pacientes”, y casi siempre resultan haber sido originalmente un identificador de registro único en algún sistema de base de datos u otro. Como demuestra la consulta a continuación, SQLite numera automáticamente los registros a medida que se agregan a las tablas, y</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb86-1"><a href="sql.html#cb86-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="dt">rowid</span>, <span class="op">*</span> <span class="kw">FROM</span> Person;</span></code></pre></div>
+<p><strong>Ejercicio 1:</strong> Escribe u query que liste todos las lecturas de radiaciones del sitio <code>DR-1</code>.</p>
+<p><strong>Ejercicio 2:</strong> Escribe un query que liste todos los sitios visitados por una persona llamada <code>Frank</code>.</p>
+<p><strong>Ejercicio 3:</strong> Escribe una consulta que muestre cada sitio con su ubicación exacta (latitud, longitud) ordenada por fecha de visita, seguida del nombre personal y apellido de la persona que visitó el sitio, y el tipo de medición realizada junto con su lectura. Por favor, evita todos los valores nulos. Consejo: deberías obtener 15 registros con 8 campos.</p>
+</div>
+<div id="como-presentar-datos" class="section level3 hasAnchor" number="5.1.8">
+<h3><span class="header-section-number">5.1.8</span> Como presentar datos<a href="sql.html#como-presentar-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ahora que hemos visto cómo funcionan las uniones, podemos entender por qué el modelo relacional es tan útil y cómo usarlo mejor. La primera regla es que cada valor debe ser atómico, es decir, no debe contener partes que podríamos querer trabajar por separado. Almacenamos los nombres personales y familiares en columnas separadas en lugar de poner el nombre completo en una sola columna para que no tengamos que usar operaciones de subcadena para obtener los componentes del nombre. Más importante aún, almacenamos las dos partes del nombre por separado porque dividir por espacios no es confiable: solo piensa en un nombre como “Eloise St. Cyr” o “Jan Mikkel Steubart”.</p>
+<p>La segunda regla es que cada registro debe tener una clave primaria única. Esto puede ser un número de serie que no tiene un significado intrínseco, uno de los valores en el registro (como el campo id en la tabla Person), o incluso una combinación de valores: el triple (tomado, persona, cantidad) de la tabla Survey identifica de manera única cada medición.</p>
+<p>La tercera regla es que no debe haber información redundante. Por ejemplo, podríamos deshacernos de la tabla Site y reescribir la tabla Visited así:</p>
+<pre class="output"><code>id   lat       long   dated
+619 -49.85  -128.57 1927-02-08
+622 -49.85  -128.57 1927-02-10
+734 -47.15  -126.72 1930-01-07
+735 -47.15  -126.72 1930-01-12
+751 -47.15  -126.72 1930-02-26
+752 -47.15  -126.72 -null-
+837 -48.87  -123.40 1932-01-14
+844 -49.85  -128.57 1932-03-22</code></pre>
+<p>De hecho, podríamos usar una sola tabla que registrara toda la información sobre cada lectura en cada fila, tal como lo haría una hoja de cálculo. El problema es que es muy difícil mantener organizados y consistentes los datos de esta manera: si nos damos cuenta de que la fecha de una visita particular a un sitio específico es incorrecta, tenemos que cambiar múltiples registros en la base de datos. Lo que es peor, puede que tengamos que adivinar qué registros cambiar, ya que es posible que también se hayan visitado otros sitios en esa fecha.</p>
+<p>La cuarta regla es que las unidades para cada valor deben almacenarse explícitamente. Nuestra base de datos no hace esto, y eso es un problema: las mediciones de salinidad de Roerich son varias órdenes de magnitud mayores que las de cualquier otra persona, pero no sabemos si eso significa que estaba usando partes por millón en lugar de partes por mil, o si realmente hubo una anomalía salina en ese sitio en 1932.</p>
+<p>Al retroceder, los datos y las herramientas utilizadas para almacenarlos tienen una relación simbiótica: usamos tablas y uniones porque es eficiente, siempre y cuando nuestros datos estén organizados de cierta manera, pero organizamos nuestros datos de esa manera porque tenemos herramientas para manipularlos eficientemente.</p>
 </div>
 </div>
-<div id="explorar-datos-categóricos-y-texto-no-estructurado" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Explorar datos categóricos y texto no estructurado<a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="crear-bases-de-datos" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Crear bases de datos<a href="sql.html#crear-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="paso-1-crear-una-base-de-datos-y-conectarla" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Paso 1: Crear una base de datos y conectarla<a href="sql.html#paso-1-crear-una-base-de-datos-y-conectarla" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Iniciamos SQLite3 y creamos una nueva base de datos:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb88-1"><a href="sql.html#cb88-1" tabindex="-1"></a><span class="ex">sqlite3</span> mi_basededatos.db</span></code></pre></div>
+<p>Esto abrirá SQLite3 y creará una nueva base de datos llamada <code>mi_basededatos.db</code>.</p>
+<p>Configuramos nuestros encabezados:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb89-1"><a href="sql.html#cb89-1" tabindex="-1"></a>.<span class="kw">mode</span> <span class="kw">column</span></span>
+<span id="cb89-2"><a href="sql.html#cb89-2" tabindex="-1"></a>.<span class="kw">header</span> <span class="kw">on</span></span></code></pre></div>
 </div>
-<div id="comparación-con-los-otros-programas" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Comparación con los otros programas<a href="sql.html#comparación-con-los-otros-programas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="paso-2-crear-tablas" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Paso 2: Crear tablas<a href="sql.html#paso-2-crear-tablas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dentro de SQLite3, puedes crear tablas utilizando SQL. Por ejemplo, podríamos crear una tabla para almacenar información de estudiantes y otra para almacenar información de cursos. Ejecuta los siguientes comandos dentro de SQLite3:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb90-1"><a href="sql.html#cb90-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> Estudiantes (</span>
+<span id="cb90-2"><a href="sql.html#cb90-2" tabindex="-1"></a>    <span class="kw">id</span> <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb90-3"><a href="sql.html#cb90-3" tabindex="-1"></a>    nombre TEXT,</span>
+<span id="cb90-4"><a href="sql.html#cb90-4" tabindex="-1"></a>    edad <span class="dt">INTEGER</span>,</span>
+<span id="cb90-5"><a href="sql.html#cb90-5" tabindex="-1"></a>    promedio <span class="dt">REAL</span></span>
+<span id="cb90-6"><a href="sql.html#cb90-6" tabindex="-1"></a>);</span>
+<span id="cb90-7"><a href="sql.html#cb90-7" tabindex="-1"></a></span>
+<span id="cb90-8"><a href="sql.html#cb90-8" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> Cursos (</span>
+<span id="cb90-9"><a href="sql.html#cb90-9" tabindex="-1"></a>    <span class="kw">id</span> <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb90-10"><a href="sql.html#cb90-10" tabindex="-1"></a>    nombre TEXT,</span>
+<span id="cb90-11"><a href="sql.html#cb90-11" tabindex="-1"></a>    profesor TEXT</span>
+<span id="cb90-12"><a href="sql.html#cb90-12" tabindex="-1"></a>);</span>
+<span id="cb90-13"><a href="sql.html#cb90-13" tabindex="-1"></a></span>
+<span id="cb90-14"><a href="sql.html#cb90-14" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> Lugar(name text, lat <span class="dt">real</span>, <span class="dt">long</span> <span class="dt">real</span>);</span></code></pre></div>
+<p>Esto creará tres tablas: <code>Estudiantes</code>, <code>Cursos</code> y <code>Lugar</code>. La tabla <code>Estudiantes</code> tiene columnas para <code>id</code>, <code>nombre</code>, <code>edad</code> y <code>promedio</code>. La tabla <code>Cursos</code> tiene columnas para <code>id</code>, <code>nombre</code> y <code>profesor</code>.</p>
+<p>Podemos borrar la tabla <code>Lugar</code> con:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb91-1"><a href="sql.html#cb91-1" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> Lugar;</span></code></pre></div>
+<p>Mucho cuidado con esto último, si no se cuenta con un respaldo ya se afecto definitivamente una tabla.</p>
+<p>Para agregar una nueva tabla con especificaciones proporcionadas a la base de datos existente, primero necesitamos definir la estructura de la tabla y luego ejecutar el comando <code>CREATE TABLE</code> en SQLite3.</p>
+<p>La nueva tabla con las especificaciones dadas:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb92-1"><a href="sql.html#cb92-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> NuevaTabla (</span>
+<span id="cb92-2"><a href="sql.html#cb92-2" tabindex="-1"></a>    <span class="kw">id</span> <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,  <span class="co">-- Clave primaria, identificador único de cada registro</span></span>
+<span id="cb92-3"><a href="sql.html#cb92-3" tabindex="-1"></a>    columna1 TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,  <span class="co">-- Restricción: No puede ser nulo</span></span>
+<span id="cb92-4"><a href="sql.html#cb92-4" tabindex="-1"></a>    columna2 <span class="dt">REAL</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,  <span class="co">-- Restricción: No puede ser nulo</span></span>
+<span id="cb92-5"><a href="sql.html#cb92-5" tabindex="-1"></a>    columna3 TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,  <span class="co">-- Restricción: No puede ser nulo</span></span>
+<span id="cb92-6"><a href="sql.html#cb92-6" tabindex="-1"></a>    columna4 <span class="dt">INTEGER</span>,        <span class="co">-- Podría permitirse ser nulo</span></span>
+<span id="cb92-7"><a href="sql.html#cb92-7" tabindex="-1"></a>    <span class="kw">FOREIGN</span> <span class="kw">KEY</span>(columna1) <span class="kw">REFERENCES</span> OtraTabla(<span class="kw">id</span>),  <span class="co">-- Clave foránea que hace referencia a otra tabla</span></span>
+<span id="cb92-8"><a href="sql.html#cb92-8" tabindex="-1"></a>    <span class="kw">FOREIGN</span> <span class="kw">KEY</span>(columna3) <span class="kw">REFERENCES</span> OtraTabla(<span class="kw">id</span>)   <span class="co">-- Clave foránea que hace referencia a otra tabla</span></span>
+<span id="cb92-9"><a href="sql.html#cb92-9" tabindex="-1"></a>);</span></code></pre></div>
+<p>En este ejemplo:</p>
+<ul>
+<li>Hemos creado una nueva tabla llamada <code>NuevaTabla</code>.</li>
+<li>La columna <code>id</code> se ha definido como un entero y se ha marcado como clave primaria para garantizar que cada registro tenga un identificador único.</li>
+<li>Las columnas <code>columna1</code>, <code>columna2</code> y <code>columna3</code> son de tipo texto, real y texto respectivamente. Se ha aplicado la restricción <code>NOT NULL</code> a estas columnas para asegurarnos de que no puedan contener valores nulos.</li>
+<li>La columna <code>columna4</code> es de tipo entero y no se ha aplicado la restricción <code>NOT NULL</code>, lo que significa que puede contener valores nulos.</li>
+<li>Se han agregado dos restricciones de clave foránea (<code>FOREIGN KEY</code>) que hacen referencia a las columnas <code>id</code> de otra tabla llamada <code>OtraTabla</code>.</li>
+</ul>
+<p>Una vez que hayas definido la estructura de la nueva tabla, puedes ejecutar el comando <code>CREATE TABLE</code> en SQLite3 para crear la tabla en tu base de datos existente.</p>
+<p>Después de haber creado las tablas en una base de datos, necesitamos manipular los datos dentro de esas tablas. Para hacerlo, utilizamos tres comandos principales en SQL: INSERT, UPDATE y DELETE. Estos comandos nos permiten agregar nuevos registros, actualizar registros existentes y eliminar registros, respectivamente.</p>
+<ol style="list-style-type: decimal">
+<li>INSERT: Este comando se utiliza para agregar nuevos registros a una tabla existente.</li>
+</ol>
+<div class="sourceCode" id="cb93"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb93-1"><a href="sql.html#cb93-1" tabindex="-1"></a><span class="co">-- Ejemplo de INSERT</span></span>
+<span id="cb93-2"><a href="sql.html#cb93-2" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Tabla (columna1, columna2, columna3)</span>
+<span id="cb93-3"><a href="sql.html#cb93-3" tabindex="-1"></a><span class="kw">VALUES</span> (<span class="st">&#39;valor1&#39;</span>, <span class="st">&#39;valor2&#39;</span>, <span class="st">&#39;valor3&#39;</span>);</span></code></pre></div>
+<p>En este ejemplo, estamos insertando un nuevo registro en la tabla llamada <code>Tabla</code>. Estamos especificando los valores para las columnas <code>columna1</code>, <code>columna2</code> y <code>columna3</code> usando el comando <code>VALUES</code>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>UPDATE: Este comando se utiliza para actualizar registros existentes en una tabla.</li>
+</ol>
+<div class="sourceCode" id="cb94"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb94-1"><a href="sql.html#cb94-1" tabindex="-1"></a><span class="co">-- Ejemplo de UPDATE</span></span>
+<span id="cb94-2"><a href="sql.html#cb94-2" tabindex="-1"></a><span class="kw">UPDATE</span> Tabla</span>
+<span id="cb94-3"><a href="sql.html#cb94-3" tabindex="-1"></a><span class="kw">SET</span> columna1 <span class="op">=</span> <span class="st">&#39;nuevo_valor&#39;</span></span>
+<span id="cb94-4"><a href="sql.html#cb94-4" tabindex="-1"></a><span class="kw">WHERE</span> condicion;</span></code></pre></div>
+<p>En este ejemplo, estamos actualizando la columna <code>columna1</code> en la tabla <code>Tabla</code> con un nuevo valor. La cláusula <code>WHERE</code> se utiliza para especificar qué registros se deben actualizar.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>DELETE: Este comando se utiliza para eliminar registros de una tabla.</li>
+</ol>
+<div class="sourceCode" id="cb95"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb95-1"><a href="sql.html#cb95-1" tabindex="-1"></a><span class="co">-- Ejemplo de DELETE</span></span>
+<span id="cb95-2"><a href="sql.html#cb95-2" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> Tabla</span>
+<span id="cb95-3"><a href="sql.html#cb95-3" tabindex="-1"></a><span class="kw">WHERE</span> condicion;</span></code></pre></div>
+<p>En este ejemplo, estamos eliminando registros de la tabla <code>Tabla</code> que cumplen con cierta condición especificada en la cláusula <code>WHERE</code>.</p>
+<p>Es importante tener cuidado al utilizar estos comandos, ya que pueden afectar a múltiples registros o incluso a toda la tabla si no se usan con precaución. Siempre es recomendable hacer una copia de seguridad de los datos antes de realizar cambios importantes en una base de datos.</p>
 </div>
-<div id="valores-faltantes" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Valores faltantes<a href="sql.html#valores-faltantes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="paso-3-insertar-datos" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Paso 3: Insertar datos<a href="sql.html#paso-3-insertar-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ahora, insertemos algunos datos en estas tablas. Ejecuta los siguientes comandos dentro de SQLite3:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb96-1"><a href="sql.html#cb96-1" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Estudiantes (nombre, edad, promedio) <span class="kw">VALUES</span> (<span class="st">&#39;Roberta&#39;</span>, <span class="dv">20</span>, <span class="fl">9.5</span>);</span>
+<span id="cb96-2"><a href="sql.html#cb96-2" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Estudiantes (nombre, edad, promedio) <span class="kw">VALUES</span> (<span class="st">&#39;Diego&#39;</span>, <span class="dv">22</span>, <span class="fl">8.9</span>);</span>
+<span id="cb96-3"><a href="sql.html#cb96-3" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="sql.html#cb96-4" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Cursos (nombre, profesor) <span class="kw">VALUES</span> (<span class="st">&#39;Matemáticas&#39;</span>, <span class="st">&#39;Profesor A&#39;</span>);</span>
+<span id="cb96-5"><a href="sql.html#cb96-5" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Cursos (nombre, profesor) <span class="kw">VALUES</span> (<span class="st">&#39;Historia&#39;</span>, <span class="st">&#39;Profesor B&#39;</span>);</span></code></pre></div>
+<p>Esto insertará dos registros en la tabla <code>Estudiantes</code> y dos registros en la tabla <code>Cursos</code>.</p>
 </div>
-<div id="combinar-bases-de-datos" class="section level2 hasAnchor" number="5.5">
-<h2><span class="header-section-number">5.5</span> Combinar bases de datos<a href="sql.html#combinar-bases-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="paso-4-consultas" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Paso 4: Consultas<a href="sql.html#paso-4-consultas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ahora que tenemos algunos datos en nuestras tablas, podemos hacer consultas para recuperar información. Algunos ejemplos de consultas:</p>
+<ol style="list-style-type: decimal">
+<li>Seleccionar todos los estudiantes:</li>
+</ol>
+<div class="sourceCode" id="cb97"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb97-1"><a href="sql.html#cb97-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Estudiantes;</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Seleccionar los cursos y sus profesores:</li>
+</ol>
+<div class="sourceCode" id="cb98"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb98-1"><a href="sql.html#cb98-1" tabindex="-1"></a><span class="kw">SELECT</span> nombre, profesor <span class="kw">FROM</span> Cursos;</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Seleccionar estudiantes mayores de 21 años:</li>
+</ol>
+<div class="sourceCode" id="cb99"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb99-1"><a href="sql.html#cb99-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Estudiantes <span class="kw">WHERE</span> edad <span class="op">&gt;</span> <span class="dv">21</span>;</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Seleccionar estudiantes cuyo promedio sea mayor o igual a 8.0:</li>
+</ol>
+<div class="sourceCode" id="cb100"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb100-1"><a href="sql.html#cb100-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Estudiantes <span class="kw">WHERE</span> promedio <span class="op">&gt;=</span> <span class="fl">8.0</span>;</span></code></pre></div>
+<p><strong>NOTA: </strong> Respaldo</p>
+<p>Al respaldar una base de datos con SQL, es importante considerar los pros y los contras de cada método. Aquí están algunos de los pros y los contras de almacena dump files en control de versiones:</p>
+<p>Pros:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Historial de cambios</strong>: Almacenar archivos dump en control de versiones permite rastrear y gestionar cambios en la base de datos a lo largo del tiempo. Esto puede ser útil para auditorías y para entender cómo ha evolucionado la base de datos.</p></li>
+<li><p><strong>Portabilidad</strong>: Los archivos de dump son archivos de texto que contienen los comandos SQL necesarios para recrear la base de datos. Esto significa que la base de datos puede ser fácilmente restaurada en diferentes entornos o por diferentes usuarios.</p></li>
+<li><p><strong>Respaldo adicional</strong>: Los archivos de dump proporcionan una capa adicional de respaldo para la base de datos. Si algo sale mal con la base de datos, se puede utilizar el archivo dump para restaurarla a un estado anterior.</p></li>
+</ol>
+<p>Contras:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Complejidad</strong>: El proceso de crear y gestionar archivos dump puede ser más complejo que simplemente realizar respaldos regulares de la base de datos. Los usuarios deben asegurarse de que los archivos dump sean consistentes y estén actualizados con la base de datos en todo momento.</p></li>
+<li><p><strong>Ineficiencia</strong>: Los archivos dump pueden ser grandes y consumir mucho espacio en el control de versiones, especialmente para bases de datos grandes. Esto puede ralentizar las operaciones de clonación y sincronización.</p></li>
+<li><p><strong>Orden de los registros</strong>: Los archivos dump no garantizan un orden específico para los registros en la base de datos. Esto puede dificultar la comparación entre diferentes versiones de la base de datos y la identificación de cambios específicos.</p></li>
+</ol>
+</div>
+</div>
+<div id="usar-sql-con-otros-programas" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Usar SQL con otros programas<a href="sql.html#usar-sql-con-otros-programas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="explorar-datos-categóricos-y-texto-no-estructurado" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Explorar datos categóricos y texto no estructurado<a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
