@@ -9,6 +9,10 @@ workingDir <-  "."
 setwd(workingDir)
 ```
 
+
+**Notas:** Crear correo de comunidad UNAM en el [link](https://www.comunidad.unam.mx/) y después iniciar sesión en la [página](https://www.microsoft.com/es-es/power-platform/products/power-bi) para poder ocupar PowerBI (free) asociado a la cuenta de comunidad UNAM.  
+
+
 ## Introducción a Power BI
 
 ## Transformando y visualizando datos
