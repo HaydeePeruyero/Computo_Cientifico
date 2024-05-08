@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-04-30" />
+<meta name="date" content="2024-05-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -751,41 +751,110 @@ Las funciones <code>instr(X, Y)</code> y <code>substr(X, I, [L])</code> nos ayud
 <li>La columna <code>columna4</code> es de tipo entero y no se ha aplicado la restricción <code>NOT NULL</code>, lo que significa que puede contener valores nulos.</li>
 <li>Se han agregado dos restricciones de clave foránea (<code>FOREIGN KEY</code>) que hacen referencia a las columnas <code>id</code> de otra tabla llamada <code>OtraTabla</code>.</li>
 </ul>
-<p>Una vez que hayas definido la estructura de la nueva tabla, puedes ejecutar el comando <code>CREATE TABLE</code> en SQLite3 para crear la tabla en tu base de datos existente.</p>
+<p>Nota: Vamos a borrar esta tabla.</p>
+<p><strong>NOTA: SI SE PUEDEN MODIFICAR LOS KEY FOREING DESPUÉS DE CREADAS LAS TABLAS, PONER RESTRICCIONES, AGREGAR COLUMNAS, PERO LA VERSIÓN QUE ESTAMOS USANDO NO ADMITE LOS COMANDOS.</strong></p>
+<p>Vamos a modificar nuestras tablas primero con las claves secundarias y primarias de todos los campos.</p>
+<p>Las tres tablas con todas las columnas y restricciones, junto con las claves primarias y foráneas:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Tabla Estudiantes:</strong></li>
+</ol>
+<div class="sourceCode" id="cb93"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb93-1"><a href="sql.html#cb93-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> Estudiantes (</span>
+<span id="cb93-2"><a href="sql.html#cb93-2" tabindex="-1"></a>    <span class="kw">id</span> <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb93-3"><a href="sql.html#cb93-3" tabindex="-1"></a>    nombre TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb93-4"><a href="sql.html#cb93-4" tabindex="-1"></a>    apellido TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb93-5"><a href="sql.html#cb93-5" tabindex="-1"></a>    edad <span class="dt">INTEGER</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb93-6"><a href="sql.html#cb93-6" tabindex="-1"></a>    promedio <span class="dt">REAL</span>,</span>
+<span id="cb93-7"><a href="sql.html#cb93-7" tabindex="-1"></a>    curso_id <span class="dt">INTEGER</span>,</span>
+<span id="cb93-8"><a href="sql.html#cb93-8" tabindex="-1"></a>    <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (curso_id) <span class="kw">REFERENCES</span> Cursos(<span class="kw">id</span>)</span>
+<span id="cb93-9"><a href="sql.html#cb93-9" tabindex="-1"></a>);</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Tabla Profesores:</strong></li>
+</ol>
+<div class="sourceCode" id="cb94"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb94-1"><a href="sql.html#cb94-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> Profesores (</span>
+<span id="cb94-2"><a href="sql.html#cb94-2" tabindex="-1"></a>    <span class="kw">id</span> <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb94-3"><a href="sql.html#cb94-3" tabindex="-1"></a>    nombre TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb94-4"><a href="sql.html#cb94-4" tabindex="-1"></a>    apellido TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb94-5"><a href="sql.html#cb94-5" tabindex="-1"></a>    edad <span class="dt">INTEGER</span>,</span>
+<span id="cb94-6"><a href="sql.html#cb94-6" tabindex="-1"></a>    curso TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb94-7"><a href="sql.html#cb94-7" tabindex="-1"></a>    <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (curso) <span class="kw">REFERENCES</span> Cursos(<span class="kw">id</span>)</span>
+<span id="cb94-8"><a href="sql.html#cb94-8" tabindex="-1"></a>);</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Tabla Cursos:</strong></li>
+</ol>
+<div class="sourceCode" id="cb95"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb95-1"><a href="sql.html#cb95-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> Cursos (</span>
+<span id="cb95-2"><a href="sql.html#cb95-2" tabindex="-1"></a>    <span class="kw">id</span> <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb95-3"><a href="sql.html#cb95-3" tabindex="-1"></a>    nombre TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb95-4"><a href="sql.html#cb95-4" tabindex="-1"></a>    profesor_id <span class="dt">INTEGER</span>,</span>
+<span id="cb95-5"><a href="sql.html#cb95-5" tabindex="-1"></a>    <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (profesor_id) <span class="kw">REFERENCES</span> Profesores(<span class="kw">id</span>)</span>
+<span id="cb95-6"><a href="sql.html#cb95-6" tabindex="-1"></a>);</span></code></pre></div>
+<p>Estas consultas crearán tres tablas con las columnas y restricciones especificas, incluyendo las claves primarias y foráneas necesarias para establecer relaciones entre las tablas.</p>
 <p>Después de haber creado las tablas en una base de datos, necesitamos manipular los datos dentro de esas tablas. Para hacerlo, utilizamos tres comandos principales en SQL: INSERT, UPDATE y DELETE. Estos comandos nos permiten agregar nuevos registros, actualizar registros existentes y eliminar registros, respectivamente.</p>
 <ol style="list-style-type: decimal">
 <li>INSERT: Este comando se utiliza para agregar nuevos registros a una tabla existente.</li>
 </ol>
-<div class="sourceCode" id="cb93"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb93-1"><a href="sql.html#cb93-1" tabindex="-1"></a><span class="co">-- Ejemplo de INSERT</span></span>
-<span id="cb93-2"><a href="sql.html#cb93-2" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Tabla (columna1, columna2, columna3)</span>
-<span id="cb93-3"><a href="sql.html#cb93-3" tabindex="-1"></a><span class="kw">VALUES</span> (<span class="st">&#39;valor1&#39;</span>, <span class="st">&#39;valor2&#39;</span>, <span class="st">&#39;valor3&#39;</span>);</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb96-1"><a href="sql.html#cb96-1" tabindex="-1"></a><span class="co">-- Ejemplo de INSERT</span></span>
+<span id="cb96-2"><a href="sql.html#cb96-2" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Tabla (columna1, columna2, columna3)</span>
+<span id="cb96-3"><a href="sql.html#cb96-3" tabindex="-1"></a><span class="kw">VALUES</span> (<span class="st">&#39;valor1&#39;</span>, <span class="st">&#39;valor2&#39;</span>, <span class="st">&#39;valor3&#39;</span>);</span></code></pre></div>
 <p>En este ejemplo, estamos insertando un nuevo registro en la tabla llamada <code>Tabla</code>. Estamos especificando los valores para las columnas <code>columna1</code>, <code>columna2</code> y <code>columna3</code> usando el comando <code>VALUES</code>.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>UPDATE: Este comando se utiliza para actualizar registros existentes en una tabla.</li>
 </ol>
-<div class="sourceCode" id="cb94"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb94-1"><a href="sql.html#cb94-1" tabindex="-1"></a><span class="co">-- Ejemplo de UPDATE</span></span>
-<span id="cb94-2"><a href="sql.html#cb94-2" tabindex="-1"></a><span class="kw">UPDATE</span> Tabla</span>
-<span id="cb94-3"><a href="sql.html#cb94-3" tabindex="-1"></a><span class="kw">SET</span> columna1 <span class="op">=</span> <span class="st">&#39;nuevo_valor&#39;</span></span>
-<span id="cb94-4"><a href="sql.html#cb94-4" tabindex="-1"></a><span class="kw">WHERE</span> condicion;</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb97-1"><a href="sql.html#cb97-1" tabindex="-1"></a><span class="co">-- Ejemplo de UPDATE</span></span>
+<span id="cb97-2"><a href="sql.html#cb97-2" tabindex="-1"></a><span class="kw">UPDATE</span> Tabla</span>
+<span id="cb97-3"><a href="sql.html#cb97-3" tabindex="-1"></a><span class="kw">SET</span> columna1 <span class="op">=</span> <span class="st">&#39;nuevo_valor&#39;</span></span>
+<span id="cb97-4"><a href="sql.html#cb97-4" tabindex="-1"></a><span class="kw">WHERE</span> condicion;</span></code></pre></div>
 <p>En este ejemplo, estamos actualizando la columna <code>columna1</code> en la tabla <code>Tabla</code> con un nuevo valor. La cláusula <code>WHERE</code> se utiliza para especificar qué registros se deben actualizar.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>DELETE: Este comando se utiliza para eliminar registros de una tabla.</li>
 </ol>
-<div class="sourceCode" id="cb95"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb95-1"><a href="sql.html#cb95-1" tabindex="-1"></a><span class="co">-- Ejemplo de DELETE</span></span>
-<span id="cb95-2"><a href="sql.html#cb95-2" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> Tabla</span>
-<span id="cb95-3"><a href="sql.html#cb95-3" tabindex="-1"></a><span class="kw">WHERE</span> condicion;</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb98-1"><a href="sql.html#cb98-1" tabindex="-1"></a><span class="co">-- Ejemplo de DELETE</span></span>
+<span id="cb98-2"><a href="sql.html#cb98-2" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> Tabla</span>
+<span id="cb98-3"><a href="sql.html#cb98-3" tabindex="-1"></a><span class="kw">WHERE</span> condicion;</span></code></pre></div>
 <p>En este ejemplo, estamos eliminando registros de la tabla <code>Tabla</code> que cumplen con cierta condición especificada en la cláusula <code>WHERE</code>.</p>
 <p>Es importante tener cuidado al utilizar estos comandos, ya que pueden afectar a múltiples registros o incluso a toda la tabla si no se usan con precaución. Siempre es recomendable hacer una copia de seguridad de los datos antes de realizar cambios importantes en una base de datos.</p>
 </div>
 <div id="paso-3-insertar-datos" class="section level3 hasAnchor" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Paso 3: Insertar datos<a href="sql.html#paso-3-insertar-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ahora, insertemos algunos datos en estas tablas. Ejecuta los siguientes comandos dentro de SQLite3:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb96-1"><a href="sql.html#cb96-1" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Estudiantes (nombre, edad, promedio) <span class="kw">VALUES</span> (<span class="st">&#39;Roberta&#39;</span>, <span class="dv">20</span>, <span class="fl">9.5</span>);</span>
-<span id="cb96-2"><a href="sql.html#cb96-2" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Estudiantes (nombre, edad, promedio) <span class="kw">VALUES</span> (<span class="st">&#39;Diego&#39;</span>, <span class="dv">22</span>, <span class="fl">8.9</span>);</span>
-<span id="cb96-3"><a href="sql.html#cb96-3" tabindex="-1"></a></span>
-<span id="cb96-4"><a href="sql.html#cb96-4" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Cursos (nombre, profesor) <span class="kw">VALUES</span> (<span class="st">&#39;Matemáticas&#39;</span>, <span class="st">&#39;Profesor A&#39;</span>);</span>
-<span id="cb96-5"><a href="sql.html#cb96-5" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Cursos (nombre, profesor) <span class="kw">VALUES</span> (<span class="st">&#39;Historia&#39;</span>, <span class="st">&#39;Profesor B&#39;</span>);</span></code></pre></div>
-<p>Esto insertará dos registros en la tabla <code>Estudiantes</code> y dos registros en la tabla <code>Cursos</code>.</p>
+<ol style="list-style-type: decimal">
+<li>Tabla Estudiantes:</li>
+</ol>
+<div class="sourceCode" id="cb99"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb99-1"><a href="sql.html#cb99-1" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Estudiantes (nombre, apellido, edad, promedio, curso_id) <span class="kw">VALUES</span> (<span class="st">&#39;Roberta&#39;</span>, <span class="st">&#39;Pardo&#39;</span>, <span class="dv">18</span>, <span class="fl">9.5</span>, <span class="dv">1</span>);</span>
+<span id="cb99-2"><a href="sql.html#cb99-2" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Estudiantes (nombre, apellido, edad, promedio, curso_id) <span class="kw">VALUES</span> (<span class="st">&#39;Diego&#39;</span>, <span class="st">&#39;Bustamante&#39;</span>, <span class="dv">20</span>, <span class="fl">8.5</span>, <span class="dv">3</span>);</span>
+<span id="cb99-3"><a href="sql.html#cb99-3" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Estudiantes (nombre, apellido, edad, promedio, curso_id) <span class="kw">VALUES</span> (<span class="st">&#39;Roberta&#39;</span>, <span class="st">&#39;Pardo&#39;</span>, <span class="dv">18</span>, <span class="fl">7.5</span>, <span class="dv">3</span>);</span>
+<span id="cb99-4"><a href="sql.html#cb99-4" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Estudiantes (nombre, apellido, edad, promedio, curso_id) <span class="kw">VALUES</span> (<span class="st">&#39;Diego&#39;</span>, <span class="st">&#39;Bustamante&#39;</span>, <span class="dv">20</span>, <span class="fl">9.5</span>, <span class="dv">2</span>);</span>
+<span id="cb99-5"><a href="sql.html#cb99-5" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Estudiantes (nombre, apellido, edad, promedio, curso_id) <span class="kw">VALUES</span> (<span class="st">&#39;Juan&#39;</span>, <span class="st">&#39;Pérez&#39;</span>, <span class="dv">18</span>, <span class="fl">9.5</span>, <span class="dv">1</span>);</span></code></pre></div>
+<p>Esto insertará cuatro registros en la tabla <code>Estudiantes</code> y dos registros en la tabla <code>Cursos</code>.</p>
+<p>Para actualizar un registro:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb100-1"><a href="sql.html#cb100-1" tabindex="-1"></a><span class="kw">UPDATE</span> Estudiantes <span class="kw">SET</span> promedio <span class="op">=</span> <span class="fl">8.7</span> <span class="kw">WHERE</span> curso_id <span class="op">=</span> <span class="dv">1</span>;</span></code></pre></div>
+<p>Para eliminar un registro:</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb101-1"><a href="sql.html#cb101-1" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> Estudiantes <span class="kw">WHERE</span> nombre <span class="op">=</span> <span class="ot">&quot;Juan&quot;</span>;</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Tabla Profesores:</strong></li>
+</ol>
+<p>Para insertar valores:</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb102-1"><a href="sql.html#cb102-1" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Profesores (nombre, apellido, edad, curso)</span>
+<span id="cb102-2"><a href="sql.html#cb102-2" tabindex="-1"></a><span class="kw">VALUES</span> (<span class="st">&#39;María&#39;</span>, <span class="st">&#39;González&#39;</span>, <span class="dv">35</span>, <span class="st">&#39;Matemáticas&#39;</span>);</span></code></pre></div>
+<p>Para actualizar un registro:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb103-1"><a href="sql.html#cb103-1" tabindex="-1"></a><span class="kw">UPDATE</span> Profesores</span>
+<span id="cb103-2"><a href="sql.html#cb103-2" tabindex="-1"></a><span class="kw">SET</span> edad <span class="op">=</span> <span class="dv">36</span></span>
+<span id="cb103-3"><a href="sql.html#cb103-3" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="dv">1</span>;</span></code></pre></div>
+<p>Para eliminar un registro:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb104-1"><a href="sql.html#cb104-1" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> Profesores</span>
+<span id="cb104-2"><a href="sql.html#cb104-2" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="dv">1</span>;</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Tabla Cursos:</strong></li>
+</ol>
+<p>Para insertar valores:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb105-1"><a href="sql.html#cb105-1" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Cursos (nombre, profesor_id)</span>
+<span id="cb105-2"><a href="sql.html#cb105-2" tabindex="-1"></a><span class="kw">VALUES</span> (<span class="st">&#39;Matemáticas&#39;</span>, <span class="dv">1</span>);</span></code></pre></div>
+<p>Para actualizar un registro:</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb106-1"><a href="sql.html#cb106-1" tabindex="-1"></a><span class="kw">UPDATE</span> Cursos</span>
+<span id="cb106-2"><a href="sql.html#cb106-2" tabindex="-1"></a><span class="kw">SET</span> nombre <span class="op">=</span> <span class="st">&#39;Álgebra&#39;</span></span>
+<span id="cb106-3"><a href="sql.html#cb106-3" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="dv">1</span>;</span></code></pre></div>
+<p>Para eliminar un registro:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb107-1"><a href="sql.html#cb107-1" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> Cursos</span>
+<span id="cb107-2"><a href="sql.html#cb107-2" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="dv">1</span>;</span></code></pre></div>
 </div>
 <div id="paso-4-consultas" class="section level3 hasAnchor" number="5.2.4">
 <h3><span class="header-section-number">5.2.4</span> Paso 4: Consultas<a href="sql.html#paso-4-consultas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -793,19 +862,19 @@ Las funciones <code>instr(X, Y)</code> y <code>substr(X, I, [L])</code> nos ayud
 <ol style="list-style-type: decimal">
 <li>Seleccionar todos los estudiantes:</li>
 </ol>
-<div class="sourceCode" id="cb97"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb97-1"><a href="sql.html#cb97-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Estudiantes;</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb108-1"><a href="sql.html#cb108-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Estudiantes;</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Seleccionar los cursos y sus profesores:</li>
 </ol>
-<div class="sourceCode" id="cb98"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb98-1"><a href="sql.html#cb98-1" tabindex="-1"></a><span class="kw">SELECT</span> nombre, profesor <span class="kw">FROM</span> Cursos;</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb109-1"><a href="sql.html#cb109-1" tabindex="-1"></a><span class="kw">SELECT</span> nombre, profesor <span class="kw">FROM</span> Cursos;</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Seleccionar estudiantes mayores de 21 años:</li>
 </ol>
-<div class="sourceCode" id="cb99"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb99-1"><a href="sql.html#cb99-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Estudiantes <span class="kw">WHERE</span> edad <span class="op">&gt;</span> <span class="dv">21</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb110-1"><a href="sql.html#cb110-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Estudiantes <span class="kw">WHERE</span> edad <span class="op">&gt;</span> <span class="dv">21</span>;</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Seleccionar estudiantes cuyo promedio sea mayor o igual a 8.0:</li>
 </ol>
-<div class="sourceCode" id="cb100"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb100-1"><a href="sql.html#cb100-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Estudiantes <span class="kw">WHERE</span> promedio <span class="op">&gt;=</span> <span class="fl">8.0</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb111-1"><a href="sql.html#cb111-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Estudiantes <span class="kw">WHERE</span> promedio <span class="op">&gt;=</span> <span class="fl">8.0</span>;</span></code></pre></div>
 <p><strong>NOTA: </strong> Respaldo</p>
 <p>Al respaldar una base de datos con SQL, es importante considerar los pros y los contras de cada método. Aquí están algunos de los pros y los contras de almacena dump files en control de versiones:</p>
 <p>Pros:</p>

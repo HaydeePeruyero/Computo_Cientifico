@@ -853,8 +853,51 @@ En este ejemplo:
 - La columna `columna4` es de tipo entero y no se ha aplicado la restricción `NOT NULL`, lo que significa que puede contener valores nulos.
 - Se han agregado dos restricciones de clave foránea (`FOREIGN KEY`) que hacen referencia a las columnas `id` de otra tabla llamada `OtraTabla`.
 
-Una vez que hayas definido la estructura de la nueva tabla, puedes ejecutar el comando `CREATE TABLE` en SQLite3 para crear la tabla en tu base de datos existente.
+Nota: Vamos a borrar esta tabla.
 
+**NOTA: SI SE PUEDEN MODIFICAR LOS KEY FOREING DESPUÉS DE CREADAS LAS TABLAS, PONER RESTRICCIONES, AGREGAR COLUMNAS, PERO LA VERSIÓN QUE ESTAMOS USANDO NO ADMITE LOS COMANDOS.**
+
+Vamos a modificar nuestras tablas primero con las claves secundarias y primarias de todos los campos.
+
+Las tres tablas con todas las columnas y restricciones, junto con las claves primarias y foráneas:
+
+1. **Tabla Estudiantes:**
+
+```sql
+CREATE TABLE Estudiantes (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    apellido TEXT NOT NULL,
+    edad INTEGER NOT NULL,
+    promedio REAL,
+    curso_id INTEGER,
+    FOREIGN KEY (curso_id) REFERENCES Cursos(id)
+);
+```
+
+2. **Tabla Profesores:**
+```sql
+CREATE TABLE Profesores (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    apellido TEXT NOT NULL,
+    edad INTEGER,
+    curso TEXT NOT NULL,
+    FOREIGN KEY (curso) REFERENCES Cursos(id)
+);
+```
+
+3. **Tabla Cursos:**
+```sql
+CREATE TABLE Cursos (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    profesor_id INTEGER,
+    FOREIGN KEY (profesor_id) REFERENCES Profesores(id)
+);
+```
+
+Estas consultas crearán tres tablas con las columnas y restricciones especificas, incluyendo las claves primarias y foráneas necesarias para establecer relaciones entre las tablas.
 
 Después de haber creado las tablas en una base de datos, necesitamos manipular los datos dentro de esas tablas. Para hacerlo, utilizamos tres comandos principales en SQL: INSERT, UPDATE y DELETE. Estos comandos nos permiten agregar nuevos registros, actualizar registros existentes y eliminar registros, respectivamente.
 
@@ -895,15 +938,69 @@ Es importante tener cuidado al utilizar estos comandos, ya que pueden afectar a 
 
 Ahora, insertemos algunos datos en estas tablas. Ejecuta los siguientes comandos dentro de SQLite3:
 
-```sql
-INSERT INTO Estudiantes (nombre, edad, promedio) VALUES ('Roberta', 20, 9.5);
-INSERT INTO Estudiantes (nombre, edad, promedio) VALUES ('Diego', 22, 8.9);
+1. Tabla Estudiantes:
 
-INSERT INTO Cursos (nombre, profesor) VALUES ('Matemáticas', 'Profesor A');
-INSERT INTO Cursos (nombre, profesor) VALUES ('Historia', 'Profesor B');
+```sql
+INSERT INTO Estudiantes (nombre, apellido, edad, promedio, curso_id) VALUES ('Roberta', 'Pardo', 18, 9.5, 1);
+INSERT INTO Estudiantes (nombre, apellido, edad, promedio, curso_id) VALUES ('Diego', 'Bustamante', 20, 8.5, 3);
+INSERT INTO Estudiantes (nombre, apellido, edad, promedio, curso_id) VALUES ('Roberta', 'Pardo', 18, 7.5, 3);
+INSERT INTO Estudiantes (nombre, apellido, edad, promedio, curso_id) VALUES ('Diego', 'Bustamante', 20, 9.5, 2);
+INSERT INTO Estudiantes (nombre, apellido, edad, promedio, curso_id) VALUES ('Juan', 'Pérez', 18, 9.5, 1);
 ```
 
-Esto insertará dos registros en la tabla `Estudiantes` y dos registros en la tabla `Cursos`.
+Esto insertará cuatro registros en la tabla `Estudiantes` y dos registros en la tabla `Cursos`.
+
+Para actualizar un registro:
+```sql
+UPDATE Estudiantes SET promedio = 8.7 WHERE curso_id = 1;
+```
+
+Para eliminar un registro:
+```sql
+DELETE FROM Estudiantes WHERE nombre = "Juan";
+```
+
+2. **Tabla Profesores:**
+
+Para insertar valores:
+```sql
+INSERT INTO Profesores (nombre, apellido, edad, curso)
+VALUES ('María', 'González', 35, 'Matemáticas');
+```
+
+Para actualizar un registro:
+```sql
+UPDATE Profesores
+SET edad = 36
+WHERE id = 1;
+```
+
+Para eliminar un registro:
+```sql
+DELETE FROM Profesores
+WHERE id = 1;
+```
+
+3. **Tabla Cursos:**
+
+Para insertar valores:
+```sql
+INSERT INTO Cursos (nombre, profesor_id)
+VALUES ('Matemáticas', 1);
+```
+
+Para actualizar un registro:
+```sql
+UPDATE Cursos
+SET nombre = 'Álgebra'
+WHERE id = 1;
+```
+
+Para eliminar un registro:
+```sql
+DELETE FROM Cursos
+WHERE id = 1;
+```
 
 ### Paso 4: Consultas
 
