@@ -1050,9 +1050,171 @@ Contras:
 
 3. **Orden de los registros**: Los archivos dump no garantizan un orden específico para los registros en la base de datos. Esto puede dificultar la comparación entre diferentes versiones de la base de datos y la identificación de cambios específicos.
 
+## Importar tsv o csv
+
+Si tenemos bases de datos en excel, csv, tsv, podemos importarlas en una base de datos de sql.
+
+Vamos a descargar algunas pestañas del siguiente archivo:
+
+[archivo](https://drive.google.com/drive/folders/1agKYU5TgBlJ4pRdKU4M_W94GmMQzBWPP?usp=sharing)
+
+**Nota:** quitar los títulos de columna antes de descargarla pero guardarlos en algún lado para después usarlos en la creación de la base de datos.
+
+Y vamos a subirlos a una carpeta donde inicializaremos una base de datos.
+
+
+```sql
+sqlite3 camda.db
+```
+
+Ahora debemos activar el modo csv o tsv:
+
+```sql
+.mode csv
+```
+
+Crearemos nuestra primera tabla indicando nuestra clave primaria:
+
+```sql
+CREATE TABLE test(
+genus TEXT, 
+specie TEXT, 
+accesion TEXT PRIMARY KEY, 
+antibiotic TEXT, 
+collection_date TEXT)
+```
+
+Ahora importaremos nuestro csv a la tabla. Importante: los archivos csv deben de estar en la misma carpeta donde inicializaremos cada tabla.
+
+```sql
+.import Test.csv test
+```
+
+Repetimos lo mismo con cada tabla.
+
+**Ejercicio 1:** ¿Cuántos organismos faltan de ensamblarse? y de anotarse?
+
+**Ejercicio 2:** De la tabla de training, cuantos organismos son resistentes a cada antibioitico? Realiza una tabla como la siguiente:
+
+|Genus|Specie|phenotype|antibioitic|count|
+|Acinetobacter|baumannii|Resistant|meropen|n1|
+|Acinetobacter|baumannii|Susceptible|meropen|n2|
+....
+
+
 
 ## Usar SQL con otros programas
 
+Para finalizar, veamos a cómo acceder a una base de datos desde un lenguaje de programación de propósito general como Python y R. Otros lenguajes utilizan casi exactamente el mismo modelo: los nombres de las bibliotecas y las funciones pueden ser diferentes, pero los conceptos son los mismos.
 
-## Explorar datos categóricos y texto no estructurado
+
+### Conección con Python
+
+En Python, podemos crear una función que selecciona latitudes y longitudes de una base de datos SQLite almacenada en un archivo llamado survey.db:
+
+```python
+import sqlite3
+```
+
+```python
+connection = sqlite3.connect("survey.db") # Establece la conección con la base de datps. Debemos estár en la misma carpeta.
+cursor = connection.cursor() # crea un apuntador a la base de datos para llevar registro de consultas
+cursor.execute("SELECT Site.lat, Site.long FROM Site;") # realizamos nuestra consulta
+results = cursor.fetchall() #
+for r in results:
+    print(r)
+cursor.close()
+connection.close()
+```
+
+La base de datos nos devuelve los resultados de la consulta en respuesta a la llamada cursor.fetchall en la línea 5. Este resultado es una lista con una entrada por cada registro en el conjunto de resultados; si iteramos sobre esa lista (línea 6) e imprimimos esas entradas de lista (línea 7), podemos ver que cada una es una tupla con un elemento por cada campo que solicitamos.
+
+Finalmente, las líneas 8 y 9 cierran nuestro cursor y nuestra conexión, ya que la base de datos solo puede mantener un número limitado de estos abiertos a la vez. Sin embargo, como establecer una conexión lleva tiempo, no deberíamos abrir una conexión, realizar una operación y luego cerrar la conexión, solo para volver a abrirla unos microsegundos después para realizar otra operación. En su lugar, es normal crear una conexión que permanezca abierta durante toda la vida útil del programa.
+
+Las consultas en aplicaciones reales a menudo dependerán de los valores proporcionados por los usuarios. Por ejemplo, esta función toma el ID de un usuario como parámetro y devuelve su nombre:
+
+```python
+def get_name(database_file, person_id):
+    query = "SELECT personal || ' ' || family FROM Person WHERE id='" + person_id + "';"
+
+    connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    cursor.execute(query)
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+
+    return results[0][0]
+```
+
+```python
+print("Full name for dyer:", get_name('survey.db', 'dyer'))
+```
+
+### Conección con R
+
+Vamos a usar el servidor de bioinformatica y entraremos con los usuarios de alumno.
+
+[Servidor](https://bioinformatica.matmor.unam.mx/rstudio/)
+
+En la consola ejecutamos lo siguiente para verificar que esté instalado el paquete de SQL.
+
+```r
+library(RSQLite)
+```
+
+De no estar instalado ejecutamos: `install.packages("RSQLite")`
+
+La forma de establecer una consulta es la siguiente:
+
+```r
+connection <- dbConnect(RSQLite::SQLite(), "~/sql_course/survey.db")
+results <- dbGetQuery(connection, "SELECT Site.lat, Site.long FROM Site;")
+print(results)
+dbDisconnect(connection)
+```
+
+La primera instrucción establece la conección de sql a la base de datos. La segunda es el query y los resultados los almacena en la variable results. Por último, cerramos la conección.
+
+Otro ejemplo similar al de Python para obtener el nombre completo de un científico:
+
+```r
+query <- paste0("SELECT personal || ' ' || family FROM Person WHERE id =='",
+                  personID, "';")
+return(dbGetQuery(connection, query))
+}
+
+print(paste("full name for dyer:", getName('dyer')))
+```
+
+R cuenta con otros comandos para extraer las tablas, los campos de cada tabla o leer tablas completas:
+
+```r
+dbListTables(connection)
+dbListFields(connection, "Survey")
+dbReadTable(connection, "Person")
+```
+
+
+Finalmente, para escribir una tabla completa en una base de datos, puedes usar `dbWriteTable()`. Ten en cuenta que siempre querremos usar el argumento `row.names = FALSE` o R escribirá los nombres de las filas como una columna separada. En este ejemplo, escribiremos el conjunto de datos mtcars incorporado de R como una tabla:
+
+```r
+cars <- dbConnect(RSQLite::SQLite(), ":memory:")
+dbWriteTable(cars, "mtcars", mtcars)
+dbGetQuery(cars, "SELECT * FROM mtcars")
+
+dbGetQuery(cars, "SELECT * FROM mtcars", n = 6)
+
+conteos <- dbGetQuery(
+  cars,
+  "SELECT COUNT(*) FROM mtcars WHERE cyl = ?",
+  params = list(1:8)
+)
+conteos
+```
+
+
+**NOTA:** Si antes de cerrar la conección con la base de datos survey.db hicieramos: `dbWriteTable(connection, "mtcars", mtcars)`, nos agregaría la tabla mtcars a survey.db.
+
+
 

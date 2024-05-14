@@ -23,7 +23,7 @@
 <meta name="author" content="Haydeé Peruyero" />
 
 
-<meta name="date" content="2024-05-08" />
+<meta name="date" content="2024-05-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -267,8 +267,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.3" data-path="sql.html"><a href="sql.html#paso-3-insertar-datos"><i class="fa fa-check"></i><b>5.2.3</b> Paso 3: Insertar datos</a></li>
 <li class="chapter" data-level="5.2.4" data-path="sql.html"><a href="sql.html#paso-4-consultas"><i class="fa fa-check"></i><b>5.2.4</b> Paso 4: Consultas</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="sql.html"><a href="sql.html#usar-sql-con-otros-programas"><i class="fa fa-check"></i><b>5.3</b> Usar SQL con otros programas</a></li>
-<li class="chapter" data-level="5.4" data-path="sql.html"><a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado"><i class="fa fa-check"></i><b>5.4</b> Explorar datos categóricos y texto no estructurado</a></li>
+<li class="chapter" data-level="5.3" data-path="sql.html"><a href="sql.html#importar-tsv-o-csv"><i class="fa fa-check"></i><b>5.3</b> Importar tsv o csv</a></li>
+<li class="chapter" data-level="5.4" data-path="sql.html"><a href="sql.html#usar-sql-con-otros-programas"><i class="fa fa-check"></i><b>5.4</b> Usar SQL con otros programas</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="sql.html"><a href="sql.html#conección-con-python"><i class="fa fa-check"></i><b>5.4.1</b> Conección con Python</a></li>
+<li class="chapter" data-level="5.4.2" data-path="sql.html"><a href="sql.html#conección-con-r"><i class="fa fa-check"></i><b>5.4.2</b> Conección con R</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="power-bi.html"><a href="power-bi.html"><i class="fa fa-check"></i><b>6</b> Power BI</a>
 <ul>
@@ -891,12 +895,104 @@ Las funciones <code>instr(X, Y)</code> y <code>substr(X, I, [L])</code> nos ayud
 </ol>
 </div>
 </div>
-<div id="usar-sql-con-otros-programas" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Usar SQL con otros programas<a href="sql.html#usar-sql-con-otros-programas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="importar-tsv-o-csv" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Importar tsv o csv<a href="sql.html#importar-tsv-o-csv" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Si tenemos bases de datos en excel, csv, tsv, podemos importarlas en una base de datos de sql.</p>
+<p>Vamos a descargar algunas pestañas del siguiente archivo:</p>
+<p><a href="https://drive.google.com/drive/folders/1agKYU5TgBlJ4pRdKU4M_W94GmMQzBWPP?usp=sharing">archivo</a></p>
+<p><strong>Nota:</strong> quitar los títulos de columna antes de descargarla pero guardarlos en algún lado para después usarlos en la creación de la base de datos.</p>
+<p>Y vamos a subirlos a una carpeta donde inicializaremos una base de datos.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb112-1"><a href="sql.html#cb112-1" tabindex="-1"></a>sqlite3 camda.db</span></code></pre></div>
+<p>Ahora debemos activar el modo csv o tsv:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb113-1"><a href="sql.html#cb113-1" tabindex="-1"></a>.<span class="kw">mode</span> csv</span></code></pre></div>
+<p>Crearemos nuestra primera tabla indicando nuestra clave primaria:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb114-1"><a href="sql.html#cb114-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> test(</span>
+<span id="cb114-2"><a href="sql.html#cb114-2" tabindex="-1"></a>genus TEXT, </span>
+<span id="cb114-3"><a href="sql.html#cb114-3" tabindex="-1"></a>specie TEXT, </span>
+<span id="cb114-4"><a href="sql.html#cb114-4" tabindex="-1"></a>accesion TEXT <span class="kw">PRIMARY</span> <span class="kw">KEY</span>, </span>
+<span id="cb114-5"><a href="sql.html#cb114-5" tabindex="-1"></a>antibiotic TEXT, </span>
+<span id="cb114-6"><a href="sql.html#cb114-6" tabindex="-1"></a>collection_date TEXT)</span></code></pre></div>
+<p>Ahora importaremos nuestro csv a la tabla. Importante: los archivos csv deben de estar en la misma carpeta donde inicializaremos cada tabla.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb115-1"><a href="sql.html#cb115-1" tabindex="-1"></a>.import Test.csv test</span></code></pre></div>
+<p>Repetimos lo mismo con cada tabla.</p>
+<p><strong>Ejercicio 1:</strong> ¿Cuántos organismos faltan de ensamblarse? y de anotarse?</p>
+<p><strong>Ejercicio 2:</strong> De la tabla de training, cuantos organismos son resistentes a cada antibioitico? Realiza una tabla como la siguiente:</p>
+<p>|Genus|Specie|phenotype|antibioitic|count|
+|Acinetobacter|baumannii|Resistant|meropen|n1|
+|Acinetobacter|baumannii|Susceptible|meropen|n2|
+….</p>
 </div>
-<div id="explorar-datos-categóricos-y-texto-no-estructurado" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Explorar datos categóricos y texto no estructurado<a href="sql.html#explorar-datos-categóricos-y-texto-no-estructurado" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="usar-sql-con-otros-programas" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Usar SQL con otros programas<a href="sql.html#usar-sql-con-otros-programas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para finalizar, veamos a cómo acceder a una base de datos desde un lenguaje de programación de propósito general como Python y R. Otros lenguajes utilizan casi exactamente el mismo modelo: los nombres de las bibliotecas y las funciones pueden ser diferentes, pero los conceptos son los mismos.</p>
+<div id="conección-con-python" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Conección con Python<a href="sql.html#conección-con-python" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En Python, podemos crear una función que selecciona latitudes y longitudes de una base de datos SQLite almacenada en un archivo llamado survey.db:</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb116-1"><a href="sql.html#cb116-1" tabindex="-1"></a><span class="im">import</span> sqlite3</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb117-1"><a href="sql.html#cb117-1" tabindex="-1"></a>connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">&quot;survey.db&quot;</span>) <span class="co"># Establece la conección con la base de datps. Debemos estár en la misma carpeta.</span></span>
+<span id="cb117-2"><a href="sql.html#cb117-2" tabindex="-1"></a>cursor <span class="op">=</span> connection.cursor() <span class="co"># crea un apuntador a la base de datos para llevar registro de consultas</span></span>
+<span id="cb117-3"><a href="sql.html#cb117-3" tabindex="-1"></a>cursor.execute(<span class="st">&quot;SELECT Site.lat, Site.long FROM Site;&quot;</span>) <span class="co"># realizamos nuestra consulta</span></span>
+<span id="cb117-4"><a href="sql.html#cb117-4" tabindex="-1"></a>results <span class="op">=</span> cursor.fetchall() <span class="co">#</span></span>
+<span id="cb117-5"><a href="sql.html#cb117-5" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> results:</span>
+<span id="cb117-6"><a href="sql.html#cb117-6" tabindex="-1"></a>    <span class="bu">print</span>(r)</span>
+<span id="cb117-7"><a href="sql.html#cb117-7" tabindex="-1"></a>cursor.close()</span>
+<span id="cb117-8"><a href="sql.html#cb117-8" tabindex="-1"></a>connection.close()</span></code></pre></div>
+<p>La base de datos nos devuelve los resultados de la consulta en respuesta a la llamada cursor.fetchall en la línea 5. Este resultado es una lista con una entrada por cada registro en el conjunto de resultados; si iteramos sobre esa lista (línea 6) e imprimimos esas entradas de lista (línea 7), podemos ver que cada una es una tupla con un elemento por cada campo que solicitamos.</p>
+<p>Finalmente, las líneas 8 y 9 cierran nuestro cursor y nuestra conexión, ya que la base de datos solo puede mantener un número limitado de estos abiertos a la vez. Sin embargo, como establecer una conexión lleva tiempo, no deberíamos abrir una conexión, realizar una operación y luego cerrar la conexión, solo para volver a abrirla unos microsegundos después para realizar otra operación. En su lugar, es normal crear una conexión que permanezca abierta durante toda la vida útil del programa.</p>
+<p>Las consultas en aplicaciones reales a menudo dependerán de los valores proporcionados por los usuarios. Por ejemplo, esta función toma el ID de un usuario como parámetro y devuelve su nombre:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb118-1"><a href="sql.html#cb118-1" tabindex="-1"></a><span class="kw">def</span> get_name(database_file, person_id):</span>
+<span id="cb118-2"><a href="sql.html#cb118-2" tabindex="-1"></a>    query <span class="op">=</span> <span class="st">&quot;SELECT personal || &#39; &#39; || family FROM Person WHERE id=&#39;&quot;</span> <span class="op">+</span> person_id <span class="op">+</span> <span class="st">&quot;&#39;;&quot;</span></span>
+<span id="cb118-3"><a href="sql.html#cb118-3" tabindex="-1"></a></span>
+<span id="cb118-4"><a href="sql.html#cb118-4" tabindex="-1"></a>    connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database_file)</span>
+<span id="cb118-5"><a href="sql.html#cb118-5" tabindex="-1"></a>    cursor <span class="op">=</span> connection.cursor()</span>
+<span id="cb118-6"><a href="sql.html#cb118-6" tabindex="-1"></a>    cursor.execute(query)</span>
+<span id="cb118-7"><a href="sql.html#cb118-7" tabindex="-1"></a>    results <span class="op">=</span> cursor.fetchall()</span>
+<span id="cb118-8"><a href="sql.html#cb118-8" tabindex="-1"></a>    cursor.close()</span>
+<span id="cb118-9"><a href="sql.html#cb118-9" tabindex="-1"></a>    connection.close()</span>
+<span id="cb118-10"><a href="sql.html#cb118-10" tabindex="-1"></a></span>
+<span id="cb118-11"><a href="sql.html#cb118-11" tabindex="-1"></a>    <span class="cf">return</span> results[<span class="dv">0</span>][<span class="dv">0</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb119-1"><a href="sql.html#cb119-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Full name for dyer:&quot;</span>, get_name(<span class="st">&#39;survey.db&#39;</span>, <span class="st">&#39;dyer&#39;</span>))</span></code></pre></div>
+</div>
+<div id="conección-con-r" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Conección con R<a href="sql.html#conección-con-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vamos a usar el servidor de bioinformatica y entraremos con los usuarios de alumno.</p>
+<p><a href="https://bioinformatica.matmor.unam.mx/rstudio/">Servidor</a></p>
+<p>En la consola ejecutamos lo siguiente para verificar que esté instalado el paquete de SQL.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="sql.html#cb120-1" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span></code></pre></div>
+<p>De no estar instalado ejecutamos: <code>install.packages("RSQLite")</code></p>
+<p>La forma de establecer una consulta es la siguiente:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="sql.html#cb121-1" tabindex="-1"></a>connection <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;~/sql_course/survey.db&quot;</span>)</span>
+<span id="cb121-2"><a href="sql.html#cb121-2" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(connection, <span class="st">&quot;SELECT Site.lat, Site.long FROM Site;&quot;</span>)</span>
+<span id="cb121-3"><a href="sql.html#cb121-3" tabindex="-1"></a><span class="fu">print</span>(results)</span>
+<span id="cb121-4"><a href="sql.html#cb121-4" tabindex="-1"></a><span class="fu">dbDisconnect</span>(connection)</span></code></pre></div>
+<p>La primera instrucción establece la conección de sql a la base de datos. La segunda es el query y los resultados los almacena en la variable results. Por último, cerramos la conección.</p>
+<p>Otro ejemplo similar al de Python para obtener el nombre completo de un científico:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="sql.html#cb122-1" tabindex="-1"></a>query <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;SELECT personal || &#39; &#39; || family FROM Person WHERE id ==&#39;&quot;</span>,</span>
+<span id="cb122-2"><a href="sql.html#cb122-2" tabindex="-1"></a>                  personID, <span class="st">&quot;&#39;;&quot;</span>)</span>
+<span id="cb122-3"><a href="sql.html#cb122-3" tabindex="-1"></a><span class="fu">return</span>(<span class="fu">dbGetQuery</span>(connection, query))</span>
+<span id="cb122-4"><a href="sql.html#cb122-4" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb122-5"><a href="sql.html#cb122-5" tabindex="-1"></a></span>
+<span id="cb122-6"><a href="sql.html#cb122-6" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;full name for dyer:&quot;</span>, <span class="fu">getName</span>(<span class="st">&#39;dyer&#39;</span>)))</span></code></pre></div>
+<p>R cuenta con otros comandos para extraer las tablas, los campos de cada tabla o leer tablas completas:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="sql.html#cb123-1" tabindex="-1"></a><span class="fu">dbListTables</span>(connection)</span>
+<span id="cb123-2"><a href="sql.html#cb123-2" tabindex="-1"></a><span class="fu">dbListFields</span>(connection, <span class="st">&quot;Survey&quot;</span>)</span>
+<span id="cb123-3"><a href="sql.html#cb123-3" tabindex="-1"></a><span class="fu">dbReadTable</span>(connection, <span class="st">&quot;Person&quot;</span>)</span></code></pre></div>
+<p>Finalmente, para escribir una tabla completa en una base de datos, puedes usar <code>dbWriteTable()</code>. Ten en cuenta que siempre querremos usar el argumento <code>row.names = FALSE</code> o R escribirá los nombres de las filas como una columna separada. En este ejemplo, escribiremos el conjunto de datos mtcars incorporado de R como una tabla:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="sql.html#cb124-1" tabindex="-1"></a>cars <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;:memory:&quot;</span>)</span>
+<span id="cb124-2"><a href="sql.html#cb124-2" tabindex="-1"></a><span class="fu">dbWriteTable</span>(cars, <span class="st">&quot;mtcars&quot;</span>, mtcars)</span>
+<span id="cb124-3"><a href="sql.html#cb124-3" tabindex="-1"></a><span class="fu">dbGetQuery</span>(cars, <span class="st">&quot;SELECT * FROM mtcars&quot;</span>)</span>
+<span id="cb124-4"><a href="sql.html#cb124-4" tabindex="-1"></a></span>
+<span id="cb124-5"><a href="sql.html#cb124-5" tabindex="-1"></a><span class="fu">dbGetQuery</span>(cars, <span class="st">&quot;SELECT * FROM mtcars&quot;</span>, <span class="at">n =</span> <span class="dv">6</span>)</span>
+<span id="cb124-6"><a href="sql.html#cb124-6" tabindex="-1"></a></span>
+<span id="cb124-7"><a href="sql.html#cb124-7" tabindex="-1"></a>conteos <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(</span>
+<span id="cb124-8"><a href="sql.html#cb124-8" tabindex="-1"></a>  cars,</span>
+<span id="cb124-9"><a href="sql.html#cb124-9" tabindex="-1"></a>  <span class="st">&quot;SELECT COUNT(*) FROM mtcars WHERE cyl = ?&quot;</span>,</span>
+<span id="cb124-10"><a href="sql.html#cb124-10" tabindex="-1"></a>  <span class="at">params =</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>)</span>
+<span id="cb124-11"><a href="sql.html#cb124-11" tabindex="-1"></a>)</span>
+<span id="cb124-12"><a href="sql.html#cb124-12" tabindex="-1"></a>conteos</span></code></pre></div>
+<p><strong>NOTA:</strong> Si antes de cerrar la conección con la base de datos survey.db hicieramos: <code>dbWriteTable(connection, "mtcars", mtcars)</code>, nos agregaría la tabla mtcars a survey.db.</p>
 
+</div>
 </div>
 </div>
             </section>

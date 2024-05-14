@@ -176,3 +176,6 @@ paso-2-crear-tablas
 paso-3-insertar-datos
 paso-4-consultas
 usar-sql-con-otros-programas
+importar-tsv-o-csv
+conección-con-python
+conección-con-r
