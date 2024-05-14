@@ -1160,4 +1160,62 @@ Si corremos este script en la terminal con `bash case_ejemplo.sh` veremos que de
 ## Descarga y limpieza de bases de datos
 
 
-**Pendiente**: Se verá después de SQL.
+  - `wget`: es una herramienta de línea de comandos para descargar archivos desde servidores web mediante HTTP, HTTPS y FTP.
+
+```bash
+wget URL_del_archivo
+```
+
+Por ejemplo:
+
+```bash
+wget https://raw.githubusercontent.com/HaydeePeruyero/Computo_Cientifico/main/data/charactersStats.csv
+```
+
+  - `curl`: es otra herramienta de línea de comandos para transferir datos desde o hacia un servidor. Es muy versátil y puede manejar varios protocolos.
+
+```bash
+curl -O URL_del_archivo
+```
+
+Por ejemplo:
+
+```bash
+curl -O https://raw.githubusercontent.com/HaydeePeruyero/Computo_Cientifico/main/data/charactersStats.csv
+```
+
+  - `ftp`: Si el archivo está disponible a través de FTP, puedes usar el cliente FTP de la línea de comandos para descargarlo.
+
+```bash
+ftp URL_del_servidor
+```
+
+Por ejemplo:
+
+```bash
+ftp ftp://example.com
+```
+
+  - `scp`: Si el archivo está en un servidor remoto al que tienes acceso SSH, puedes usar `scp` para descargarlo de forma segura.
+
+```bash
+scp usuario@servidor:path/al/archivo destino_local
+```
+
+Por ejemplo:
+
+```bash
+scp user@example.com:/ruta/al/archivo /ruta/local
+```
+
+  - `rsync`: Si necesitas sincronizar archivos o directorios entre sistemas, `rsync` es una opción muy poderosa.
+
+```bash
+rsync -av URL_del_servidor destino_local
+```
+
+Por ejemplo:
+
+```bash
+rsync -av user@example.com:/ruta/al/archivo /ruta/local
+```
